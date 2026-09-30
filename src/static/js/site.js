@@ -124,10 +124,11 @@
         setErr(i.name, empty ? "Required" : "");
         bad ||= empty;
       });
-      const email = form.elements["email-1"];
-      if (email && email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { setErr("email-1", "Enter a valid email"); bad = true; }
+      $$("input[type='email']", form).forEach((e) => {
+        if (e.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.value)) { setErr(e.name, "Enter a valid email"); bad = true; }
+      });
       $$("input[type='tel']", form).forEach((t) => {
-        if (t.value && t.value.replace(/\D/g, "").length < 7) { setErr(t.name, "Enter a valid WhatsApp number"); bad = true; }
+        if (t.value && t.value.replace(/\D/g, "").length < 7) { setErr(t.name, "Enter a valid phone number"); bad = true; }
       });
       if (bad) { $("[aria-invalid='true']", form)?.focus(); return; }
 

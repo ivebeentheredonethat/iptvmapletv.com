@@ -231,16 +231,21 @@ def lead_form(form_id, kind, submit_label, value=0, plan_name=""):
 
 
 def referral_form():
+    def person(prefix, n, who, ph_name, ph_phone, ph_email):
+        return f"""<fieldset class="ref-group">
+    <legend>{who}</legend>
+    <div class="fields">
+      <div class="field"><label for="{prefix}-name">Name</label><input class="input" id="{prefix}-name" name="name-{n}" autocomplete="{'name' if n == 1 else 'off'}" placeholder="{ph_name}" required><span class="err"></span></div>
+      <div class="field"><label for="{prefix}-phone">Phone (WhatsApp)</label><input class="input" id="{prefix}-phone" name="phone-{n}" type="tel" inputmode="tel" autocomplete="{'tel' if n == 1 else 'off'}" placeholder="{ph_phone}" required><span class="err"></span></div>
+      <div class="field field--full"><label for="{prefix}-email">Email</label><input class="input" id="{prefix}-email" name="email-{n}" type="email" inputmode="email" autocomplete="{'email' if n == 1 else 'off'}" placeholder="{ph_email}" required><span class="err"></span></div>
+    </div>
+  </fieldset>"""
     return f"""<form class="lead-form" data-lead-form="referral" novalidate>
   <input type="hidden" name="action" value="forminator_submit_form_custom-forms">
   <input type="hidden" name="form_id" value="3995">
   <div class="hp" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
-  <div class="fields">
-    <div class="field"><label for="r-name">Your first name</label><input class="input" id="r-name" name="name-1" placeholder="E.g. John" required><span class="err"></span></div>
-    <div class="field"><label for="r-phone">Your WhatsApp number</label><input class="input" id="r-phone" name="phone-1" type="tel" inputmode="tel" placeholder="E.g. +1 300 400 5000" required><span class="err"></span></div>
-    <div class="field"><label for="r-fname">Friend’s first name</label><input class="input" id="r-fname" name="name-2" placeholder="E.g. Mike" required><span class="err"></span></div>
-    <div class="field"><label for="r-fphone">Friend’s WhatsApp number</label><input class="input" id="r-fphone" name="phone-2" type="tel" inputmode="tel" placeholder="E.g. +1 245 852 4100" required><span class="err"></span></div>
-  </div>
+  {person("r", 1, "Your details", "E.g. John Smith", "E.g. +1 300 400 5000", "you@example.com")}
+  {person("rf", 2, "Your friend’s details", "E.g. Mike Brown", "E.g. +1 245 852 4100", "friend@example.com")}
   <button class="btn btn--primary btn--lg btn--block" type="submit" style="margin-top:22px"><span class="spinner"></span>Submit referral {icon("arrow-right")}</button>
   <div class="form-msg" role="status" aria-live="polite"></div>
 </form>"""

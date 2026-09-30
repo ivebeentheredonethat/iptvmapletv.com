@@ -13,12 +13,10 @@ EMAIL_SUBJECT = "Interest in IPTVmaple Service"
 EMAIL_BODY = "Hello IPTVmaple Team,\n\nI am interested in your IPTV service and would like to get more information.\n\nThank you."
 MAILTO = f"mailto:{EMAIL}?subject={quote(EMAIL_SUBJECT)}&body={quote(EMAIL_BODY)}"
 
-WHATSAPP = "17828026280"  # main support line (floating button, contact page)
-WHATSAPP_TEXT = "Hi, I'm interested in your Maple service"
-WHATSAPP_URL = f"https://api.whatsapp.com/send?phone={WHATSAPP}&text={quote(WHATSAPP_TEXT)}"
-WHATSAPP_ORDERS = "16727022155"  # shown on the thank-you page / referral program
-WHATSAPP_ORDERS_DISPLAY = "+1 (672) 702-2155"
-TELEGRAM_URL = "https://t.me/LiveSupportIPTV"
+# Every WhatsApp button links to /go/wa. That path redirects to the real number
+# (see src/static/_redirects), so each website has its own link and the number
+# can be changed in one place.
+WHATSAPP_URL = "/go/wa"
 
 GOOGLE_TAGS = ["GT-WF62KHHF", "G-JJR5ECP8RV"]
 REDDIT_PIXEL = "a2_g8z3rkvzo68a"

@@ -45,8 +45,7 @@ def _head(p: Page):
     ld = [{
         "@context": "https://schema.org", "@graph": [
             {"@type": "Organization", "@id": C.SITE_URL + "/#organization", "name": C.LEGAL_NAME, "url": C.SITE_URL,
-             "logo": C.SITE_URL + "/brand/icon-512.png", "email": C.EMAIL,
-             "sameAs": [C.TELEGRAM_URL]},
+             "logo": C.SITE_URL + "/brand/icon-512.png", "email": C.EMAIL},
             {"@type": "WebSite", "@id": C.SITE_URL + "/#website", "url": C.SITE_URL, "name": C.LEGAL_NAME,
              "alternateName": C.NAME, "publisher": {"@id": C.SITE_URL + "/#organization"}, "inLanguage": "en-US"},
             {"@type": "WebPage", "@id": url + "#webpage", "url": url, "name": p.title, "description": p.description,
@@ -139,7 +138,6 @@ def _footer():
       {cols}
       <div><h4>Get in touch</h4><ul>
         <li><a href="{C.WHATSAPP_URL}" target="_blank" rel="noopener">WhatsApp</a></li>
-        <li><a href="{C.TELEGRAM_URL}" target="_blank" rel="noopener">Telegram</a></li>
         <li><a href="mailto:{C.EMAIL}">{C.EMAIL}</a></li>
       </ul></div>
     </div>
@@ -152,7 +150,6 @@ def _footer():
 </footer>
 <div class="dock" aria-label="Contact us">
   <a class="wa" href="{C.WHATSAPP_URL}" target="_blank" rel="noopener" data-label="Chat on WhatsApp" aria-label="Chat on WhatsApp">{icon("whatsapp")}</a>
-  <a class="tg" href="{C.TELEGRAM_URL}" target="_blank" rel="noopener" data-label="Telegram support" aria-label="Telegram support">{icon("telegram")}</a>
   <a class="em" href="{C.MAILTO}" data-label="Email us" aria-label="Email us">{icon("mail")}</a>
 </div>"""
 

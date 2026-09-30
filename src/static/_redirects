@@ -1,3 +1,6 @@
+# WhatsApp: every button on the site links to /go/wa
+/go/wa https://wa.me/17828026280?text=Hi%20IPTVMaple!%20I%27m%20interested%20in%20your%20service 302
+
 # Old WordPress URLs -> current pages (301 = permanent). Specific rules first, splats last.
 /1-month-iptv-subscription-for-4-devices/ /1-month-iptv-4-devices/ 301
 /1-month-iptv-subscription-stream-live-tv-with-iptvmaple/ /1-month-iptv-canada/ 301

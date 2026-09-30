@@ -28,7 +28,7 @@ WHY = [
     ("settings", "Easy to set up", "Quick, guided setup on any device — you’re watching within minutes of ordering."),
     ("wifi", "No buffering", "Anti-freeze servers keep live sports and movies smooth, even at peak hours."),
     ("lock", "Safe & secure", "Your privacy is our priority, with strict data protection and top-level security."),
-    ("headset", "24/7 support", "Real humans on WhatsApp, Telegram and email — quick, reliable help whenever you need it."),
+    ("headset", "24/7 support", "Real humans on WhatsApp and email — quick, reliable help whenever you need it."),
     ("refund", "7-day money-back", "Not completely satisfied? We offer a full refund within 7 days of purchase."),
 ]
 
@@ -361,9 +361,9 @@ def thank_you():
     </div>
     <div class="card center" style="margin-top:22px">
       <h2 class="h3">Want it even faster?</h2>
-      <p class="muted">Message us directly on WhatsApp at <b style="color:#fff">{C.WHATSAPP_ORDERS_DISPLAY}</b> — our team is available and ready to assist you.</p>
+      <p class="muted">Message us directly on WhatsApp — our team is available and ready to assist you.</p>
       <div class="btn-row" style="justify-content:center">
-        <a class="btn btn--wa btn--lg" href="https://wa.me/{C.WHATSAPP_ORDERS}" target="_blank" rel="noopener">{icon("whatsapp")} Message us on WhatsApp</a>
+        <a class="btn btn--wa btn--lg" href="{C.WHATSAPP_URL}" target="_blank" rel="noopener">{icon("whatsapp")} Message us on WhatsApp</a>
         <a class="btn btn--ghost btn--lg" href="/how-it-works/">Setup guides</a>
       </div>
     </div>
@@ -445,35 +445,34 @@ def how_it_works():
 def referral():
     r = data("referral")
     meta = r["meta"]
-    body = f"""<section class="page-hero">
+    steps = [
+        ("Fill in the form", "Enter your details and your friend’s: name, phone and email."),
+        ("Your friend subscribes", "They buy any 12-month IPTVMaple plan."),
+        ("You get 1 year free", "Once their payment is verified, we add 12 months to your account."),
+    ]
+    steps_html = "".join(f'<div class="card step reveal" style="--d:{i * .08:.2f}s"><h3>{t}</h3><p>{d}</p></div>' for i, (t, d) in enumerate(steps))
+    body = f"""<section class="page-hero" style="padding-bottom:28px">
   {aurora()}<div class="grid-bg" aria-hidden="true"></div>
   <div class="container z">
-    {"" }
-    <span class="eyebrow"><b>+1 YEAR</b> IPTVMaple referral program</span>
-    <h1>Refer 1 person, get <span class="grad-text">+1 year free!</span></h1>
-    <p class="lead">Earn exclusive rewards when your friend joins IPTVMaple. There’s no limit — every successful referral adds another 12 months.</p>
-    <div class="btn-row" style="justify-content:center;margin-top:28px">
-      <a class="btn btn--wa btn--lg" href="https://wa.me/{C.WHATSAPP_ORDERS}?text=Hey%20IPTVmaple%21%20I%E2%80%99d%20like%20to%20refer%20a%20friend.%20What%E2%80%99s%20the%20next%20step%3F" target="_blank" rel="noopener">{icon("whatsapp")} Refer via WhatsApp</a>
-      <button class="btn btn--ghost btn--lg" type="button" data-show="referral-form">Use the referral form</button>
+    <span class="eyebrow"><b>+1 YEAR</b> Referral program</span>
+    <h1>Refer a friend, <span class="nowrap">get <span class="grad-text">1 year free</span></span></h1>
+    <p class="lead">Fill in the form below. When your friend subscribes for a year, you get 12 months free.</p>
+  </div>
+</section>
+<section class="section" style="padding-top:0">
+  <div class="container narrow">
+    <div class="order-card reveal" id="referral-form">
+      <h2>Submit a referral</h2>
+      <p class="muted">All fields are required.</p>
+      {referral_form()}
     </div>
   </div>
 </section>
-<section class="section" style="padding-top:8px">
-  <div class="container narrow">
-    <div class="order-card reveal" id="referral-form" hidden style="margin-bottom:24px">
-      <h2>Submit the referral form</h2>
-      <p class="muted">Tell us who you’re referring — we’ll take it from there.</p>
-      {referral_form()}
-    </div>
-    <div class="grid grid-2">
-      <div class="card reveal"><div class="icon">{icon("gift")}</div><h2 class="h3">Referral rules</h2>{checks(r["rules"])}</div>
-      <div class="card reveal" style="--d:.08s"><div class="icon">{icon("users")}</div><h2 class="h3">How it works</h2>
-        <ol class="prose" style="font-size:15.5px;padding-left:1.2em;margin:0">
-          <li>Send us your friend’s name and WhatsApp number (form or WhatsApp).</li>
-          <li>Your friend subscribes to a 12-month IPTVMaple plan.</li>
-          <li>After payment verification, we add +1 year to your subscription.</li>
-        </ol></div>
-    </div>
+<section class="section section--tight" style="padding-top:0">
+  <div class="container">
+    {section_head("How it works", "3 steps to your free year", "")}
+    <div class="steps">{steps_html}</div>
+    <div class="card reveal ref-rules"><h2 class="h3">Rules</h2>{checks(r["rules"])}</div>
   </div>
 </section>
 {cta_band("Not a customer yet?", "Join IPTVMaple today, then start earning free years by sharing it with friends.")}"""
@@ -487,15 +486,14 @@ def contact():
     meta = META["contact"]
     cards = [
         ("icon--wa", "whatsapp", "WhatsApp", "The fastest way to reach us — usually a reply within minutes.", "Chat with us", C.WHATSAPP_URL, "btn--wa"),
-        ("icon--tg", "telegram", "Telegram", "Prefer Telegram? Our live support team is there too.", "@LiveSupportIPTV", C.TELEGRAM_URL, "btn--ghost"),
         ("icon--mail", "mail", "Email", f"Write to us any time at <span class=\"val\">{C.EMAIL}</span>", "Send an email", C.MAILTO, "btn--ghost"),
     ]
     html = "".join(
         f'<div class="card contact-card reveal" style="--d:{i * .08:.2f}s"><div class="icon {cls}">{icon(ic)}</div><h3>{t}</h3><p>{d}</p>'
-        f'<a class="btn {btn} btn--block" href="{href}"{" target=\"_blank\" rel=\"noopener\"" if href.startswith("http") else ""}>{label}</a></div>'
+        f'<a class="btn {btn} btn--block" href="{href}"{" target=\"_blank\" rel=\"noopener\"" if href == C.WHATSAPP_URL else ""}>{label}</a></div>'
         for i, (cls, ic, t, d, label, href, btn) in enumerate(cards))
     body = f"""{page_hero('We’re here <span class="grad-text">24/7</span>', "Have any questions? Our friendly support team is always ready to help and will get back to you as soon as possible, so you enjoy a flawless IPTV experience.", "Contact us", [("Home", "/"), ("Contact", "")])}
-<section class="section" style="padding-top:8px"><div class="container"><div class="grid grid-3">{html}</div></div></section>
+<section class="section" style="padding-top:8px"><div class="container narrow"><div class="grid grid-2">{html}</div></div></section>
 {faq_section(FAQ)}"""
     return Page("/contact/", "Contact Us – 24/7 IPTV Support | IPTVMaple", meta["description"], body, og_image=meta["og_image"],
                 published=meta["published"], modified=meta["modified"], jsonld=[breadcrumb_ld([("Home", "/"), ("Contact", "/contact/")])])

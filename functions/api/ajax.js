@@ -1,9 +1,8 @@
 // Replaces WordPress's /wp-admin/admin-ajax.php for the Forminator order, free-trial and
 // referral forms. Each submission is:
 //   1. saved in the LEADS KV namespace (if bound),
-//   2. sent to Telegram (if TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID are set),
-//   3. POSTed as JSON to NOTIFY_WEBHOOK_URL (if set),
-//   4. always written to the function log.
+//   2. POSTed as JSON to NOTIFY_WEBHOOK_URL (if set),
+//   3. always written to the function log.
 // Field names and the response shape are the ones the old Forminator forms used.
 
 const REFERRAL_FORM = "3995";
@@ -17,10 +16,12 @@ const LABELS = {
     "phone-1": "WhatsApp",
   },
   [REFERRAL_FORM]: {
-    "name-1": "First name",
-    "phone-1": "WhatsApp",
-    "name-2": "Friend's first name",
-    "phone-2": "Friend's WhatsApp",
+    "name-1": "Name",
+    "phone-1": "Phone",
+    "email-1": "Email",
+    "name-2": "Friend's name",
+    "phone-2": "Friend's phone",
+    "email-2": "Friend's email",
   },
 };
 
@@ -70,7 +71,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
   if (formId === REFERRAL_FORM) {
     return json({
       success: true,
-      data: { success: true, message: "Thank you! We received your referral and will contact you on WhatsApp shortly.", behav: "behaviour-thankyou" },
+      data: { success: true, message: "Thank you! We received your referral and will be in touch shortly.", behav: "behaviour-thankyou" },
     });
   }
   return json({
@@ -83,19 +84,6 @@ async function deliver(lead, env) {
   const jobs = [];
   if (env.LEADS) {
     jobs.push(env.LEADS.put(`lead:${lead.at}:${crypto.randomUUID().slice(0, 8)}`, JSON.stringify(lead)));
-  }
-  if (env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) {
-    const text =
-      `New ${lead.type} — ${lead.page}\n` +
-      Object.entries(lead.fields).map(([k, v]) => `${k}: ${v}`).join("\n") +
-      (lead.country ? `\n(IP country: ${lead.country})` : "");
-    jobs.push(
-      fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, text }),
-      })
-    );
   }
   if (env.NOTIFY_WEBHOOK_URL) {
     jobs.push(

@@ -10,7 +10,7 @@ hosted on **Cloudflare Pages**.
 
 | Path | What to edit there |
 | --- | --- |
-| `sitegen/config.py` | Contact details (WhatsApp, Telegram, email), analytics IDs, promo bar, navigation, footer links |
+| `sitegen/config.py` | Contact details (WhatsApp, email), analytics IDs, promo bar, navigation, footer links |
 | `src/data/plans.json` | **Prices**, plan URLs, per-plan SEO title/description, and the plan feature list |
 | `src/data/faq.json` | FAQ questions and answers (home, pricing, order pages) |
 | `src/data/reviews.json` | Customer reviews and WhatsApp feedback |
@@ -45,7 +45,7 @@ To also run the form functions locally: `npm install` then `npm run dev` (Wrangl
 ## Common edits
 
 - **Change a price:** edit `price` / `original` in `src/data/plans.json`, push.
-- **Change the WhatsApp number:** `WHATSAPP` in `sitegen/config.py`.
+- **Change the WhatsApp number:** edit the `/go/wa` line at the top of `src/static/_redirects` (every WhatsApp button links to `/go/wa`).
 - **Add a FAQ:** add `{"q": "...", "a": "<p>...</p>"}` to `src/data/faq.json`.
 - **Add a text page:** create `src/content/<slug>.html` (copy the meta block from an existing one) and
   add it to `PROSE` in `sitegen/pages.py`.
@@ -57,8 +57,7 @@ Orders, free-trial requests and referrals are handled by `functions/api/ajax.js`
 
 - saved to the Cloudflare KV namespace `iptvmapletv-com-leads` (binding `LEADS`, see `wrangler.toml`);
 - viewable at `https://iptvmapletv.com/api/leads?key=<ADMIN_KEY>` (secret variable on the Pages project);
-- optionally pushed to Telegram — set `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` on the Pages project
-  (Settings → Variables and Secrets) — and/or to any webhook via `NOTIFY_WEBHOOK_URL`;
+- optionally pushed to any webhook via `NOTIFY_WEBHOOK_URL` (Pages project → Settings → Variables and Secrets);
 - a hidden honeypot field silently drops most spam bots;
 - successful submissions fire a GA4 `generate_lead` event and a Reddit `Lead` event.
 
