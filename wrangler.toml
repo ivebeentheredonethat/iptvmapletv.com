@@ -1,3 +1,8 @@
 name = "iptvmapletv-com"
 pages_build_output_dir = "public"
 compatibility_date = "2026-09-01"
+
+# Form submissions (see functions/api/ajax.js)
+[[kv_namespaces]]
+binding = "LEADS"
+id = "55918e684b92407e9ac8c28e21cce7f9"
