@@ -180,6 +180,8 @@ def home():
   <div class="container z">{pricing()}</div>
 </section>
 
+{reviews_section()}
+
 <section class="section" id="sports">
   <div class="container sports">
     <div class="sports-visual reveal">
@@ -224,7 +226,6 @@ def home():
   </div>
 </section>
 
-{reviews_section()}
 {network_section()}
 {faq_section(FAQ)}
 {cta_band()}
@@ -249,6 +250,7 @@ def pricing_page():
     meta = META["iptv-plans-canada"]
     body = f"""{page_hero('Premium IPTV plans — <span class="grad-text">50% off</span>', "Every channel, every movie and every feature in every plan. Choose your screens and save more with longer plans.", "Pricing", [("Home", "/"), ("Pricing", "")])}
 <section class="section section--after-hero"><div class="container">{pricing(heading=False)}</div></section>
+{reviews_section()}
 <section class="section"><div class="container">{section_head("Included", "Every plan comes with", "")}{why_grid()}</div></section>
 {faq_section(FAQ[:6], "Questions before you buy?")}
 {network_section()}

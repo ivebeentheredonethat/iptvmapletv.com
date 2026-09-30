@@ -27,6 +27,24 @@
   }, { rootMargin: "0px 0px -8% 0px" });
   $$(".reveal").forEach((el) => (io ? io.observe(el) : el.classList.add("is-in")));
 
+  /* reviews carousels: one slide at a time, dots, auto-advance (paused on hover/focus) */
+  $$("[data-carousel]").forEach((c) => {
+    const slides = $$(".rv-slide", c), dots = $$(".rv-dots button", c);
+    if (slides.length < 2) return;
+    let i = 0, timer;
+    const show = (n) => {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, k) => s.classList.toggle("is-active", k === i));
+      dots.forEach((d, k) => d.setAttribute("aria-current", String(k === i)));
+    };
+    const play = () => { clearInterval(timer); if (!matchMedia("(prefers-reduced-motion: reduce)").matches) timer = setInterval(() => show(i + 1), 6000); };
+    dots.forEach((d, k) => d.addEventListener("click", () => { show(k); play(); }));
+    c.addEventListener("mouseenter", () => clearInterval(timer));
+    c.addEventListener("mouseleave", play);
+    c.addEventListener("focusin", () => clearInterval(timer));
+    play();
+  });
+
   /* pricing: connection switcher */
   $$("[data-pricing]").forEach((root) => {
     const data = JSON.parse($("script[type='application/json']", root).textContent);

@@ -173,26 +173,65 @@ def faq_section(items, title="Frequently asked questions", lang="en"):
 
 
 # ------------------------------------------------------------------ reviews
+FLAGS = {
+    "Canada": '<rect width="20" height="14" fill="#FF0000"/><rect x="5" width="10" height="14" fill="#fff"/><polygon points="10,2 11,5.5 14.5,5.5 11.8,7.5 12.8,11 10,9 7.2,11 8.2,7.5 5.5,5.5 9,5.5" fill="#FF0000"/>',
+    "USA": '<rect width="20" height="14" fill="#B22234"/>' + "".join(f'<rect y="{y}" width="20" height="1.08" fill="#fff"/>' for y in (1.08, 3.23, 5.38, 7.54, 9.69, 11.85)) + '<rect width="8" height="7.54" fill="#3C3B6E"/>',
+    "UK": '<rect width="20" height="14" fill="#012169"/><path d="M0 0L20 14M20 0L0 14" stroke="#fff" stroke-width="2.6"/><path d="M0 0L20 14M20 0L0 14" stroke="#C8102E" stroke-width="1"/><path d="M10 0V14M0 7H20" stroke="#fff" stroke-width="4"/><path d="M10 0V14M0 7H20" stroke="#C8102E" stroke-width="2.4"/>',
+    "Germany": '<rect width="20" height="4.67" fill="#000"/><rect y="4.67" width="20" height="4.67" fill="#DD0000"/><rect y="9.33" width="20" height="4.67" fill="#FFCE00"/>',
+    "France": '<rect width="6.67" height="14" fill="#002395"/><rect x="6.67" width="6.67" height="14" fill="#fff"/><rect x="13.33" width="6.67" height="14" fill="#ED2939"/>',
+}
+
+
+def flag(country):
+    """'🇨🇦 Canada' -> inline SVG flag (emoji flags don't render on Windows)."""
+    name = country.split(" ", 1)[-1]
+    shapes = FLAGS.get(name)
+    return (f'<svg class="rv-flag" width="20" height="14" viewBox="0 0 20 14" role="img" aria-label="{escape(name)}">{shapes}</svg>'
+            if shapes else escape(name))
+
+
+def _dots(n, label):
+    return f'<div class="rv-dots" role="tablist" aria-label="{label}">' + "".join(
+        f'<button type="button" aria-label="Show {label.lower()} {i + 1}"{" aria-current=\"true\"" if i == 0 else ""}></button>' for i in range(n)) + "</div>"
+
+
 def reviews_section():
     r = data("reviews")
+    squares = '<span class="rv-squares" aria-label="5 out of 5 stars">' + '<i>★</i>' * 5 + "</span>"
+    featured = "".join(
+        f"""<figure class="rv-slide rv-feature{' is-active' if i == 0 else ''}">{squares}
+  <h3>{escape(x["title"])}</h3><blockquote><p>{escape(x["body"])}</p></blockquote>
+  <figcaption class="rv-who rv-who--green">— {escape(x["name"])} {flag(x["country"])}</figcaption></figure>"""
+        for i, x in enumerate(r["reviews"]))
+    wa_icon = f'<span class="rv-wa-icon">{icon("whatsapp")}</span>'
+    pairs = [r["whatsapp"][i:i + 2] for i in range(0, len(r["whatsapp"]), 2)]
+    wa = "".join(
+        f'<div class="rv-slide rv-wa-grid{" is-active" if i == 0 else ""}">' + "".join(
+            f"""<figure class="rv-card"><div class="rv-card-head">{wa_icon}<span>WhatsApp</span></div>
+  <blockquote><p>{escape(x["text"])}</p></blockquote><figcaption class="rv-who rv-who--wa">— {escape(x["name"])} {flag(x["country"])}</figcaption></figure>"""
+            for x in pair) + "</div>"
+        for i, pair in enumerate(pairs))
+    stats = [("50,000+", "Live channels", "#00E5FF"), ("7-day", "Money-back", "#00b67a"),
+             ("4K", "Ultra HD", "#FBBC04"), ("24/7", "Human support", "#E8041F")]
+    stat_html = "".join(f'<div class="rv-stat"><b style="color:{c}">{v}</b><span>{t}</span></div>' for v, t, c in stats)
+    return f"""<section class="section rv-section" id="reviews">
+  <div class="container">
+    <div class="rv-head reveal">
+      <p class="rv-kicker">Verified reviews</p>
+      <h2>What customers say about <span>IPTVMaple</span></h2>
+      <p class="rv-sub">Real feedback from our customers and our WhatsApp support chat</p>
+      <div class="rv-stats">{stat_html}</div>
+    </div>
 
-    def initials(n):
-        return "".join(w[0] for w in n.split()[:2]).upper()
+    <div class="rv-block reveal">
+      <div class="rv-brand">{squares}<span>Customer reviews</span></div>
+      <div class="rv-carousel rv-carousel--feature" data-carousel>{featured}{_dots(len(r["reviews"]), "Review")}</div>
+    </div>
 
-    stars = f'<span class="stars" aria-label="5 out of 5 stars">★★★★★</span>'
-    row1 = [f"""<figure class="review">{stars}<h4>{escape(x["title"])}</h4><p>{escape(x["body"])}</p>
-<figcaption class="who"><span class="avatar">{initials(x["name"])}</span><span><b style="color:#fff">{escape(x["name"])}</b> · {x["country"]}</span></figcaption></figure>"""
-            for x in r["reviews"]]
-    row2 = [f"""<figure class="review review--wa"><span class="wa-tag">{icon("whatsapp")} WhatsApp message</span><p>“{escape(x["text"])}”</p>
-<figcaption class="who"><span class="avatar" style="background:linear-gradient(135deg,#25d366,#128c7e)">{initials(x["name"])}</span><span><b style="color:#fff">{escape(x["name"])}</b> · {x["country"]}</span></figcaption></figure>"""
-            for x in r["whatsapp"]]
-    a = row1 + row2[:4]
-    b = row2[4:] + row1
-    return f"""<section class="section" id="reviews">
-  <div class="container">{section_head("Reviews", "Loved by cord-cutters <span class='grad-text'>everywhere</span>", "Real words from our customers — by review and straight from our WhatsApp support chat.")}</div>
-  <div class="reviews-stack reveal">
-    <div class="marquee" style="--speed:70s"><div class="marquee-track">{"".join(a + a)}</div></div>
-    <div class="marquee marquee--reverse" style="--speed:80s"><div class="marquee-track">{"".join(b + b)}</div></div>
+    <div class="rv-block reveal">
+      <div class="rv-brand rv-brand--wa">{wa_icon}<span>WhatsApp</span></div>
+      <div class="rv-carousel rv-carousel--wa" data-carousel>{wa}{_dots(len(pairs), "Message")}</div>
+    </div>
   </div>
 </section>"""
 
