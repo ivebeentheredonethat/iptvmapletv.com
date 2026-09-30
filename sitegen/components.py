@@ -149,15 +149,22 @@ def faq_ld(items):
         for f in items]}
 
 
-def faq_section(items, title="Frequently asked questions"):
+FAQ_TEXT = {
+    "en": ("Can’t find what you’re looking for? Our team replies in minutes, day and night.", "Chat on WhatsApp"),
+    "fr": ("Vous ne trouvez pas votre réponse? Notre équipe répond en quelques minutes, jour et nuit.", "Écrivez-nous sur WhatsApp"),
+}
+
+
+def faq_section(items, title="Frequently asked questions", lang="en"):
+    note, wa = FAQ_TEXT[lang]
     return f"""<section class="section" id="faq">
   <div class="container faq-layout">
     <div class="faq-aside reveal">
       <span class="kicker">FAQ</span>
       <h2 class="h2">{title}</h2>
-      <p class="muted">Can’t find what you’re looking for? Our team replies in minutes, day and night.</p>
+      <p class="muted">{note}</p>
       <div class="btn-row" style="margin-top:22px">
-        <a class="btn btn--wa" href="{C.WHATSAPP_URL}" target="_blank" rel="noopener">{icon("whatsapp")} Chat on WhatsApp</a>
+        <a class="btn btn--wa" href="{C.WHATSAPP_URL}" target="_blank" rel="noopener">{icon("whatsapp")} {wa}</a>
       </div>
     </div>
     <div class="reveal">{faq(items)}</div>
@@ -191,17 +198,24 @@ def reviews_section():
 
 
 # ------------------------------------------------------------------ CTA band
-def cta_band(title="Ready to cut the cord?", text="Join thousands of Canadians streaming live TV, sports and blockbusters in 4K — for half the price.", img="/images/composed/mosaic.webp"):
+CTA_TEXT = {
+    "en": ("Start today", "See plans — 50% off", "Try free for 24 hours"),
+    "fr": ("Commencez aujourd’hui", "Voir les forfaits — 50 % de rabais", "Essai gratuit de 24 h"),
+}
+
+
+def cta_band(title="Ready to cut the cord?", text="Join thousands of Canadians streaming live TV, sports and blockbusters in 4K — for half the price.", img="/images/composed/mosaic.webp", lang="en"):
+    kicker, primary, secondary = CTA_TEXT[lang]
     return f"""<section class="section section--tight">
   <div class="container">
     <div class="cta-band reveal">
       <img src="{img}" alt="" loading="lazy" width="1600" height="676">
-      <span class="kicker">Start today</span>
+      <span class="kicker">{kicker}</span>
       <h2 class="h2">{title}</h2>
       <p>{text}</p>
       <div class="btn-row">
-        <a class="btn btn--primary btn--lg" href="/iptv-plans-canada/">See plans — 50% off</a>
-        <a class="btn btn--ghost btn--lg" href="/try-iptv-canada/">Try free for 24 hours</a>
+        <a class="btn btn--primary btn--lg" href="/iptv-plans-canada/">{primary}</a>
+        <a class="btn btn--ghost btn--lg" href="/try-iptv-canada/">{secondary}</a>
       </div>
     </div>
   </div>

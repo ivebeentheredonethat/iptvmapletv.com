@@ -20,6 +20,9 @@ hosted on **Cloudflare Pages**.
 | `src/content/*.html` | Long-form pages (about, legal, guides, landing pages). SEO meta is the JSON at the top of each file |
 | `sitegen/pages.py` | Page layouts and section copy (homepage, pricing, order pages, channels…) |
 | `sitegen/components.py` | Shared sections: pricing table, FAQ, reviews, forms, CTA band |
+| `sitegen/seo_content/*.py` | SEO landing pages (apps, devices, sports, cities, guides, French Québec pages) — one dict per page |
+| `sitegen/seo.py` | The single template every SEO page uses (title block, quick answer, FAQ schema, breadcrumbs, related links) |
+| `docs/seo-keyword-map.csv` | Every keyword from the keyword research → the page that targets it, or why it was excluded |
 | `src/static/css/site.css` | The whole design system (colours, type, components) — tokens at the top |
 | `src/static/js/site.js` | Menu, pricing switcher, channel search, setup tabs, order form |
 | `src/static/images/` | Images (old `/wp-content/uploads/...` URLs redirect here) |
@@ -49,6 +52,8 @@ To also run the form functions locally: `npm install` then `npm run dev` (Wrangl
 - **Add a FAQ:** add `{"q": "...", "a": "<p>...</p>"}` to `src/data/faq.json`.
 - **Add a text page:** create `src/content/<slug>.html` (copy the meta block from an existing one) and
   add it to `PROSE` in `sitegen/pages.py`.
+- **Add an SEO page:** copy a dict in `sitegen/seo_content/<cluster>.py`, change slug/title/description/content. It is added to
+  its hub page, the sitemap and `llms.txt` automatically. The build fails on duplicate titles/descriptions or broken links.
 - **Redirect an old URL:** add `/old/ /new/ 301` near the top of `src/static/_redirects`.
 
 ## Form submissions

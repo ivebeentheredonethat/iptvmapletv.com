@@ -9,6 +9,7 @@ from .components import (FEATURES, PLANS, aurora, all_plans, breadcrumb_ld, chec
                          referral_form, reviews_section, section_head, trust_row)
 from .icons import icon
 from .layout import Page
+from .seo import seo_pages
 
 META = data("page-meta")
 FAQ = data("faq")
@@ -60,16 +61,16 @@ def network_section():
 
 # =================================================================== HOME
 SEARCHES = [
-    ("Québec IPTV Channel", "/channels-list/"), ("Chaînes IPTV Québec Canada", "/channels-list/"), ("IPTV Montréal Québec", "/"),
-    ("IPTV Québec", "/"), ("Smarters IPTV Québec", "/how-it-works/"), ("Meilleur IPTV Canadien", "/"),
-    ("Films IPTV Québec", "/"), ("Series IPTV Québec", "/"), ("Sport IPTV Québec", "/#sports"),
-    ("Abonnement 1 Mois IPTV Québec", "/1-month-iptv-canada/"), ("Abonnement 3 Mois IPTV Québec", "/iptv-plans-canada/"),
-    ("Abonnement 6 Mois IPTV Québec", "/6-month-iptv-unlimited/"), ("Abonnement 12 Mois IPTV Québec", "/12-month-iptv-unlimited/"),
-    ("Canada IPTV Channel", "/channels-list/"), ("Channel IPTV Canada", "/channels-list/"), ("IPTV CA", "/"), ("IPTV Canada", "/"),
-    ("The Best IPTV Canada", "/"), ("Movies IPTV Canada", "/"), ("Series IPTV Canada", "/"), ("Sport IPTV Canada", "/#sports"),
-    ("Subscription 1 Month IPTV Canada", "/1-month-iptv-canada/"), ("Subscription 3 Months IPTV Canada", "/iptv-plans-canada/"),
-    ("Subscription 6 Months IPTV Canada", "/6-month-iptv-unlimited/"), ("Subscription 12 Months IPTV Canada", "/12-month-iptv-unlimited/"),
-    ("Free Trial IPTV Canada", "/try-iptv-canada/"),
+    ("IPTV Québec", "/iptv-quebec/"), ("Meilleur IPTV Québec", "/meilleur-iptv/"), ("Abonnement IPTV", "/abonnement-iptv/"),
+    ("IPTV Montréal", "/iptv-montreal/"), ("Chaînes IPTV Québec", "/iptv-quebec/"), ("IPTV sur Smart TV", "/iptv-sur-smart-tv/"),
+    ("Best IPTV Canada 2026", "/best-iptv-canada/"), ("IPTV Subscription Canada", "/iptv-plans-canada/"), ("IPTV Free Trial", "/try-iptv-canada/"),
+    ("IPTV Near Me", "/iptv-near-me/"), ("IPTV Toronto", "/iptv-toronto/"), ("IPTV Vancouver", "/iptv-vancouver/"),
+    ("IPTV Calgary", "/iptv-calgary/"), ("IPTV Edmonton", "/iptv-edmonton/"), ("IPTV Ottawa", "/iptv-ottawa/"),
+    ("IPTV Smarters Pro", "/iptv-smarters-pro/"), ("TiviMate", "/tivimate/"), ("Best IPTV Apps", "/iptv-apps/"),
+    ("IPTV on Firestick", "/iptv-firestick/"), ("Best IPTV Box", "/iptv-box/"), ("Formuler Z11 Pro Max", "/formuler-iptv/"),
+    ("IPTV Samsung TV", "/iptv-samsung-tv/"), ("IPTV Apple TV", "/iptv-apple-tv/"), ("M3U Playlist", "/m3u-playlist/"),
+    ("Sports IPTV", "/iptv-sports/"), ("NHL IPTV", "/nhl-iptv/"), ("UFC PPV IPTV", "/ufc-iptv/"),
+    ("4K IPTV", "/4k-iptv/"), ("What Is IPTV", "/what-is-iptv/"), ("IPTV Reviews", "/iptv-reviews/"),
 ]
 
 LEAGUES = [
@@ -237,7 +238,8 @@ def home():
               "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": min(p["price"] for _, p in all_plans()),
                          "highPrice": max(p["price"] for _, p in all_plans()), "offerCount": 15}}
     return Page("/", meta["title"], meta["description"], body, og_image=meta["og_image"] or C.DEFAULT_OG,
-                published=meta["published"], modified=meta["modified"], jsonld=[faq_ld(FAQ), offers])
+                published=meta["published"], modified=meta["modified"], jsonld=[faq_ld(FAQ), offers],
+                preload_image='href="/images/hero/canada-fan-bg-1920.webp" imagesrcset="/images/hero/canada-fan-bg-960.webp 960w, /images/hero/canada-fan-bg-1920.webp 1920w" imagesizes="100vw"')
 
 
 # =================================================================== PRICING
@@ -341,9 +343,11 @@ def trial_pages():
 </section>
 {more}
 {faq_section(FAQ[:6])}"""
-        out.append(Page(f"/{slug}/", meta["title"] if slug == "landing2" else "Free IPTV Trial – 24 Hours | IPTVMaple",
+        out.append(Page(f"/{slug}/", meta["title"] if slug == "landing2" else "IPTV Free Trial Canada – 24 Hours, No Card | IPTVMaple",
                         meta["description"] if slug == "landing2" else "Try IPTVMaple free for 24 hours: live TV, sports, movies and series in 4K on any device. No credit card needed — get your login instantly on WhatsApp.",
                         body, og_image=meta["og_image"], published=meta["published"], modified=meta["modified"], nav_active="/try-iptv-canada/",
+                        # landing2 is an ad landing page with the same form as /try-iptv-canada/ — keep it out of the index
+                        robots="noindex, follow" if slug == "landing2" else Page.robots, in_sitemap=slug != "landing2",
                         jsonld=[breadcrumb_ld([("Home", "/"), ("Free trial", f"/{slug}/")])]))
     return out
 
@@ -516,7 +520,6 @@ PROSE = {
     "privacy": ("Legal", "Privacy policy", "How we collect, use and protect your personal data."),
     "terms": ("Legal", "Terms &amp; conditions", "The terms that govern your use of IPTVMaple."),
     "refund": ("Legal", "Refund policy", "Our 7-day money-back guarantee, explained."),
-    "best-iptv-service": ("Guide", "Best IPTV Service for 2025", "How to choose the right IPTV provider — and our top picks."),
     "3-smarter-ways-to-stream-tv-without-cable-in-2025": ("Guide", "3 Smarter Ways to Stream TV Without Cable", "Tired of expensive cable? Here’s what we found when we tested the alternatives."),
     "cord-cutting-guide": ("Guide", "Cut the Cord &amp; Stream Smarter", "Why switching from cable pays off — and how to do it in 2 minutes."),
     "landing": ("Save money", "Cut Your Monthly Bills — Smarter Entertainment Awaits", "Still paying expensive cable bills every month? There’s a better way."),
@@ -549,10 +552,12 @@ def prose_pages():
                           "dateModified": meta["modified"], "author": {"@id": C.SITE_URL + "/#organization"},
                           "publisher": {"@id": C.SITE_URL + "/#organization"}, "image": C.SITE_URL + (meta.get("og_image") or C.DEFAULT_OG),
                           "mainEntityOfPage": f"{C.SITE_URL}/{slug}/"})
+        extra.append(breadcrumb_ld([("Home", "/"), (re.sub("<[^>]+>", "", title).replace("&amp;", "&"), f"/{slug}/")]))
         out.append(Page(f"/{slug}/", meta["title"], meta["description"], body, og_image=meta.get("og_image") or C.DEFAULT_OG,
                         og_type=kind, published=meta["published"], modified=meta["modified"], jsonld=extra))
     return out
 
 
 def all_pages():
-    return [home(), pricing_page(), *product_pages(), *trial_pages(), thank_you(), channels(), how_it_works(), referral(), contact(), *prose_pages()]
+    return [home(), pricing_page(), *product_pages(), *trial_pages(), thank_you(), channels(), how_it_works(), referral(), contact(), *prose_pages(),
+            *seo_pages()]

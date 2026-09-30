@@ -37,5 +37,7 @@ NAV = [
 FOOTER = [
     ("Service", [("Pricing", "/iptv-plans-canada/"), ("Free 24h trial", "/try-iptv-canada/"), ("Channels list", "/channels-list/"), ("How it works", "/how-it-works/")]),
     ("Company", [("About us", "/about-iptvmaple/"), ("Referral program", "/refer-a-friend/"), ("Contact us", "/contact/"), ("Cord-cutting guide", "/cord-cutting-guide/")]),
+    ("Guides", [("Best IPTV Canada", "/best-iptv-canada/"), ("IPTV apps", "/iptv-apps/"), ("IPTV devices", "/iptv-devices/"),
+                ("Sports IPTV", "/iptv-sports/"), ("IPTV near me", "/iptv-near-me/"), ("IPTV Québec (FR)", "/iptv-quebec/")]),
     ("Legal", [("Terms & conditions", "/terms/"), ("Privacy policy", "/privacy/"), ("Refund policy", "/refund/")]),
 ]

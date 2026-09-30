@@ -23,6 +23,8 @@ class Page:
     jsonld: list = field(default_factory=list)
     in_sitemap: bool = True
     nav_active: str = ""           # which NAV href to highlight
+    lang: str = "en-CA"            # html lang / og:locale ("fr-CA" for the French Québec pages)
+    preload_image: str = ""        # attributes for an LCP image preload link, e.g. 'href="..." imagesrcset="..." imagesizes="100vw"'
 
 
 def abs_url(u):
@@ -45,11 +47,13 @@ def _head(p: Page):
     ld = [{
         "@context": "https://schema.org", "@graph": [
             {"@type": "Organization", "@id": C.SITE_URL + "/#organization", "name": C.LEGAL_NAME, "url": C.SITE_URL,
-             "logo": C.SITE_URL + "/brand/icon-512.png", "email": C.EMAIL},
+             "logo": C.SITE_URL + "/brand/icon-512.png", "email": C.EMAIL,
+             "contactPoint": {"@type": "ContactPoint", "contactType": "customer support", "email": C.EMAIL,
+                              "areaServed": "CA", "availableLanguage": ["English", "French"]}},
             {"@type": "WebSite", "@id": C.SITE_URL + "/#website", "url": C.SITE_URL, "name": C.LEGAL_NAME,
-             "alternateName": C.NAME, "publisher": {"@id": C.SITE_URL + "/#organization"}, "inLanguage": "en-US"},
+             "alternateName": C.NAME, "publisher": {"@id": C.SITE_URL + "/#organization"}, "inLanguage": "en-CA"},
             {"@type": "WebPage", "@id": url + "#webpage", "url": url, "name": p.title, "description": p.description,
-             "isPartOf": {"@id": C.SITE_URL + "/#website"}, "inLanguage": "en-US",
+             "isPartOf": {"@id": C.SITE_URL + "/#website"}, "inLanguage": p.lang,
              **({"datePublished": p.published} if p.published else {}), **({"dateModified": p.modified} if p.modified else {})},
         ] + p.jsonld,
     }]
@@ -57,7 +61,7 @@ def _head(p: Page):
     if p.og_type == "article" and p.published:
         dates = f'<meta property="article:published_time" content="{p.published}">\n<meta property="article:modified_time" content="{p.modified or p.published}">\n'
     return f"""<!doctype html>
-<html lang="en-CA">
+<html lang="{p.lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -66,23 +70,25 @@ def _head(p: Page):
 <meta name="robots" content="{p.robots}">
 <link rel="canonical" href="{url}">
 <meta name="theme-color" content="#06070b">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="{p.lang.replace('-', '_')}">
 <meta property="og:type" content="{p.og_type}">
 <meta property="og:site_name" content="{C.LEGAL_NAME}">
 <meta property="og:title" content="{t}">
 <meta property="og:description" content="{d}">
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="{img}">
+<meta property="og:image:alt" content="{t}">
 {dates}<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{t}">
 <meta name="twitter:description" content="{d}">
 <meta name="twitter:image" content="{img}">
+<meta name="twitter:image:alt" content="{t}">
 <meta name="google-site-verification" content="{C.GOOGLE_SITE_VERIFICATION}">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/brand/icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preload" href="/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
+{f'<link rel="preload" as="image" {p.preload_image} fetchpriority="high">' + chr(10) if p.preload_image else ""}<link rel="preload" href="/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/site.css?v={ASSET_VERSION}">
 <script type="application/ld+json">{json.dumps(ld[0], ensure_ascii=False, separators=(",", ":"))}</script>

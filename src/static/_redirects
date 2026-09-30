@@ -11,10 +11,19 @@
 /6-months-iptv-subscription-for-4-devices/ /6-month-iptv-4-devices/ 301
 /6-months-iptv-subscription-for-5-devices/ /6-month-iptv-5-devices/ 301
 /free-trial/ /try-iptv-canada/ 301
-/ip-tv-smarters-pro/ /smarters-pro-canada/ 301
-/smarters-player-lite-subscription/ /smarters-lite-canada/ 301
+/ip-tv-smarters-pro/ /iptv-smarters-pro/ 301
+/smarters-player-lite-subscription/ /smarters-player-lite/ 301
 /referral/ /refer-a-friend/ 301
-/best-iptv-canada-2026/ / 301
+
+# Plan pages moved off guide keywords (2026-09-30): /iptv-smarters-pro/ is now the app guide
+/smarters-pro-canada/ /12-month-iptv-4-devices/ 301
+/smarters-lite-canada/ /1-month-iptv-3-devices/ 301
+/tivimate-iptv/ /tivimate/ 301
+/iptv-subscription/ /iptv-plans-canada/ 301
+/iptv-free-trial/ /try-iptv-canada/ 301
+/free-iptv-trial/ /try-iptv-canada/ 301
+/best-iptv-canada-2026/ /best-iptv-canada/ 301
+/best-iptv-service/ /best-iptv-canada/ 301
 /channels/ /channels-list/ 301
 /sitemap.xml /sitemap_index.xml 301
 /wp-sitemap.xml /sitemap_index.xml 301

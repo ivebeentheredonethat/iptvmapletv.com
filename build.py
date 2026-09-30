@@ -42,7 +42,26 @@ def sitemaps(pages):
     last = max((p.modified for p in pages if p.modified), default="")
     write("sitemap_index.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                f'<sitemap><loc>{C.SITE_URL}/page-sitemap.xml</loc><lastmod>{last}</lastmod></sitemap>\n</sitemapindex>\n')
-    write("robots.txt", f"User-agent: *\nAllow: /\nDisallow: /api/\n\nSitemap: {C.SITE_URL}/sitemap_index.xml\n")
+    ai = "".join(f"\nUser-agent: {bot}\nAllow: /\nDisallow: /api/\n" for bot in ("GPTBot", "ClaudeBot", "PerplexityBot", "Google-Extended"))
+    write("robots.txt", f"User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /go/\n{ai}\nSitemap: {C.SITE_URL}/sitemap_index.xml\n")
+
+
+def llms_txt():
+    """Plain-text site summary for AI assistants (https://llmstxt.org)."""
+    from sitegen.seo import HUBS
+    from sitegen.seo_content import ALL
+    lines = [f"# {C.LEGAL_NAME}", "",
+             "> Premium IPTV service for Canada (English and French): 50,000+ live channels including TSN, Sportsnet, RDS, TVA, CBC and CTV,",
+             "> 300,000+ movies and series in HD and 4K, plans from $9 USD on 1-5 devices, free 24-hour trial, 7-day money-back guarantee, 24/7 support on WhatsApp.",
+             "", "## Main pages",
+             f"- Plans and prices: {C.SITE_URL}/iptv-plans-canada/", f"- Free 24-hour trial: {C.SITE_URL}/try-iptv-canada/",
+             f"- Channels list: {C.SITE_URL}/channels-list/", f"- How it works: {C.SITE_URL}/how-it-works/", f"- Contact: {C.SITE_URL}/contact/"]
+    for key, (_, label) in HUBS.items():
+        pages = [p for p in ALL if p["hub"] == key]
+        if pages:
+            lines += ["", f"## {label or 'Guides'}"]
+            lines += [f"- {unescape(re.sub('<[^>]+>', '', p['h1']))}: {C.SITE_URL}/{p['slug']}/" for p in pages]
+    write("llms.txt", "\n".join(lines) + "\n")
 
 
 def manifest():
@@ -84,6 +103,19 @@ def check_layout(pages):
             bad.append(f"{p.path}: has {html.count('<h1')} <h1> titles (must be exactly 1)")
         if p.path != "/" and not p.body.lstrip().startswith('<section class="page-hero">'):
             bad.append(f"{p.path}: must start with page_hero() so the title area matches every other page")
+    indexed = [p for p in pages if "noindex" not in p.robots]
+    for attr in ("title", "description"):
+        seen = {}
+        for p in indexed:
+            v = getattr(p, attr).strip().lower()
+            if v in seen:
+                bad.append(f"{p.path}: same {attr} as {seen[v]}")
+            seen.setdefault(v, p.path)
+    for p in indexed:  # warnings only: Google truncates long titles/descriptions
+        if len(p.title) > 65:
+            print(f"  note: {p.path} title is {len(p.title)} chars")
+        if not 70 <= len(p.description) <= 165:
+            print(f"  note: {p.path} description is {len(p.description)} chars")
     return bad
 
 
@@ -104,6 +136,7 @@ def main():
         seen.add(p.path)
         write(p.path + "index.html", layout.render(p))
     sitemaps(pages)
+    llms_txt()
     manifest()
 
     bad = check_links()
