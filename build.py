@@ -73,6 +73,20 @@ def check_links():
     return bad
 
 
+def check_layout(pages):
+    """Every page must use the shared header, footer and (except the homepage) the shared page title block."""
+    bad = []
+    for p in pages:
+        html = layout.render(p)
+        if html.count('<header class="header">') != 1 or html.count('<footer class="footer">') != 1:
+            bad.append(f"{p.path}: missing shared header/footer")
+        if html.count("<h1") != 1:
+            bad.append(f"{p.path}: has {html.count('<h1')} <h1> titles (must be exactly 1)")
+        if p.path != "/" and not p.body.lstrip().startswith('<section class="page-hero">'):
+            bad.append(f"{p.path}: must start with page_hero() so the title area matches every other page")
+    return bad
+
+
 def main():
     layout.ASSET_VERSION = asset_hash()
     if os.path.exists(OUT):
@@ -80,6 +94,10 @@ def main():
     shutil.copytree(STATIC, OUT)
 
     pages = all_pages()
+    bad = check_layout(pages)
+    if bad:
+        print("Inconsistent page layout:\n  " + "\n  ".join(bad))
+        sys.exit(1)
     seen = set()
     for p in pages:
         assert p.path not in seen, f"duplicate page {p.path}"

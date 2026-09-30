@@ -74,14 +74,16 @@ def breadcrumb_ld(items):
         for i, (label, href) in enumerate(items)]}
 
 
-def page_hero(title, lead="", kicker="", crumb=None, extra=""):
+def page_hero(title, lead, kicker, crumb, extra=""):
+    """The one title area used by every page except the homepage: breadcrumb, kicker, H1, lead, optional buttons.
+    All four parts are required so every page's title block looks exactly the same (build.py checks this)."""
     return f"""<section class="page-hero">
   {aurora()}<div class="grid-bg" aria-hidden="true"></div>
   <div class="container z">
-    {crumbs(crumb) if crumb else ""}
-    {f'<span class="kicker">{kicker}</span>' if kicker else ""}
+    {crumbs(crumb)}
+    <span class="kicker">{kicker}</span>
     <h1>{title}</h1>
-    {f'<p class="lead">{lead}</p>' if lead else ""}
+    <p class="lead">{lead}</p>
     {extra}
   </div>
 </section>"""

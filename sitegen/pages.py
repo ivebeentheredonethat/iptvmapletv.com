@@ -243,7 +243,7 @@ def home():
 def pricing_page():
     meta = META["iptv-plans-canada"]
     body = f"""{page_hero('Premium IPTV plans — <span class="grad-text">50% off</span>', "Every channel, every movie and every feature in every plan. Choose your screens and save more with longer plans.", "Pricing", [("Home", "/"), ("Pricing", "")])}
-<section class="section" style="padding-top:12px"><div class="container">{pricing(heading=False)}</div></section>
+<section class="section section--after-hero"><div class="container">{pricing(heading=False)}</div></section>
 <section class="section"><div class="container">{section_head("Included", "Every plan comes with", "")}{why_grid()}</div></section>
 {faq_section(FAQ[:6], "Questions before you buy?")}
 {network_section()}
@@ -271,8 +271,8 @@ def product_pages():
         name = f"{plan_label(p['months'])} · {devices_label(devices)}"
         crumb = [("Home", "/"), ("Pricing", "/iptv-plans-canada/"), (name, "")]
         feats = [f"{devices} simultaneous {'connection' if devices == 1 else 'connections'}"] + FEATURES
-        body = f"""{page_hero(f'{plan_label(p["months"])} IPTV <span class="grad-text">subscription</span>', f"{devices_label(devices).capitalize()} at the same time · everything included · ready within 5 minutes.", "", crumb)}
-<section class="section" style="padding-top:8px">
+        body = f"""{page_hero(f'{plan_label(p["months"])} IPTV <span class="grad-text">subscription</span>', f"{devices_label(devices).capitalize()} at the same time · everything included · ready within 5 minutes.", "Your order", crumb)}
+<section class="section section--after-hero">
   <div class="container checkout">
     <div class="order-card reveal">
       <h2>Complete your order</h2>
@@ -316,7 +316,7 @@ def trial_pages():
         meta, extra = content(slug)
         more = f'<section class="section section--tight"><div class="container narrow"><div class="prose-card prose reveal">{extra}</div></div></section>' if slug == "landing2" else ""
         body = f"""{page_hero('Try IPTVMaple <span class="grad-text">free for 24 hours</span>', "Full access to live TV, sports, movies and series in 4K. No credit card, no commitment — just your details so we can send your trial instantly.", "Free trial", [("Home", "/"), ("Free trial", "")])}
-<section class="section" style="padding-top:8px">
+<section class="section section--after-hero">
   <div class="container checkout">
     <div class="order-card reveal">
       <h2>Get your free trial</h2>
@@ -350,16 +350,8 @@ def trial_pages():
 # =================================================================== THANK YOU
 def thank_you():
     meta, _ = content("thank-you")
-    body = f"""<section class="page-hero" style="padding-bottom:24px">
-  {aurora()}
-  <div class="container narrow z">
-    <div class="success-mark">{icon("check")}</div>
-    <span class="kicker">Order received</span>
-    <h1>Thank you for choosing <span class="grad-text">IPTVMaple</span>!</h1>
-    <p class="lead">Your request was received successfully. Our team is processing it now and will contact you shortly with your login details.</p>
-  </div>
-</section>
-<section class="section section--tight" style="padding-top:12px">
+    body = f"""{page_hero('Thank you for choosing <span class="grad-text">IPTVMaple</span>!', "Your request was received successfully. Our team is processing it now and will contact you shortly with your login details.", "Order received", [("Home", "/"), ("Thank you", "")])}
+<section class="section section--after-hero">
   <div class="container narrow">
     <div class="steps">
       <div class="card step"><h3>We contact you</h3><p>Watch your WhatsApp and inbox — we’ll reach out within minutes to confirm and activate.</p></div>
@@ -396,7 +388,7 @@ def channels():
             for c in r["countries"])
         groups.append(f'<div data-region="{r["name"].lower()}"><h2 class="region-title">{r["name"]}</h2><div class="countries">{cs}</div></div>')
     body = f"""{page_hero('The full <span class="grad-text">channels list</span>', f"Browse {total_ch:,}+ listed channels across {total_co} countries and regions — news, sports, movies, kids and more, many in 4K.", "Channels", [("Home", "/"), ("Channels list", "")])}
-<section class="section" style="padding-top:8px">
+<section class="section section--after-hero">
   <div class="container" data-channels>
     <div class="ch-tools">
       <label class="search"><span class="sr-only">Search channels or countries</span>{icon("search")}<input class="input" type="search" placeholder="Search channels or countries… (e.g. TSN, BBC, beIN)" autocomplete="off"></label>
@@ -423,7 +415,7 @@ def how_it_works():
         f'<div class="guide-panel prose-card prose" role="tabpanel" id="gp-{i}" aria-labelledby="gt-{i}"{"" if i == 0 else " hidden"}><h3 style="margin-top:0">{escape(g["device"])}</h3>{g["html"].replace("<img ", "<img loading=\"lazy\" ")}</div>'
         for i, g in enumerate(guides))
     body = f"""{page_hero('Up and running in <span class="grad-text">3 easy steps</span>', "Order, receive your login, and start watching on any device — most customers are streaming within minutes.", "How it works", [("Home", "/"), ("How it works", "")])}
-<section class="section" style="padding-top:8px">
+<section class="section section--after-hero">
   <div class="container">
     <div class="steps">
       <div class="card step reveal"><h3>Place your order</h3><p>Pick the perfect plan for you — 1, 6 or 12 months — and get started right away.</p></div>
@@ -458,15 +450,8 @@ def referral():
         ("You get 1 year free", "Once their payment is verified, we add 12 months to your account."),
     ]
     steps_html = "".join(f'<div class="card step reveal" style="--d:{i * .08:.2f}s"><h3>{t}</h3><p>{d}</p></div>' for i, (t, d) in enumerate(steps))
-    body = f"""<section class="page-hero" style="padding-bottom:28px">
-  {aurora()}<div class="grid-bg" aria-hidden="true"></div>
-  <div class="container z">
-    <span class="eyebrow"><b>+1 YEAR</b> Referral program</span>
-    <h1>Refer a friend, <span class="nowrap">get <span class="grad-text">1 year free</span></span></h1>
-    <p class="lead">Fill in the form below. When your friend subscribes for a year, you get 12 months free.</p>
-  </div>
-</section>
-<section class="section" style="padding-top:clamp(36px, 6vw, 56px)">
+    body = f"""{page_hero('Refer a friend, <span class="nowrap">get <span class="grad-text">1 year free</span></span>', "Fill in the form below. When your friend subscribes for a year, you get 12 months free.", "Referral program", [("Home", "/"), ("Referral", "")])}
+<section class="section section--after-hero">
   <div class="container narrow">
     <div class="order-card reveal" id="referral-form">
       <h2>Submit a referral</h2>
@@ -500,7 +485,7 @@ def contact():
         f'<a class="btn {btn} btn--block" href="{href}"{" target=\"_blank\" rel=\"noopener\"" if href == C.WHATSAPP_URL else ""}>{label}</a></div>'
         for i, (cls, ic, t, d, label, href, btn) in enumerate(cards))
     body = f"""{page_hero('We’re here <span class="grad-text">24/7</span>', "Have any questions? Our friendly support team is always ready to help and will get back to you as soon as possible, so you enjoy a flawless IPTV experience.", "Contact us", [("Home", "/"), ("Contact", "")])}
-<section class="section" style="padding-top:8px"><div class="container narrow"><div class="grid grid-2">{html}</div></div></section>
+<section class="section section--after-hero"><div class="container narrow"><div class="grid grid-2">{html}</div></div></section>
 {faq_section(FAQ)}"""
     return Page("/contact/", "Contact Us – 24/7 IPTV Support | IPTVMaple", meta["description"], body, og_image=meta["og_image"],
                 published=meta["published"], modified=meta["modified"], jsonld=[breadcrumb_ld([("Home", "/"), ("Contact", "/contact/")])])
@@ -538,7 +523,7 @@ def prose_pages():
         ctas = ('<div class="btn-row" style="justify-content:center;margin-top:28px"><a class="btn btn--primary btn--lg" href="/try-iptv-canada/">Start free trial</a>'
                 '<a class="btn btn--ghost btn--lg" href="/iptv-plans-canada/">See all plans</a></div>') if meta.get("kind") == "landing" else ""
         body = f"""{page_hero(title, lead, kicker, [("Home", "/"), (re.sub("<[^>]+>|&amp;", "", title.replace("&amp;", "&")), "")], ctas)}
-<section class="section" style="padding-top:8px">
+<section class="section section--after-hero">
   <div class="container page-grid">
     <article class="prose-card prose reveal">{updated}{figure}{html}</article>
     {_aside()}
