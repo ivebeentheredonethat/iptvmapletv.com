@@ -1,0 +1,39 @@
+{
+ "slug": "contact",
+ "head": {
+  "title": "Contact us",
+  "description": "Contact us if you have questions or need assistance, now and get the support you need, with unbeatable service and fast responses at an unbeatable price",
+  "robots": "follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large",
+  "og_image": "https://iptvmapletv.com/wp-content/uploads/2024/12/Holiday-Gathering-iStock-1.webp",
+  "published": "2024-12-29T13:32:00+00:00",
+  "modified": "2026-03-31T12:12:06+00:00"
+ },
+ "blocks": [
+  {
+   "t": "h",
+   "tag": "h2",
+   "text": "CONTACT US",
+   "html": "CONTACT US"
+  },
+  {
+   "t": "h",
+   "tag": "h2",
+   "text": "Have any questions?",
+   "html": "Have any questions?"
+  },
+  {
+   "t": "text",
+   "html": "<p>Our friendly support team is always ready to assist you and will get back to you as soon as possible to make sure you enjoy a flawless IPTV experience</p>"
+  },
+  {
+   "t": "iconbox",
+   "title": "Email",
+   "desc": "[email protected]"
+  },
+  {
+   "t": "iconbox",
+   "title": "Whatsapp",
+   "desc": "Click here to chat with us!"
+  }
+ ]
+}

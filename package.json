@@ -2,8 +2,9 @@
   "name": "iptvmapletv-com",
   "private": true,
   "scripts": {
-    "dev": "wrangler pages dev",
-    "deploy": "wrangler pages deploy"
+    "build": "python build.py",
+    "dev": "python build.py && wrangler pages dev",
+    "deploy": "python build.py && wrangler pages deploy"
   },
   "devDependencies": {
     "wrangler": "^4"

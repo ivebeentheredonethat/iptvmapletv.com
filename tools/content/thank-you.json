@@ -1,0 +1,23 @@
+{
+ "slug": "thank-you",
+ "head": {
+  "title": "Thank you IPTVMaple",
+  "description": "Thank you IPTVMaple, we’ve harnessed the power of IPTV to bring you: Live TV channels from around the globe. A vast library of on-demand content",
+  "robots": "follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large",
+  "og_image": "https://iptvmapletv.com/wp-content/uploads/2024/12/Holiday-Gathering-iStock-1.webp",
+  "published": "2025-01-18T17:10:23+00:00",
+  "modified": "2026-01-15T08:11:54+00:00"
+ },
+ "blocks": [
+  {
+   "t": "h",
+   "tag": "h2",
+   "text": "Thank You",
+   "html": "Thank You"
+  },
+  {
+   "t": "text",
+   "html": "<p>Thank you for choosing IPTVMaple 4K for your IPTV subscription! Your order has been received successfully, and we are excited to have you on board.</p> <p>We will contact you shortly with the login details to access your subscription. Our team is working to process your order as quickly as possible.</p> <p><strong>Need Assistance?</strong> </p> <p>If you would like to speed up the process or have any questions, feel free to reach out to us directly on WhatsApp. Our team is available and ready to assist you.</p> <p><strong>Contact us on WhatsApp:</strong> +1 (672) 702-2155</p> <p>We appreciate your trust in IPTVMaple 4K and look forward to providing you with a top-quality entertainment experience. Stay tuned for your login details!</p>"
+  }
+ ]
+}

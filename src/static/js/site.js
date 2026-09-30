@@ -1,0 +1,167 @@
+/* IPTVMaple — site behaviour. No dependencies. */
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  document.documentElement.classList.add("js");
+
+  /* header: shadow on scroll + mobile menu */
+  const header = $(".header");
+  const onScroll = () => header && header.classList.toggle("is-scrolled", scrollY > 8);
+  addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+  const menuBtn = $(".menu-btn");
+  if (menuBtn) {
+    const toggle = (open) => {
+      document.body.classList.toggle("menu-open", open);
+      menuBtn.setAttribute("aria-expanded", String(open));
+      document.body.style.overflow = open ? "hidden" : "";
+    };
+    menuBtn.addEventListener("click", () => toggle(!document.body.classList.contains("menu-open")));
+    $$(".mobile-nav a").forEach((a) => a.addEventListener("click", () => toggle(false)));
+    addEventListener("keydown", (e) => e.key === "Escape" && toggle(false));
+  }
+
+  /* reveal on scroll */
+  const io = "IntersectionObserver" in window && new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });
+  }, { rootMargin: "0px 0px -8% 0px" });
+  $$(".reveal").forEach((el) => (io ? io.observe(el) : el.classList.add("is-in")));
+
+  /* pricing: connection switcher */
+  $$("[data-pricing]").forEach((root) => {
+    const data = JSON.parse($("script[type='application/json']", root).textContent);
+    const tabs = $$(".seg button", root);
+    const render = (n) => {
+      const set = data.find((d) => d.devices === n);
+      tabs.forEach((t) => t.setAttribute("aria-selected", String(+t.dataset.devices === n)));
+      set.plans.forEach((p, i) => {
+        const card = $$(".plan", root)[i];
+        $(".amt", card).textContent = p.price;
+        $("s", card).textContent = "$" + p.original;
+        $(".per-month", card).textContent = p.months > 1 ? `≈ $${(p.price / p.months).toFixed(2)}/mo` : "Billed monthly";
+        $(".plan-sub", card).textContent = `${n} simultaneous ${n > 1 ? "connections" : "connection"}`;
+        $(".js-conn", card).textContent = `${n} ${n > 1 ? "devices" : "device"} at the same time`;
+        const a = $(".btn", card);
+        a.href = `/${p.slug}/`;
+      });
+    };
+    tabs.forEach((t) => t.addEventListener("click", () => render(+t.dataset.devices)));
+  });
+
+  /* tabs (setup guides) */
+  $$("[data-tabs]").forEach((root) => {
+    const btns = $$("[role='tab']", root);
+    btns.forEach((b) => b.addEventListener("click", () => {
+      btns.forEach((x) => {
+        const on = x === b;
+        x.setAttribute("aria-selected", String(on));
+        document.getElementById(x.getAttribute("aria-controls")).hidden = !on;
+      });
+    }));
+  });
+
+  /* channels: search + region filter */
+  const chRoot = $("[data-channels]");
+  if (chRoot) {
+    const input = $("input[type='search']", chRoot);
+    const regionBtns = $$(".region-tabs button", chRoot);
+    const countries = $$(".country", chRoot);
+    const groups = $$("[data-region]", chRoot);
+    const empty = $(".empty", chRoot);
+    let region = "all";
+    const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const html = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    const apply = () => {
+      const q = input.value.trim().toLowerCase();
+      let shown = 0;
+      countries.forEach((c) => {
+        const inRegion = region === "all" || c.closest("[data-region]").dataset.region === region;
+        const lis = $$("li", c);
+        let hit = false;
+        const nameHit = q && c.dataset.name.includes(q);
+        lis.forEach((li) => {
+          const t = li.dataset.t || (li.dataset.t = li.textContent);
+          if (!q) { li.hidden = false; li.textContent = t; return; }
+          const m = t.toLowerCase().includes(q);
+          hit ||= m;
+          li.hidden = !(m || nameHit);
+          const safe = html(t);
+          li.innerHTML = m ? safe.replace(new RegExp(esc(html(q)), "ig"), (x) => `<mark>${x}</mark>`) : safe;
+        });
+        const vis = inRegion && (!q || hit || nameHit);
+        c.hidden = !vis;
+        c.open = !!(q && vis && hit);
+        if (vis) shown++;
+      });
+      groups.forEach((g) => (g.hidden = !$$(".country:not([hidden])", g).length));
+      empty.style.display = shown ? "none" : "block";
+    };
+    input.addEventListener("input", apply);
+    regionBtns.forEach((b) => b.addEventListener("click", () => {
+      region = b.dataset.region;
+      regionBtns.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      apply();
+    }));
+  }
+
+  /* order / trial / referral forms -> /api/ajax (Pages Function) */
+  $$("form[data-lead-form]").forEach((form) => {
+    const btn = $("button[type='submit']", form);
+    const msg = $(".form-msg", form);
+    const setErr = (field, text) => {
+      const input = form.elements[field];
+      if (!input) return;
+      input.setAttribute("aria-invalid", text ? "true" : "false");
+      const e = input.closest(".field").querySelector(".err");
+      if (e) e.textContent = text || "";
+    };
+    form.addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+      msg.className = "form-msg";
+      let bad = false;
+      $$("[required]", form).forEach((i) => {
+        const empty = !i.value.trim();
+        setErr(i.name, empty ? "Required" : "");
+        bad ||= empty;
+      });
+      const email = form.elements["email-1"];
+      if (email && email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { setErr("email-1", "Enter a valid email"); bad = true; }
+      $$("input[type='tel']", form).forEach((t) => {
+        if (t.value && t.value.replace(/\D/g, "").length < 7) { setErr(t.name, "Enter a valid WhatsApp number"); bad = true; }
+      });
+      if (bad) { $("[aria-invalid='true']", form)?.focus(); return; }
+
+      btn.disabled = true; btn.classList.add("is-loading");
+      try {
+        const fd = new FormData(form);
+        fd.set("current_url", location.href);
+        const res = await fetch("/api/ajax", { method: "POST", body: fd });
+        const json = await res.json();
+        if (!json.success || !json.data || json.data.success === false) throw new Error(json.data?.message || "Something went wrong");
+        const type = form.dataset.leadForm;
+        try {
+          window.gtag && gtag("event", "generate_lead", { form_type: type, value: +form.dataset.value || 0, currency: "USD" });
+          window.rdt && rdt("track", "Lead");
+        } catch (_) {}
+        if (json.data.url) { location.href = json.data.url; return; }
+        form.reset();
+        msg.textContent = json.data.message;
+        msg.className = "form-msg is-ok";
+      } catch (err) {
+        msg.textContent = "Sorry — we couldn't send your details. Please try again or message us on WhatsApp.";
+        msg.className = "form-msg is-error";
+      } finally {
+        btn.disabled = false; btn.classList.remove("is-loading");
+      }
+    });
+    $$("input, select", form).forEach((i) => i.addEventListener("input", () => setErr(i.name, "")));
+  });
+
+  /* referral: reveal form */
+  $$("[data-show]").forEach((b) => b.addEventListener("click", () => {
+    const t = document.getElementById(b.dataset.show);
+    t.hidden = false;
+    t.scrollIntoView({ behavior: "smooth", block: "start" });
+    setTimeout(() => $("input:not([type=hidden])", t)?.focus({ preventScroll: true }), 500);
+  }));
+})();

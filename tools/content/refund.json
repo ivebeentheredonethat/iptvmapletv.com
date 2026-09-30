@@ -1,0 +1,23 @@
+{
+ "slug": "refund",
+ "head": {
+  "title": "Refund Policy – IPTVMaple | 7-Day Money-Back Guarantee",
+  "description": "IPTVMaple offers a 7-day refund guarantee. Not satisfied? Contact us at Help@iptvmapletv.com and we'll resolve your issue or issue a full refund within 7 days of purchase.",
+  "robots": "follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large",
+  "og_image": "https://iptvmapletv.com/wp-content/uploads/2024/12/Holiday-Gathering-iStock-1.webp",
+  "published": "2024-12-29T16:07:20+00:00",
+  "modified": "2026-03-31T22:06:52+00:00"
+ },
+ "blocks": [
+  {
+   "t": "h",
+   "tag": "h2",
+   "text": "REFUND POLICY",
+   "html": "REFUND POLICY"
+  },
+  {
+   "t": "text",
+   "html": "<p>At <strong>IPTVmaple</strong>, we stand by the quality of our services and are committed to providing you with the best possible experience. We believe in our products 100% and work tirelessly every day to ensure you’re happy with our service. However, we understand that sometimes things may not work as expected, and we want to ensure your satisfaction.</p><hr/><h3><strong>Refund Eligibility</strong></h3><p>We offer a <strong>7-day refund policy</strong> for all purchases. If you’re not completely satisfied with your service or are experiencing issues that we are unable to resolve, we will gladly issue a refund within <strong>7 days of your purchase</strong>. Our goal is to make sure you feel confident and comfortable with your decision.</p><hr/><h3><strong>How to Request a Refund</strong></h3><p>To request a refund, please follow these simple steps:</p><ol><li><p>Send us an email at <strong><a rel=\"noopener\"><span>[email protected]</span></a></strong> with the subject line: <strong>“Request a Refund.”</strong></p></li><li><p>Include your <strong>transaction order ID</strong> and a <strong>brief description</strong> of the issue you’re facing.</p></li><li><p>In some cases, we may ask for additional proof to better understand your situation and expedite the process. We will provide full transparency throughout the process.</p></li></ol><hr/><h3><strong>Conditions for Refunds</strong></h3><ul><li><p>Refund requests are only accepted <strong>within 7 days</strong> of the purchase date. After 7 days, refunds will no longer be processed.</p></li><li><p>If we are <strong>unable to resolve any technical issue</strong> that makes the system unusable within <strong>48 hours</strong>, we will issue a <strong>full refund</strong>.</p></li><li><p>For <strong>credit card payments</strong>, refunds typically take <strong>20 to 31 working days</strong> to process. However, depending on the payment provider, it may take up to <strong>90 days</strong>. Unfortunately, these timelines are controlled by the payment processors, not by IPTVmaple.</p></li></ul><hr/><h3><strong>Partial Refunds</strong></h3><p>If you request a refund <strong>after 7 days</strong>, a <strong>partial refund</strong> may be issued based on the unused portion of your subscription.</p><hr/><h3><strong>When Refunds Are Not Eligible</strong></h3><p>Refunds cannot be processed under the following conditions:</p><ul><li><p><strong>Setup Issues:</strong> If you experience difficulties setting up your device or app, our support team will gladly assist you. However, refunds will not be issued for setup or configuration problems caused by user error or incompatible devices.</p></li><li><p><strong>Temporary Service Interruptions:</strong> Occasional buffering or temporary downtime may occur due to server maintenance, ISP issues, or internet fluctuations. These are temporary and resolved quickly by our engineers.</p></li><li><p><strong>Channel or Server Issues:</strong> If a specific channel or server experiences issues, we will work to resolve it promptly. If the problem persists for more than <strong>48 hours</strong>, we will either issue a <strong>full refund</strong> or <strong>extend your subscription</strong> to compensate for lost time.</p></li></ul><hr/><h3><strong>Customer Support</strong></h3><p>Our support team is available <strong>24/7</strong> to assist you. If you need help, have questions, or would like to request a refund, please contact us at:<br/>📧 <strong><a rel=\"noopener\"><span>[email protected]</span></a></strong></p><hr/><h3><strong>Rest Assured — We’ve Got You Covered</strong></h3><p> </p><p>Your satisfaction is our top priority. We aim to resolve every issue quickly, fairly, and transparently. You can buy with confidence knowing that <strong>IPTVmaple</strong> is dedicated to delivering the best possible streaming experience for every customer.</p>"
+  }
+ ]
+}

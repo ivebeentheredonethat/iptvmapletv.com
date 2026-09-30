@@ -1,48 +1,66 @@
 # iptvmapletv.com
 
-Static version of the former WordPress site, hosted on **Cloudflare Pages**.
-Every push to `main` deploys to production automatically (GitHub Actions → `wrangler pages deploy`).
-Pull requests and other branches get their own preview URL.
+The IPTVMaple website: a fast, hand-built static site (no WordPress, no page builder)
+hosted on **Cloudflare Pages**.
 
-## Layout
+- Push to `main` → GitHub Actions runs `python build.py` and deploys to production.
+- Open a pull request → it gets its own preview URL (shown in the Actions run summary).
 
-| Path | What it is |
+## How it's organised
+
+| Path | What to edit there |
 | --- | --- |
-| `public/` | The website. Each page is `public/<slug>/index.html`; the homepage is `public/index.html`. |
-| `public/wp-content/`, `public/wp-includes/` | Images, CSS, JS and fonts copied from WordPress (paths kept so nothing breaks). |
-| `public/_redirects` | 301 redirects for old URLs. Add a line `/old-path/ /new-path/ 301` to add one. |
-| `public/_headers` | Response headers (caching). |
-| `public/sitemap_index.xml`, `public/page-sitemap.xml` | Sitemaps. Add a `<url>` entry when you add a page. |
-| `functions/api/ajax.js` | Replaces WordPress's form backend (order, free-trial and referral forms). |
-| `functions/api/leads.js` | Lists saved form submissions. |
-| `tools/` | One-time scripts used to import the site from WordPress. |
+| `sitegen/config.py` | Contact details (WhatsApp, Telegram, email), analytics IDs, promo bar, navigation, footer links |
+| `src/data/plans.json` | **Prices**, plan URLs, per-plan SEO title/description, and the plan feature list |
+| `src/data/faq.json` | FAQ questions and answers (home, pricing, order pages) |
+| `src/data/reviews.json` | Customer reviews and WhatsApp feedback |
+| `src/data/channels.json` | The channels list (regions → countries → channels) |
+| `src/data/setup-guides.json` | Device setup guides on /how-it-works/ |
+| `src/data/media.json` | Channel logos, posters and device logos used on the homepage |
+| `src/content/*.html` | Long-form pages (about, legal, guides, landing pages). SEO meta is the JSON at the top of each file |
+| `sitegen/pages.py` | Page layouts and section copy (homepage, pricing, order pages, channels…) |
+| `sitegen/components.py` | Shared sections: pricing table, FAQ, reviews, forms, CTA band |
+| `src/static/css/site.css` | The whole design system (colours, type, components) — tokens at the top |
+| `src/static/js/site.js` | Menu, pricing switcher, channel search, setup tabs, order form |
+| `src/static/images/` | Images (old `/wp-content/uploads/...` URLs redirect here) |
+| `src/static/_redirects`, `_headers` | Redirects and response headers |
+| `functions/api/ajax.js` | Receives order / free-trial / referral forms |
+| `functions/api/leads.js` | Lists saved form submissions |
+| `tools/` | One-time scripts used to import content from the old WordPress site |
 
-## Editing
+`public/` is generated — never edit it; it's rebuilt on every deploy.
 
-Edit the HTML in `public/` and push to `main`. Page-level styles live in
-`public/wp-content/uploads/elementor/css/post-<id>.css` (the homepage is `post-8.css`,
-the header `post-751.css`, the footer `post-709.css`). When you change a CSS/JS file,
-bump its `?ver=` in the HTML so browsers fetch the new copy.
+## Build & preview locally
 
-The header and footer are repeated in every page, so a menu change must be made in each
-`index.html` (search-and-replace across `public/**/index.html`).
+Requires Python 3.12+ (no packages needed).
+
+```bash
+python build.py
+python -m http.server 8000 --directory public
+```
+
+Then open http://localhost:8000. The build fails if any internal link or image is broken.
+To also run the form functions locally: `npm install` then `npm run dev` (Wrangler).
+
+## Common edits
+
+- **Change a price:** edit `price` / `original` in `src/data/plans.json`, push.
+- **Change the WhatsApp number:** `WHATSAPP` in `sitegen/config.py`.
+- **Add a FAQ:** add `{"q": "...", "a": "<p>...</p>"}` to `src/data/faq.json`.
+- **Add a text page:** create `src/content/<slug>.html` (copy the meta block from an existing one) and
+  add it to `PROSE` in `sitegen/pages.py`.
+- **Redirect an old URL:** add `/old/ /new/ 301` near the top of `src/static/_redirects`.
 
 ## Form submissions
 
 Orders, free-trial requests and referrals are handled by `functions/api/ajax.js`:
 
-- saved to the Cloudflare KV namespace `iptvmapletv-com-leads` (binding `LEADS`);
-- viewable at `https://iptvmapletv.com/api/leads?key=<ADMIN_KEY>` (the key is a secret
-  environment variable on the Pages project);
-- optionally pushed to Telegram — set `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` on the
-  Pages project (Settings → Variables and Secrets) — and/or to any webhook via `NOTIFY_WEBHOOK_URL`.
-
-## Local preview
-
-```bash
-npm install
-npx wrangler pages dev
-```
+- saved to the Cloudflare KV namespace `iptvmapletv-com-leads` (binding `LEADS`, see `wrangler.toml`);
+- viewable at `https://iptvmapletv.com/api/leads?key=<ADMIN_KEY>` (secret variable on the Pages project);
+- optionally pushed to Telegram — set `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` on the Pages project
+  (Settings → Variables and Secrets) — and/or to any webhook via `NOTIFY_WEBHOOK_URL`;
+- a hidden honeypot field silently drops most spam bots;
+- successful submissions fire a GA4 `generate_lead` event and a Reddit `Lead` event.
 
 ## Deployment secrets (GitHub → Settings → Secrets and variables → Actions)
 

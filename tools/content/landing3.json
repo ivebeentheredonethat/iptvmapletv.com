@@ -1,0 +1,63 @@
+{
+ "slug": "landing3",
+ "head": {
+  "title": "The Best Way To Cut The Cord In 2025 📺🔥",
+  "description": "The Best Way To Cut The Cord In 2025 📺🔥",
+  "robots": "follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large",
+  "og_image": "https://iptvmapletv.com/wp-content/uploads/2024/12/shutterstock_1921373024-1.webp",
+  "published": "2025-09-01T15:39:33+00:00",
+  "modified": "2025-09-26T15:05:58+00:00"
+ },
+ "blocks": [
+  {
+   "t": "h",
+   "tag": "h2",
+   "text": "CUT THE CORD NOW",
+   "html": "CUT THE CORD NOW"
+  },
+  {
+   "t": "img",
+   "src": "https://iptvmapletv.com/wp-content/uploads/2024/12/shutterstock_1921373024-1.webp",
+   "alt": "12 Month IPTV Subscription Unlimited Streaming With IPTVMaple"
+  },
+  {
+   "t": "h",
+   "tag": "h2",
+   "text": "The best way to Cut the Cord in 2025",
+   "html": "The best way to Cut the Cord in 2025"
+  },
+  {
+   "t": "h",
+   "tag": "h2",
+   "text": "Stream Live TV, Sports & Movies in 4K",
+   "html": "Stream Live TV, Sports &amp; Movies in 4K"
+  },
+  {
+   "t": "text",
+   "html": "<p> Stop overpaying for cable. Discover 3 smarter ways to watch everything you love — without buffering or contracts.</p>"
+  },
+  {
+   "t": "button",
+   "text": "START WATCHING NOW",
+   "href": "https://iptvmapletv.com/free-trial/"
+  },
+  {
+   "t": "text",
+   "html": "<p><strong>What you will get :</strong></p><p>✅ 50,000+ channels worldwide</p><p>✅ + 120,000 Movies &amp; Series (VOD)</p><p>✅ 4K Quality</p><p>✅ Catch-up &amp; EPG</p><p>✅ No Freezing</p><p>✅ Support All Device</p><p>✅ On-Demand Adult Movies in 4K Ultra HD </p><p>✅ Works on Firestick, Android, IOS &amp; Smart TVs<a href=\"https://wa.me/17075010079\" rel=\"noopener\" target=\"_blank\"><br/></a></p>"
+  },
+  {
+   "t": "button",
+   "text": "SEE ALL PACKAGES",
+   "href": "https://iptvmapletv.com/#pricing"
+  },
+  {
+   "t": "text",
+   "html": "<p><strong>Reviews from Cord-Cutters </strong></p>⭐⭐⭐⭐⭐ “Finally cut the cord. NHL and UFC stream perfectly in 4K.” – Sarah T., Toronto ⭐⭐⭐⭐⭐ “Cheaper than Netflix alone, and I get everything I want in one place.” – Marc D., Montreal<p><!-- Promo Section --></p><h2><strong>Summer 2025 Special: 50% OFF</strong></h2><p>Try risk-free with a 7-day money-back guarantee.</p><p><a href=\"https://wa.me/17075010079\" rel=\"noopener\" target=\"_blank\">Claim My Summer Offer</a></p><p><!-- Footer CTA --></p><p>Stream smarter today — cancel cable for good.</p><p><a href=\"https://wa.me/17075010079\" rel=\"noopener\" target=\"_blank\">Start Watching in 4K Now<br/><br/></a></p>"
+  },
+  {
+   "t": "button",
+   "text": "FREE TRIAL",
+   "href": "https://iptvmapletv.com/free-trial/"
+  }
+ ]
+}

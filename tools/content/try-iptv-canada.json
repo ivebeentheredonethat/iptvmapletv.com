@@ -1,0 +1,50 @@
+{
+ "slug": "try-iptv-canada",
+ "head": {
+  "title": "Free Trial",
+  "description": "Try IPTVMaple 4K Free Trial",
+  "robots": "follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large",
+  "og_image": "https://iptvmapletv.com/wp-content/uploads/2025/01/Untitled-design.jpg",
+  "published": "2025-01-02T18:21:54+00:00",
+  "modified": "2026-03-31T12:07:02+00:00"
+ },
+ "blocks": [
+  {
+   "t": "h",
+   "tag": "h2",
+   "text": "FREE TRIAL",
+   "html": "FREE TRIAL"
+  },
+  {
+   "t": "img",
+   "src": "https://iptvmapletv.com/wp-content/uploads/2025/01/Untitled-design.jpg",
+   "alt": ""
+  },
+  {
+   "t": "h",
+   "tag": "h2",
+   "text": "Free trial | 24 Hours",
+   "html": "Free trial | 24 Hours"
+  },
+  {
+   "t": "h",
+   "tag": "h2",
+   "text": "Final Price : 0$",
+   "html": "Final Price : 0$"
+  },
+  {
+   "t": "text",
+   "html": "<div><div><div><div><p>To get started with our premium streaming service, simply enter your details below.</p><p>Provide your first name, email address, country, and WhatsApp number, and we’ll send you instant access.</p><p>Enjoy unlimited entertainment with movies, series, sports, and more, all in stunning 4K quality—right from the comfort of your home.</p></div></div></div></div>"
+  },
+  {
+   "t": "form",
+   "id": "1570",
+   "labels": [
+    "First name",
+    "Email Address",
+    "Country",
+    "WhatsApp number"
+   ]
+  }
+ ]
+}
