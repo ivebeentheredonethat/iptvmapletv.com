@@ -71,6 +71,8 @@ SEARCHES = [
     ("IPTV Samsung TV", "/iptv-samsung-tv/"), ("IPTV Apple TV", "/iptv-apple-tv/"), ("M3U Playlist", "/m3u-playlist/"),
     ("Sports IPTV", "/iptv-sports/"), ("NHL IPTV", "/nhl-iptv/"), ("UFC PPV IPTV", "/ufc-iptv/"),
     ("4K IPTV", "/4k-iptv/"), ("What Is IPTV", "/what-is-iptv/"), ("IPTV Reviews", "/iptv-reviews/"),
+    ("International IPTV", "/iptv-international/"), ("IP Televizija", "/ex-yu-iptv/"), ("IPTV Server", "/iptv-server/"),
+    ("IPTV sur Fire Stick", "/iptv-sur-firestick/"), ("TiviMate en français", "/tivimate-en-francais/"), ("UK IPTV Canada", "/uk-iptv/"),
 ]
 
 LEAGUES = [

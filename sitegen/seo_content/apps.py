@@ -96,6 +96,42 @@ PAGES = [
 <li><strong>Can’t find it on Google Play</strong> — install the APK from the official site, or use <a href="/tivimate/">TiviMate</a> on Android TV.</li>
 </ul>
 <p>Still stuck? Message us on WhatsApp — our team sets up Smarters with customers every day.</p>
+<h2>IPTV Smarters Pro features explained</h2>
+<ul>
+<li><strong>Live TV with EPG</strong> — channel groups on the left, program info below.</li>
+<li><strong>Movies and series</strong> — posters, descriptions, ratings and “continue watching”.</li>
+<li><strong>Catch-up</strong> — replay recent programs on supported channels.</li>
+<li><strong>Multi-screen</strong> — watch up to four channels at once on tablets and computers (each counts as a stream on your plan).</li>
+<li><strong>Parental control</strong> — lock categories behind a PIN.</li>
+<li><strong>External players</strong> — send streams to VLC or MX Player if a channel doesn’t play smoothly in the built-in player.</li>
+<li><strong>Multiple profiles</strong> — keep several subscriptions or family members separate.</li>
+</ul>
+
+<h2>Best settings in IPTV Smarters Pro</h2>
+<ol>
+<li><strong>Settings → Player selection</strong>: try the built-in player first; if you see stutter on sports, switch to “VLC” for live TV.</li>
+<li><strong>Settings → Time format / Time zone</strong>: set your province’s time zone so the guide matches.</li>
+<li><strong>Settings → EPG timeline</strong>: adjust by ±1 hour if programs look shifted.</li>
+<li><strong>Automation</strong>: enable automatic channel and EPG refresh when the app starts.</li>
+</ol>
+
+<h2>IPTV Smarters Pro vs TiviMate</h2>
+<table>
+<thead><tr><th></th><th>IPTV Smarters Pro</th><th><a href="/tivimate/">TiviMate</a></th></tr></thead>
+<tbody>
+<tr><td>Price</td><td>Free</td><td>Free; Premium optional</td></tr>
+<tr><td>Devices</td><td>Android, Firestick, iOS (Lite), Windows, Mac</td><td>Android TV, Fire TV only</td></tr>
+<tr><td>Guide</td><td>Good</td><td>Excellent (cable-style grid)</td></tr>
+<tr><td>Best for</td><td>Phones, tablets, computers, first-time users</td><td>Daily TV watching with a remote</td></tr>
+</tbody>
+</table>
+<p>Many customers use both: Smarters on the phone, TiviMate on the living-room TV — with the same IPTVMaple login.</p>
+
+<h2>Is IPTV Smarters Pro safe?</h2>
+<p>The app itself is a player and is safe when downloaded from an official source: the Google Play Store, Apple’s App Store (Smarters Player Lite) or the official IPTV Smarters website. Avoid “modded” or “pro unlocked” APKs from random sites — they’re a common way to spread malware. IPTVMaple never asks you to install modified apps.</p>
+
+<h2>How to update IPTV Smarters Pro</h2>
+<p>Store versions update automatically. If you installed the APK on a Firestick, repeat the Downloader install with the latest official file — your profiles stay saved.</p>
 """,
         faq=[
             ("Is IPTV Smarters Pro free?", "<p>Yes, the app is free to download. It does not include channels: you need an IPTV subscription such as IPTVMaple to watch live TV, movies and series in it.</p>"),
@@ -103,6 +139,9 @@ PAGES = [
             ("What’s the difference between IPTV Smarters Pro and Smarters Player Lite?", "<p>Smarters Player Lite is the version published on Apple’s App Store for iPhone, iPad and Apple TV. It uses the same Xtream Codes or M3U login as Smarters Pro.</p>"),
             ("Can I use IPTV Smarters Pro on several devices?", "<p>Yes, install it on each device and use the same login. How many can play at the same time depends on your IPTVMaple plan — from 1 to 5 devices.</p>"),
             ("Why can’t I find IPTV Smarters Pro on Google Play?", "<p>Availability in app stores changes from time to time. You can install the official APK from the IPTV Smarters website, or use another player like TiviMate or IMPlayer with the same login.</p>"),
+            ('Can I watch multiple channels at once in IPTV Smarters Pro?', '<p>Yes, the multi-screen feature shows up to four channels on tablets and computers. Each stream counts toward your plan’s device limit.</p>'),
+            ('Is IPTV Smarters Pro safe to install?', '<p>Yes, when you install it from an official app store or the official IPTV Smarters website. Avoid modified APKs from unknown sites.</p>'),
+            ('How do I fix buffering in IPTV Smarters Pro?', '<p>Switch the live TV player to VLC in Settings → Player selection, use a wired or 5 GHz connection, and restart the app after changing settings.</p>'),
         ],
         related=["smarters-player-lite", "tivimate", "iptv-firestick", "xtream-codes-iptv"],
         keywords=["ip tv smarters pro", "iptv smarters", "smarters pro", "smarterspro", "iptv smarter", "iptv smarters pro", "ip tv smarters", "iptv smarter pro", "iptv smart pro", "smarters iptv pro", "smarters pro iptv", "iptv smarters pro firestick", "iptv smarters pro android", "iptv smarters pro pc", "iptv smarters pro free", "iptv smarters downloader", "iptv smarters player", "iptv smasters pro subscription", "iptvsmarterspro", "tv smarters pro", "smarters pro firestick", "smarters pro pc"],
@@ -150,6 +189,42 @@ PAGES = [
 <h2>TiviMate Premium: is it worth it?</h2>
 <p>TiviMate Premium is sold by the developer through the <em>TiviMate Companion</em> app, as a yearly or lifetime licence (check the Companion app for the current price). One purchase can be used on several devices. If you watch a lot of live TV and sports, the catch-up, recording and multi-playlist features are worth it. If you mainly watch movies and series, the free version is enough.</p>
 <p>Your IPTVMaple subscription and TiviMate Premium are separate purchases — we don’t sell TiviMate accounts.</p>
+<h2>TiviMate vs IPTV Smarters vs IMPlayer</h2>
+<table>
+<thead><tr><th></th><th>TiviMate</th><th>IPTV Smarters Pro</th><th>IMPlayer</th></tr></thead>
+<tbody>
+<tr><td>Devices</td><td>Android TV, Fire TV</td><td>Android, Fire TV, iOS (Lite), PC, Mac</td><td>Android TV, Fire TV, Apple</td></tr>
+<tr><td>TV guide</td><td>Full grid, best in class</td><td>List + grid</td><td>Grid</td></tr>
+<tr><td>Catch-up</td><td>Premium</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Recording</td><td>Premium</td><td>Limited</td><td>Premium</td></tr>
+<tr><td>Multiple playlists</td><td>Premium</td><td>Yes (profiles)</td><td>Yes</td></tr>
+<tr><td>Best for</td><td>Live TV and sports on the big screen</td><td>Phones, tablets, computers</td><td>Mixed Android + Apple homes</td></tr>
+</tbody>
+</table>
+
+<h2>Best TiviMate settings for Canadian viewers</h2>
+<ul>
+<li><strong>Hide groups you don’t watch</strong> — <em>Settings → Playlists → Manage groups</em>. Keep “Canada”, “Canada Sports”, “Québec” and your favourites; big international lists feel instant once trimmed.</li>
+<li><strong>EPG update interval</strong> — set to every 12 or 24 hours under <em>Settings → EPG</em> so the guide stays current without slowing startup.</li>
+<li><strong>Time shift</strong> — if programs look off by an hour or more, adjust <em>EPG time shift</em> for your province (Atlantic, Eastern, Central, Mountain or Pacific).</li>
+<li><strong>Auto frame rate</strong> — <em>Settings → Playback</em>: turn on for smoother hockey and soccer on 60 Hz TVs.</li>
+<li><strong>Buffer size</strong> — “Medium” or “Large” reduces stutter on busy Wi-Fi.</li>
+<li><strong>Favourites</strong> — long-press OK on a channel to add it; TiviMate shows favourites as the first row.</li>
+</ul>
+
+<h2>Using catch-up and recording</h2>
+<p>With TiviMate Premium, channels that support catch-up show a small clock icon. Scroll back in the guide and press OK on a program that already aired to watch it from the start. To record, press OK on a future program and choose <strong>Record</strong>; set the storage folder under <em>Settings → Recording</em> (a USB drive works well on Nvidia Shield and many Android boxes).</p>
+
+<h2>TiviMate on several TVs</h2>
+<p>One TiviMate Premium purchase can activate several devices through the Companion app. Add the same IPTVMaple login on each TV — just make sure your plan covers the number of screens watching at the same time (1 to 5 on our <a href="/iptv-plans-canada/">plans page</a>).</p>
+
+<h2>TiviMate troubleshooting</h2>
+<ul>
+<li><strong>“No channels” after adding the playlist</strong> — re-check the server URL includes the port; try the M3U link instead of Xtream.</li>
+<li><strong>Guide shows “No information”</strong> — update EPG manually, or add the EPG link we send for M3U logins.</li>
+<li><strong>Stutters on Firestick</strong> — clear TiviMate’s cache, reduce buffer to Medium, and use Ethernet or 5 GHz Wi-Fi.</li>
+<li><strong>Premium not activating</strong> — sign in to the same Companion account on the device; this is handled by the TiviMate developer, not IPTVMaple.</li>
+</ul>
 """,
         faq=[
             ("Is TiviMate free?", "<p>TiviMate is free to download with basic features. TiviMate Premium is an optional paid upgrade from the developer that adds recording, catch-up, multiple playlists and more.</p>"),
@@ -157,6 +232,9 @@ PAGES = [
             ("Can I use TiviMate on iPhone or Apple TV?", "<p>No, there is no TiviMate app for iOS or tvOS. Use Smarters Player Lite or iPlayTV instead — see our <a href=\"/iptv-apple-tv/\">Apple TV IPTV guide</a>.</p>"),
             ("Does TiviMate include channels?", "<p>No. TiviMate is a player only. You add an IPTV subscription like IPTVMaple (via Xtream Codes or M3U) to get live channels, movies and series.</p>"),
             ("How do I get the TV guide (EPG) in TiviMate?", "<p>With an Xtream Codes login the guide loads automatically. With an M3U playlist, add the EPG link we send you under Settings → EPG.</p>"),
+            ('How do I hide channel groups in TiviMate?', '<p>Go to Settings → Playlists → your playlist → Manage groups and untick the groups you don’t watch. It makes the channel list and guide much faster.</p>'),
+            ('Can TiviMate record live TV?', '<p>Yes, with TiviMate Premium. Recordings are saved to the device or a USB drive you choose under Settings → Recording.</p>'),
+            ('How many devices can use one TiviMate Premium?', '<p>TiviMate Premium can be activated on several devices through the Companion app. Your IPTV plan separately sets how many screens can stream at the same time.</p>'),
         ],
         related=["iptv-firestick", "iptv-smarters-pro", "iptv-android-tv", "formuler-iptv"],
         keywords=["tivimate", "tivi mate", "tivimate iptv", "tivimate firestick", "tivimate premium", "tivimate iptv player", "tivimate subscription", "tivimate premium cost", "tivimate price", "tivimate pro", "tivimate account", "tivimate for firestick", "tivimate on firestick", "tivimate apple tv", "tivimate premium subscription", "tivimate roku", "tivimate samsung", "tivimate lg", "tivimate pc"],
@@ -665,7 +743,7 @@ http://server:port/username/password/12345</code></pre>
             ("Can I edit my M3U playlist?", "<p>Yes, but it’s easier to ask us for a filtered playlist with only the countries and categories you want.</p>"),
             ("Does IPTVMaple provide an M3U link?", "<p>Yes, every subscription and free trial includes both an M3U link and an Xtream Codes login.</p>"),
         ],
-        related=["xtream-codes-iptv", "vlc-iptv", "kodi-iptv"],
+        related=["xtream-codes-iptv", "iptv-server", "vlc-iptv", "kodi-iptv"],
         keywords=["m3u", "iptv m3u", "m3u iptv", "m3u list", "iptv m3u list", "iptv list", "ip tv list", "iptv play list", "iptv player m3u", "player m3u", "m3u ip tv", "liste m3u iptv", "m3u8 iptv", "iptv m3u8", "m3u8 list", "m3u player online", "list iptv", "play list iptv", "liste iptv m3u fr"],
     ),
     # ------------------------------------------------------------------ XTREAM
@@ -710,7 +788,7 @@ http://server:port/username/password/12345</code></pre>
             ("Is Xtream IPTV a provider?", "<p>No — “Xtream IPTV” refers to the login format, not a specific service. Many providers, including IPTVMaple, support it.</p>"),
             ("Can I use the same Xtream login on two devices?", "<p>Yes, up to the number of simultaneous devices included in your plan.</p>"),
         ],
-        related=["m3u-playlist", "iptv-smarters-pro", "xciptv"],
+        related=["m3u-playlist", "iptv-server", "iptv-smarters-pro", "xciptv"],
         keywords=["xtream iptv", "xtream iptv m3u", "xtream tv", "xtreamtv", "lxtream", "lxtream player"],
     ),
 ]

@@ -157,7 +157,7 @@ PAGES = [
          """<h3>Both sides of the river</h3>
 <p>IPTV works the same in Ottawa and Gatineau. Want the French experience? See our <a href="/iptv-quebec/">page en français</a>.</p>""",
          [("Can I watch the Senators on IPTV?", "<p>Yes, on TSN regional broadcasts, Sportsnet and national games, plus NHL Center Ice.</p>")],
-         ["iptv-montreal", "iptv-toronto", "iptv-quebec", "nhl-iptv"],
+         ["iptv-montreal", "iptv-toronto", "iptv-quebec", "iptv-halifax", "nhl-iptv"],
          ["iptv ottawa", "ottawa iptv", "iptv gatineau"]),
     city("iptv-winnipeg", "Winnipeg", "Manitoba", "Central time",
          "Bell MTS, Rogers (formerly Shaw), local fibre providers",

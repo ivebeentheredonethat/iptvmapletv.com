@@ -238,7 +238,7 @@ PAGES = [
             ("Can I watch the Premier League on IPTV in Canada?", "<p>Yes. Sky Sports, TNT Sports and dedicated EPL team channels are included in every plan.</p>"),
             ("Is the Champions League included?", "<p>Yes, via TNT Sports, beIN and DAZN channels in the lineup.</p>"),
             ("Can I watch the World Cup with IPTVMaple?", "<p>Yes, World Cup broadcasters from Canada, the UK and Europe are included.</p>"),
-            ("Can I watch soccer with English or French commentary?", "<p>Yes — choose English channels (TSN, Sky, TNT) or French ones (RDS, beIN France, Canal+).</p>"),
+            ("Can I watch soccer with English or French commentary?", "<p>Yes — choose English channels (TSN, Sky, TNT) or French ones (RDS, beIN Sports France, RMC Sport).</p>"),
         ],
         related=["iptv-sports", "f1-iptv", "ufc-iptv"],
         keywords=["iptv soccer", "iptv premier league", "iptv champions league", "iptv world cup", "world cup iptv", "football iptv"],

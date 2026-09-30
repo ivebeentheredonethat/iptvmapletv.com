@@ -43,6 +43,45 @@ PAGES = [
 
 <h2>Partout au Québec</h2>
 <p>Montréal, Québec, Laval, Gatineau, Longueuil, Sherbrooke, Saguenay, Trois-Rivières, Lévis, Rive-Nord ou Rive-Sud : l’IPTV fonctionne partout où il y a Internet. Pour Montréal en anglais, voir <a href="/iptv-montreal/">IPTV in Montreal</a>.</p>
+<h2>Toutes les régions du Québec</h2>
+<p>En plus des chaînes nationales, la programmation comprend les stations régionales :</p>
+<ul>
+<li><strong>TVA</strong> : Montréal, Québec, Gatineau, Trois-Rivières, Rivière-du-Loup</li>
+<li><strong>ICI Radio-Canada Télé</strong> : Montréal, Québec, Ottawa-Gatineau, Estrie, Mauricie, Saguenay, Est-du-Québec</li>
+<li><strong>V / Noovo</strong> : Montréal et Québec</li>
+</ul>
+<p>Vous habitez en Ontario, en Acadie ou dans l’Ouest? ICI Télé Ontario, Acadie, Manitoba, Saskatchewan, Alberta et C.-B.-Yukon sont aussi incluses.</p>
+
+<h2>IPTV ou câble : le comparatif</h2>
+<table>
+<thead><tr><th></th><th>Câble / fibre télé</th><th>IPTVMaple</th></tr></thead>
+<tbody>
+<tr><td>Prix mensuel typique</td><td>60 $ à 120 $ et plus avec le sport</td><td>Dès 9 $ (environ 4 $/mois sur 12 mois)</td></tr>
+<tr><td>Chaînes québécoises</td><td>Oui</td><td>Oui, plus les stations régionales</td></tr>
+<tr><td>RDS et TVA Sports</td><td>Forfait sport en supplément</td><td>Inclus</td></tr>
+<tr><td>Chaînes internationales</td><td>Forfaits en supplément</td><td>Incluses (France, Italie, Portugal…)</td></tr>
+<tr><td>Contrat et location de terminal</td><td>Souvent</td><td>Aucun</td></tr>
+<tr><td>Nombre de télés</td><td>Terminal par télé</td><td>1 à 5 écrans en même temps</td></tr>
+</tbody>
+</table>
+
+<h2>Le sport au Québec</h2>
+<ul>
+<li><strong>Le Canadien</strong> sur TVA Sports et RDS, en français, ou sur Sportsnet en anglais.</li>
+<li><strong>Les Alouettes</strong> et la LCF, le <strong>CF Montréal</strong> et la MLS.</li>
+<li>Le <strong>Grand Prix du Canada</strong> sur RDS, avec toute la saison de F1.</li>
+<li>L’UFC, la boxe et le soccer européen (beIN Sports France, RMC Sport).</li>
+</ul>
+
+<h2>Appareils populaires au Québec</h2>
+<ul>
+<li><a href="/iptv-sur-firestick/">IPTV sur Fire TV Stick</a> — l’option la plus populaire et abordable.</li>
+<li><a href="/tivimate-en-francais/">TiviMate en français</a> — la meilleure application pour le Fire TV et Android TV.</li>
+<li><a href="/iptv-sur-smart-tv/">IPTV sur téléviseur Samsung ou LG</a> — sans appareil supplémentaire.</li>
+</ul>
+
+<h2>Un soutien en français, 24/7</h2>
+<p>Notre équipe répond en français par WhatsApp et par courriel, jour et nuit. On peut vous guider à l’installation, étape par étape, sur l’appareil de votre choix. Comparez les services avec notre guide du <a href="/meilleur-iptv/">meilleur IPTV au Québec</a>.</p>
 """,
         faq=[
             ("Est-ce que l’IPTV fonctionne au Québec?", "<p>Oui, partout au Québec, avec n’importe quel fournisseur Internet. Il suffit d’une connexion d’environ 10 Mbit/s en HD ou 25 Mbit/s en 4K.</p>"),
@@ -50,6 +89,9 @@ PAGES = [
             ("Puis-je regarder le Canadien en français?", "<p>Oui, sur TVA Sports ou RDS selon le match, tous deux inclus.</p>"),
             ("Le soutien est-il offert en français?", "<p>Oui, notre équipe répond en français et en anglais, 24/7, par WhatsApp et courriel.</p>"),
             ("Y a-t-il un essai gratuit?", "<p>Oui, 24 heures d’accès complet, sans carte de crédit.</p>"),
+            ('Les stations régionales de TVA et Radio-Canada sont-elles incluses?', '<p>Oui : TVA Québec, Gatineau, Trois-Rivières et Rivière-du-Loup, ainsi que les stations ICI Radio-Canada de plusieurs régions.</p>'),
+            ('L’IPTV fonctionne-t-elle avec Vidéotron ou Bell?', '<p>Oui, avec tous les fournisseurs Internet : Vidéotron, Bell, Fizz, Oxio, Cogeco et les autres. Vous gardez votre Internet et coupez seulement la télé.</p>'),
+            ('Puis-je regarder des chaînes de France aussi?', '<p>Oui, TF1, France 2, M6, beIN Sports France et bien d’autres sont incluses. Voir <a href="/french-iptv/">French IPTV</a>.</p>'),
         ],
         related=["iptv-montreal", "nhl-iptv"],
         cta_title="Prêt à couper le câble?",
@@ -162,7 +204,7 @@ PAGES = [
         ],
         related=["meilleur-iptv", "iptv-sur-smart-tv"],
         cta_title="Choisissez votre forfait",
-        keywords=["abonnementiptv", "abonnement iptv", "iptv 1 mois", "iptv 12 mois", "prix iptv", "iptv prix", "iptv pas cher", "tivimate premium prix", "abonnement 1 mois iptv québec", "abonnement 12 mois iptv québec", "iptv promo"],
+        keywords=["abonnementiptv", "abonnement iptv", "iptv 1 mois", "iptv 12 mois", "prix iptv", "iptv prix", "iptv pas cher", "abonnement 1 mois iptv québec", "abonnement 12 mois iptv québec", "iptv promo"],
     ),
     # ------------------------------------------------------------------ SMART TV (FR)
     dict(
@@ -214,8 +256,117 @@ PAGES = [
             ("L’IPTV fonctionne-t-elle sur PS5 ou Xbox?", "<p>Les consoles ne prennent pas en charge les applications IPTV courantes. Un Fire TV Stick est la solution la plus simple.</p>"),
             ("IPTV Smarters est introuvable sur Google Play, que faire?", "<p>Installez le fichier APK depuis le site officiel d’IPTV Smarters, ou utilisez TiviMate ou IMPlayer avec les mêmes identifiants.</p>"),
         ],
-        related=["abonnement-iptv", "meilleur-iptv"],
+        related=["iptv-sur-firestick", "tivimate-en-francais", "abonnement-iptv"],
         cta_title="Prêt à installer?",
-        keywords=["iptv sur samsung", "iptv sur tv samsung", "iptv sur smart tv", "iptv sur fire stick", "iptv sur pc", "iptv sur mac", "iptv sur iphone", "iptv sur apple tv", "iptv sur chromecast", "iptv sur ps5", "iptv ps5", "iptv sur vlc", "iptv sur kodi", "iptv pour pc", "lecteur iptv", "meilleur lecteur iptv", "meilleur lecteur iptv android", "iptv smasters pro introuvable google play", "iptv smasters pro ne fonctionne pas sur tv samsung", "iptv ne fonctionne plus", "cle amazon iptv", "cle iptv amazon"],
+        keywords=["iptv sur samsung", "iptv sur tv samsung", "iptv sur smart tv", "iptv sur pc", "iptv sur mac", "iptv sur iphone", "iptv sur apple tv", "iptv sur chromecast", "iptv sur ps5", "iptv ps5", "iptv sur vlc", "iptv sur kodi", "iptv pour pc", "lecteur iptv", "meilleur lecteur iptv", "meilleur lecteur iptv android", "iptv smasters pro introuvable google play", "iptv smasters pro ne fonctionne pas sur tv samsung", "iptv ne fonctionne plus"],
+    ),
+    # ------------------------------------------------------------------ FIRESTICK (FR)
+    dict(
+        slug="iptv-sur-firestick", hub="fr", lang="fr",
+        title="IPTV sur Fire TV Stick : installation pas à pas | IPTVMaple",
+        description="Installer l’IPTV sur une clé Amazon Fire TV Stick : options développeurs, Downloader, TiviMate ou IPTV Smarters et connexion. Guide en français, essai gratuit 24 h.",
+        kicker="Installation", h1='IPTV sur <span class="grad-text">Fire TV Stick</span>',
+        lead="La clé Amazon Fire TV Stick est l’appareil IPTV le plus populaire au Québec. Voici l’installation complète, étape par étape.",
+        crumb="IPTV sur Fire Stick", blurb="Downloader, TiviMate et connexion, étape par étape.",
+        answer="<p>Pour installer l’<strong>IPTV sur un Fire TV Stick</strong> : activez les <strong>options pour les développeurs</strong>, installez l’application <strong>Downloader</strong>, autorisez-la à installer des applications inconnues, puis installez un lecteur IPTV comme <strong>TiviMate</strong> ou <strong>IPTV Smarters Pro</strong>. Entrez ensuite vos identifiants IPTVMaple. Comptez environ 10 minutes.</p>",
+        body="""
+<h2>Ce qu’il vous faut</h2>
+<ul>
+<li>Une clé Amazon Fire TV Stick (le modèle 4K ou 4K Max est recommandé) ou un Fire TV Cube</li>
+<li>Une connexion Internet d’au moins 25 Mbit/s pour la 4K</li>
+<li>Un abonnement IPTV — essayez IPTVMaple <a href="/try-iptv-canada/">gratuitement pendant 24 h</a></li>
+</ul>
+<p><strong>À noter :</strong> certains des plus récents modèles Fire TV utilisent un nouveau système (Vega OS) qui ne permet pas d’installer des applications hors de l’Appstore. Si les options pour les développeurs n’apparaissent pas, vérifiez votre modèle.</p>
+
+<h2>Étape 1 — Activer les options pour les développeurs</h2>
+<ol>
+<li>Allez dans <em>Paramètres → Mon Fire TV → À propos</em>.</li>
+<li>Cliquez <strong>7 fois</strong> sur le nom de l’appareil jusqu’au message « Vous êtes maintenant développeur ».</li>
+<li>Revenez à <em>Mon Fire TV → Options pour les développeurs</em>.</li>
+</ol>
+
+<h2>Étape 2 — Installer Downloader</h2>
+<ol>
+<li>Depuis l’accueil, recherchez <strong>Downloader</strong> (icône orange) et installez-le.</li>
+<li>Dans <em>Options pour les développeurs → Installer des applications inconnues</em>, activez <strong>Downloader</strong>.</li>
+</ol>
+
+<h2>Étape 3 — Installer le lecteur IPTV</h2>
+<p>Ouvrez Downloader et entrez l’adresse de téléchargement officielle du lecteur choisi :</p>
+<ul>
+<li><a href="/tivimate-en-francais/">TiviMate</a> — le meilleur lecteur sur Fire TV, avec un vrai guide télé.</li>
+<li><strong>IPTV Smarters Pro</strong> — simple et familier.</li>
+<li><strong>XCIPTV</strong> — le plus léger pour les vieux modèles.</li>
+</ul>
+
+<h2>Étape 4 — Se connecter</h2>
+<p>Choisissez « Xtream Codes », puis entrez l’URL du serveur, le nom d’utilisateur et le mot de passe reçus par courriel et WhatsApp. Les chaînes, films, séries et le guide se chargent en une minute.</p>
+
+<h2>Astuces</h2>
+<ul>
+<li><strong>Mise en mémoire tampon?</strong> Utilisez l’adaptateur Ethernet d’Amazon ou le Wi-Fi 5 GHz.</li>
+<li><strong>Appareil lent?</strong> Videz le cache dans <em>Paramètres → Applications → Gérer les applications installées</em>.</li>
+<li><strong>Chaînes québécoises</strong> : ajoutez TVA, Radio-Canada, RDS et TVA Sports à vos favoris dès le départ.</li>
+</ul>
+<p>Guide en anglais avec plus de détails : <a href="/iptv-firestick/">IPTV on Firestick</a>.</p>
+""",
+        faq=[
+            ("Est-ce difficile d’installer l’IPTV sur Fire TV Stick?", "<p>Non. Une fois les options pour les développeurs activées, l’installation prend environ 10 minutes. Notre équipe peut vous guider par WhatsApp, en français.</p>"),
+            ("Quelle est la meilleure application IPTV pour Fire Stick?", "<p>TiviMate, pour son guide télé et le rattrapage. IPTV Smarters Pro est une bonne option gratuite.</p>"),
+            ("Quel modèle de Fire TV Stick choisir?", "<p>Le Fire TV Stick 4K Max, qui a plus de mémoire et un Wi-Fi plus rapide, idéal pour le sport en 4K.</p>"),
+            ("Je ne trouve pas les options pour les développeurs, que faire?", "<p>Allez dans Paramètres → Mon Fire TV → À propos et cliquez 7 fois sur le nom de l’appareil. Sur certains modèles récents (Vega OS), l’installation d’applications externes n’est pas possible.</p>"),
+        ],
+        related=["tivimate-en-francais", "iptv-sur-smart-tv", "abonnement-iptv"],
+        cta_title="Prêt à brancher votre Fire Stick?",
+        keywords=["iptv sur fire stick", "cle amazon iptv", "cle iptv amazon"],
+    ),
+    # ------------------------------------------------------------------ TIVIMATE (FR)
+    dict(
+        slug="tivimate-en-francais", hub="fr", lang="fr",
+        title="TiviMate en français : installation et Premium | IPTVMaple",
+        description="Guide TiviMate en français : installation sur Fire TV Stick et Android TV, ajout de votre liste IPTV, guide télé et TiviMate Premium. Essai gratuit de 24 h.",
+        kicker="Applications", h1='<span class="grad-text">TiviMate</span> en français',
+        lead="Le lecteur IPTV préféré sur Fire TV Stick et Android TV : un vrai guide télé comme au câble. Voici comment le configurer.",
+        crumb="TiviMate (FR)", blurb="Installation, liste IPTV et Premium.",
+        answer="<p><strong>TiviMate</strong> est un lecteur IPTV pour les appareils Android TV et Fire TV. Il est gratuit à installer; <strong>TiviMate Premium</strong> est une option payante vendue par le développeur (plusieurs listes, rattrapage, enregistrement). Ajoutez vos identifiants IPTVMaple (Xtream Codes ou M3U) et vos chaînes apparaissent avec un guide télé complet.</p>",
+        body="""
+<h2>Pourquoi TiviMate?</h2>
+<p>TiviMate ressemble à un terminal de câble : grille horaire, groupes de chaînes, zapping rapide avec la télécommande. Pour les Québécois qui quittent Vidéotron ou Bell, c’est l’expérience la plus familière.</p>
+<ul>
+<li>Guide télé (EPG) en grille</li>
+<li>Rattrapage sur les chaînes compatibles</li>
+<li>Enregistrement (Premium)</li>
+<li>Plusieurs listes et favoris (Premium)</li>
+</ul>
+
+<h2>Sur quels appareils?</h2>
+<p>Uniquement sur <strong>Android TV et Fire TV</strong> : Fire TV Stick, Nvidia Shield, Chromecast avec Google TV, boîtiers Android TV et Formuler. TiviMate n’existe pas sur iPhone, Apple TV, Samsung, LG ou Roku — voyez notre <a href="/iptv-sur-smart-tv/">guide d’installation par appareil</a>.</p>
+
+<h2>Installer TiviMate</h2>
+<ul>
+<li><strong>Android TV / Google TV</strong> : directement dans le Google Play Store.</li>
+<li><strong>Fire TV Stick</strong> : avec l’application Downloader — voir <a href="/iptv-sur-firestick/">IPTV sur Fire TV Stick</a>.</li>
+</ul>
+
+<h2>Ajouter votre liste IPTV</h2>
+<ol>
+<li>Ouvrez TiviMate et choisissez <strong>Ajouter une liste → Xtream Codes</strong>.</li>
+<li>Entrez l’URL du serveur, le nom d’utilisateur et le mot de passe reçus par courriel et WhatsApp.</li>
+<li>TiviMate charge les chaînes, les films, les séries et le guide. Nommez la liste et validez.</li>
+</ol>
+
+<h2>TiviMate Premium vaut-il la peine?</h2>
+<p>Premium est vendu par le développeur via l’application <em>TiviMate Companion</em>, sous forme d’abonnement annuel ou de licence à vie (vérifiez le prix actuel dans Companion). Si vous regardez beaucoup de sport en direct, le rattrapage et l’enregistrement en valent la peine. Votre abonnement IPTVMaple et TiviMate Premium sont deux achats séparés.</p>
+<p>Version anglaise plus détaillée : <a href="/tivimate/">TiviMate IPTV Player guide</a>.</p>
+""",
+        faq=[
+            ("TiviMate est-il gratuit?", "<p>Oui, l’application de base est gratuite. TiviMate Premium est une option payante du développeur.</p>"),
+            ("TiviMate fonctionne-t-il sur une télé Samsung ou LG?", "<p>Non. Branchez un Fire TV Stick sur votre télé, ou utilisez SmartOne ou Flix IPTV sur le téléviseur.</p>"),
+            ("TiviMate inclut-il des chaînes?", "<p>Non, c’est un lecteur. Vos chaînes viennent de votre abonnement IPTV, comme IPTVMaple.</p>"),
+            ("Comment obtenir le guide télé dans TiviMate?", "<p>Avec une connexion Xtream Codes, le guide se charge automatiquement. Avec un lien M3U, ajoutez le lien EPG que nous vous envoyons.</p>"),
+        ],
+        related=["iptv-sur-firestick", "iptv-sur-smart-tv", "meilleur-iptv"],
+        cta_title="Essayez TiviMate avec IPTVMaple",
+        keywords=["tivimate français", "tivimate en français", "tivimate premium prix"],
     ),
 ]

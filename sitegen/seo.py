@@ -35,6 +35,7 @@ HUBS = {
     "devices": ("/iptv-devices/", "Devices"),
     "sports": ("/iptv-sports/", "Sports"),
     "cities": ("/iptv-near-me/", "Cities"),
+    "intl": ("/iptv-international/", "International"),
     "guides": (None, None),
     "fr": ("/iptv-quebec/", "IPTV Québec"),
 }

@@ -95,6 +95,38 @@ PAGES = [
 <li><strong>Running slow?</strong> Clear cache in <em>Settings → Applications → Manage installed apps</em>.</li>
 <li><strong>Remote shortcut:</strong> hold Home → Apps to pin your IPTV app to the front row.</li>
 </ul>
+<h2>Which Fire TV device is best for IPTV?</h2>
+<table>
+<thead><tr><th>Model</th><th>Resolution</th><th>Good for IPTV?</th></tr></thead>
+<tbody>
+<tr><td>Fire TV Stick HD</td><td>1080p</td><td>OK for HD TVs and bedrooms</td></tr>
+<tr><td>Fire TV Stick 4K</td><td>4K HDR</td><td>Great value for most homes</td></tr>
+<tr><td>Fire TV Stick 4K Max</td><td>4K HDR, Wi-Fi 6E, more memory</td><td>Best stick for 4K sports and big channel lists</td></tr>
+<tr><td>Fire TV Cube</td><td>4K HDR, Ethernet port, fastest</td><td>Best overall — wired connection built in</td></tr>
+</tbody>
+</table>
+<p>Check Developer options on any new model before relying on sideloaded apps (see the note above about newer Fire TV models).</p>
+
+<h2>Optimise your Firestick for IPTV</h2>
+<ol>
+<li><strong>Use Ethernet or 5 GHz Wi-Fi</strong> — Amazon’s Ethernet adapter is the single biggest fix for buffering.</li>
+<li><strong>Turn off data collection</strong> — <em>Settings → Preferences → Privacy settings</em>: disable device usage data and app usage data.</li>
+<li><strong>Match frame rate</strong> — <em>Settings → Display &amp; Sounds → Display → Match original frame rate</em> for smoother sports.</li>
+<li><strong>Free up storage</strong> — uninstall apps you don’t use; keep at least 1 GB free.</li>
+<li><strong>Clear the IPTV app cache</strong> once a month under <em>Manage installed applications</em>.</li>
+<li><strong>Restart weekly</strong> — hold Select + Play for 5 seconds.</li>
+</ol>
+
+<h2>Firestick IPTV troubleshooting</h2>
+<ul>
+<li><strong>Black screen on some channels</strong> — switch the player engine in the app (ExoPlayer / VLC), or try the HD version of the channel.</li>
+<li><strong>App closes by itself</strong> — low memory; clear cache and uninstall unused apps.</li>
+<li><strong>“App not installed” in Downloader</strong> — delete the old APK and reinstall, or free up storage.</li>
+<li><strong>Remote not working in the app</strong> — update the app; some players need “Use remote for navigation” enabled.</li>
+</ul>
+
+<h2>Firestick + IPTV vs cable box</h2>
+<p>A Fire TV Stick 4K costs less than two months of a typical cable box rental, has no contract and moves with you between TVs, cottages and hotel rooms. Pair it with an <a href="/iptv-plans-canada/">IPTVMaple plan</a> and you get 50,000+ channels including the full Canadian lineup — for less than most basic cable packages.</p>
 """,
         faq=[
             ("Is IPTV on Firestick easy to set up?", "<p>Yes. After enabling Developer options and installing Downloader, installing an IPTV app and logging in takes about 10 minutes. Our team can guide you on WhatsApp.</p>"),
@@ -102,6 +134,9 @@ PAGES = [
             ("Which Firestick is best for IPTV?", "<p>The Fire TV Stick 4K Max has the most memory and Wi-Fi 6E, which helps with 4K sports. The standard 4K model is also excellent.</p>"),
             ("Why can’t I find Developer options on my Firestick?", "<p>Go to Settings → My Fire TV → About and click the device name 7 times. On some newer models running Vega OS, sideloading isn’t available.</p>"),
             ("Can I use one IPTV subscription on two Firesticks?", "<p>Yes, with a plan that includes 2 or more simultaneous devices.</p>"),
+            ('Why does IPTV buffer on my Firestick?', '<p>Usually Wi-Fi. Use Amazon’s Ethernet adapter or 5 GHz Wi-Fi, clear the app cache, and turn on “Match original frame rate”. If only one channel buffers, try its backup version.</p>'),
+            ('Is the Fire TV Cube better than the Firestick for IPTV?', '<p>Yes, it’s faster and has an Ethernet port built in, which makes it the best Fire TV device for 4K sports.</p>'),
+            ('Can I take my Firestick IPTV on holiday?', '<p>Yes. Plug the Firestick into any TV with HDMI and connect it to Wi-Fi — your IPTVMaple login works anywhere with internet.</p>'),
         ],
         related=["tivimate", "iptv-smarters-pro", "iptv-box", "iptv-android-tv"],
         keywords=["iptv firestick", "iptv fire stick", "fire stick iptv", "iptv for firestick", "best iptv for firestick", "amazon fire stick iptv", "amazon fire tv stick iptv", "fire tv iptv", "fire tv stick iptv", "iptv amazon", "ip tv amazon", "iptv amazon stick", "iptv stick", "iptv sur fire stick", "firestick iptv reddit", "smart iptv firestick"],
@@ -142,6 +177,39 @@ PAGES = [
 
 <h2>IPTV box price in Canada</h2>
 <p>Expect roughly $40–$80 for a Fire TV Stick or onn box, $100–$200 for Formuler or BuzzTV, and $250+ for an Nvidia Shield TV Pro, depending on sales. Your IPTVMaple subscription starts at $9/month and works on all of them.</p>
+<h2>IPTV box vs Firestick vs smart TV app</h2>
+<table>
+<thead><tr><th></th><th>Android TV box</th><th>Firestick</th><th>Smart TV app</th></tr></thead>
+<tbody>
+<tr><td>Speed with big channel lists</td><td>Fastest</td><td>Good (4K Max best)</td><td>Varies by TV age</td></tr>
+<tr><td>Ethernet port</td><td>Usually built in</td><td>Adapter needed</td><td>Built into most TVs</td></tr>
+<tr><td>App choice</td><td>Widest (TiviMate, Smarters, IMPlayer…)</td><td>Wide</td><td>Limited (SmartOne, Flix, IBO…)</td></tr>
+<tr><td>Recording</td><td>Yes, with USB storage</td><td>Limited storage</td><td>Rarely</td></tr>
+<tr><td>Cost</td><td>$60–$250</td><td>$40–$80</td><td>Free (TV you own)</td></tr>
+</tbody>
+</table>
+
+<h2>Which box for which home?</h2>
+<ul>
+<li><strong>Sports fan with a big 4K TV</strong> — Nvidia Shield TV Pro or Formuler Z11 Pro Max, wired, with TiviMate.</li>
+<li><strong>Budget or second TV</strong> — onn 4K Pro or Fire TV Stick 4K.</li>
+<li><strong>Less technical users / grandparents</strong> — <a href="/mag-box-iptv/">MAG box</a> or Formuler: one app, simple remote, nothing to update.</li>
+<li><strong>Want to record</strong> — Nvidia Shield or Formuler with a USB drive and TiviMate Premium.</li>
+<li><strong>Apple household</strong> — <a href="/iptv-apple-tv/">Apple TV 4K</a> with iPlayTV.</li>
+</ul>
+
+<h2>IPTV box setup checklist</h2>
+<ol>
+<li>Connect by Ethernet if the router is nearby.</li>
+<li>Run all system updates before installing apps.</li>
+<li>Install your IPTV app (TiviMate recommended) from Google Play.</li>
+<li>Add your IPTVMaple login (Xtream Codes).</li>
+<li>Set display output to your TV’s resolution (4K 60 Hz) and turn on frame-rate matching.</li>
+<li>Hide unused channel groups and build a favourites list.</li>
+</ol>
+
+<h2>Should you buy a box from an IPTV seller?</h2>
+<p>You don’t need to. Buying a mainstream box from a regular retailer gets you a warranty, security updates and a return policy, and you’re free to change IPTV provider any time. IPTVMaple works on the box you choose — and our team helps you set it up on WhatsApp.</p>
 """,
         faq=[
             ("Do I need a special box for IPTV?", "<p>No. Any Android TV box, Firestick, smart TV or phone works. A dedicated box just makes it smoother and easier with a remote.</p>"),
@@ -149,6 +217,9 @@ PAGES = [
             ("Is an IPTV box a one-time purchase?", "<p>The box is a one-time purchase. The channels come from an IPTV subscription, which you renew monthly or yearly.</p>"),
             ("Can I buy an IPTV box near me?", "<p>Yes — Fire TV, onn and Nvidia Shield boxes are sold at major Canadian retailers and online. Formuler and MAG boxes are sold by specialist resellers.</p>"),
             ("Does IPTVMaple sell boxes?", "<p>No, we provide the subscription. You can use any box you already own or buy one from a retailer.</p>"),
+            ('How much RAM does an IPTV box need?', '<p>At least 2 GB; 3–4 GB is better for large channel lists, fast guide scrolling and 4K playback.</p>'),
+            ('Can I record TV on an IPTV box?', '<p>Yes — on Android TV boxes like the Nvidia Shield or Formuler, TiviMate Premium can record to a USB drive.</p>'),
+            ('What is the best IPTV box for seniors?', '<p>A MAG box or Formuler box: one simple app, a remote with live-TV buttons, and nothing to update.</p>'),
         ],
         related=["formuler-iptv", "iptv-android-tv", "mag-box-iptv", "iptv-firestick"],
         keywords=["iptv box", "ip tv box", "iptv with box", "best iptv box", "box iptv", "best android box for iptv", "best android tv box for iptv", "iptv android tv box", "iptv box android", "box android iptv", "iptv box price", "iptv box near me", "iptv box amazon", "amazon iptv box", "ip box tv", "box iptv 4k", "iptv smart box", "meilleur box iptv", "onn tv box", "buzztv xrs4500", "buzztv xrs 4900"],
@@ -286,7 +357,7 @@ PAGES = [
             ("Why is IPTV buffering on my Samsung TV?", "<p>Often the TV’s Wi-Fi. Try Ethernet, or use a Firestick 4K with a stronger Wi-Fi chip.</p>"),
             ("Does IPTVMaple work on Samsung smart TVs?", "<p>Yes, with any of the apps above. We send an M3U link and Xtream login that work in all of them.</p>"),
         ],
-        related=["iptv-lg-tv", "smartone-iptv", "flix-iptv", "iptv-firestick"],
+        related=["iptv-lg-tv", "smartone-iptv", "flix-iptv", "iptv-firestick", "iptv-roku"],
         keywords=["iptv samsung tv", "iptv for samsung tv", "iptv samsung", "iptv samsung smart tv", "iptv samsung tizen", "samsung tizen iptv", "iptv tizen", "ip tv samsung", "iptv smart tv", "ip tv smart tv", "iptv sur samsung", "iptv sur tv samsung", "samsung iptv smarters", "iptv smasters samsung tv"],
     ),
     # ------------------------------------------------------------------ LG

@@ -38,12 +38,14 @@ def sitemaps(pages):
     urls = "".join(
         f"<url><loc>{C.SITE_URL}{p.path}</loc>{f'<lastmod>{p.modified}</lastmod>' if p.modified else ''}</url>\n"
         for p in pages if p.in_sitemap and "noindex" not in p.robots)
-    write("page-sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n')
+    urlset = f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n'
+    write("sitemap.xml", urlset)       # main sitemap: every indexable page
+    write("page-sitemap.xml", urlset)  # kept for sitemap_index.xml (submitted since the WordPress days)
     last = max((p.modified for p in pages if p.modified), default="")
     write("sitemap_index.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                f'<sitemap><loc>{C.SITE_URL}/page-sitemap.xml</loc><lastmod>{last}</lastmod></sitemap>\n</sitemapindex>\n')
     ai = "".join(f"\nUser-agent: {bot}\nAllow: /\nDisallow: /api/\n" for bot in ("GPTBot", "ClaudeBot", "PerplexityBot", "Google-Extended"))
-    write("robots.txt", f"User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /go/\n{ai}\nSitemap: {C.SITE_URL}/sitemap_index.xml\n")
+    write("robots.txt", f"User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /go/\n{ai}\nSitemap: {C.SITE_URL}/sitemap.xml\n")
 
 
 def llms_txt():

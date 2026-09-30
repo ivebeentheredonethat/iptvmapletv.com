@@ -14,7 +14,7 @@ formuler z11 pro,5000,Commercial,assigned,/formuler-iptv/
 formuler z11 pro max,5000,Commercial,assigned,/formuler-iptv/
 implayer,5000,Commercial,assigned,/implayer/
 ip television,5000,Commercial,assigned,/what-is-iptv/
-ip televizija,5000,Commercial,Not targeted: out of scope,
+ip televizija,5000,Commercial,assigned,/ex-yu-iptv/
 ip tv box,5000,Commercial,assigned,/iptv-box/
 ip tv smart,5000,Commercial,Not targeted: competitor brand / reseller / too generic,
 ip tv subscription,5000,Commercial,assigned,/iptv-plans-canada/
@@ -47,7 +47,7 @@ iptv subscription,1600,Commercial,assigned,/iptv-plans-canada/
 best iptv for canada,1300,Commercial,assigned,/best-iptv-canada/
 best iptv in canada,1300,Commercial,assigned,/best-iptv-canada/
 iptv legal,1300,Commercial,Legality query (not built — see notes),
-iptv server,1300,Informational,Not targeted: competitor brand / reseller / too generic,
+iptv server,1300,Informational,assigned,/iptv-server/
 iptv subscription canada,1300,Commercial,assigned,/iptv-plans-canada/
 best iptv service canada,1200,Commercial,assigned,/best-iptv-canada/
 iptv providers canada,1200,Commercial,assigned,/best-iptv-canada/
@@ -62,7 +62,7 @@ best iptv canada,880,Commercial,assigned,/best-iptv-canada/
 canada iptv,880,Commercial,assigned,/iptv-near-me/
 canadian iptv,880,Commercial,assigned,/iptv-near-me/
 iptv in canada,880,Commercial,assigned,/iptv-near-me/
-iptv world,880,Commercial,assigned,/channels-list/
+iptv world,880,Commercial,assigned,/iptv-international/
 online iptv,880,Commercial,assigned,/what-is-iptv/
 edge iptv,720,Commercial,Not targeted: competitor brand / reseller / too generic,
 iptv areas,720,Informational,assigned,/iptv-near-me/
@@ -201,7 +201,7 @@ iptv providers reddit,500,Commercial,Reddit / forum query (no page),
 iptv roku,500,Informational,assigned,/iptv-roku/
 iptv roku tv,500,Informational,assigned,/iptv-roku/
 iptv samsung tv,500,Informational,assigned,/iptv-samsung-tv/
-iptv servers,500,Informational,Not targeted: competitor brand / reseller / too generic,
+iptv servers,500,Informational,assigned,/iptv-server/
 iptv service near me,500,Commercial,assigned,/iptv-near-me/
 iptv service provider,500,Commercial,assigned,/best-iptv-canada/
 iptv services reddit,500,Commercial,Reddit / forum query (no page),
@@ -235,7 +235,7 @@ iptv web,500,Informational,Not targeted: competitor brand / reseller / too gener
 iptv website,500,Informational,Not targeted: competitor brand / reseller / too generic,
 iptv345,500,Commercial,Not targeted: competitor brand / reseller / too generic,
 iptvforum,500,Informational,Reddit / forum query (no page),
-iptvfrance,500,Commercial,Not targeted: competitor brand / reseller / too generic,
+iptvfrance,500,Commercial,assigned,/french-iptv/
 iptvgreat,500,Commercial,Not targeted: competitor brand / reseller / too generic,
 iptvisuel,500,Commercial,Not targeted: competitor brand / reseller / too generic,
 iptvportal,500,Commercial,Not targeted: competitor brand / reseller / too generic,
@@ -336,7 +336,7 @@ tvip s box,500,Commercial,assigned,/iptv-box/
 vlc ip tv,500,Informational,assigned,/vlc-iptv/
 bandwich iptv,490,Commercial,Not targeted: competitor brand / reseller / too generic,
 best iptv providers,490,Commercial,assigned,/best-iptv-canada/
-iptv control,490,Informational,Not targeted: competitor brand / reseller / too generic,
+iptv control,490,Informational,assigned,/iptv-server/
 iptv edge,490,Commercial,Not targeted: competitor brand / reseller / too generic,
 iptv foster,490,Commercial,Not targeted: competitor brand / reseller / too generic,
 iptv installer,490,Informational,Not targeted: competitor brand / reseller / too generic,
@@ -393,11 +393,11 @@ buy iptv subscription,50,Commercial,assigned,/iptv-plans-canada/
 buzztv xrs 4900,50,Commercial,assigned,/iptv-box/
 buzztv xrs4500,50,Commercial,assigned,/iptv-box/
 canal iptv,50,Commercial,assigned,/iptv-quebec/
-canale romanesti iptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
+canale romanesti iptv,50,Commercial,assigned,/romanian-iptv/
 chrome iptv player,50,Informational,assigned,/iptv-apps/
 chromecast iptv,50,Commercial,assigned,/iptv-chromecast/
-cle amazon iptv,50,Informational,assigned,/iptv-sur-smart-tv/
-cle iptv amazon,50,Informational,assigned,/iptv-sur-smart-tv/
+cle amazon iptv,50,Informational,assigned,/iptv-sur-firestick/
+cle iptv amazon,50,Informational,assigned,/iptv-sur-firestick/
 clean iptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
 cobraiptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
 comparatif iptv,50,Commercial,assigned,/meilleur-iptv/
@@ -439,8 +439,8 @@ emby iptv,50,Informational,Not targeted: competitor brand / reseller / too gener
 empire iptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
 eternal iptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
 eternal tv iptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
-euro iptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
-euroiptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
+euro iptv,50,Commercial,assigned,/iptv-international/
+euroiptv,50,Commercial,assigned,/iptv-international/
 eva iptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
 evdtv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
 evo iptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
@@ -503,7 +503,7 @@ hulk iptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
 hydrogen iptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
 hypersonic iptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
 igate iptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
-iliria iptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
+iliria iptv,50,Commercial,assigned,/ex-yu-iptv/
 im infomir,50,Commercial,assigned,/mag-box-iptv/
 implayer premium,50,Commercial,assigned,/implayer/
 implayer tv,50,Informational,assigned,/implayer/
@@ -561,8 +561,8 @@ iptv checker online,50,Informational,assigned,/m3u-playlist/
 iptv chrome,50,Informational,assigned,/iptv-pc-mac/
 iptv chromecast,50,Commercial,assigned,/iptv-chromecast/
 iptv com,50,Commercial,Not targeted: competitor brand / reseller / too generic,
-iptv connect,50,Commercial,Not targeted: competitor brand / reseller / too generic,
-iptv connect pro,50,Commercial,Not targeted: competitor brand / reseller / too generic,
+iptv connect,50,Commercial,assigned,/iptv-server/
+iptv connect pro,50,Commercial,assigned,/iptv-server/
 iptv customer service,50,Informational,assigned,/contact/
 iptv deluxe,50,Commercial,Not targeted: competitor brand / reseller / too generic,
 iptv device,50,Commercial,assigned,/iptv-devices/
@@ -581,7 +581,7 @@ iptv formuler,50,Commercial,assigned,/formuler-iptv/
 iptv full hd,50,Commercial,assigned,/4k-iptv/
 iptv ge imedi,50,Commercial,Excluded market (Arabic/Middle East),
 iptv gen,50,Commercial,Not targeted: competitor brand / reseller / too generic,
-iptv global,50,Commercial,assigned,/channels-list/
+iptv global,50,Commercial,assigned,/iptv-international/
 iptv go,50,Commercial,Not targeted: competitor brand / reseller / too generic,
 iptv google chromecast,50,Informational,assigned,/iptv-chromecast/
 iptv google tv,50,Informational,assigned,/iptv-android-tv/
@@ -591,7 +591,7 @@ iptv high tech,50,Commercial,Not targeted: competitor brand / reseller / too gen
 iptv hisense,50,Informational,assigned,/iptv-android-tv/
 iptv hub,50,Commercial,Not targeted: competitor brand / reseller / too generic,
 iptv ipad,50,Informational,assigned,/iptv-iphone/
-iptv kanali,50,Informational,assigned,/channels-list/
+iptv kanali,50,Informational,assigned,/ex-yu-iptv/
 iptv laptop,50,Informational,assigned,/iptv-pc-mac/
 iptv legale,50,Commercial,Legality query (not built — see notes),
 iptv lg,50,Informational,assigned,/iptv-lg-tv/
@@ -599,7 +599,7 @@ iptv lg smart,50,Informational,assigned,/iptv-lg-tv/
 iptv lg tv,50,Informational,assigned,/iptv-lg-tv/
 iptv lg webos,50,Informational,assigned,/iptv-lg-tv/
 iptv lifetime,50,Commercial,assigned,/best-iptv-canada/
-iptv line,50,Commercial,Not targeted: competitor brand / reseller / too generic,
+iptv line,50,Commercial,assigned,/iptv-server/
 iptv listas m3u,50,Informational,Excluded market (Latin America),
 iptv liste,50,Informational,assigned,/m3u-playlist/
 iptv lite,50,Commercial,Not targeted: competitor brand / reseller / too generic,
@@ -619,7 +619,7 @@ iptv now,50,Commercial,assigned,/what-is-iptv/
 iptv nvidia shield,50,Commercial,assigned,/iptv-android-tv/
 iptv on apple tv 4k,50,Informational,assigned,/iptv-apple-tv/
 iptv on firestick reddit,50,Commercial,Reddit / forum query (no page),
-iptv orange,50,Commercial,Not targeted: competitor brand / reseller / too generic,
+iptv orange,50,Commercial,assigned,/french-iptv/
 iptv packages,50,Commercial,assigned,/iptv-plans-canada/
 iptv pas cher,50,Commercial,assigned,/abonnement-iptv/
 iptv pour pc,50,Informational,assigned,/iptv-sur-smart-tv/
@@ -645,7 +645,7 @@ iptv series,50,Commercial,assigned,/channels-list/
 iptv set,50,Commercial,Not targeted: competitor brand / reseller / too generic,
 iptv sharing,50,Informational,Legality query (not built — see notes),
 iptv shop,50,Commercial,Not targeted: competitor brand / reseller / too generic,
-iptv sky sports,50,Commercial,assigned,/iptv-sports/
+iptv sky sports,50,Commercial,assigned,/uk-iptv/
 iptv smart box,50,Commercial,assigned,/iptv-box/
 iptv smart purple player,50,Commercial,Not targeted: competitor brand / reseller / too generic,
 iptv smart tv,50,Informational,assigned,/iptv-samsung-tv/
@@ -718,7 +718,7 @@ iptv studio,50,Commercial,Not targeted: competitor brand / reseller / too generi
 iptv subscription ebay,50,Commercial,Not targeted: competitor brand / reseller / too generic,
 iptv sur apple tv,50,Informational,assigned,/iptv-sur-smart-tv/
 iptv sur chromecast,50,Informational,assigned,/iptv-sur-smart-tv/
-iptv sur fire stick,50,Informational,assigned,/iptv-sur-smart-tv/
+iptv sur fire stick,50,Informational,assigned,/iptv-sur-firestick/
 iptv sur iphone,50,Informational,assigned,/iptv-sur-smart-tv/
 iptv sur kodi,50,Informational,assigned,/iptv-sur-smart-tv/
 iptv sur mac,50,Informational,assigned,/iptv-sur-smart-tv/
@@ -1014,7 +1014,7 @@ tivimate player,50,Commercial,assigned,/tivimate/
 tivimate premium account,50,Commercial,Not targeted: out of scope,
 tivimate premium firestick,50,Commercial,Not targeted: out of scope,
 tivimate premium price,50,Commercial,Not targeted: out of scope,
-tivimate premium prix,50,Commercial,assigned,/abonnement-iptv/
+tivimate premium prix,50,Commercial,assigned,/tivimate-en-francais/
 tivimate samsung,50,Informational,assigned,/tivimate/
 tivimate samsung tv,50,Informational,assigned,/tivimate/
 tivimate website,50,Commercial,Not targeted: out of scope,
@@ -1038,7 +1038,7 @@ tvip s box v 525,50,Commercial,assigned,/iptv-box/
 tvip s box v 605,50,Commercial,assigned,/iptv-box/
 tvzon,50,Commercial,Excluded market (South Asia/Asia),
 ugoos am7,50,Commercial,Not targeted: out of scope,
-ukiptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
+ukiptv,50,Commercial,assigned,/uk-iptv/
 ultimate iptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
 unifi iptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
 universal iptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
@@ -1062,7 +1062,7 @@ wise iptv player,50,Commercial,Not targeted: competitor brand / reseller / too g
 wizard iptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
 wolf iptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
 world cup iptv,50,Commercial,assigned,/soccer-iptv/
-worldwide iptv,50,Commercial,assigned,/channels-list/
+worldwide iptv,50,Commercial,assigned,/iptv-international/
 x iptv,50,Commercial,Not targeted: competitor brand / reseller / too generic,
 xciptv firestick,50,Commercial,assigned,/xciptv/
 xciptv for firestick,50,Commercial,assigned,/xciptv/
