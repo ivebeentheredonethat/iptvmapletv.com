@@ -191,26 +191,51 @@ def flag(country):
 
 
 def _dots(n, label):
-    return f'<div class="rv-dots" role="tablist" aria-label="{label}">' + "".join(
+    return f'<div class="rv-dots" aria-label="{label}s">' + "".join(
         f'<button type="button" aria-label="Show {label.lower()} {i + 1}"{" aria-current=\"true\"" if i == 0 else ""}></button>' for i in range(n)) + "</div>"
+
+
+def _carousel(slides, label, cls):
+    """Horizontal slider: all slides sit side by side in a track that slides left/right (see site.js)."""
+    track = "".join(f'<div class="rv-slide">{sl}</div>' for sl in slides)
+    dots = _dots(len(slides), label) if len(slides) > 1 else ""
+    return (f'<div class="rv-carousel {cls}" data-carousel><div class="rv-viewport">'
+            f'<div class="rv-track">{track}</div></div>{dots}</div>')
+
+
+GOOGLE_LOGO = ('<svg class="rv-google" viewBox="0 0 260 56" width="220" height="50" role="img" aria-label="Google reviews">'
+               '<path d="M22 10C15.4 10 10 15.4 10 22s5.4 12 12 12c5.6 0 10.3-3.8 11.6-9H22v-4h16.2c.2 1 .3 2 .3 3 0 8.8-5.9 15-16.5 15C10.5 39 4 32.5 4 22S10.5 5 22 5c5.6 0 10.2 2.1 13.8 5.4l-3.6 3.6C29.8 11.6 26.2 10 22 10z" fill="#4285F4"/>'
+               '<text x="50" y="26" font-family="Arial,sans-serif" font-weight="700" font-size="24" dominant-baseline="middle">'
+               '<tspan fill="#4285F4">G</tspan><tspan fill="#EA4335">o</tspan><tspan fill="#FBBC05">o</tspan><tspan fill="#4285F4">g</tspan><tspan fill="#34A853">l</tspan><tspan fill="#EA4335">e</tspan></text>'
+               '<text x="50" y="48" font-family="Arial,sans-serif" font-weight="600" font-size="15" fill="rgba(255,255,255,0.6)">Reviews</text>'
+               '<text x="135" y="48" font-family="Arial,sans-serif" font-size="15" fill="#FBBC05">★★★★★</text></svg>')
 
 
 def reviews_section():
     r = data("reviews")
     squares = '<span class="rv-squares" aria-label="5 out of 5 stars">' + '<i>★</i>' * 5 + "</span>"
-    featured = "".join(
-        f"""<figure class="rv-slide rv-feature{' is-active' if i == 0 else ''}">{squares}
+    featured = [f"""<figure class="rv-feature">{squares}
   <h3>{escape(x["title"])}</h3><blockquote><p>{escape(x["body"])}</p></blockquote>
-  <figcaption class="rv-who rv-who--green">— {escape(x["name"])} {flag(x["country"])}</figcaption></figure>"""
-        for i, x in enumerate(r["reviews"]))
+  <figcaption class="rv-who rv-who--green">— {escape(x["name"])} {flag(x["country"])}</figcaption></figure>""" for x in r["reviews"]]
     wa_icon = f'<span class="rv-wa-icon">{icon("whatsapp")}</span>'
-    pairs = [r["whatsapp"][i:i + 2] for i in range(0, len(r["whatsapp"]), 2)]
-    wa = "".join(
-        f'<div class="rv-slide rv-wa-grid{" is-active" if i == 0 else ""}">' + "".join(
-            f"""<figure class="rv-card"><div class="rv-card-head">{wa_icon}<span>WhatsApp</span></div>
+    wa = ['<div class="rv-grid rv-grid--2">' + "".join(
+        f"""<figure class="rv-card"><div class="rv-card-head">{wa_icon}<span>WhatsApp</span></div>
   <blockquote><p>{escape(x["text"])}</p></blockquote><figcaption class="rv-who rv-who--wa">— {escape(x["name"])} {flag(x["country"])}</figcaption></figure>"""
-            for x in pair) + "</div>"
-        for i, pair in enumerate(pairs))
+        for x in r["whatsapp"][i:i + 2]) + "</div>" for i in range(0, len(r["whatsapp"]), 2)]
+    # Google block: only real reviews copied from the business's Google profile (src/data/reviews.json -> "google")
+    google_block = ""
+    if r.get("google"):
+        gl = r["google"]
+        slides = ['<div class="rv-grid rv-grid--3">' + "".join(
+            f"""<figure class="rv-card"><span class="rv-gstars" aria-label="{x.get('rating', 5)} out of 5 stars">{"★" * int(x.get("rating", 5))}</span>
+  <figcaption class="rv-gname">{escape(x["name"])}</figcaption><blockquote><p>{escape(x["text"])}</p></blockquote></figure>"""
+            for x in gl[i:i + 3]) + "</div>" for i in range(0, len(gl), 3)]
+        google_block = f"""
+    <div class="rv-block reveal">
+      <div class="rv-brand">{GOOGLE_LOGO}</div>
+      {_carousel(slides, "Google review", "rv-carousel--google")}
+    </div>"""
+    sources = "our customers, our WhatsApp support chat and Google" if r.get("google") else "our customers and our WhatsApp support chat"
     stats = [("50,000+", "Live channels", "#00E5FF"), ("7-day", "Money-back", "#00b67a"),
              ("4K", "Ultra HD", "#FBBC04"), ("24/7", "Human support", "#E8041F")]
     stat_html = "".join(f'<div class="rv-stat"><b style="color:{c}">{v}</b><span>{t}</span></div>' for v, t, c in stats)
@@ -219,19 +244,19 @@ def reviews_section():
     <div class="rv-head reveal">
       <p class="rv-kicker">Verified reviews</p>
       <h2>What customers say about <span>IPTVMaple</span></h2>
-      <p class="rv-sub">Real feedback from our customers and our WhatsApp support chat</p>
+      <p class="rv-sub">Real feedback from {sources}</p>
       <div class="rv-stats">{stat_html}</div>
     </div>
 
     <div class="rv-block reveal">
       <div class="rv-brand">{squares}<span>Customer reviews</span></div>
-      <div class="rv-carousel rv-carousel--feature" data-carousel>{featured}{_dots(len(r["reviews"]), "Review")}</div>
+      {_carousel(featured, "Review", "rv-carousel--feature")}
     </div>
 
     <div class="rv-block reveal">
       <div class="rv-brand rv-brand--wa">{wa_icon}<span>WhatsApp</span></div>
-      <div class="rv-carousel rv-carousel--wa" data-carousel>{wa}{_dots(len(pairs), "Message")}</div>
-    </div>
+      {_carousel(wa, "Message", "rv-carousel--wa")}
+    </div>{google_block}
   </div>
 </section>"""
 

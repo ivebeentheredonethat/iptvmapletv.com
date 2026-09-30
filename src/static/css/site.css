@@ -605,19 +605,28 @@ select.input option { background: #11141d; }
 .rv-brand .rv-squares i { width: 24px; height: 24px; font-size: 14px; }
 .rv-wa-icon { width: 38px; height: 38px; border-radius: 10px; background: #25D366; display: grid; place-items: center; flex: none; }
 .rv-wa-icon svg { width: 18px; height: 18px; color: #fff; fill: currentColor; }
-.rv-carousel { margin: 0 auto; overflow-x: clip; } /* the slide-in animation starts 24px to the right */
 .rv-carousel--feature { max-width: 780px; }
 .rv-carousel--wa { max-width: 900px; }
-.js .rv-slide:not(.is-active) { display: none; }
-.rv-slide.is-active { animation: rv-in .42s cubic-bezier(.25,.46,.45,.94); }
-@keyframes rv-in { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: none; } }
+.rv-carousel { margin: 0 auto; }
+.rv-viewport { overflow: hidden; margin: -10px -10px 0; padding: 10px 10px 30px; touch-action: pan-y; } /* padding keeps card shadows visible */
+.rv-track { display: flex; gap: 20px; transition: transform .6s cubic-bezier(.22,.61,.36,1); will-change: transform; }
+.rv-slide { flex: 0 0 100%; min-width: 0; }
+.rv-grid { display: grid; gap: 20px; height: 100%; }
+.rv-grid--2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.rv-grid--3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.rv-feature, .rv-card { height: 100%; }
+.rv-gstars { display: block; color: #FBBC04; font-size: 20px; letter-spacing: 2px; margin-bottom: 10px; }
+.rv-gname { font-weight: 700; font-size: 15px; color: rgba(255,255,255,.85); margin-bottom: 10px; }
+.rv-google { display: block; }
+.rv-dots { margin-top: -8px; }
+html:not(.js) .rv-track { flex-direction: column; }
+@media (prefers-reduced-motion: reduce) { .rv-track { transition: none; } }
 .rv-feature, .rv-card { margin: 0; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09); }
 .rv-feature { border-radius: 20px; padding: 32px 36px; box-shadow: 0 8px 40px rgba(0,0,0,.4); }
 .rv-feature .rv-squares { margin-bottom: 16px; }
 .rv-feature h3 { font-weight: 800; font-size: 18px; color: #fff; margin: 0 0 12px; }
 .rv-feature blockquote, .rv-card blockquote { margin: 0; }
 .rv-feature p { color: rgba(255,255,255,.6); line-height: 1.8; font-size: 15px; margin: 0 0 20px; }
-.rv-wa-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
 .rv-card { border-radius: 16px; padding: 24px; box-shadow: 0 6px 30px rgba(0,0,0,.35); }
 .rv-card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; font-weight: 700; font-size: 14px; color: #fff; }
 .rv-card-head .rv-wa-icon { width: 34px; height: 34px; border-radius: 50%; }
@@ -630,6 +639,4 @@ select.input option { background: #11141d; }
 .rv-dots button { width: 10px; height: 10px; border-radius: 99px; border: 0; padding: 0; cursor: pointer; background: rgba(255,255,255,.15); transition: all .45s cubic-bezier(.34,1.56,.64,1); }
 .rv-dots button[aria-current="true"] { width: 26px; background: #E8041F; }
 html:not(.js) .rv-dots { display: none; }
-html:not(.js) .rv-slide + .rv-slide { margin-top: 20px; }
 @media (max-width: 640px) { .rv-feature { padding: 24px 22px; } .rv-stat { padding: 12px 16px; } .rv-brand { flex-wrap: wrap; font-size: 19px; } .rv-brand .rv-squares i { width: 20px; height: 20px; font-size: 12px; } .rv-squares i { width: 26px; height: 26px; font-size: 15px; } }
-@media (prefers-reduced-motion: reduce) { .rv-slide.is-active { animation: none; } }

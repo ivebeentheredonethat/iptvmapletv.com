@@ -1,18 +1,71 @@
 {
   "reviews": [
-    { "title": "IPTVmaple goes wherever I go!", "body": "I travel a lot, and IPTVmaple never lets me down. Whether I’m at home, in a hotel, or on the road, it works perfectly with no buffering.", "name": "Anne Maurice", "country": "🇺🇸 USA" },
-    { "title": "Hooked on IPTV MAPLE!", "body": "Tried IPTVmaple once and I can’t live without it. Endless channels, great quality, and smooth streaming every time.", "name": "Pamela Hummels", "country": "🇺🇸 USA" },
-    { "title": "IPTVmaple stole my TV time!", "body": "Living in Ontario, winters are long and IPTVmaple keeps me entertained 24/7 with sports, movies, and series.", "name": "Sarah P", "country": "🇨🇦 Canada" },
-    { "title": "Best IPTV I’ve ever used", "body": "IPTVmaple is fast, reliable, and easy to set up. No buffering and excellent customer support.", "name": "John Carter", "country": "🇬🇧 UK" }
+    {
+      "title": "IPTVmaple goes wherever I go!",
+      "body": "I travel a lot, and IPTVmaple never lets me down. Whether I’m at home, in a hotel, or on the road, it works perfectly with no buffering.",
+      "name": "Anne Maurice",
+      "country": "🇺🇸 USA"
+    },
+    {
+      "title": "Hooked on IPTV MAPLE!",
+      "body": "Tried IPTVmaple once and I can’t live without it. Endless channels, great quality, and smooth streaming every time.",
+      "name": "Pamela Hummels",
+      "country": "🇺🇸 USA"
+    },
+    {
+      "title": "IPTVmaple stole my TV time!",
+      "body": "Living in Ontario, winters are long and IPTVmaple keeps me entertained 24/7 with sports, movies, and series.",
+      "name": "Sarah P",
+      "country": "🇨🇦 Canada"
+    },
+    {
+      "title": "Best IPTV I’ve ever used",
+      "body": "IPTVmaple is fast, reliable, and easy to set up. No buffering and excellent customer support.",
+      "name": "John Carter",
+      "country": "🇬🇧 UK"
+    }
   ],
   "whatsapp": [
-    { "text": "Everything loads instantly. Movies and series run smoothly with no issues.", "name": "Alex", "country": "🇨🇦 Canada" },
-    { "text": "Best IPTV I’ve tried so far. Quality stays stable even at night.", "name": "Ryan", "country": "🇬🇧 UK" },
-    { "text": "Works perfectly on my Firestick. Setup was quick and easy.", "name": "Kevin", "country": "🇨🇦 Canada" },
-    { "text": "Customer support was friendly and solved my issue in minutes.", "name": "Emma", "country": "🇩🇪 Germany" },
-    { "text": "Sports channels are crystal clear. No freezing at all.", "name": "Jason", "country": "🇨🇦 Canada" },
-    { "text": "Very smooth streaming on Smart TV. Happy with the service.", "name": "Sophie", "country": "🇫🇷 France" },
-    { "text": "I switched from cable and don’t regret it. Much better value.", "name": "Michael", "country": "🇨🇦 Canada" },
-    { "text": "Streams stay stable even during live matches. Impressive.", "name": "Daniel", "country": "🇬🇧 UK" }
-  ]
+    {
+      "text": "Everything loads instantly. Movies and series run smoothly with no issues.",
+      "name": "Alex",
+      "country": "🇨🇦 Canada"
+    },
+    {
+      "text": "Best IPTV I’ve tried so far. Quality stays stable even at night.",
+      "name": "Ryan",
+      "country": "🇬🇧 UK"
+    },
+    {
+      "text": "Works perfectly on my Firestick. Setup was quick and easy.",
+      "name": "Kevin",
+      "country": "🇨🇦 Canada"
+    },
+    {
+      "text": "Customer support was friendly and solved my issue in minutes.",
+      "name": "Emma",
+      "country": "🇩🇪 Germany"
+    },
+    {
+      "text": "Sports channels are crystal clear. No freezing at all.",
+      "name": "Jason",
+      "country": "🇨🇦 Canada"
+    },
+    {
+      "text": "Very smooth streaming on Smart TV. Happy with the service.",
+      "name": "Sophie",
+      "country": "🇫🇷 France"
+    },
+    {
+      "text": "I switched from cable and don’t regret it. Much better value.",
+      "name": "Michael",
+      "country": "🇨🇦 Canada"
+    },
+    {
+      "text": "Streams stay stable even during live matches. Impressive.",
+      "name": "Daniel",
+      "country": "🇬🇧 UK"
+    }
+  ],
+  "google": []
 }
