@@ -1,0 +1,50 @@
+{
+ "slug": "12-month-iptv-canada",
+ "head": {
+  "title": "1 Year IPTV Subscription for 5 Devices with the Powerful IPTVmaple",
+  "description": "Get a 1 Year IPTV Subscription for 5 devices with IPTVmaple 4K. Enjoy HD and 4K streaming, 24/7 support, and a wide range of channels. Subscribe now!",
+  "robots": "follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large",
+  "og_image": "https://iptvmapletv.com/wp-content/uploads/2024/12/iptv-smarters-1.webp",
+  "published": "2024-12-28T12:15:35+00:00",
+  "modified": "2026-03-31T12:12:06+00:00"
+ },
+ "blocks": [
+  {
+   "t": "h",
+   "tag": "h2",
+   "text": "1 Year (5 Devices)",
+   "html": "1 Year (5 Devices)"
+  },
+  {
+   "t": "img",
+   "src": "https://iptvmapletv.com/wp-content/uploads/2024/12/iptv-smarters-1.webp",
+   "alt": ""
+  },
+  {
+   "t": "h",
+   "tag": "h2",
+   "text": "1 Year (5 Devices)",
+   "html": "1 Year (5 Devices)"
+  },
+  {
+   "t": "h",
+   "tag": "h2",
+   "text": "Final Price : 225$",
+   "html": "Final Price : 225$"
+  },
+  {
+   "t": "text",
+   "html": "<div><div><div><div><p>1 Month IPTV Subscription Stream Live TV with IPTVMaple<br/>To get started with our premium IPTV service, simply enter your details below.</p><p>Provide your first name, email address, country, and WhatsApp number, and we will send you the login info right away.</p><p>Enjoy seamless access to an extensive collection of movies, series, sports, and more, all in vibrant 4K quality from the comfort of your home</p></div></div></div></div>"
+  },
+  {
+   "t": "form",
+   "id": "1569",
+   "labels": [
+    "First name",
+    "Email Address",
+    "Country",
+    "WhatsApp number"
+   ]
+  }
+ ]
+}

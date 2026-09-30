@@ -1,0 +1,38 @@
+{
+ "slug": "privacy",
+ "head": {
+  "title": "Privacy Policy – IPTVMaple",
+  "description": "IPTVMaple respects your privacy. Read our Privacy Policy to understand how we collect, use, and protect your personal data when you use our IPTV service.",
+  "robots": "follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large",
+  "og_image": "https://iptvmapletv.com/wp-content/uploads/2024/12/asset-6.png",
+  "published": "2024-12-29T16:14:49+00:00",
+  "modified": "2026-03-31T22:09:20+00:00"
+ },
+ "blocks": [
+  {
+   "t": "h",
+   "tag": "h2",
+   "text": "PRIVACY POLICY",
+   "html": "PRIVACY POLICY"
+  },
+  {
+   "t": "text",
+   "html": "<p>At <strong>IPTVmaple</strong>, we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard the information you share with us when using our website. This policy applies to our online activities only and is valid for visitors to <strong>IPTVmaple.com</strong>.</p><p>If you have any questions or need more information, feel free to contact us.</p><hr/><h3><strong>Consent</strong></h3><p>By using our website, you consent to the terms of this Privacy Policy.</p><hr/><h3><strong>Information We Collect</strong></h3><p>When you interact with us, we may collect personal information such as:</p><ul> <li> <p>Name</p> </li> <li> <p>Email address</p> </li> <li> <p>Phone number</p> </li> <li> <p>Message content (if you contact us directly)</p> </li> </ul><p>We may also collect non-personal data, including:</p><ul> <li> <p>IP address</p> </li> <li> <p>Browser type</p> </li> <li> <p>Device information</p> </li> <li> <p>Pages visited on our site</p> </li> </ul><hr/><h3><strong>How We Use Your Information</strong></h3><p>We use the collected information for purposes including:</p><ul> <li> <p>Operating and maintaining our website</p> </li> <li> <p>Improving and personalizing your experience</p> </li> <li> <p>Analyzing website usage and performance</p> </li> <li> <p>Developing new features or services</p> </li> <li> <p>Communicating with you (for updates, support, or marketing)</p> </li> <li> <p>Preventing fraud and ensuring security</p> </li> </ul><hr/><h3><strong>Log Files</strong></h3><p>Like many websites, <strong>IPTVmaple</strong> uses log files to track visitor activity. These files record information such as IP addresses, browser types, and timestamps. This helps us analyze trends and improve user experience. The data collected does not personally identify visitors.</p><hr/><h3><strong>Cookies</strong></h3><p>We use cookies to enhance your browsing experience. Cookies help remember your preferences and improve the content displayed on our website.<br/> You can disable cookies in your browser settings, but doing so may affect certain functionalities of the site.</p><hr/><h3><strong>Advertising Partners</strong></h3><p>We may work with third-party advertisers who use cookies or web beacons to deliver relevant ads. These third parties may collect data to personalize your advertising experience.<br/> <strong>IPTVmaple</strong> does not control or manage these third-party technologies.</p><hr/><h3><strong>Third-Party Websites</strong></h3><p>Our Privacy Policy applies only to <strong>IPTVmaple.com</strong>. We encourage you to review the privacy policies of any external websites or services you access through links on our site.</p><hr/><h3><strong>CCPA Privacy Rights (California Consumers)</strong></h3><p>Under the California Consumer Privacy Act (CCPA), users in California have the right to:</p><ul> <li> <p>Request details about the personal data we collect</p> </li> <li> <p>Request deletion of their personal data</p> </li> <li> <p>Opt out of the sale of their personal data (if applicable)</p> </li> </ul><p>To exercise any of these rights, please contact us. We will respond within <strong>30 days</strong>.</p><hr/><h3><strong>GDPR Data Protection Rights</strong></h3><p>If you are located in the EU, you are entitled to the following rights:</p><ul> <li> <p>The right to access your personal data</p> </li> <li> <p>The right to correct inaccurate data</p> </li> <li> <p>The right to request deletion of your data</p> </li> <li> <p>The right to restrict or object to processing</p> </li> <li> <p>The right to request data transfer to another organization</p> </li> </ul><p>Please contact us to exercise any of these rights, and we will respond within <strong>30 days</strong>.</p><hr/><h3><strong>Children’s Privacy</strong></h3><p>We do not knowingly collect personal information from individuals under <strong>18 years of age</strong>.<br/> If you believe your child has shared personal information with us, please contact us immediately — we will delete such data from our records.</p><hr/><h3><strong>Contact Us</strong></h3><p> </p><p>If you have any questions, concerns, or requests related to this Privacy Policy, please contact us at:<br/> 📧 <strong><a rel=\"noopener\"><span>[email protected]</span><span><svg><path></path></svg></span></a></strong></p>"
+  },
+  {
+   "t": "h",
+   "tag": "h2",
+   "text": "Over 2,000 Servers in 198 Countries",
+   "html": "Over 2,000 Servers in 198 Countries"
+  },
+  {
+   "t": "text",
+   "html": "<p>Enjoy uninterrupted IPTV streaming with a fast, stable, and reliable connection, ensuring premium performance across our global network.</p>"
+  },
+  {
+   "t": "img",
+   "src": "https://iptvmapletv.com/wp-content/uploads/2024/12/asset-6.png",
+   "alt": "Fast and reliable IPTV streaming service"
+  }
+ ]
+}

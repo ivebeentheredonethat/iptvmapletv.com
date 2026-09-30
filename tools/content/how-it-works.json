@@ -1,0 +1,85 @@
+{
+ "slug": "how-it-works",
+ "head": {
+  "title": "How It Works - IPTVMaple",
+  "description": "Already have an IPTV app?Just send us the name of the app you use (for example: TiviMate, IBO Player, IPTV Smarters, SmartOne, DuplexPlay…).We’ll send you the",
+  "robots": "follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large",
+  "og_image": "https://iptvmapletv.com/wp-content/uploads/2024/12/login-1024x473-1.webp",
+  "published": "2024-12-29T13:13:39+00:00",
+  "modified": "2025-11-17T10:32:11+00:00"
+ },
+ "blocks": [
+  {
+   "t": "h",
+   "tag": "h2",
+   "text": "HOW IT WORKS",
+   "html": "HOW IT WORKS"
+  },
+  {
+   "t": "h",
+   "tag": "h2",
+   "text": "3 Easy Steps to Get Started with IPTVmaple",
+   "html": "3 Easy Steps to Get Started with IPTVmaple"
+  },
+  {
+   "t": "iconbox",
+   "title": "Place Your Order",
+   "desc": "Pick the perfect plan for you 1, 6 or 12 months and get started right away"
+  },
+  {
+   "t": "iconbox",
+   "title": "Receive Your Login",
+   "desc": "Check your inbox for login details and use them in your IPTV player app."
+  },
+  {
+   "t": "iconbox",
+   "title": "Start Watching",
+   "desc": "Connect your IPTV to your TV computer or phone and enjoy unlimited international channels."
+  },
+  {
+   "t": "text",
+   "html": "<h3>Choose Your Player</h3><p><strong>Already have an IPTV app?</strong><br/>Just send us the name of the app you use (for example: <em>TiviMate, IBO Player, IPTV Smarters, SmartOne, DuplexPlay…</em>).<br/>We’ll send you the correct login details for that app — no extra setup needed.</p><p><strong>Don’t have an app yet?</strong><br/>You can install one of these popular IPTV players:</p><ul><li><p>IBO Player</p></li><li><p>TiviMate</p></li><li><p>SmartOne</p></li><li><p>DuplexPlay</p></li><li><p>Net IPTV</p></li><li><p>OTT Navigator<br/><em>(and many more)</em></p></li></ul><p>💡 <strong>Recommended: Smarters Player (Free)</strong><br/>It’s easy to use, free, and works on almost every device.</p><p>Please follow the below steps to install this app on your device :</p>"
+  },
+  {
+   "t": "accordion",
+   "items": [
+    [
+     "Apple / IOS",
+     "<div><p>Step 1: Start by downloading IPTV Smarters app from the Apple Store through this URL :</p><p><a href=\"https://apps.apple.com/in/app/smarters-player-lite/id1628995509\" rel=\"noopener\" target=\"_blank\">https://apps.apple.com/in/app/smarters-player-lite/id1628995509</a></p><p>Or you can search for it on App store : Smarters Player Lite</p><p>Step 2: Open the app once downloaded and Select Login With Xtream Codes API.</p></div><p><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/login-1024x473-1.webp\"/></p><p>Step 3: Enter the login details that we have provided you after you get a subscription with us</p><p>Now Click on “ADD USER” to proceed to the next section.</p><p>Step 4: Wait some seconds.</p><p>Step 5: Now click on “Live TV” icon as depicted in the image via a red arrow.</p><p><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/Dashboard-1024x473-1.webp\"/></p><div><p>Step 6: Now you must select the channel group that you want to watch and proceed to the next section.</p><p>Step 7: Now you must click on the channel name and then double click on the small screen to turn into full screen as the final step.</p><p>Step 8: No need to add any EPG url, Just click on “Install EPG” .</p></div>"
+    ],
+    [
+     "ANDROID",
+     "<div><p>Step 1: Start by downloading IPTV Smarters app through this URL :</p><p><a href=\"https://www.iptvsmarters.com/smarters.apk\" rel=\"noopener\" target=\"_blank\">https://www.iptvsmarters.com/smarters.apk</a></p><p>Step 2: Open the app once downloaded Select Login With Xtream Codes API.</p></div><p><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/login-1024x473-1.webp\"/></p><p>Step 3: Enter the login details that we have provided you after you get a subscription with us Now Click on “ADD USER” to proceed to the next section.</p><p>Step 4: Wait some seconds.</p><p>Step 5: Now click on “Live TV” icon as depicted in the image via a red arrow.</p><p><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/Dashboard-1024x473-1.webp\"/></p><div><p>Step 6: Now you must select the channel group that you want to watch and proceed to the next section.</p><p>Step 7: Now you must click on the channel name and then double click on the small screen to turn into full screen as the final step.</p></div>"
+    ],
+    [
+     "Smart tv ( Samsung/LG)",
+     "<div><div><div><p><strong>For Samsung Smart TV :</strong></p><p>Step 1 : Press the Smart Hub button from your remote.</p><p>Step 2 : Search for the IPTV Smarters Pro to install.</p><p>Step 3: Choose Login With Xtreme Codes</p><p>Step 4 : Log in the Application with your subscription details . Username, Password, Portal URL, That We Provide you.</p><p><strong>For LG Smart TV :</strong></p><p>Step 1 : Press the Home button on the remote &amp; Go to LG Content Store.</p><p>Step 2 : Search for the IPTV Smarters Pro to install.</p><p>Step 3: Choose Login With Xtreme Codes</p><p>Step 4 : Log in the Application with your subscription details. Username, Password, Portal URL, That We Provide you.</p></div></div><div><p> </p></div></div>"
+    ],
+    [
+     "Any other Smart TV",
+     "<div><div><p>Step 1: You can download SetIPTV / NetIPTV / Smart IPTV/ IBO PLAYER/ FLIX IPTV/ SMARTONE/ SS IPTV/ OTT Player/ IPTV EXTREME from your TV store on Samsung, LG …</p><p>Step 2: After the installation, open the app the you will find MAC Address on screen EX : 👇</p></div></div><p><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/MAC-ADDRESS.webp\"/></p><div><div><p>Step 3: Send us the MAC address via Whatsapp/Email/Live Chat</p><p>Step 4: After few minutes, restart/reboot your TV and Open the app Done</p></div></div>"
+    ],
+    [
+     "FireTVStick",
+     "<div><div><p>Step 1: From the home screen of your device, hover over the Find option.</p><p> </p></div></div><p><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/downloader-on-firestick-new-interface-2.webp\"/> <br/><br/>Step 2: Click Search.<br/><br/><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/downloader-on-firestick-new-interface-2-1.webp\"/><br/><br/>Step 3: Search for and select Downloader.<br/><br/><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/downloader-on-firestick-new-interface-4.webp\"/><br/><br/>Step 4: Choose the Downloader app.<br/><br/><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/downloader-on-firestick-new-interface-5.webp\"/><br/><br/>Step 5: Click Download.<br/><br/><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/downloader-on-firestick-new-interface-6.webp\"/><br/><br/>Step 6: Once the app finishes installing click Open.<br/><br/><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/downloader-on-firestick-new-interface-8.webp\"/><br/><br/>Step 7: Return to the home screen and open Settings.<br/><br/><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/downloader-on-firestick-new-interface-9.webp\"/><br/><br/>Step 8: Click My Fire TV.<br/><br/><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/downloader-on-firestick-new-interface-10.webp\"/><br/><br/>Step 9: Choose Developer options.<br/><br/><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/downloader-on-firestick-new-interface-11.webp\"/><br/><br/>Step 10: Click Install unknown apps.<br/><br/><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/downloader-on-firestick-new-interface-12.webp\"/><br/><br/>Step 11: Find the Downloader app and click it.<br/><br/><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/downloader-on-firestick-new-interface-13.webp\"/><br/><br/>Step 12: This will turn Unknown Sources to On for the Downloader app. This will enable side-loading on your device.<br/><br/><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/downloader-on-firestick-new-interface-14-1.webp\"/><br/><br/>Step 13: Launch Downloader.<br/><br/><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/launch-downloader-app.webp\"/><br/><br/>Step 14: Click Allow.<br/><br/><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/mobdro-firestick-4.webp\"/><br/><br/>Step 15: Click OK.<br/><br/><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/mobdro-firestick-5.webp\"/><br/><br/>Step 16: Type the following URL exactly as shown here:<br/><br/>https://www.iptvsmarters.com/smarters.apk<br/><br/>and click Go.<br/><br/><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/httpline.4k-turbo.comc-1-2-1024x576.webp\"/><br/><br/>Step 17: Wait for file to download.<br/><br/><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/iptv-smarters-2.webp\"/><br/><br/>Step 18: Click Install.<br/><br/><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/iptv-smarters-3.webp\"/><br/><br/>Step 19: Click Done.<br/><br/><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/iptv-smarters-4.webp\"/><br/><br/>Step 20: Open IPTV smarters then select Login with Xtream codes api.<br/><br/>Step 21: Log in the Application with your subscription details . Username, Password, Portal URL, That We Provide you.</p>"
+    ],
+    [
+     "Windows computer",
+     "<p>Step 1: Download IPTV Smarters app through this URL : <a href=\"https://www.iptvsmarters.com/download?download=windows\" rel=\"noopener\" target=\"_blank\">https://www.iptvsmarters.com/download?download=windows</a></p><p>Step 2: Choose Login With Xtreme Codes</p><p>Step 3: Log in the Application with your subscription details . Username, Password, Portal URL, That We Provide you.</p>"
+    ],
+    [
+     "MAC computer",
+     "<pre>Step 1: Download IPTV Smarters app through this URL :</pre><p><a href=\"https://www.iptvsmarters.com/download?download=mac\" rel=\"noopener\" target=\"_blank\">https://www.iptvsmarters.com/download?download=mac</a></p><p>Step 2: Choose Login With Xtreme<br/>zCodes</p><p>Step 3: Log in the Application with your subscription details . Username, Password, Portal URL, That We Provide you.</p>"
+    ],
+    [
+     "MAG Device",
+     "<div><div>Step 1: When the box is being loaded the main portal screen appears. After that click on “settings”, and press the remote button “SETUP/SET”.</div></div><p><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/iptv-mag-1024x419-1.png\"/></p><p>Step 2: Then press on “System settings” and click on “Servers”.</p><p><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/iptv-mag2.png\"/></p><p>Step 3: Click on ‘Servers’</p><p><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/iptv-mag3-1024x514-1.png\"/></p><p>Step 4: Choose and Press option ‘Portals’</p><p><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/iptv-mag4-1024x534-1.png\"/></p><p>Step 5: In the ‘Portal 1 name’ line enter a portal name and in the ‘Portal 1 URL’ enter portal URL.</p><p>Therefore for the activation of our IPTV subscription on your MAG box, you must send us with your order the MAC address found on the label behind the box, the activation is done entirely remotely, just after activation, we will send you a URL link that you have to put on your PORTAL, as in the photo below:</p><p><img alt=\"\" src=\"https://iptvmapletv.com/wp-content/uploads/2024/12/How-to-setup-IPTV-on-a-MAG-device-4.jpg\"/></p><p>Step 6 – Finally when you complete select and click ‘OK’ to save the changes.</p><p>Step 7 – Click ‘EXIT’ on the remote control after the settings are being saved.</p><div><p>Step 8 – Consequently you have to reboot the box. Choose the option ‘OK’ to make the changes applied</p></div>"
+    ],
+    [
+     "KODI",
+     "<p><strong>USING KODI KRYOPTON 17 :</strong></p><p>Launch Kodi app<br/>1. In the left menu click on TV<br/>2. Click on Add-on browser.<br/>3. Click on PVR IPTV Simple Client<br/>4. Click on Configure<br/>5. Select General<br/>6. Enter the IPTV subscription URL.<br/>7. Wait for some time until you get the notifications loaded</p>"
+    ]
+   ]
+  }
+ ]
+}

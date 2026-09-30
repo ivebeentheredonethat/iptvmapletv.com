@@ -1,5 +1,8 @@
 node_modules/
 .wrangler/
 .dev.vars
+__pycache__/
+# build output (python build.py) and the raw WordPress mirror
+public/
 site/
-tools/mirror-report.json
+.claude/

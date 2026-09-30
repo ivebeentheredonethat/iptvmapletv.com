@@ -1,0 +1,22 @@
+# Old WordPress URLs -> current pages (301 = permanent). Specific rules first, splats last.
+/1-month-iptv-subscription-for-4-devices/ /1-month-iptv-4-devices/ 301
+/1-month-iptv-subscription-stream-live-tv-with-iptvmaple/ /1-month-iptv-canada/ 301
+/1-year-iptv-subscription/ /12-month-iptv-canada/ 301
+/12-month-iptv-subscription-unlimited-streaming-with-iptvmaple/ /12-month-iptv-unlimited/ 301
+/6-month-iptv-subscription-unlimited-streaming/ /6-month-iptv-unlimited/ 301
+/6-months-iptv-subscription-for-3-devices/ /6-month-iptv-3-devices/ 301
+/6-months-iptv-subscription-for-4-devices/ /6-month-iptv-4-devices/ 301
+/6-months-iptv-subscription-for-5-devices/ /6-month-iptv-5-devices/ 301
+/free-trial/ /try-iptv-canada/ 301
+/ip-tv-smarters-pro/ /smarters-pro-canada/ 301
+/smarters-player-lite-subscription/ /smarters-lite-canada/ 301
+/referral/ /refer-a-friend/ 301
+/best-iptv-canada-2026/ / 301
+/channels/ /channels-list/ 301
+/sitemap.xml /sitemap_index.xml 301
+/wp-sitemap.xml /sitemap_index.xml 301
+/feed/ / 301
+/comments/feed/ / 301
+/wp-login.php / 302
+/wp-admin/* / 302
+/wp-content/uploads/* /images/:splat 301

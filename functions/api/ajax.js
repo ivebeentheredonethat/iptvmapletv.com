@@ -4,12 +4,13 @@
 //   2. sent to Telegram (if TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID are set),
 //   3. POSTed as JSON to NOTIFY_WEBHOOK_URL (if set),
 //   4. always written to the function log.
-// The response mimics Forminator's so its front-end script behaves exactly as before.
+// Field names and the response shape are the ones the old Forminator forms used.
 
 const REFERRAL_FORM = "3995";
 
 const LABELS = {
   default: {
+    plan: "Plan",
     "name-1": "First name",
     "email-1": "Email",
     "address-1-country": "Country",
@@ -41,19 +42,21 @@ export async function onRequestPost({ request, env, waitUntil }) {
   if (action !== "forminator_submit_form_custom-forms") return json({ success: false, data: "unsupported" });
 
   const formId = String(form.get("form_id") || "");
+  // Honeypot: real visitors never see or fill the "website" field; pretend success for bots.
+  if (form.get("website")) return json({ success: true, data: { success: true, message: "Thanks!" } });
   const labels = LABELS[formId] || LABELS.default;
   const fields = {};
   for (const [key, label] of Object.entries(labels)) {
     const v = String(form.get(key) || "").trim().slice(0, 300);
     if (v) fields[label] = v;
   }
-  if (!Object.keys(fields).length) {
+  if (!Object.keys(fields).some((k) => k !== "Plan")) {
     return json({ success: true, data: { success: false, message: "Please fill in the form.", errors: [] } });
   }
 
   const page = new URL(String(form.get("current_url") || form.get("_wp_http_referer") || "/"), request.url).pathname;
   const lead = {
-    type: formId === REFERRAL_FORM ? "referral" : page.includes("try-iptv") || page.includes("landing") ? "free-trial" : "order",
+    type: formId === REFERRAL_FORM ? "referral" : formId === "1570" ? "free-trial" : "order",
     page,
     form_id: formId,
     fields,
