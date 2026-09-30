@@ -115,7 +115,7 @@ def home():
     <div class="hero-copy">
       <span class="eyebrow"><b>50% OFF</b> Premium 4K IPTV · made for Canada 🍁</span>
       <h1 class="h1">The best IPTV service in Canada for <span class="grad-text">2026</span></h1>
-      <p class="lead">50,000+ live channels and 120,000+ movies &amp; series in stunning 4K. Buffer-free streaming on every device, instant activation — no contracts, no hidden fees.</p>
+      <p class="lead">50,000+ live channels and 300,000+ movies &amp; series in stunning 4K. Buffer-free streaming on every device, instant activation — no contracts, no hidden fees.</p>
       <div class="btn-row">
         <a class="btn btn--primary btn--lg" href="#pricing">See plans — 50% off {icon("arrow-right")}</a>
         <a class="btn btn--ghost btn--lg" href="/try-iptv-canada/">{icon("play")} Free 24h trial</a>
@@ -127,9 +127,11 @@ def home():
       </div>
     </div>
     <div class="hero-visual" aria-hidden="true">
+      <div class="hero-badges">
+        <div class="float-card float-card--live"><span class="ic">{icon("tv")}</span><div><strong><span class="live-dot"></span>LIVE · NHL in 4K</strong><small>Sports, PPV &amp; every big game</small></div></div>
+        <div class="float-card float-card--ready"><span class="ic">{icon("bolt")}</span><div><strong>Sent in under 1 minute</strong><small>Your login, ready to watch</small></div></div>
+      </div>
       <div class="poster-wall"><div class="cols">{wall}</div></div>
-      <div class="float-card float-card--live"><span class="ic">{icon("tv")}</span><div><strong><span class="live-dot"></span>LIVE · NHL in 4K</strong><small>Sports, PPV &amp; every big game</small></div></div>
-      <div class="float-card float-card--ready"><span class="ic">{icon("bolt")}</span><div><strong>Activated in minutes</strong><small>Login sent to your WhatsApp</small></div></div>
     </div>
   </div>
 </section>
@@ -138,7 +140,7 @@ def home():
   <div class="container">
     <div class="stats reveal">
       <div class="stat"><b>50K+</b><span>Live TV channels</span></div>
-      <div class="stat"><b>120K+</b><span>Movies &amp; series</span></div>
+      <div class="stat"><b>300K+</b><span>Movies &amp; series</span></div>
       <div class="stat"><b>4K</b><span>Ultra HD quality</span></div>
       <div class="stat"><b>24/7</b><span>Human support</span></div>
     </div>
@@ -503,7 +505,7 @@ def contact():
 def _aside():
     return f"""<aside>
   <div class="card side-cta"><div class="icon" style="margin-inline:auto">{icon("play")}</div><h3>Try IPTVMaple free</h3><p>24 hours of full access. No credit card needed.</p><a class="btn btn--primary btn--block" href="/try-iptv-canada/">Start free trial</a></div>
-  <div class="card side-cta"><h3>Plans from $9</h3><p>50,000+ channels &amp; 120,000+ movies in 4K — 50% off.</p><a class="btn btn--ghost btn--block" href="/iptv-plans-canada/">See pricing</a></div>
+  <div class="card side-cta"><h3>Plans from $9</h3><p>50,000+ channels &amp; 300,000+ movies in 4K — 50% off.</p><a class="btn btn--ghost btn--block" href="/iptv-plans-canada/">See pricing</a></div>
 </aside>"""
 
 

@@ -101,7 +101,7 @@ def pricing(default_devices=1, heading=True):
     conn = next(c for c in PLANS["connections"] if c["devices"] == default_devices)
     tabs = "".join(
         f'<button type="button" role="tab" data-devices="{c["devices"]}" aria-selected="{str(c["devices"] == default_devices).lower()}">'
-        f'{c["devices"]} {"Device" if c["devices"] == 1 else "Devices"}</button>'
+        f'<b>{c["devices"]}</b><span>{"Device" if c["devices"] == 1 else "Devices"}</span></button>'
         for c in PLANS["connections"])
     cards = []
     for p in conn["plans"]:
@@ -124,8 +124,8 @@ def pricing(default_devices=1, heading=True):
                         "Every plan includes every channel, every movie and every feature. Pick how many screens you need and how long you want to save.") if heading else ""
     return f"""<div data-pricing>
   {head}
-  <div class="seg-wrap reveal"><div class="seg" role="tablist" aria-label="Number of devices">{tabs}</div>
-  <p class="seg-note">How many devices will watch at the same time?</p></div>
+  <div class="seg-wrap reveal"><p class="seg-note">How many devices will watch at the same time?</p>
+  <div class="seg" role="tablist" aria-label="Number of devices">{tabs}</div></div>
   <div class="plans">{"".join(cards)}</div>
   {trust_row()}
   <p class="center muted" style="font-size:13.5px;margin-top:14px">Prices in US dollars. Paying in CAD? Your bank converts automatically.</p>
