@@ -101,9 +101,12 @@ def trust_row():
 # ------------------------------------------------------------------ pricing
 def pricing(default_devices=1, heading=True):
     conn = next(c for c in PLANS["connections"] if c["devices"] == default_devices)
+    who = {1: "Just me", 2: "Couple", 3: "Family", 4: "Big family", 5: "Whole house"}
     tabs = "".join(
         f'<button type="button" role="tab" data-devices="{c["devices"]}" aria-selected="{str(c["devices"] == default_devices).lower()}">'
-        f'<b>{c["devices"]}</b><span>{"Device" if c["devices"] == 1 else "Devices"}</span></button>'
+        f'<span class="seg-screens" aria-hidden="true">{"<i></i>" * c["devices"]}</span>'
+        f'<b>{c["devices"]}</b><span class="seg-label">{"Device" if c["devices"] == 1 else "Devices"}</span>'
+        f'<small class="seg-hint">{who.get(c["devices"], "")}</small></button>'
         for c in PLANS["connections"])
     cards = []
     for p in conn["plans"]:
