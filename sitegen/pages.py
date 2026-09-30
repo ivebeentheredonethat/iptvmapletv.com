@@ -37,7 +37,7 @@ def why_grid():
     cards = "".join(
         f'<div class="card card--hover feature reveal" style="--d:{i * .06:.2f}s"><div class="icon">{icon(ic)}</div><h3>{t}</h3><p>{d}</p></div>'
         for i, (ic, t, d) in enumerate(WHY))
-    return f'<div class="grid grid-3">{cards}</div>'
+    return f'<div class="grid grid-3 why-grid">{cards}</div>'
 
 
 def logo_marquee(items, speed=60, reverse=False):
@@ -84,6 +84,13 @@ LEAGUES = [
 ]
 
 
+def media_visual(src):
+    if isinstance(src, str):
+        return f'<img src="{src}" alt="" loading="lazy" width="960" height="540">'
+    imgs = "".join(f'<img src="{x}" alt="" loading="lazy" width="590" height="800">' for x in src)
+    return f'<div class="media-strip">{imgs}</div>'
+
+
 def home():
     m = _carousels()
     meta = META["home"]
@@ -94,17 +101,17 @@ def home():
         imgs = "".join(f'<img src="{src}" alt="" width="590" height="800"{"" if j < 3 else ' loading="lazy"'}>' for j, (src, _) in enumerate(c + c))
         return f'<div class="poster-col">{imgs}</div>'
     wall = "".join(poster_col(c) for c in cols)
-    rail = "".join(f'<img src="{s}" alt="{escape(a)}" width="590" height="800" loading="lazy">' for s, a in posters)
+    rail = "".join(f'<img src="{s}" alt="{escape(a)}" width="590" height="800" loading="lazy">' for s, a in real)
     devices = "".join(f'<div class="device"><img src="{s}" alt="{escape(a)}" loading="lazy"></div>' for s, a in m["devices"])
     leagues = "".join(f'<li><span class="emo" aria-hidden="true">{e}</span><span><b>{t}</b>{d}</span></li>' for e, t, d in LEAGUES)
     orbit = "".join(f'<div class="orbit"><img src="{s}" alt="{escape(a)}" loading="lazy"></div>' for s, a in m["sports"])
     cats = [
         ("/images/2024/12/Holiday-Gathering-iStock-1.webp", "Live sports", "Live Sports", "Watch every major match, tournament and event in real time. Football, UFC, F1, basketball — all your favourite sports, all in one place.", "/#sports"),
-        ("/images/composed/movies.webp", "4K movies", "Latest Movies", "Enjoy thousands of blockbuster hits and new releases in crystal-clear 4K. Movie nights have never looked this good.", "/iptv-plans-canada/"),
-        ("/images/composed/series.webp", "Series", "Latest TV Shows", "Stream popular series from around the world — drama, comedy, documentaries and more. Always something new to watch.", "/channels-list/"),
+        (["/images/2025/01/movies-5.jpg", "/images/2025/01/movies-13.webp", "/images/2025/01/movies-12.webp"], "4K movies", "Latest Movies", "Enjoy thousands of blockbuster hits and new releases in crystal-clear 4K. Movie nights have never looked this good.", "/iptv-plans-canada/"),
+        (["/images/2025/01/movies.jpg", "/images/2025/01/movies-3.jpg", "/images/2025/01/movies-6.jpg"], "Series", "Latest TV Shows", "Stream popular series from around the world — drama, comedy, documentaries and more. Always something new to watch.", "/channels-list/"),
     ]
     cat_html = "".join(
-        f'<a class="media-card reveal" style="--d:{i * .08:.2f}s" href="{href}"><img src="{src}" alt="" loading="lazy" width="960" height="540"><span class="tag">{tag}</span><h3>{t}</h3><p>{d}</p><span class="link-arrow">Explore</span></a>'
+        f'<a class="media-card reveal" style="--d:{i * .08:.2f}s" href="{href}">{media_visual(src)}<span class="tag">{tag}</span><h3>{t}</h3><p>{d}</p><span class="link-arrow">Explore</span></a>'
         for i, (src, tag, t, d, href) in enumerate(cats))
     searches = "".join(f'<a href="{h}">{escape(t)}</a>' for t, h in SEARCHES)
 

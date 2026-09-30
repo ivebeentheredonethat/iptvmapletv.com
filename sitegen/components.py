@@ -91,7 +91,7 @@ def trust_row():
     return f"""<div class="pricing-foot">
   <span>{icon("refund")} 7-day money-back guarantee</span>
   <span>{icon("bolt")} Ready within 5 minutes</span>
-  <span>{icon("headset")} 24/7 live support</span>
+  <span>{icon("headset")} 24/7 human support</span>
   <span>{icon("lock")} Secure &amp; private</span>
 </div>"""
 
@@ -120,7 +120,7 @@ def pricing(default_devices=1, heading=True):
 </article>""")
     payload = json.dumps([{"devices": c["devices"], "plans": [{k: q[k] for k in ("months", "price", "original", "slug")} for q in c["plans"]]}
                           for c in PLANS["connections"]], separators=(",", ":"))
-    head = section_head("Pricing", 'Simple plans. <span class="grad-text">Half the price.</span>',
+    head = section_head("Pricing", 'Simple plans. <span class="grad-text nowrap">Half the price.</span>',
                         "Every plan includes every channel, every movie and every feature. Pick how many screens you need and how long you want to save.") if heading else ""
     return f"""<div data-pricing>
   {head}
