@@ -324,7 +324,7 @@ def trial_pages():
     <div class="order-card reveal">
       <h2>Get your free trial</h2>
       <p class="muted" style="margin:0">Provide your first name, email, country and WhatsApp number — we’ll send you instant access.</p>
-      <div class="order-steps"><span class="on"><i>1</i>Your details</span><span><i>2</i>Login on WhatsApp</span><span><i>3</i>Watch for 24h</span></div>
+      <div class="order-steps"><span class="on"><i>1</i>Your details</span><span><i>2</i>Login by email &amp; WhatsApp</span><span><i>3</i>Watch for 24h</span></div>
       {lead_form("1570", "free-trial", "Start my free trial", 0, "Free trial 24h")}
     </div>
     <aside class="checkout-summary reveal">
@@ -344,7 +344,7 @@ def trial_pages():
 {more}
 {faq_section(FAQ[:6])}"""
         out.append(Page(f"/{slug}/", meta["title"] if slug == "landing2" else "IPTV Free Trial Canada – 24 Hours, No Card | IPTVMaple",
-                        meta["description"] if slug == "landing2" else "Try IPTVMaple free for 24 hours: live TV, sports, movies and series in 4K on any device. No credit card needed — get your login instantly on WhatsApp.",
+                        meta["description"] if slug == "landing2" else "Try IPTVMaple free for 24 hours: live TV, sports, movies and series in 4K on any device. No credit card needed — get your login instantly by email and WhatsApp.",
                         body, og_image=meta["og_image"], published=meta["published"], modified=meta["modified"], nav_active="/try-iptv-canada/",
                         # landing2 is an ad landing page with the same form as /try-iptv-canada/ — keep it out of the index
                         robots="noindex, follow" if slug == "landing2" else Page.robots, in_sitemap=slug != "landing2",

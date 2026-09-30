@@ -238,7 +238,7 @@ def lead_form(form_id, kind, submit_label, value=0, plan_name=""):
     <div class="field"><label for="f-name">First name</label><input class="input" id="f-name" name="name-1" autocomplete="given-name" placeholder="E.g. John" required><span class="err"></span></div>
     <div class="field"><label for="f-country">Country</label><select class="input" id="f-country" name="address-1-country" autocomplete="country-name">{opts}</select><span class="err"></span></div>
     <div class="field field--full"><label for="f-email">Email address</label><input class="input" id="f-email" name="email-1" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required><span class="err"></span></div>
-    <div class="field field--full"><label for="f-phone">WhatsApp number <em>— we send your login here</em></label><input class="input" id="f-phone" name="phone-1" type="tel" autocomplete="tel" inputmode="tel" placeholder="E.g. +1 300 400 5000" required><span class="err"></span></div>
+    <div class="field field--full"><label for="f-phone">WhatsApp number <em>— we send your login by email and WhatsApp</em></label><input class="input" id="f-phone" name="phone-1" type="tel" autocomplete="tel" inputmode="tel" placeholder="E.g. +1 300 400 5000" required><span class="err"></span></div>
   </div>
   <button class="btn btn--primary btn--lg btn--block" type="submit" style="margin-top:22px"><span class="spinner"></span>{submit_label} {icon("arrow-right")}</button>
   <div class="form-msg" role="status" aria-live="polite"></div>
