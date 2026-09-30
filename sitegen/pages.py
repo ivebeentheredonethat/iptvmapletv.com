@@ -164,6 +164,11 @@ def home():
   <div class="marquee poster-rail reveal" style="--speed:80s"><div class="marquee-track">{rail}{rail.replace('alt="', 'aria-hidden="true" alt="')}</div></div>
 </section>
 
+<section class="section" id="pricing">
+  {aurora()}
+  <div class="container z">{pricing()}</div>
+</section>
+
 <section class="section" id="sports">
   <div class="container sports">
     <div class="sports-visual reveal">
@@ -199,11 +204,6 @@ def home():
       <div class="card step reveal" style="--d:.16s"><h3>Start watching</h3><p>Connect on your TV, computer or phone and enjoy unlimited international channels.</p></div>
     </div>
   </div>
-</section>
-
-<section class="section" id="pricing">
-  {aurora()}
-  <div class="container z">{pricing()}</div>
 </section>
 
 <section class="section">
@@ -459,7 +459,7 @@ def referral():
     <p class="lead">Fill in the form below. When your friend subscribes for a year, you get 12 months free.</p>
   </div>
 </section>
-<section class="section" style="padding-top:0">
+<section class="section" style="padding-top:clamp(36px, 6vw, 56px)">
   <div class="container narrow">
     <div class="order-card reveal" id="referral-form">
       <h2>Submit a referral</h2>

@@ -231,9 +231,9 @@ def lead_form(form_id, kind, submit_label, value=0, plan_name=""):
 
 
 def referral_form():
-    def person(prefix, n, who, ph_name, ph_phone, ph_email):
-        return f"""<fieldset class="ref-group">
-    <legend>{who}</legend>
+    def person(prefix, n, who, hint, ph_name, ph_phone, ph_email):
+        return f"""<fieldset class="ref-group ref-group--{prefix}">
+    <legend><span class="ref-num">{n}</span><span><b>{who}</b><small>{hint}</small></span></legend>
     <div class="fields">
       <div class="field"><label for="{prefix}-name">Name</label><input class="input" id="{prefix}-name" name="name-{n}" autocomplete="{'name' if n == 1 else 'off'}" placeholder="{ph_name}" required><span class="err"></span></div>
       <div class="field"><label for="{prefix}-phone">Phone (WhatsApp)</label><input class="input" id="{prefix}-phone" name="phone-{n}" type="tel" inputmode="tel" autocomplete="{'tel' if n == 1 else 'off'}" placeholder="{ph_phone}" required><span class="err"></span></div>
@@ -244,8 +244,8 @@ def referral_form():
   <input type="hidden" name="action" value="forminator_submit_form_custom-forms">
   <input type="hidden" name="form_id" value="3995">
   <div class="hp" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
-  {person("r", 1, "Your details", "E.g. John Smith", "E.g. +1 300 400 5000", "you@example.com")}
-  {person("rf", 2, "Your friend’s details", "E.g. Mike Brown", "E.g. +1 245 852 4100", "friend@example.com")}
+  {person("r", 1, "Your details", "The person referring", "E.g. John Smith", "E.g. +1 300 400 5000", "you@example.com")}
+  {person("rf", 2, "Your friend’s details", "The new customer you’re referring", "E.g. Mike Brown", "E.g. +1 245 852 4100", "friend@example.com")}
   <button class="btn btn--primary btn--lg btn--block" type="submit" style="margin-top:22px"><span class="spinner"></span>Submit referral {icon("arrow-right")}</button>
   <div class="form-msg" role="status" aria-live="polite"></div>
 </form>"""
