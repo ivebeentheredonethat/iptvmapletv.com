@@ -117,6 +117,7 @@ def home():
 
     body = f"""
 <section class="hero">
+  <div class="hero-bg" aria-hidden="true"><img src="/images/hero/canada-fan-bg-1920.webp" srcset="/images/hero/canada-fan-bg-960.webp 960w, /images/hero/canada-fan-bg-1920.webp 1920w" sizes="100vw" width="1920" height="1410" alt="" fetchpriority="high"></div>
   {aurora()}<div class="grid-bg" aria-hidden="true"></div>
   <div class="container z">
     <div class="hero-copy">
