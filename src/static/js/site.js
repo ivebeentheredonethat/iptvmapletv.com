@@ -146,6 +146,14 @@
         } catch (_) {}
         if (json.data.url) { location.href = json.data.url; return; }
         form.reset();
+        const card = form.closest(".order-card"), done = card && $("[data-success]", card);
+        if (done) {
+          $("[data-success-hide]", card).hidden = true;
+          done.hidden = false;
+          card.scrollIntoView({ behavior: "smooth", block: "center" });
+          done.focus({ preventScroll: true });
+          return;
+        }
         msg.textContent = json.data.message;
         msg.className = "form-msg is-ok";
       } catch (err) {
@@ -157,6 +165,14 @@
     });
     $$("input, select", form).forEach((i) => i.addEventListener("input", () => setErr(i.name, "")));
   });
+
+  /* big confirmation panel -> back to the form */
+  $$("[data-success-again]").forEach((b) => b.addEventListener("click", () => {
+    const card = b.closest(".order-card");
+    $("[data-success]", card).hidden = true;
+    $("[data-success-hide]", card).hidden = false;
+    $("input:not([type=hidden])", card)?.focus();
+  }));
 
   /* referral: reveal form */
   $$("[data-show]").forEach((b) => b.addEventListener("click", () => {

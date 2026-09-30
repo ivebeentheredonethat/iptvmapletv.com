@@ -444,6 +444,14 @@ select.input option { background: #11141d; }
 .form-note svg { width: 18px; height: 18px; color: var(--green); flex: none; margin-top: 2px; }
 .form-msg { display: none; margin-top: 16px; padding: 14px 16px; border-radius: 14px; font-size: 14.5px; }
 .form-msg.is-error { display: block; background: rgba(255,45,74,.1); border: 1px solid rgba(255,45,74,.35); color: #ffb3bd; }
+.form-success { text-align: center; padding: clamp(28px, 5vw, 48px) 8px; outline: none; animation: pop .5s cubic-bezier(.2,.9,.3,1.3) both; }
+.form-success h2 { font-size: clamp(30px, 4.6vw, 44px); margin-bottom: 14px; color: #4ade80; }
+.form-success p { color: #c8cdd9; font-size: clamp(16px, 1.8vw, 18px); max-width: 520px; margin: 0 auto 28px; }
+.form-success .btn-row { justify-content: center; }
+.order-card:has(.form-success:not([hidden])) { border-color: rgba(34,197,94,.55); box-shadow: 0 0 0 1px rgba(34,197,94,.25), 0 30px 80px -20px rgba(34,197,94,.35); }
+.success-mark { width: 120px; height: 120px; margin: 0 auto 26px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle, rgba(34,197,94,.35), rgba(34,197,94,.06) 70%); border: 2px solid rgba(34,197,94,.55); }
+.success-mark svg { width: 60px; height: 60px; color: #4ade80; stroke-dasharray: 30; stroke-dashoffset: 30; animation: draw .8s .25s ease forwards; }
+@keyframes pop { from { opacity: 0; transform: scale(.92); } to { opacity: 1; transform: none; } }
 .form-msg.is-ok { display: block; background: rgba(34,197,94,.1); border: 1px solid rgba(34,197,94,.35); color: #a7f3c0; }
 .btn[disabled] { opacity: .7; cursor: progress; }
 .spinner { width: 18px; height: 18px; border-radius: 50%; border: 2.5px solid rgba(255,255,255,.35); border-top-color: #fff; animation: spin .8s linear infinite; display: none; }

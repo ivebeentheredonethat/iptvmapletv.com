@@ -454,9 +454,20 @@ def referral():
 <section class="section section--after-hero">
   <div class="container narrow">
     <div class="order-card reveal" id="referral-form">
-      <h2>Submit a referral</h2>
-      <p class="muted">All fields are required.</p>
-      {referral_form()}
+      <div data-success-hide>
+        <h2>Submit a referral</h2>
+        <p class="muted">All fields are required.</p>
+        {referral_form()}
+      </div>
+      <div class="form-success" data-success hidden tabindex="-1" role="status">
+        <div class="success-mark">{icon("check")}</div>
+        <h2>Referral received!</h2>
+        <p>Thank you! We’ve got your referral. As soon as your friend’s 12-month plan is paid, we’ll add <b>1 year free</b> to your account and let you know on WhatsApp.</p>
+        <div class="btn-row">
+          <a class="btn btn--wa btn--lg" href="{C.WHATSAPP_URL}" target="_blank" rel="noopener">{icon("whatsapp")} Confirm on WhatsApp</a>
+          <button class="btn btn--ghost btn--lg" type="button" data-success-again>Refer another friend</button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
