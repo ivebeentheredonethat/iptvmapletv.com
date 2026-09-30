@@ -96,6 +96,11 @@ def home():
     meta = META["home"]
     posters = m["posters"]
     real = [x for x in posters if "/movies" in x[0]]
+    cols = [real[i::3] for i in range(3)]
+    def poster_col(c):
+        imgs = "".join(f'<img src="{src}" alt="" width="590" height="800"{"" if j < 3 else ' loading="lazy"'}>' for j, (src, _) in enumerate(c + c))
+        return f'<div class="poster-col">{imgs}</div>'
+    wall = "".join(poster_col(c) for c in cols)
     rail = "".join(f'<img src="{s}" alt="{escape(a)}" width="590" height="800" loading="lazy">' for s, a in real)
     devices = "".join(f'<div class="device"><img src="{s}" alt="{escape(a)}" loading="lazy"></div>' for s, a in m["devices"])
     leagues = "".join(f'<li><span class="emo" aria-hidden="true">{e}</span><span><b>{t}</b>{d}</span></li>' for e, t, d in LEAGUES)
@@ -133,7 +138,7 @@ def home():
         <div class="float-card float-card--live"><span class="ic">{icon("tv")}</span><div><strong><span class="live-dot"></span>LIVE · NHL in 4K</strong><small>Sports, PPV &amp; every big game</small></div></div>
         <div class="float-card float-card--ready"><span class="ic">{icon("bolt")}</span><div><strong>Sent in under 1 minute</strong><small>Your login, ready to watch</small></div></div>
       </div>
-      <img class="hero-photo" src="/images/hero/canada-fan-1120.webp" srcset="/images/hero/canada-fan-640.webp 640w, /images/hero/canada-fan-1120.webp 1120w" sizes="(max-width: 960px) 92vw, 560px" width="1120" height="1179" alt="Canadian hockey fan cheering with a maple leaf flag" fetchpriority="high">
+      <div class="poster-wall"><div class="cols">{wall}</div></div>
     </div>
   </div>
 </section>
