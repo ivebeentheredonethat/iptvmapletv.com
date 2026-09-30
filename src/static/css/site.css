@@ -558,8 +558,6 @@ select.input option { background: #11141d; }
 
 /* mobile compaction */
 @media (max-width: 640px) {
-  .plan:not(.plan--best) .checks { display: none; }
-  .plan:not(.plan--best) .price-meta { margin-bottom: 20px; }
   .plan { padding: 26px 22px 22px; }
   .devices { grid-template-columns: repeat(4, 1fr); gap: 8px; }
   .device { padding: 6px; border-radius: 10px; aspect-ratio: 3/2; }
