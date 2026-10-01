@@ -137,6 +137,7 @@ def _header(p: Page):
     nav = "".join(link(l, h) for l, h in C.NAV)
     promo_text, promo_href = C.PROMO
     return f"""<a class="skip" href="#main">Skip to content</a>
+<div class="top-bar">
 <a class="promo" href="{promo_href}">{promo_text} <span>— <u>see how</u> →</span></a>
 <header class="header">
   <div class="container">
@@ -149,6 +150,7 @@ def _header(p: Page):
     </div>
   </div>
 </header>
+</div>
 <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
   {nav}
   <a class="btn btn--primary btn--lg btn--block" href="/iptv-plans-canada/">See plans — 50% off</a>
