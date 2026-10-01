@@ -61,7 +61,11 @@
     const tabs = $$(".seg button", root);
     const render = (n) => {
       const set = data.find((d) => d.devices === n);
-      tabs.forEach((t) => t.setAttribute("aria-selected", String(+t.dataset.devices === n)));
+      tabs.forEach((t, k) => {
+        const on = +t.dataset.devices === n;
+        t.setAttribute("aria-selected", String(on));
+        if (on) t.parentElement.style.setProperty("--i", k);
+      });
       set.plans.forEach((p, i) => {
         const card = $$(".plan", root)[i];
         $(".amt", card).textContent = p.price;

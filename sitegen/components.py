@@ -101,12 +101,9 @@ def trust_row():
 # ------------------------------------------------------------------ pricing
 def pricing(default_devices=1, heading=True):
     conn = next(c for c in PLANS["connections"] if c["devices"] == default_devices)
-    who = {1: "Just me", 2: "Couple", 3: "Family", 4: "Big family", 5: "Whole house"}
     tabs = "".join(
         f'<button type="button" role="tab" data-devices="{c["devices"]}" aria-selected="{str(c["devices"] == default_devices).lower()}">'
-        f'<span class="seg-screens" aria-hidden="true">{"<i></i>" * c["devices"]}</span>'
-        f'<b>{c["devices"]}</b><span class="seg-label">{"Device" if c["devices"] == 1 else "Devices"}</span>'
-        f'<small class="seg-hint">{who.get(c["devices"], "")}</small></button>'
+        f'<b>{c["devices"]}</b> <span>{"device" if c["devices"] == 1 else "devices"}</span></button>'
         for c in PLANS["connections"])
     cards = []
     for p in conn["plans"]:
@@ -130,7 +127,7 @@ def pricing(default_devices=1, heading=True):
     return f"""<div data-pricing>
   {head}
   <div class="seg-wrap reveal"><p class="seg-note">How many devices will watch at the same time?</p>
-  <div class="seg" role="tablist" aria-label="Number of devices">{tabs}</div></div>
+  <div class="seg" role="tablist" aria-label="Number of devices" style="--n:{len(PLANS["connections"])};--i:{default_devices - 1}"><span class="seg-thumb" aria-hidden="true"></span>{tabs}</div></div>
   <div class="plans">{"".join(cards)}</div>
   {trust_row()}
   <p class="center muted" style="font-size:13.5px;margin-top:14px">Prices in US dollars. Paying in CAD? Your bank converts automatically.</p>
