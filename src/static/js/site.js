@@ -228,8 +228,17 @@
       const d = Math.round(h / 24);
       return d + (d === 1 ? " day ago" : " days ago");
     };
+    /* sample names are shown only on a device where the owner switched preview on at /sales-demo/ (never to visitors) */
+    const SAMPLE = () => [
+      { first: "Sarah", place: "Ontario", plan: "12 Months", at: new Date(Date.now() - 2 * 3600e3).toISOString() },
+      { first: "James", place: "Texas", plan: "6 Months", at: new Date(Date.now() - 35 * 60e3).toISOString() },
+      { first: "Olivia", place: "Sydney", plan: "12 Months", at: new Date(Date.now() - 5 * 3600e3).toISOString() },
+      { first: "Klaus", place: "Germany", plan: "3 Months", at: new Date(Date.now() - 90 * 60e3).toISOString() },
+    ];
     const start = async () => {
-      let items = window.__SALE_DEMO || [];
+      let preview = false;
+      try { preview = localStorage.getItem("sn-preview") === "1"; } catch (e) {}
+      let items = window.__SALE_DEMO || (preview ? SAMPLE() : []);
       if (!items.length) { try { items = await (await fetch("/api/recent-orders")).json(); } catch (e) { return; } }
       if (!Array.isArray(items) || !items.length) return;
       const card = document.createElement("aside");
@@ -247,16 +256,18 @@
         const b = document.createElement("b");
         b.textContent = x.first;
         line.append(b, " from " + x.place + " purchased ", Object.assign(document.createElement("b"), { textContent: x.plan }));
-        time.textContent = ago(x.at);
+        time.textContent = ago(x.at) + (window.__SALE_DEMO || preview ? " · preview sample" : "");
         card.classList.add("is-on");
         shown++;
-        timer = setTimeout(() => { card.classList.remove("is-on"); timer = setTimeout(show, window.__SALE_DEMO ? 3500 : 14000); }, 6000);
+        timer = setTimeout(() => { card.classList.remove("is-on"); timer = setTimeout(show, window.__SALE_DEMO || preview ? 4000 : 14000); }, 6500);
       };
       card.querySelector("button").addEventListener("click", () => {
         clearTimeout(timer); card.classList.remove("is-on"); shown = 99;
         try { sessionStorage.setItem("sn-off", "1"); } catch (e) {}
       });
-      setTimeout(show, window.__SALE_DEMO ? 2000 : 7000);
+      card.addEventListener("mouseenter", () => card.classList.add("is-paused"));
+      card.addEventListener("mouseleave", () => card.classList.remove("is-paused"));
+      setTimeout(show, window.__SALE_DEMO || preview ? 2500 : 7000);
     };
     "requestIdleCallback" in window ? requestIdleCallback(start, { timeout: 4000 }) : setTimeout(start, 2500);
   })();
