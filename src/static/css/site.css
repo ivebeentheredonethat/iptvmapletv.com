@@ -667,3 +667,22 @@ html:not(.js) .rv-dots { display: none; }
   .prose th, .prose td { padding: 9px 7px; }
   .prose th { line-height: 1.25; }
 }
+
+/* ---------- recent real purchases (shown only when the owner has added entries) ---------- */
+.sale-toast {
+  position: fixed; left: 18px; bottom: 18px; z-index: 39; max-width: min(340px, calc(100vw - 100px));
+  display: flex; align-items: center; gap: 12px; padding: 12px 14px 12px 14px; border-radius: 16px;
+  background: rgba(14, 16, 24, .82); border: 1px solid var(--line-2); backdrop-filter: blur(16px) saturate(150%); -webkit-backdrop-filter: blur(16px) saturate(150%);
+  box-shadow: 0 18px 40px -16px rgba(0, 0, 0, .75); color: #dfe3ee; font-size: 13.5px; line-height: 1.35;
+  opacity: 0; transform: translateY(14px); visibility: hidden; pointer-events: none;
+  transition: opacity .5s ease, transform .5s ease, visibility .5s;
+}
+.sale-toast.is-on { opacity: 1; transform: none; visibility: visible; pointer-events: auto; }
+.sale-toast p { margin: 0; }
+.sale-toast b { color: #fff; font-weight: 650; }
+.sale-time { color: var(--dim); font-size: 12px; margin-top: 2px !important; }
+.sale-dot { flex: none; width: 9px; height: 9px; border-radius: 50%; background: #25d366; box-shadow: 0 0 0 4px rgba(37, 211, 102, .15); }
+.sale-toast button { flex: none; align-self: flex-start; background: none; border: 0; color: var(--dim); font-size: 18px; line-height: 1; cursor: pointer; padding: 0 2px; }
+.sale-toast button:hover { color: #fff; }
+@media (max-width: 480px) { .sale-toast { left: 12px; bottom: 12px; font-size: 13px; } }
+@media (prefers-reduced-motion: reduce) { .sale-toast { transition: opacity .2s; transform: none; } }

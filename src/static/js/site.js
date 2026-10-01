@@ -213,4 +213,51 @@
     t.scrollIntoView({ behavior: "smooth", block: "start" });
     setTimeout(() => $("input:not([type=hidden])", t)?.focus({ preventScroll: true }), 500);
   }));
+
+  /* recent real purchases: shows only entries the owner has added via /api/orders-admin; nothing is shown when the feed is empty */
+  (() => {
+    const skip = /^\/(thank-you|landing\d?)\//.test(location.pathname);
+    let hidden = false;
+    try { hidden = sessionStorage.getItem("sn-off") === "1"; } catch (e) {}
+    if (skip || hidden) return;
+    const ago = (iso) => {
+      const m = Math.max(1, Math.round((Date.now() - Date.parse(iso)) / 60000));
+      if (m < 60) return m + " min ago";
+      const h = Math.round(m / 60);
+      if (h < 24) return h + (h === 1 ? " hour ago" : " hours ago");
+      const d = Math.round(h / 24);
+      return d + (d === 1 ? " day ago" : " days ago");
+    };
+    const start = async () => {
+      let items = [];
+      try { items = await (await fetch("/api/recent-orders")).json(); } catch (e) { return; }
+      if (!Array.isArray(items) || !items.length) return;
+      const card = document.createElement("aside");
+      card.className = "sale-toast";
+      card.setAttribute("role", "status");
+      card.setAttribute("aria-live", "polite");
+      card.innerHTML = '<span class="sale-dot" aria-hidden="true"></span><div><p class="sale-line"></p><p class="sale-time"></p></div><button type="button" aria-label="Close">×</button>';
+      document.body.appendChild(card);
+      const line = card.querySelector(".sale-line"), time = card.querySelector(".sale-time");
+      let i = 0, shown = 0, timer;
+      const show = () => {
+        if (shown >= Math.min(items.length * 2, 6)) return;
+        const x = items[i++ % items.length];
+        line.textContent = "";
+        const b = document.createElement("b");
+        b.textContent = x.first;
+        line.append(b, " from " + x.place + " purchased ", Object.assign(document.createElement("b"), { textContent: x.plan }));
+        time.textContent = ago(x.at);
+        card.classList.add("is-on");
+        shown++;
+        timer = setTimeout(() => { card.classList.remove("is-on"); timer = setTimeout(show, 14000); }, 6000);
+      };
+      card.querySelector("button").addEventListener("click", () => {
+        clearTimeout(timer); card.classList.remove("is-on"); shown = 99;
+        try { sessionStorage.setItem("sn-off", "1"); } catch (e) {}
+      });
+      setTimeout(show, 7000);
+    };
+    "requestIdleCallback" in window ? requestIdleCallback(start, { timeout: 4000 }) : setTimeout(start, 2500);
+  })();
 })();
