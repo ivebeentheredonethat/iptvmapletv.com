@@ -24,6 +24,7 @@ class Page:
     in_sitemap: bool = True
     nav_active: str = ""           # which NAV href to highlight
     lang: str = "en-CA"            # html lang / og:locale ("fr-CA" for the French Québec pages)
+    alternates: list = field(default_factory=list)  # [(hreflang, path)] incl. this page, e.g. en-CA / fr-CA pairs
     preload_image: str = ""        # attributes for an LCP image preload link, e.g. 'href="..." imagesrcset="..." imagesizes="100vw"'
 
 
@@ -68,7 +69,7 @@ def _head(p: Page):
 <title>{title_text}</title>
 <meta name="description" content="{d}">
 <meta name="robots" content="{p.robots}">
-<link rel="canonical" href="{url}">
+<link rel="canonical" href="{url}">{"".join(f'{chr(10)}<link rel="alternate" hreflang="{hl}" href="{abs_url(h)}">' for hl, h in p.alternates)}{f'{chr(10)}<link rel="alternate" hreflang="x-default" href="{abs_url(p.alternates[0][1])}">' if p.alternates else ""}
 <meta name="theme-color" content="#06070b">
 <meta property="og:locale" content="{p.lang.replace('-', '_')}">
 <meta property="og:type" content="{p.og_type}">

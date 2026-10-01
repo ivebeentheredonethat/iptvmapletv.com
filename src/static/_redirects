@@ -18,6 +18,16 @@
 # Plan pages moved off guide keywords (2026-09-30): /iptv-smarters-pro/ is now the app guide
 /smarters-pro-canada/ /12-month-iptv-4-devices/ 301
 /smarters-lite-canada/ /1-month-iptv-3-devices/ 301
+# City pages moved under /canada/{province}/{city}/ (2026-10-01)
+/iptv-toronto/ /canada/ontario/toronto/ 301
+/iptv-montreal/ /canada/quebec/montreal/ 301
+/iptv-vancouver/ /canada/british-columbia/vancouver/ 301
+/iptv-calgary/ /canada/alberta/calgary/ 301
+/iptv-edmonton/ /canada/alberta/edmonton/ 301
+/iptv-ottawa/ /canada/ontario/ottawa/ 301
+/iptv-winnipeg/ /canada/manitoba/winnipeg/ 301
+/iptv-hamilton/ /canada/ontario/hamilton/ 301
+/iptv-halifax/ /canada/nova-scotia/halifax/ 301
 /tivimate-iptv/ /tivimate/ 301
 /iptv-subscription/ /iptv-plans-canada/ 301
 /iptv-free-trial/ /try-iptv-canada/ 301

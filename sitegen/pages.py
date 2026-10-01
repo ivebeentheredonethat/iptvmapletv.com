@@ -62,10 +62,11 @@ def network_section():
 # =================================================================== HOME
 SEARCHES = [
     ("IPTV Québec", "/iptv-quebec/"), ("Meilleur IPTV Québec", "/meilleur-iptv/"), ("Abonnement IPTV", "/abonnement-iptv/"),
-    ("IPTV Montréal", "/iptv-montreal/"), ("Chaînes IPTV Québec", "/iptv-quebec/"), ("IPTV sur Smart TV", "/iptv-sur-smart-tv/"),
+    ("IPTV Montréal", "/canada/quebec/montreal/"), ("Chaînes IPTV Québec", "/iptv-quebec/"), ("IPTV sur Smart TV", "/iptv-sur-smart-tv/"),
     ("Best IPTV Canada 2026", "/best-iptv-canada/"), ("IPTV Subscription Canada", "/iptv-plans-canada/"), ("IPTV Free Trial", "/try-iptv-canada/"),
-    ("IPTV Near Me", "/iptv-near-me/"), ("IPTV Toronto", "/iptv-toronto/"), ("IPTV Vancouver", "/iptv-vancouver/"),
-    ("IPTV Calgary", "/iptv-calgary/"), ("IPTV Edmonton", "/iptv-edmonton/"), ("IPTV Ottawa", "/iptv-ottawa/"),
+    ("IPTV Near Me", "/iptv-near-me/"), ("IPTV USA", "/usa/"), ("IPTV by Province", "/canada/"), ("IPTV New York", "/usa/new-york/new-york-city/"),
+    ("IPTV Los Angeles", "/usa/california/los-angeles/"), ("IPTV Chicago", "/usa/illinois/chicago/"), ("IPTV Houston", "/usa/texas/houston/"), ("IPTV Toronto", "/canada/ontario/toronto/"), ("IPTV Vancouver", "/canada/british-columbia/vancouver/"),
+    ("IPTV Calgary", "/canada/alberta/calgary/"), ("IPTV Edmonton", "/canada/alberta/edmonton/"), ("IPTV Ottawa", "/canada/ontario/ottawa/"),
     ("IPTV Smarters Pro", "/iptv-smarters-pro/"), ("TiviMate", "/tivimate/"), ("Best IPTV Apps", "/iptv-apps/"),
     ("IPTV on Firestick", "/iptv-firestick/"), ("Best IPTV Box", "/iptv-box/"), ("Formuler Z11 Pro Max", "/formuler-iptv/"),
     ("IPTV Samsung TV", "/iptv-samsung-tv/"), ("IPTV Apple TV", "/iptv-apple-tv/"), ("M3U Playlist", "/m3u-playlist/"),

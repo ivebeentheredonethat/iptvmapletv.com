@@ -4,6 +4,7 @@ PAGES = [
     # ------------------------------------------------------------------ HUB
     dict(
         slug="iptv-quebec", hub="fr", hub_page=True, lang="fr",
+        alternates=[("en-CA", "/canada/quebec/"), ("fr-CA", "/iptv-quebec/")],
         title="IPTV Québec : chaînes québécoises en 4K dès 9 $ | IPTVMaple",
         description="IPTV au Québec : TVA, ICI Radio-Canada, Noovo, RDS, TVA Sports et 50 000+ chaînes en 4K, sans contrat. Essai gratuit de 24 h et soutien 24/7 en français.",
         kicker="IPTV Québec", h1='IPTV au <span class="grad-text">Québec</span>',
@@ -42,7 +43,7 @@ PAGES = [
 </ol>
 
 <h2>Partout au Québec</h2>
-<p>Montréal, Québec, Laval, Gatineau, Longueuil, Sherbrooke, Saguenay, Trois-Rivières, Lévis, Rive-Nord ou Rive-Sud : l’IPTV fonctionne partout où il y a Internet. Pour Montréal en anglais, voir <a href="/iptv-montreal/">IPTV in Montreal</a>.</p>
+<p><a href="/fr/canada/quebec/montreal/">Montréal</a>, <a href="/fr/canada/quebec/ville-de-quebec/">Québec</a>, <a href="/fr/canada/quebec/laval/">Laval</a>, <a href="/fr/canada/quebec/gatineau/">Gatineau</a>, <a href="/fr/canada/quebec/longueuil/">Longueuil</a>, <a href="/fr/canada/quebec/sherbrooke/">Sherbrooke</a>, <a href="/fr/canada/quebec/saguenay/">Saguenay</a>, <a href="/fr/canada/quebec/trois-rivieres/">Trois-Rivières</a>, <a href="/fr/canada/quebec/levis/">Lévis</a>, <a href="/fr/canada/quebec/terrebonne/">Terrebonne</a>, <a href="/fr/canada/quebec/brossard/">Brossard</a> ou <a href="/fr/canada/nouveau-brunswick/">le Nouveau-Brunswick</a> : l’IPTV fonctionne partout où il y a Internet. Pour Montréal en anglais, voir <a href="/canada/quebec/montreal/">IPTV in Montreal</a>.</p>
 <h2>Toutes les régions du Québec</h2>
 <p>En plus des chaînes nationales, la programmation comprend les stations régionales :</p>
 <ul>
@@ -93,7 +94,7 @@ PAGES = [
             ('L’IPTV fonctionne-t-elle avec Vidéotron ou Bell?', '<p>Oui, avec tous les fournisseurs Internet : Vidéotron, Bell, Fizz, Oxio, Cogeco et les autres. Vous gardez votre Internet et coupez seulement la télé.</p>'),
             ('Puis-je regarder des chaînes de France aussi?', '<p>Oui, TF1, France 2, M6, beIN Sports France et bien d’autres sont incluses. Voir <a href="/french-iptv/">French IPTV</a>.</p>'),
         ],
-        related=["iptv-montreal", "nhl-iptv"],
+        related=["canada/quebec/montreal", "nhl-iptv"],
         cta_title="Prêt à couper le câble?",
         keywords=["iptv québec", "iptv quebec", "iptv québec canada", "chaînes iptv québec", "iptv montréal québec", "sport iptv québec", "films iptv québec", "series iptv québec", "smarters iptv québec", "iptv canada français", "canal iptv"],
     ),

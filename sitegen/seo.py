@@ -38,6 +38,8 @@ HUBS = {
     "intl": ("/iptv-international/", "International"),
     "guides": (None, None),
     "fr": ("/iptv-quebec/", "IPTV Québec"),
+    "usa": ("/usa/", "USA"),
+    "canada": ("/canada/", "Canada"),
 }
 
 TEXT = {
@@ -68,6 +70,8 @@ def _by_slug():
 
 def _crumbs(p, T):
     items = [(T["home"], "/")]
+    if "trail" in p:  # explicit breadcrumb trail, e.g. USA → Texas for a city page
+        return items + list(p["trail"]) + [(p["crumb"], "")]
     hub_url, hub_label = HUBS[p["hub"]]
     if hub_url and not p.get("hub_page"):
         items.append((hub_label, hub_url))
@@ -84,7 +88,13 @@ def _aside(T):
 
 
 def _hub_cards(p, T):
-    pages = [q for q in ALL if q["hub"] == p["hub"] and not q.get("hub_page")]
+    by = _by_slug()
+    if "children" in p:
+        pages = [by[s] for s in p["children"]]
+    else:
+        pages = [q for q in ALL if q["hub"] == p["hub"] and not q.get("hub_page")]
+    if not pages:
+        return ""
     cards = "".join(
         f'<a class="card card--hover link-card reveal" href="/{q["slug"]}/"><h3>{q["crumb"]}</h3><p>{q["blurb"]}</p><span class="link-arrow">{T["explore"]}</span></a>'
         for q in pages)
@@ -118,19 +128,28 @@ def render(p):
     {_aside(T)}
   </div>
 </section>
-{_hub_cards(p, T) if p.get("hub_page") else ""}
+{_hub_cards(p, T) if p.get("hub_page") or p.get("children") else ""}
 {faq_section([{"q": q, "a": a} for q, a in p["faq"]], T["faq"], lang) if p.get("faq") else ""}
 {cta_band(p.get("cta_title", T["cta_title"]), p.get("cta_text", T["cta_text"]), lang=lang)}"""
     url = f"/{p['slug']}/"
     ld = [breadcrumb_ld([(label, href or url) for label, href in crumb])]
     if p.get("faq"):
         ld.append(faq_ld([{"q": q, "a": a} for q, a in p["faq"]]))
-    ld.append({"@type": "Article", "headline": _plain(p["h1"])[:110], "description": p["description"],
-               "datePublished": UPDATED, "dateModified": UPDATED, "inLanguage": "fr-CA" if lang == "fr" else "en-CA",
-               "author": {"@id": C.SITE_URL + "/#organization"}, "publisher": {"@id": C.SITE_URL + "/#organization"},
-               "image": C.SITE_URL + C.DEFAULT_OG, "mainEntityOfPage": C.SITE_URL + url})
-    return Page(url, p["title"], p["description"], body, og_type="article", published=UPDATED, modified=UPDATED,
-                jsonld=ld, lang="fr-CA" if lang == "fr" else "en-CA")
+    locale = p.get("locale", "fr-CA" if lang == "fr" else "en-CA")
+    if p.get("service_area"):  # location pages: the service offered in that area (no physical address is claimed)
+        kind, name = p["service_area"]
+        ld.append({"@type": "Service", "name": _plain(p["h1"]), "serviceType": "IPTV subscription", "description": p["description"],
+                   "provider": {"@id": C.SITE_URL + "/#organization"}, "areaServed": {"@type": kind, "name": name},
+                   "url": C.SITE_URL + url,
+                   "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": 9, "highPrice": 225,
+                              "url": C.SITE_URL + "/iptv-plans-canada/"}})
+    else:
+        ld.append({"@type": "Article", "headline": _plain(p["h1"])[:110], "description": p["description"],
+                   "datePublished": UPDATED, "dateModified": UPDATED, "inLanguage": locale,
+                   "author": {"@id": C.SITE_URL + "/#organization"}, "publisher": {"@id": C.SITE_URL + "/#organization"},
+                   "image": C.SITE_URL + C.DEFAULT_OG, "mainEntityOfPage": C.SITE_URL + url})
+    return Page(url, p["title"], p["description"], body, og_type="article" if not p.get("service_area") else "website",
+                published=UPDATED, modified=UPDATED, jsonld=ld, lang=locale, alternates=p.get("alternates", []))
 
 
 def seo_pages():

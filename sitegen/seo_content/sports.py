@@ -72,13 +72,13 @@ PAGES = [
 <table>
 <thead><tr><th>Team</th><th>City guide</th></tr></thead>
 <tbody>
-<tr><td>Toronto Maple Leafs</td><td><a href="/iptv-toronto/">IPTV in Toronto</a></td></tr>
-<tr><td>Montréal Canadiens</td><td><a href="/iptv-montreal/">IPTV in Montreal</a></td></tr>
-<tr><td>Vancouver Canucks</td><td><a href="/iptv-vancouver/">IPTV in Vancouver</a></td></tr>
-<tr><td>Edmonton Oilers</td><td><a href="/iptv-edmonton/">IPTV in Edmonton</a></td></tr>
-<tr><td>Calgary Flames</td><td><a href="/iptv-calgary/">IPTV in Calgary</a></td></tr>
-<tr><td>Ottawa Senators</td><td><a href="/iptv-ottawa/">IPTV in Ottawa</a></td></tr>
-<tr><td>Winnipeg Jets</td><td><a href="/iptv-winnipeg/">IPTV in Winnipeg</a></td></tr>
+<tr><td>Toronto Maple Leafs</td><td><a href="/canada/ontario/toronto/">IPTV in Toronto</a></td></tr>
+<tr><td>Montréal Canadiens</td><td><a href="/canada/quebec/montreal/">IPTV in Montreal</a></td></tr>
+<tr><td>Vancouver Canucks</td><td><a href="/canada/british-columbia/vancouver/">IPTV in Vancouver</a></td></tr>
+<tr><td>Edmonton Oilers</td><td><a href="/canada/alberta/edmonton/">IPTV in Edmonton</a></td></tr>
+<tr><td>Calgary Flames</td><td><a href="/canada/alberta/calgary/">IPTV in Calgary</a></td></tr>
+<tr><td>Ottawa Senators</td><td><a href="/canada/ontario/ottawa/">IPTV in Ottawa</a></td></tr>
+<tr><td>Winnipeg Jets</td><td><a href="/canada/manitoba/winnipeg/">IPTV in Winnipeg</a></td></tr>
 </tbody>
 </table>
 
@@ -95,7 +95,7 @@ PAGES = [
             ("Are NHL games in French available?", "<p>Yes, TVA Sports and RDS are included for French-language broadcasts.</p>"),
             ("Do I need NHL Center Ice separately?", "<p>No. NHL Center Ice channels are included in your IPTVMaple subscription.</p>"),
         ],
-        related=["iptv-sports", "nba-iptv", "iptv-toronto", "iptv-montreal"],
+        related=["iptv-sports", "nba-iptv", "canada/ontario/toronto", "canada/quebec/montreal"],
         keywords=["nhl iptv", "iptv nhl", "hockey iptv", "iptv canada"],
     ),
     # ------------------------------------------------------------------ UFC
@@ -169,7 +169,7 @@ PAGES = [
             ("Can I watch the NBA Finals in 4K?", "<p>Yes, where a 4K feed is available. You need about 25 Mbps and a 4K device.</p>"),
             ("Are NBA games available in French?", "<p>RDS and TVA Sports carry French-language sports; availability of NBA games in French varies by season.</p>"),
         ],
-        related=["iptv-sports", "nhl-iptv", "iptv-toronto"],
+        related=["iptv-sports", "nhl-iptv", "canada/ontario/toronto"],
         keywords=["iptv nba", "nba iptv"],
     ),
     # ------------------------------------------------------------------ F1

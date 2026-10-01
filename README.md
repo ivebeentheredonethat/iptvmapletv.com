@@ -21,6 +21,7 @@ hosted on **Cloudflare Pages**.
 | `sitegen/pages.py` | Page layouts and section copy (homepage, pricing, order pages, channels…) |
 | `sitegen/components.py` | Shared sections: pricing table, FAQ, reviews, forms, CTA band |
 | `sitegen/seo_content/*.py` | SEO landing pages (apps, devices, sports, cities, guides, French Québec pages) — one dict per page |
+| `sitegen/seo_content/geo*.py` | Location pages: `/usa/{state}/{city}/`, `/canada/{province}/{city}/`, French Quebec `/fr/canada/quebec/…` — data in `geo_us_data.py` / `geo_ca_data.py`, local stations pulled from channels.json |
 | `sitegen/seo.py` | The single template every SEO page uses (title block, quick answer, FAQ schema, breadcrumbs, related links) |
 | `docs/seo-keyword-map.csv` | Every keyword from the keyword research → the page that targets it, or why it was excluded |
 | `src/static/css/site.css` | The whole design system (colours, type, components) — tokens at the top |
