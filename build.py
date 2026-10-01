@@ -35,10 +35,15 @@ def asset_hash():
 
 
 def sitemaps(pages):
-    urls = "".join(
-        f"<url><loc>{C.SITE_URL}{p.path}</loc>{f'<lastmod>{p.modified}</lastmod>' if p.modified else ''}</url>\n"
-        for p in pages if p.in_sitemap and "noindex" not in p.robots)
-    urlset = f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n'
+    def entry(p):
+        alts = "".join(f'<xhtml:link rel="alternate" hreflang="{hl}" href="{C.SITE_URL}{h}"/>' for hl, h in p.alternates)
+        if p.alternates:  # x-default = the first (English) version
+            alts += f'<xhtml:link rel="alternate" hreflang="x-default" href="{C.SITE_URL}{p.alternates[0][1]}"/>'
+        lm = f"<lastmod>{p.modified[:10]}</lastmod>" if p.modified else ""
+        return f"<url><loc>{C.SITE_URL}{p.path}</loc>{lm}{alts}</url>\n"
+    urls = "".join(entry(p) for p in pages if p.in_sitemap and "noindex" not in p.robots)
+    urlset = (f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+              f'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n{urls}</urlset>\n')
     write("sitemap.xml", urlset)       # main sitemap: every indexable page
     write("page-sitemap.xml", urlset)  # kept for sitemap_index.xml (submitted since the WordPress days)
     last = max((p.modified for p in pages if p.modified), default="")
@@ -46,6 +51,17 @@ def sitemaps(pages):
                                f'<sitemap><loc>{C.SITE_URL}/page-sitemap.xml</loc><lastmod>{last}</lastmod></sitemap>\n</sitemapindex>\n')
     ai = "".join(f"\nUser-agent: {bot}\nAllow: /\nDisallow: /api/\n" for bot in ("GPTBot", "ClaudeBot", "PerplexityBot", "Google-Extended"))
     write("robots.txt", f"User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /go/\n{ai}\nSitemap: {C.SITE_URL}/sitemap.xml\n")
+
+
+def check_redirects(pages):
+    """A redirect whose source is a real page would hide that page: fail the build instead."""
+    real = {p.path for p in pages}
+    bad = []
+    for line in open(os.path.join(OUT, "_redirects"), encoding="utf-8"):
+        parts = line.split()
+        if len(parts) >= 2 and not line.startswith("#") and parts[0] in real:
+            bad.append(parts[0])
+    return bad
 
 
 def llms_txt():
@@ -59,10 +75,16 @@ def llms_txt():
              f"- Plans and prices: {C.SITE_URL}/iptv-plans-canada/", f"- Free 24-hour trial: {C.SITE_URL}/try-iptv-canada/",
              f"- Channels list: {C.SITE_URL}/channels-list/", f"- How it works: {C.SITE_URL}/how-it-works/", f"- Contact: {C.SITE_URL}/contact/"]
     for key, (_, label) in HUBS.items():
-        pages = [p for p in ALL if p["hub"] == key]
+        # location pages (hundreds of city / state guides) are summarised by their hubs below, not listed one by one
+        pages = [p for p in ALL if p["hub"] == key and not p.get("service_area") and not p["slug"].startswith("fr/canada/")]
         if pages:
             lines += ["", f"## {label or 'Guides'}"]
             lines += [f"- {unescape(re.sub('<[^>]+>', '', p['h1']))}: {C.SITE_URL}/{p['slug']}/" for p in pages]
+    lines += ["", "## Locations",
+              f"- IPTV across Canada by province and city: {C.SITE_URL}/canada/",
+              f"- IPTV across the USA by state and city: {C.SITE_URL}/usa/",
+              f"- IPTV near me (all cities): {C.SITE_URL}/iptv-near-me/",
+              f"- IPTV au Québec (en français): {C.SITE_URL}/iptv-quebec/"]
     write("llms.txt", "\n".join(lines) + "\n")
 
 
@@ -137,6 +159,12 @@ def main():
         assert p.path not in seen, f"duplicate page {p.path}"
         seen.add(p.path)
         write(p.path + "index.html", layout.render(p))
+    bad = check_redirects(pages)
+    if bad:
+        print("Redirects that would hide real pages:\n  " + "\n  ".join(bad))
+        sys.exit(1)
+    from sitegen.pages import not_found
+    write("404.html", layout.render(not_found()))   # Cloudflare Pages serves this for unknown URLs (with a 404 status)
     sitemaps(pages)
     llms_txt()
     manifest()

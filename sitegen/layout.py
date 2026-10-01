@@ -3,8 +3,11 @@ import json
 from dataclasses import dataclass, field
 from html import escape
 
+import re
+
 from . import config as C
 from .icons import icon, payment_icons
+from .imgmeta import add_dimensions, image_size
 
 ASSET_VERSION = "dev"  # set by build.py to a content hash
 
@@ -32,6 +35,25 @@ def abs_url(u):
     return u if u.startswith("http") else C.SITE_URL + u
 
 
+_FAQ_ITEM = re.compile(r'<details[^>]*><summary>(.*?)</summary><div class="answer">(.*?)</div></details>', re.S)
+
+
+def _plain(html):
+    from html import unescape
+    return re.sub(r"\s+", " ", unescape(re.sub(r"<[^>]+>", " ", html))).strip()
+
+
+def _auto_faq(p: Page):
+    """FAQPage schema built from the FAQ that is actually visible on the page (so schema and page can never differ)."""
+    if any(isinstance(x, dict) and x.get("@type") == "FAQPage" for x in p.jsonld):
+        return None
+    items = _FAQ_ITEM.findall(p.body)
+    if not items:
+        return None
+    return {"@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": _plain(q), "acceptedAnswer": {"@type": "Answer", "text": _plain(a)}} for q, a in items]}
+
+
 def _analytics():
     first = C.GOOGLE_TAGS[0]
     configs = "".join(f'gtag("config","{t}");' for t in C.GOOGLE_TAGS)
@@ -44,6 +66,10 @@ def _head(p: Page):
     url = abs_url(p.path)
     img = abs_url(p.og_image)
     t, d = escape(p.title), escape(p.description)
+    sz = image_size(p.og_image) if not p.og_image.startswith("http") else None
+    og_size = (f'<meta property="og:image:width" content="{sz[0]}">\n<meta property="og:image:height" content="{sz[1]}">\n' if sz else "")
+    others = sorted({hl.replace("-", "_") for hl, _ in p.alternates if hl not in ("x-default", p.lang)})
+    og_alt = "".join(f'<meta property="og:locale:alternate" content="{o}">\n' for o in others)
     title_text = escape(p.title, quote=False)
     ld = [{
         "@context": "https://schema.org", "@graph": [
@@ -56,7 +82,7 @@ def _head(p: Page):
             {"@type": "WebPage", "@id": url + "#webpage", "url": url, "name": p.title, "description": p.description,
              "isPartOf": {"@id": C.SITE_URL + "/#website"}, "inLanguage": p.lang,
              **({"datePublished": p.published} if p.published else {}), **({"dateModified": p.modified} if p.modified else {})},
-        ] + p.jsonld,
+        ] + p.jsonld + ([f] if (f := _auto_faq(p)) else []),
     }]
     dates = ""
     if p.og_type == "article" and p.published:
@@ -78,8 +104,8 @@ def _head(p: Page):
 <meta property="og:description" content="{d}">
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="{img}">
-<meta property="og:image:alt" content="{t}">
-{dates}<meta name="twitter:card" content="summary_large_image">
+{og_size}<meta property="og:image:alt" content="{t}">
+{og_alt}{dates}<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{t}">
 <meta name="twitter:description" content="{d}">
 <meta name="twitter:image" content="{img}">
@@ -162,7 +188,7 @@ def _footer():
 
 
 def render(p: Page):
-    return f"""{_head(p)}
+    return add_dimensions(f"""{_head(p)}
 <body>
 {_header(p)}
 <main id="main">
@@ -172,4 +198,4 @@ def render(p: Page):
 <script src="/js/site.js?v={ASSET_VERSION}" defer></script>
 </body>
 </html>
-"""
+""")

@@ -1,0 +1,32 @@
+# SEO guide — iptvmapletv.com
+
+## How the site is built
+- `build.py` renders `src/` + `sitegen/` into `public/` (pure-stdlib Python 3.12). Cloudflare Pages deploys on every push to `main` (`.github/workflows/deploy.yml`).
+- SEO pages are dicts in `sitegen/seo_content/*.py` (one per page). Keys: `slug, hub, lang, title, description, kicker, h1, lead, crumb, blurb, answer, body, faq, related, keywords, alternates, published, updated, noindex, og_image`.
+- `seo_content/deep*.py` append sections/FAQs to existing pages without editing them.
+- Every page gets automatically: canonical, hreflang (EN↔FR pairs in `PAIRS`), OG/Twitter tags, JSON-LD graph (Organization, WebSite, WebPage, BreadcrumbList, Article/Service, FAQPage from the visible FAQ), table of contents on long articles, contextual auto-links, image width/height.
+- `sitemap.xml` (with `lastmod` and hreflang alternates), `robots.txt`, `llms.txt`, and `404.html` are generated.
+
+## Adding a page
+1. Add a dict to the right module (or a new one imported in `seo_content/__init__.py`).
+2. Title 50–60 chars, description 150–160, 3+ FAQs, `related` links.
+3. Add it to a hub (`hub`) so it is linked from the hub page and footer/ring links.
+4. `python3.12 build.py && python3.12 tools/seo_audit.py` — must report 0 critical / 0 important.
+5. Redirect aliases go in `src/static/_redirects`; the build fails if a redirect source is a real page.
+
+## Keyword map
+`python3.12 tools/keyword_map.py <Keyword_Canada.xlsx> docs/keyword-map.xlsx` — assigns each keyword to a page, or to an exclusion bucket (excluded markets per spec 0.0.2; other providers' brand names). Result: 651 keywords (519k searches/mo) mapped, 22 excluded-market, 406 other-brand. Review the "Working list" sheet; a few borderline assignments (e.g. English app queries sent to French pages) can be corrected in `MAP_RULES`.
+
+## Deliberately not built
+- Pages named after competitor IPTV brands (406 keywords): we can't truthfully write about them, and it risks trademark/misleading-content issues.
+- Excluded markets (Arabic, Asian, African, Caucasus content).
+- A reseller page.
+
+## Open items for the owner
+- **Legal page** (`/is-iptv-legal-in-canada/`, `/iptv-legal-canada/`): add your actual licensing statement; it currently stays general.
+- Legacy testimonials and the adult-content claim on `/landing/`, `/landing3/` (now `noindex`) should be verified or removed.
+- Location pages are templated; keep them unique and useful (doorway-page risk if spammed further).
+- `channels-list` includes channels from excluded markets.
+- Submit `https://iptvmapletv.com/sitemap.xml` in Google Search Console and Bing Webmaster Tools.
+- Revoke the GitHub and Cloudflare tokens that were pasted in chat; use repo secrets instead.
+- No one can guarantee #1 rankings. This work removes technical blockers and covers the topics; results depend on links, competition and time.

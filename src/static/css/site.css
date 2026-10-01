@@ -647,3 +647,19 @@ html:not(.js) .rv-track { flex-direction: column; }
 .rv-dots button[aria-current="true"] { width: 26px; background: #E8041F; }
 html:not(.js) .rv-dots { display: none; }
 @media (max-width: 640px) { .rv-feature { padding: 24px 22px; } .rv-stat { padding: 12px 16px; } .rv-brand { flex-wrap: wrap; font-size: 19px; } .rv-brand .rv-squares i { width: 20px; height: 20px; font-size: 12px; } .rv-squares i { width: 26px; height: 26px; font-size: 15px; } }
+
+/* table of contents on long guides */
+.toc { border: 1px solid var(--line-2); background: var(--glass); border-radius: 16px; padding: 16px 20px 12px; margin: 0 0 1.6em; }
+.toc > strong { display: block; font: 700 12px/1 var(--font); letter-spacing: .16em; text-transform: uppercase; color: var(--cyan); margin-bottom: 10px; }
+.toc ol { margin: 0; padding-left: 1.2em; columns: 2; column-gap: 28px; font-size: 15px; line-height: 1.5; }
+.toc li { margin: .25em 0; break-inside: avoid; }
+.toc a { text-decoration: none; color: #d3d7e1; }
+.toc a:hover { color: #fff; text-decoration: underline; }
+@media (max-width: 640px) { .toc ol { columns: 1; } }
+.prose h2[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
+
+@media (max-width: 640px) {
+  .prose table { font-size: 14px; }
+  .prose th, .prose td { padding: 9px 7px; }
+  .prose th { line-height: 1.25; }
+}

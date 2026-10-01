@@ -72,6 +72,12 @@ def ca_stations(keys, limit=6):
     return out[:limit]
 
 
+def _fold(x):
+    """Accent- and case-insensitive text for matching place names."""
+    import unicodedata
+    return "".join(c for c in unicodedata.normalize("NFD", str(x).lower()) if unicodedata.category(c) != "Mn")
+
+
 def _list(items, conj="and"):
     items = list(items)
     if len(items) <= 1:
@@ -107,6 +113,20 @@ def _nearby_links(names, slugmap, current):
     return links, plain
 
 
+def _ring(cities, pos, slugmap, skip=(), n=3):
+    """The next n other cities of the same province/state (wrapping around), as links. Every city page therefore gets inbound links from
+    its neighbours in the list, which keeps every location page well connected for crawlers and readers."""
+    out = []
+    for step in range(1, len(cities)):
+        c = cities[(pos + step) % len(cities)]
+        if c[1] in skip or c[1] == cities[pos][1] or c[1] not in slugmap:
+            continue
+        out.append(f'<a href="/{slugmap[c[1]]}/">{escape(c[1])}</a>')
+        if len(out) == n:
+            break
+    return out
+
+
 def _steps(place, tz):
     return f"""<h2>Get IPTV in {place} in 4 steps</h2>
 <ol>
@@ -127,6 +147,9 @@ def us_city(c):
     stations = us_stations(keys)
     links, plain = _nearby_links(nearby, US_CITY_SLUG, slug)
     near_html = _list(links + plain) if (links or plain) else ""
+    same = [x for x in US_CITIES if x[0] == abbr]
+    more = _ring(same, [x[1] for x in same].index(city), US_CITY_SLUG, skip=set(nearby))
+    more_html = f"<p>More {sname} city guides: {_list(more)}.</p>" if more else ""
     st_txt = _list(stations) if stations else "national network feeds from ABC, CBS, NBC and FOX"
     team0 = teams[0] if teams else "local"
     teams_li = "".join(f"<li>{escape(t)}</li>" for t in teams)
@@ -143,7 +166,7 @@ def us_city(c):
 <h2>Does IPTV work with {city} internet providers?</h2>
 <p>Yes. IPTV runs on top of any home internet — common providers in {sname} include {isps}, plus 5G home internet and Starlink. You need about 10 Mbps for HD and 25 Mbps per screen for 4K; most {city} plans offer far more.</p>
 {_steps(city, tz)}
-{f"<h2>IPTV near {city}</h2><p>We also serve {near_html} — and <a href='/usa/{sslug}/'>every city in {sname}</a>.</p>" if near_html else f"<p>See all <a href='/usa/{sslug}/'>IPTV guides for {sname}</a>.</p>"}
+{f"<h2>IPTV near {city}</h2><p>We also serve {near_html} — and <a href='/usa/{sslug}/'>every city in {sname}</a>.</p>{more_html}" if near_html else f"<p>See all <a href='/usa/{sslug}/'>IPTV guides for {sname}</a>.</p>{more_html}"}
 """
     faq = [
         (f"Is IPTV available in {city}, {abbr}?", f"<p>Yes. IPTVMaple works anywhere in {city} and across {sname} — all you need is an internet connection.</p>"),
@@ -181,6 +204,9 @@ def us_state(st):
     teams = teams[:10]
     st_txt = _list(stations) if stations else "national network feeds from ABC, CBS, NBC and FOX"
     city_links = _list(f'<a href="/{US_CITY_SLUG[c[1]]}/">{escape(c[1])}</a>' for c in cities)
+    _ix = [x[0] for x in STATES].index(sslug)
+    _others = [STATES[(_ix + k) % len(STATES)] for k in range(1, 5)]
+    state_more = "<p>More state guides: " + _list(f'<a href="/usa/{o[0]}/">{escape(o[1])}</a>' for o in _others) + ".</p>"
     teams_html = f"<p>Teams {sname} viewers follow include:</p><ul>{''.join(f'<li>{escape(t)}</li>' for t in teams)}</ul>" if teams else \
         f"<p>{sname} has no major-league teams of its own, so league packages and national sports networks — all included — matter even more.</p>"
     body = f"""
@@ -196,6 +222,7 @@ def us_state(st):
 <p>IPTV works with {isps}, as well as 5G home internet and Starlink. Plan on 10 Mbps for HD and 25 Mbps per screen for 4K.</p>
 {f"<h2>{sname} city guides</h2><p>Local details for {city_links}.</p>" if cities else ""}
 {_steps(sname, tz)}
+{state_more}
 """
     faq = [
         (f"Is IPTV available in {sname}?", f"<p>Yes — everywhere in {sname} with internet, from {capital} to the smallest towns.</p>"),
@@ -227,7 +254,16 @@ def ca_city(c):
     stations = ca_stations(keys)
     links, plain = _nearby_links(nearby, CA_CITY_SLUG, slug)
     near_html = _list(links + plain) if (links or plain) else ""
+    same = [x for x in CA_CITIES if x[0] == pslug]
+    more = _ring(same, [x[1] for x in same].index(city), CA_CITY_SLUG, skip=set(nearby))
+    more_html = f"<p>More {pname} city guides: {_list(more)}.</p>" if more else ""
     st_txt = _list(stations) if stations else "CBC, CTV, Global and Citytv national feeds"
+    # Only call stations "local" when the city's own name is in them (e.g. CBC Toronto in Toronto). Elsewhere (CBC Calgary on the
+    # Edmonton page) they are the nearest regional feeds in our lineup, and the page says so instead of implying a local station.
+    local_st = any(_fold(city) in _fold(x) for x in stations)
+    regional = bool(stations) and not local_st
+    if regional:
+        st_txt = "regional feeds such as " + st_txt
     team0 = teams[0].split(" (")[0] if teams else "local"
     fr = pslug == "quebec" or city in ("Moncton", "Ottawa")
     alternates = []
@@ -246,13 +282,14 @@ def ca_city(c):
 <h2>Does IPTV work with my {city} internet provider?</h2>
 <p>Yes. IPTV works with {isps} and any other ISP in {pname}. You don’t need to change provider or rent a TV box. For 4K, 25 Mbps per screen is plenty.</p>
 {_steps(city, tz)}
-{f"<h2>IPTV near {city}</h2><p>We also serve {near_html} — and <a href='/canada/{pslug}/'>every city in {pname}</a>.</p>" if near_html else ""}
+{f"<h2>IPTV near {city}</h2><p>We also serve {near_html} — and <a href='/canada/{pslug}/'>every city in {pname}</a>.</p>{more_html}" if near_html else more_html}
 {"<p><strong>En français :</strong> <a href='" + alternates[1][1] + "'>IPTV " + FR_NAMES.get(city, city) + "</a>.</p>" if alternates else ""}
 """
     faq = [
         (f"Is IPTV available in {city}?", f"<p>Yes. IPTVMaple works anywhere in {city} and across {pname} — all you need is an internet connection.</p>"),
         (f"Do I need to change my internet provider in {city}?", f"<p>No. IPTV works with {isps} and every other ISP. Keep your internet plan and cancel only the cable TV part if you want.</p>"),
-        (f"Can I watch local {city} channels?", f"<p>Yes, including {st_txt}, plus national Canadian networks.</p>"),
+        ((f"Can I watch local {city} channels?", f"<p>Yes, including {st_txt}, plus national Canadian networks.</p>") if not regional else
+         (f"Are {city} local channels included?", f"<p>The lineup carries {st_txt}, plus every national Canadian network. If you need a specific {city} station, ask our team on WhatsApp before you subscribe and we’ll tell you exactly what is included.</p>")),
         (f"Can I watch {team0} games on IPTV?", f"<p>Yes — the Canadian sports networks that carry {team0} games are included in every plan.</p>"),
     ]
     rel = [CA_CITY_SLUG[n] for n in nearby if n in CA_CITY_SLUG and CA_CITY_SLUG[n] != slug][:3]
@@ -283,6 +320,10 @@ def ca_province(pv):
     city_links = _list(f'<a href="/{CA_CITY_SLUG[c[1]]}/">{escape(c[1])}</a>' for c in cities)
     alternates = [("en-CA", "/canada/quebec/"), ("fr-CA", "/iptv-quebec/")] if pslug == "quebec" else \
         [("en-CA", "/canada/new-brunswick/"), ("fr-CA", "/fr/canada/nouveau-brunswick/")] if pslug == "new-brunswick" else []
+    _keys = list(PROV)
+    _px = _keys.index(pslug) if pslug in _keys else 0
+    _po = [PROV[_keys[(_px + k) % len(_keys)]] for k in range(1, 4)]
+    prov_more = "<p>More province guides: " + _list(f'<a href="/canada/{o[0]}/">{escape(o[1])}</a>' for o in _po) + ".</p>"
     body = f"""
 <h2>IPTV in {pname}: what to know</h2>
 <p>{note}</p>
@@ -296,6 +337,7 @@ def ca_province(pv):
 <p>IPTV works with {isps} and any other provider. Plan on 10 Mbps for HD and 25 Mbps per screen for 4K.</p>
 {f"<h2>{pname} city guides</h2><p>Local details for {city_links}.</p>" if cities else ""}
 {_steps(pname, tz)}
+{prov_more}
 {"<p><strong>En français :</strong> <a href='" + alternates[1][1] + "'>IPTV " + ("Québec" if pslug == "quebec" else "Nouveau-Brunswick") + "</a>.</p>" if alternates else ""}
 """
     faq = [
@@ -325,9 +367,16 @@ def fr_city(c):
     frslug = f"fr/canada/quebec/{FR_SLUGS.get(city, cslug)}"
     stations = ca_stations(keys)
     st_txt = _list(stations, "et") if stations else "TVA, ICI Radio-Canada Télé et Noovo"
+    fr_regional = bool(stations) and not any(_fold(nom) in _fold(x) for x in stations)
+    if fr_regional:
+        st_txt = "des chaînes régionales comme " + st_txt
     team0 = teams[0].split(" (")[0] if teams else "vos équipes"
     voisins = [FR_NAMES[n] for n in nearby if n in FR_NAMES and n != city]
     near = _list([f'<a href="/fr/canada/quebec/{FR_SLUGS.get(n, CA_CITY_SLUG[n].split("/")[-1])}/">{FR_NAMES[n]}</a>' for n in nearby if n in FR_NAMES and n != city], "et")
+    _qc = [x[1] for x in CA_CITIES if x[0] == "quebec" and x[1] in FR_NAMES]
+    _qi = _qc.index(city) if city in _qc else 0
+    _qo = [n for n in (_qc[(_qi + k) % len(_qc)] for k in range(1, len(_qc))) if n != city and n not in nearby][:3]
+    fr_more = ("<p>Autres villes : " + _list([f'<a href="/fr/canada/quebec/{FR_SLUGS.get(n, CA_CITY_SLUG[n].split("/")[-1])}/">{FR_NAMES[n]}</a>' for n in _qo], "et") + ".</p>") if _qo else ""
     body = f"""
 <h2>Pourquoi passer à l’IPTV à {nom}</h2>
 <p>L’IPTV diffuse la télé par Internet plutôt que par le câble : pas de terminal à louer, pas de technicien, pas de contrat. À {nom}, elle fonctionne avec Vidéotron, Bell, Cogeco, Fizz et tous les autres fournisseurs.</p>
@@ -344,11 +393,13 @@ def fr_city(c):
 <li>Regardez en direct ou en rattrapage, en HD et 4K.</li>
 </ol>
 {f"<h2>IPTV près de {nom}</h2><p>Nous servons aussi {near} — et <a href='/iptv-quebec/'>tout le Québec</a>.</p>" if near else ""}
+{fr_more}
 <p><em>In English:</em> <a href="/{CA_CITY_SLUG[city]}/">IPTV in {city}</a>.</p>
 """
     faq = [
         (f"L’IPTV fonctionne-t-elle à {nom}?", f"<p>Oui, partout à {nom} avec n’importe quel fournisseur Internet : Vidéotron, Bell, Cogeco, Fizz ou autre.</p>"),
-        (f"Les chaînes locales de {nom} sont-elles incluses?", f"<p>Oui, dont {st_txt}, plus toutes les chaînes nationales en français et en anglais.</p>"),
+        ((f"Les chaînes locales de {nom} sont-elles incluses?", f"<p>Oui, dont {st_txt}, plus toutes les chaînes nationales en français et en anglais.</p>") if not fr_regional else
+         (f"Les chaînes de {nom} sont-elles incluses?", f"<p>La programmation comprend {st_txt}, plus toutes les chaînes nationales en français et en anglais. Pour une station locale précise, écrivez-nous sur WhatsApp avant de vous abonner.</p>")),
         (f"Puis-je regarder les matchs de {team0}?", f"<p>Oui, sur les réseaux sportifs inclus dans chaque forfait (RDS, TVA Sports, TSN, Sportsnet).</p>"),
         ("Le soutien est-il offert en français?", "<p>Oui, notre équipe répond en français 24/7 par WhatsApp et par courriel.</p>"),
     ]

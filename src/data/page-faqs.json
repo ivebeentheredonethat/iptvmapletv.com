@@ -1,0 +1,212 @@
+{
+ "refund": [
+  {
+   "q": "How long do I have to ask for a refund?",
+   "a": "<p>You can request a refund within <strong>7 days of your purchase</strong>. Send an email to Help@iptvmapletv.com with the subject “Request a Refund”, your order ID and a short description of the problem. After 7 days a partial refund based on the unused part of your subscription may be possible.</p>"
+  },
+  {
+   "q": "What if the service doesn’t work and you can’t fix it?",
+   "a": "<p>If a technical issue makes the service unusable and we can’t resolve it within <strong>48 hours</strong>, we issue a full refund. If a single channel or server has a problem that lasts more than 48 hours, we either refund you or extend your subscription to make up the lost time.</p>"
+  },
+  {
+   "q": "How long does a refund take to arrive?",
+   "a": "<p>Credit card refunds typically take 20 to 31 working days and, depending on your payment provider, can take up to 90 days. These timelines are set by the payment processor, not by IPTVMaple.</p>"
+  },
+  {
+   "q": "When is a refund not possible?",
+   "a": "<p>Refunds aren’t issued for setup problems caused by user error or an incompatible device (our support team will help you set up instead), or for occasional short buffering caused by maintenance or your internet connection.</p>"
+  },
+  {
+   "q": "Can I try IPTVMaple before buying?",
+   "a": "<p>Yes. Start the <a href=\"/try-iptv-canada/\">free 24-hour trial</a> to test it on your own TV and internet connection before you choose a plan.</p>"
+  }
+ ],
+ "about-iptvmaple": [
+  {
+   "q": "What is IPTVMaple?",
+   "a": "<p>IPTVMaple is an IPTV service for Canada: live TV channels, sports, and a movies-and-series library delivered over your internet connection to smart TVs, phones, tablets, computers and streaming devices — with no cable box and no contract.</p>"
+  },
+  {
+   "q": "Which languages and channels does IPTVMaple cover?",
+   "a": "<p>The lineup includes the Canadian networks in English and French (CBC, CTV, Global, Citytv, TVA, ICI Radio-Canada, TSN, Sportsnet, RDS) plus channels from the USA, the UK, Europe and many other countries. Browse the full <a href=\"/channels-list/\">channels list</a>.</p>"
+  },
+  {
+   "q": "How do I contact IPTVMaple?",
+   "a": "<p>Our support team answers on WhatsApp and by email at Help@iptvmapletv.com, day and night. See the <a href=\"/contact/\">contact page</a>.</p>"
+  },
+  {
+   "q": "Can I try it before I pay?",
+   "a": "<p>Yes — there is a <a href=\"/try-iptv-canada/\">free 24-hour trial</a>, and every purchase is covered by a <a href=\"/refund/\">7-day money-back guarantee</a>.</p>"
+  },
+  {
+   "q": "What devices work with IPTVMaple?",
+   "a": "<p>Smart TVs (Samsung, LG), Amazon Firestick, Android TV boxes, Apple TV, iPhone and iPad, Windows and Mac computers, MAG and Formuler boxes. See the <a href=\"/iptv-devices/\">device guides</a>.</p>"
+  }
+ ],
+ "privacy": [
+  {
+   "q": "What personal information does IPTVMaple collect?",
+   "a": "<p>When you contact us or order, we may collect your name, email address, phone number and the content of your messages. We also collect non-personal data such as IP address, browser type, device information and the pages you visit.</p>"
+  },
+  {
+   "q": "Do you use cookies?",
+   "a": "<p>Yes. Cookies remember your preferences and help improve the site. You can disable them in your browser settings, although some features may then work less well.</p>"
+  },
+  {
+   "q": "Can I ask you to delete my data?",
+   "a": "<p>Yes. Email Help@iptvmapletv.com. California (CCPA) and EU (GDPR) residents have the right to access, correct and delete their data, and we respond within 30 days.</p>"
+  },
+  {
+   "q": "Do you collect data from children?",
+   "a": "<p>No. We do not knowingly collect personal information from anyone under 18. If you believe a child has shared data with us, contact us and we will delete it.</p>"
+  }
+ ],
+ "terms": [
+  {
+   "q": "Can the terms change?",
+   "a": "<p>Yes. We may change or discontinue features and these Terms at any time by posting the revision on the site. Continued use of the site means you accept the revised terms.</p>"
+  },
+  {
+   "q": "Does IPTVMaple guarantee uninterrupted service?",
+   "a": "<p>The site and services are provided “as is” and “as available”, so we can’t guarantee uninterrupted access. If a technical issue can’t be fixed within 48 hours, the <a href=\"/refund/\">refund policy</a> applies.</p>"
+  },
+  {
+   "q": "Can I copy content from the site?",
+   "a": "<p>You may view or print individual pages for non-commercial use. Reselling, copying or compiling the site’s content into a database or directory without written permission is not allowed.</p>"
+  },
+  {
+   "q": "Where can I read about refunds and privacy?",
+   "a": "<p>See the <a href=\"/refund/\">refund policy</a> (7-day money-back guarantee) and the <a href=\"/privacy/\">privacy policy</a>.</p>"
+  }
+ ],
+ "3-smarter-ways-to-stream-tv-without-cable-in-2025": [
+  {
+   "q": "What is the cheapest way to watch live TV without cable?",
+   "a": "<p>An IPTV subscription is usually the lowest-cost way to get live channels and sports together: IPTVMaple starts at $9 for one month and about $4/month on the 12-month plan, compared with $70+ per month for live streaming TV packages. See <a href=\"/iptv-plans-canada/\">all plans</a>.</p>"
+  },
+  {
+   "q": "Do I need special equipment?",
+   "a": "<p>No. A smart TV, Firestick, Android TV box, Apple TV, phone or computer is enough. See the <a href=\"/iptv-devices/\">device guides</a>.</p>"
+  },
+  {
+   "q": "Can I keep my Canadian channels and sports?",
+   "a": "<p>Yes. The lineup includes CBC, CTV, Global, TVA, ICI Radio-Canada, TSN, Sportsnet and RDS. See the <a href=\"/channels-list/\">channels list</a>.</p>"
+  },
+  {
+   "q": "Is there a free way to test an IPTV service?",
+   "a": "<p>Yes — IPTVMaple offers a <a href=\"/try-iptv-canada/\">free 24-hour trial</a> and a 7-day money-back guarantee.</p>"
+  }
+ ],
+ "cord-cutting-guide": [
+  {
+   "q": "How much can I save by cutting the cord?",
+   "a": "<p>Cable with sports often costs $80–$150 or more per month in Canada. An IPTV plan from $9 per month (about $4/month on the 12-month plan) replaces most of that. Compare in our <a href=\"/best-iptv-canada/\">Canadian IPTV buyer’s guide</a>.</p>"
+  },
+  {
+   "q": "How fast can I switch?",
+   "a": "<p>Most customers are watching within minutes: choose a plan or start the <a href=\"/try-iptv-canada/\">free trial</a>, receive your login by email and WhatsApp, and install an app.</p>"
+  },
+  {
+   "q": "Will I lose live sports?",
+   "a": "<p>No. The lineup includes TSN, Sportsnet, RDS, NHL, NBA and UFC channels. See <a href=\"/iptv-sports/\">IPTV for sports</a>.</p>"
+  },
+  {
+   "q": "Do I need to cancel my internet?",
+   "a": "<p>No. IPTV runs over your existing home internet. About 25 Mbps per screen is enough for 4K.</p>"
+  }
+ ],
+ "landing": [
+  {
+   "q": "What do I get with IPTVMaple?",
+   "a": "<p>Live TV channels, sports, and a movies-and-series library in HD and 4K on up to five devices at the same time. See <a href=\"/iptv-plans-canada/\">plans and prices</a>.</p>"
+  },
+  {
+   "q": "Can I try it first?",
+   "a": "<p>Yes — start the <a href=\"/try-iptv-canada/\">free 24-hour trial</a>, no credit card needed.</p>"
+  },
+  {
+   "q": "What if I’m not happy?",
+   "a": "<p>Every purchase has a <a href=\"/refund/\">7-day money-back guarantee</a>.</p>"
+  }
+ ],
+ "landing3": [
+  {
+   "q": "What is the best way to cut the cord in Canada?",
+   "a": "<p>Replace the cable box with an IPTV subscription that carries your Canadian channels and sports. Read our <a href=\"/best-iptv-canada/\">buyer’s guide</a> for what to check.</p>"
+  },
+  {
+   "q": "Can I try it first?",
+   "a": "<p>Yes — start the <a href=\"/try-iptv-canada/\">free 24-hour trial</a>.</p>"
+  },
+  {
+   "q": "What if I’m not happy?",
+   "a": "<p>Every purchase has a <a href=\"/refund/\">7-day money-back guarantee</a>.</p>"
+  }
+ ],
+ "refer-a-friend": [
+  {
+   "q": "How does the IPTVMaple referral program work?",
+   "a": "<p>Fill in the form with your details and your friend’s. When your friend subscribes to a 12-month plan and their payment is verified, we add one year to your subscription.</p>"
+  },
+  {
+   "q": "Who counts as a valid referral?",
+   "a": "<p>Your friend must be a new IPTVMaple customer who has not used the service before, and must buy a 12-month plan.</p>"
+  },
+  {
+   "q": "Is there a limit to how many friends I can refer?",
+   "a": "<p>No. Every successful referral adds another 12 months to your subscription.</p>"
+  },
+  {
+   "q": "When do I receive my free year?",
+   "a": "<p>After the referred friend’s payment is verified. We contact you to confirm.</p>"
+  },
+  {
+   "q": "Can I refer someone by WhatsApp instead?",
+   "a": "<p>Referrals are tracked through the form on this page so every referral is recorded correctly. Please use the form above.</p>"
+  }
+ ],
+ "how-it-works": [
+  {
+   "q": "How long does setup take?",
+   "a": "<p>Most customers are watching within about five minutes: you receive your login by email and WhatsApp, install an app, enter the login, and your channels load.</p>"
+  },
+  {
+   "q": "What login details will I receive?",
+   "a": "<p>A server URL, username and password (Xtream Codes login), and an M3U playlist link if your app prefers it.</p>"
+  },
+  {
+   "q": "Which app should I use?",
+   "a": "<p>On Firestick and Android TV use <a href=\"/tivimate/\">TiviMate</a>; on phones, tablets and computers use <a href=\"/iptv-smarters-pro/\">IPTV Smarters Pro</a>; on Samsung and LG TVs use <a href=\"/smart-iptv/\">Smart IPTV</a> or <a href=\"/flix-iptv/\">Flix IPTV</a>. See <a href=\"/iptv-apps/\">all IPTV apps</a>.</p>"
+  },
+  {
+   "q": "What internet speed do I need?",
+   "a": "<p>About 10 Mbps for HD and 25 Mbps per screen for 4K. A wired connection or 5 GHz Wi-Fi gives the most stable picture.</p>"
+  },
+  {
+   "q": "What if I get stuck?",
+   "a": "<p>Message our team on WhatsApp or email Help@iptvmapletv.com — we set up apps with customers every day.</p>"
+  }
+ ],
+ "channels-list": [
+  {
+   "q": "How many channels does IPTVMaple have?",
+   "a": "<p>More than 50,000 live channels from many countries, plus a library of over 300,000 movies and series. Use the search box above to check any channel.</p>"
+  },
+  {
+   "q": "Are Canadian channels included, in English and French?",
+   "a": "<p>Yes. The Canada section includes CBC, CTV, Global, Citytv, TVA, ICI Radio-Canada, Noovo, TSN, Sportsnet, RDS and many local stations. See also <a href=\"/iptv-quebec/\">IPTV Québec</a>.</p>"
+  },
+  {
+   "q": "Can I watch live sports and PPV?",
+   "a": "<p>Yes — see <a href=\"/iptv-sports/\">IPTV for sports</a> for NHL, NBA, UFC, F1 and soccer.</p>"
+  },
+  {
+   "q": "Does the channel list change?",
+   "a": "<p>Channels are added and updated regularly, so the list above reflects the current lineup and can change over time. If you’re looking for a specific channel, ask our team on WhatsApp.</p>"
+  },
+  {
+   "q": "Is there a TV guide?",
+   "a": "<p>Yes. Most channels include an electronic program guide (EPG) in apps such as <a href=\"/tivimate/\">TiviMate</a> and <a href=\"/iptv-smarters-pro/\">IPTV Smarters Pro</a>.</p>"
+  }
+ ]
+}

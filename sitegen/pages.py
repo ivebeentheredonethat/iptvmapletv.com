@@ -10,9 +10,17 @@ from .components import (FEATURES, PLANS, aurora, all_plans, breadcrumb_ld, chec
 from .icons import icon
 from .layout import Page
 from .seo import seo_pages
+from .seo_content.money_pages import TRIAL_FAQ, pricing_copy, trial_copy
 
 META = data("page-meta")
 FAQ = data("faq")
+PAGE_FAQS = data("page-faqs")
+
+
+def page_faq(slug):
+    """FAQ block for pages that have their own questions (src/data/page-faqs.json)."""
+    items = PAGE_FAQS.get(slug)
+    return faq_section(items) if items else ""
 
 
 def img(path):
@@ -74,6 +82,13 @@ SEARCHES = [
     ("4K IPTV", "/4k-iptv/"), ("What Is IPTV", "/what-is-iptv/"), ("IPTV Reviews", "/iptv-reviews/"),
     ("International IPTV", "/iptv-international/"), ("IP Televizija", "/ex-yu-iptv/"), ("IPTV Server", "/iptv-server/"),
     ("IPTV sur Fire Stick", "/iptv-sur-firestick/"), ("TiviMate en français", "/tivimate-en-francais/"), ("UK IPTV Canada", "/uk-iptv/"),
+    ("IPTV Price", "/iptv-price/"), ("IPTV Providers", "/iptv-providers/"), ("Is IPTV Legal?", "/is-iptv-legal-in-canada/"), ("IPTV Reddit", "/iptv-reddit/"),
+    ("TiviMate Premium", "/tivimate-premium/"), ("TiviMate Firestick", "/tivimate-firestick/"), ("Smarters Pro Firestick", "/iptv-smarters-pro-firestick/"),
+    ("Smarters Samsung & LG", "/iptv-smarters-pro-samsung-lg/"), ("Watch IPTV Online", "/watch-iptv-online/"), ("IPTV Buffering Fix", "/iptv-buffering-fix/"),
+    ("Premier League IPTV", "/premier-league-iptv/"), ("Champions League IPTV", "/champions-league-iptv/"), ("beIN Sports IPTV", "/bein-sports-iptv/"),
+    ("ESPN IPTV", "/espn-iptv/"), ("Plex IPTV", "/plex-iptv/"), ("Jellyfin IPTV", "/jellyfin-iptv/"), ("IPTV Guides", "/iptv-guides/"),
+    ("IPTV pas cher", "/iptv-pas-cher/"), ("IPTV légal", "/iptv-legal-canada/"), ("Lecteur IPTV", "/lecteur-iptv/"), ("Liste IPTV M3U", "/liste-iptv-m3u/"),
+    ("IPTV ne fonctionne plus", "/iptv-ne-fonctionne-plus/"),
 ]
 
 LEAGUES = [
@@ -249,10 +264,11 @@ def home():
 # =================================================================== PRICING
 def pricing_page():
     meta = META["iptv-plans-canada"]
-    body = f"""{page_hero('Premium IPTV plans — <span class="grad-text">50% off</span>', "Every channel, every movie and every feature in every plan. Choose your screens and save more with longer plans.", "Pricing", [("Home", "/"), ("Pricing", "")])}
+    body = f"""{page_hero('IPTV subscription in Canada — <span class="grad-text">50% off</span>', "Every channel, every movie and every feature in every plan. Choose your screens and save more with longer plans.", "Pricing", [("Home", "/"), ("Pricing", "")])}
 <section class="section section--after-hero"><div class="container">{pricing(heading=False)}</div></section>
 {reviews_section()}
 <section class="section"><div class="container">{section_head("Included", "Every plan comes with", "")}{why_grid()}</div></section>
+{pricing_copy()}
 {faq_section(FAQ[:6], "Questions before you buy?")}
 {network_section()}
 {cta_band("Not sure yet? Try it free.", "Get a free 24-hour trial — no credit card, no commitment. See the quality for yourself.")}"""
@@ -323,7 +339,7 @@ def trial_pages():
     for slug in ("try-iptv-canada", "landing2"):
         meta, extra = content(slug)
         more = f'<section class="section section--tight"><div class="container narrow"><div class="prose-card prose reveal">{extra}</div></div></section>' if slug == "landing2" else ""
-        body = f"""{page_hero('Try IPTVMaple <span class="grad-text">free for 24 hours</span>', "Full access to live TV, sports, movies and series in 4K. No credit card, no commitment — just your details so we can send your trial instantly.", "Free trial", [("Home", "/"), ("Free trial", "")])}
+        body = f"""{page_hero('IPTV free trial — <span class="grad-text">24 hours, no card</span>', "Full access to live TV, sports, movies and series in 4K. No credit card, no commitment — just your details so we can send your trial instantly.", "Free trial", [("Home", "/"), ("Free trial", "")])}
 <section class="section section--after-hero">
   <div class="container checkout">
     <div class="order-card reveal">
@@ -347,7 +363,8 @@ def trial_pages():
   </div>
 </section>
 {more}
-{faq_section(FAQ[:6])}"""
+{trial_copy() if slug == "try-iptv-canada" else ""}
+{faq_section((TRIAL_FAQ + FAQ[:4]) if slug == "try-iptv-canada" else FAQ[:6])}"""
         out.append(Page(f"/{slug}/", meta["title"] if slug == "landing2" else "IPTV Free Trial Canada – 24 Hours, No Card | IPTVMaple",
                         meta["description"] if slug == "landing2" else "Try IPTVMaple free for 24 hours: live TV, sports, movies and series in 4K on any device. No credit card needed — get your login instantly by email and WhatsApp.",
                         body, og_image=meta["og_image"], published=meta["published"], modified=meta["modified"], nav_active="/try-iptv-canada/",
@@ -408,6 +425,7 @@ def channels():
     <p class="empty">No channels match your search. Ask us on WhatsApp — we probably have it.</p>
   </div>
 </section>
+{page_faq("channels-list")}
 {cta_band("Found your channels?", "Every plan includes the full lineup. Start watching in minutes.")}"""
     return Page("/channels-list/", meta["title"].replace("Channels list", "IPTV Channels List – 50,000+ Channels | IPTVMaple"), meta["description"], body,
                 og_image=meta["og_image"], published=meta["published"], modified=meta["modified"],
@@ -444,6 +462,7 @@ def how_it_works():
     {panels}
   </div>
 </section>
+{page_faq("how-it-works")}
 {cta_band()}"""
     return Page("/how-it-works/", meta["title"], meta["description"], body, og_image=meta["og_image"],
                 published=meta["published"], modified=meta["modified"],
@@ -488,6 +507,7 @@ def referral():
     <div class="card reveal ref-rules"><h2 class="h3">Rules</h2>{checks(r["rules"])}</div>
   </div>
 </section>
+{page_faq("refer-a-friend")}
 {cta_band("Not a customer yet?", "Join IPTVMaple today, then start earning free years by sharing it with friends.")}"""
     return Page("/refer-a-friend/", "Refer a Friend – Get 1 Year Free | IPTVMaple", "Refer 1 friend to IPTVMaple and get +1 year free. Unlimited referrals — every successful referral adds 12 more months to your subscription.",
                 body, og_image=meta["og_image"], published=meta["published"], modified=meta["modified"],
@@ -549,6 +569,7 @@ def prose_pages():
     {_aside()}
   </div>
 </section>
+{page_faq(slug)}
 {cta_band() if not legal else ""}"""
         kind = "article" if meta.get("kind") == "article" else "website"
         extra = []
@@ -558,9 +579,32 @@ def prose_pages():
                           "publisher": {"@id": C.SITE_URL + "/#organization"}, "image": C.SITE_URL + (meta.get("og_image") or C.DEFAULT_OG),
                           "mainEntityOfPage": f"{C.SITE_URL}/{slug}/"})
         extra.append(breadcrumb_ld([("Home", "/"), (re.sub("<[^>]+>", "", title).replace("&amp;", "&"), f"/{slug}/")]))
+        # /landing/ and /landing3/ are ad landing pages that duplicate the cord-cutting guide: keep them out of Google's index
+        dup = slug in ("landing", "landing3")
         out.append(Page(f"/{slug}/", meta["title"], meta["description"], body, og_image=meta.get("og_image") or C.DEFAULT_OG,
-                        og_type=kind, published=meta["published"], modified=meta["modified"], jsonld=extra))
+                        og_type=kind, published=meta["published"], modified=meta["modified"], jsonld=extra,
+                        robots="noindex, follow" if dup else Page.robots, in_sitemap=not dup))
     return out
+
+
+def not_found():
+    """The 404 page: friendly, noindex, and links to the main hubs so a lost visitor (or crawler) can carry on."""
+    body = f"""{page_hero('Page not found — <span class="grad-text">let’s get you back</span>', "That page doesn’t exist or has moved. Try one of these popular pages.", "Error 404", [("Home", "/"), ("Page not found", "")],
+        '<div class="btn-row" style="justify-content:center;margin-top:28px"><a class="btn btn--primary btn--lg" href="/iptv-plans-canada/">See plans</a><a class="btn btn--ghost btn--lg" href="/try-iptv-canada/">Free 24h trial</a></div>')}
+<section class="section section--after-hero">
+  <div class="container narrow">
+    <div class="grid grid-3 link-cards">
+      <a class="card card--hover link-card" href="/iptv-guides/"><h3>IPTV guides</h3><p>Prices, providers, legal and setup.</p><span class="link-arrow">Explore</span></a>
+      <a class="card card--hover link-card" href="/iptv-apps/"><h3>IPTV apps</h3><p>TiviMate, IPTV Smarters and more.</p><span class="link-arrow">Explore</span></a>
+      <a class="card card--hover link-card" href="/iptv-devices/"><h3>Devices</h3><p>Firestick, Samsung, LG, Apple TV.</p><span class="link-arrow">Explore</span></a>
+      <a class="card card--hover link-card" href="/channels-list/"><h3>Channels list</h3><p>Search 50,000+ channels.</p><span class="link-arrow">Explore</span></a>
+      <a class="card card--hover link-card" href="/iptv-near-me/"><h3>IPTV near me</h3><p>Every province and city.</p><span class="link-arrow">Explore</span></a>
+      <a class="card card--hover link-card" href="/contact/"><h3>Contact us</h3><p>WhatsApp and email, 24/7.</p><span class="link-arrow">Explore</span></a>
+    </div>
+  </div>
+</section>"""
+    return Page("/404/", "Page not found | IPTVMaple", "The page you were looking for could not be found. Browse IPTV plans, guides, apps and devices.", body,
+                robots="noindex, follow", in_sitemap=False)
 
 
 def all_pages():
