@@ -12,6 +12,23 @@ def _card(inner):
     return f'<section class="section section--tight"><div class="container narrow"><div class="prose-card prose reveal">{inner}</div></div></section>'
 
 
+EXTRA_PRICING = '''
+<h2>IPTV subscription, plans, packages: what each term means</h2>
+<p>An <strong>IPTV subscription</strong> (people type “ip tv subscription”, “iptv sub”, “iptv subscribe”, “buy iptv subscription” or “iptv premium subscription”) is a paid plan that gives you a login for live channels, sports and on-demand video. “IPTV plans” and “IPTV packages” mean the same: our options differ by length (1, 6 or 12 months) and by the number of screens. Compare the price table above, or read the full breakdown on <a href="/iptv-price/">IPTV prices in Canada</a>.</p>
+<ul>
+<li><strong>Best IPTV subscription:</strong> the one you can test first. Start the <a href="/try-iptv-canada/">free trial</a>.</li>
+<li><strong>Premium subscription:</strong> “premium” is a marketing word; what matters is channels, stability and support.</li>
+<li><strong>Buying elsewhere (eBay, marketplaces):</strong> no trial, no support history. See <a href="/iptv-providers/">comparing providers</a>.</li>
+</ul>
+<p>French: <a href="/abonnement-iptv/">abonnement IPTV</a>. Questions? <a href="/go/wa">WhatsApp us</a>.</p>
+'''
+
+EXTRA_TRIAL = '''
+<h2>Free trial IPTV: questions we hear</h2>
+<p>A <strong>free trial IPTV</strong> (also “trial IPTV”, “IPTV tester” or “try IPTV”) lets you test the service before paying. Ours lasts 24 hours and needs no credit card. A good trial test: open a live sports channel, a movie from the on-demand library, then switch channels ten times to see how fast it responds. Then check it on your own device with one of the guides: <a href="/iptv-firestick/">Firestick</a>, <a href="/iptv-smarters-pro/">Smarters</a>, <a href="/tivimate/">TiviMate</a>. When you are ready, see the <a href="/iptv-plans-canada/">plans</a>. If the free trial doesn’t start, check <a href="/iptv-ne-fonctionne-plus/">troubleshooting</a> or WhatsApp us.</p>
+'''
+
+
 def pricing_copy():
     return _card(f"""
 <h2>What an IPTV subscription in Canada includes</h2>
@@ -51,7 +68,7 @@ def pricing_copy():
 
 <h2>Before you subscribe</h2>
 <p>Check the <a href="/channels-list/">channels list</a> for the channels you care about, confirm your device is covered in the <a href="/iptv-devices/">device guides</a> and <a href="/iptv-apps/">app guides</a>, and read our honest explainer, <a href="/is-iptv-legal-in-canada/">is IPTV legal in Canada?</a> Living in Québec? See our <a href="/abonnement-iptv/" hreflang="fr-CA" lang="fr-CA">forfaits en français</a>.</p>
-""")
+""" + EXTRA_PRICING)
 
 
 def trial_copy():
@@ -82,7 +99,7 @@ def trial_copy():
 
 <h2>A free trial is not a free playlist</h2>
 <p>Free IPTV playlists shared on forums are not trials: they usually stop working within hours and can carry risks. Read <a href="/m3u-playlist/">what an M3U playlist is</a> and <a href="/is-iptv-legal-in-canada/">is IPTV legal in Canada?</a> before trying one. A real trial comes from a business that also offers support and a refund policy. Not sure which service to try? Use the <a href="/iptv-providers/">provider scorecard</a>.</p>
-""")
+""" + EXTRA_TRIAL)
 
 
 TRIAL_FAQ = [
@@ -99,3 +116,17 @@ TRIAL_FAQ = [
     {"q": "What happens after the 24 hours?",
      "a": "<p>The trial simply ends. To keep watching, choose a plan from $9. Every plan has a 7-day money-back guarantee.</p>"},
 ]
+
+
+def home_copy():
+    return _card("""
+<h2>IPTV in Canada: Canadian IPTV for every province</h2>
+<p>IPTVMaple is <strong>IPTV from Canada</strong>, built for people who want <strong>Canadian IPTV</strong> without cable. Whether you search for “Canada IPTV”, “IPTV in Canada” or “best IPTV for Canada”, you get the same thing here: live TV, sports, movies and series over your internet connection, on the devices you already own. If you moved away and want Canadian television back (“IPTV back to Canada”), the lineup carries the national networks and regional feeds, and works anywhere you have broadband.</p>
+<ul>
+<li><strong>Start free:</strong> <a href="/try-iptv-canada/">24-hour IPTV trial</a>, no card.</li>
+<li><strong>Compare:</strong> <a href="/best-iptv-canada/">how to choose the best IPTV</a>, <a href="/iptv-providers/">providers</a> and <a href="/iptv-price/">prices</a>.</li>
+<li><strong>Your area:</strong> <a href="/iptv-near-me/">IPTV by province and city</a>, <a href="/iptv-quebec/">IPTV Québec</a>, <a href="/usa/">IPTV USA</a>.</li>
+<li><strong>Your device:</strong> <a href="/iptv-firestick/">Firestick</a>, <a href="/iptv-smarters-pro/">Smarters Pro</a>, <a href="/tivimate/">TiviMate</a>, <a href="/iptv-box/">IPTV boxes</a>.</li>
+<li><strong>New to this?</strong> <a href="/iptv-for-beginners/">IPTV for beginners</a>.</li>
+</ul>
+""")

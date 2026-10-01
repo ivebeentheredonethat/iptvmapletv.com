@@ -10,7 +10,7 @@ from .components import (FEATURES, PLANS, aurora, all_plans, breadcrumb_ld, chec
 from .icons import icon
 from .layout import Page
 from .seo import seo_pages
-from .seo_content.money_pages import TRIAL_FAQ, pricing_copy, trial_copy
+from .seo_content.money_pages import TRIAL_FAQ, home_copy, pricing_copy, trial_copy
 
 META = data("page-meta")
 FAQ = data("faq")
@@ -243,6 +243,7 @@ def home():
 </section>
 
 {network_section()}
+{home_copy()}
 {faq_section(FAQ)}
 {cta_band()}
 

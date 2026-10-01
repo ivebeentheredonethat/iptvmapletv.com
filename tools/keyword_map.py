@@ -52,6 +52,9 @@ KNOWN = (r"tivimate|tivi mate|smarters?|smasters?|smarter|ib ?o|implayer|xc ?ipt
          r"for beginners|what is it|areas|sim|formula|extra|plus|one|digital|media|local|secured|lite|lecteur|comparatif|sans coupure|fiable|bloqué|bloque|ne fonctionne plus|"
          r"cle|cle amazon|cle iptv amazon|stick|set|set top|top box|private|paid|new|real|hot|full|all")
 
+# English queries that a French page declared but that belong on the English page.
+OVERRIDE = {"iptv apple tv": "/iptv-apple-tv/", "iplaytv apple tv": "/iplaytv/", "iptv chromecast": "/iptv-chromecast/"}
+
 MAP_RULES = [  # (regex, target url). First match wins. Applied to keywords no page declares.
     (r"tivimate|tivi mate", "/tivimate/"),
     (r"smart ?iptv|siptv|sip ?tv|my sip", "/smart-iptv/"),
@@ -144,7 +147,9 @@ def main():
             out_excl.append((kw, vol, intent, hit))
             continue
         url, how = None, ""
-        if n in owner:
+        if n in OVERRIDE:
+            url, how = OVERRIDE[n], "manual override"
+        elif n in owner:
             url, how = owner[n][0], "declared by page"
         else:
             for rx, target in MAP_RULES:

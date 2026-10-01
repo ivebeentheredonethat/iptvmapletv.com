@@ -10,7 +10,7 @@ Each entry of DATA (see deep_apps.py, deep_devices.py, deep_sports.py, deep_intl
 
 Pages touched here get updated="2026-10-01", which shows in "Updated …", Article schema and sitemap <lastmod>.
 """
-from . import deep_apps, deep_devices, deep_intl_fr, deep_sports
+from . import deep_apps, deep_devices, deep_gap1, deep_gap2, deep_gap3, deep_gap4, deep_intl_fr, deep_sports
 
 TODAY = "2026-10-01"
 DATA = {}
@@ -18,6 +18,16 @@ for mod in (deep_apps, deep_devices, deep_sports, deep_intl_fr):
     for slug, entry in mod.DATA.items():
         assert slug not in DATA, f"{slug} defined twice in deep_*.py"
         DATA[slug] = entry
+# The gap-pass modules (deep_gap*.py) extend entries above or add new ones: sections and lists are merged.
+for mod in (deep_gap1, deep_gap2, deep_gap3, deep_gap4):
+    for slug, entry in mod.DATA.items():
+        cur = DATA.setdefault(slug, {})
+        for key in ("add", "replace"):
+            if key in entry:
+                cur[key] = (cur.get(key, "").rstrip() + "\n" + entry[key]) if key in cur else entry[key]
+        for key in ("faq", "related"):
+            cur[key] = list(cur.get(key, [])) + list(entry.get(key, []))
+        cur["meta"] = {**cur.get("meta", {}), **entry.get("meta", {})}
 
 
 def apply(pages):

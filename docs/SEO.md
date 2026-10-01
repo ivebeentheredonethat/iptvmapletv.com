@@ -30,3 +30,7 @@
 - Submit `https://iptvmapletv.com/sitemap.xml` in Google Search Console and Bing Webmaster Tools.
 - Revoke the GitHub and Cloudflare tokens that were pasted in chat; use repo secrets instead.
 - No one can guarantee #1 rankings. This work removes technical blockers and covers the topics; results depend on links, competition and time.
+
+## Coverage check
+`python3 tools/coverage.py docs/keyword-map.xlsx` lists mapped keywords whose exact phrase is missing from the assigned page (`ABSENT` = words missing, `tokens-only` = words present but not as a phrase). The gap pass cut the list from 540 to about 215, mostly word-order variants of the same query.
+Gap-pass content lives in `sitegen/seo_content/deep_gap1-4.py`; the new pages `iptv-lifetime`, `iptv-resellers` and `iptv-for-beginners` are in `gaps.py`.
