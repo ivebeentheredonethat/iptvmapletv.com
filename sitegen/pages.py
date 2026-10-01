@@ -177,8 +177,7 @@ def home():
 </section>
 
 <section class="section" id="pricing">
-  {aurora()}
-  <div class="container z">{pricing()}</div>
+  <div class="container">{pricing()}</div>
 </section>
 
 {reviews_section()}
