@@ -240,6 +240,8 @@ def home():
               "image": C.SITE_URL + "/brand/og-default.jpg", "description": meta["description"],
               "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": min(p["price"] for _, p in all_plans()),
                          "highPrice": max(p["price"] for _, p in all_plans()), "offerCount": 15}}
+    # every homepage section gets the same glowing background as the pricing tables
+    body = re.sub(r'<section class="(section[^"]*)"([^>]*)>', lambda m: f'<section class="{m.group(1)} glow"{m.group(2)}>{aurora()}', body)
     return Page("/", meta["title"], meta["description"], body, og_image=meta["og_image"] or C.DEFAULT_OG,
                 published=meta["published"], modified=meta["modified"], jsonld=[faq_ld(FAQ), offers],
                 preload_image='href="/images/hero/canada-fan-bg-1920.webp" imagesrcset="/images/hero/canada-fan-bg-960.webp 960w, /images/hero/canada-fan-bg-1920.webp 1920w" imagesizes="100vw"')
