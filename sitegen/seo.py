@@ -23,7 +23,7 @@ import re
 from html import escape
 
 from . import config as C
-from .components import breadcrumb_ld, cta_band, faq_ld, faq_section, page_hero
+from .components import all_plans, breadcrumb_ld, cta_band, faq_ld, faq_section, page_hero
 from .icons import icon
 from .layout import Page
 from .seo_content import ALL
@@ -186,6 +186,20 @@ def _hub_cards(p, T):
 </section>"""
 
 
+def _fit_description(desc, lang):
+    """Meta descriptions read best at 150-160 characters: add a short factual tail when the text is shorter."""
+    tails = (" Essai gratuit de 24 h, sans carte.", " Forfaits dès 9 $. Essai gratuit de 24 h.") if lang == "fr" else (" Free 24-hour trial, no card.", " Plans from $9. Free 24-hour trial, no card.")
+    if len(desc) >= 150:
+        return desc
+    for t in reversed(tails):
+        if len(desc) + len(t) <= 160 and len(desc) + len(t) >= 145:
+            return desc + t
+    for t in tails:
+        if len(desc) + len(t) <= 160:
+            return desc + t
+    return desc
+
+
 def render(p):
     lang = p.get("lang", "en")
     T = TEXT[lang]
@@ -201,8 +215,16 @@ def render(p):
     related_html = f'<h2>{T["related"]}</h2><ul class="related-list">{related}</ul>' if related else ""
     published = p.get("published", UPDATED)
     updated = p.get("updated", UPDATED)
+    p = dict(p, description=_fit_description(p["description"], lang))
     raw_body = p["body"] if p.get("service_area") else autolink(p["body"], f"/{p['slug']}/", lang)
     art_body, toc = _with_toc(raw_body, T["toc"])
+    price_note = ""
+    if p.get("service_area"):
+        lo, hi = min(x["price"] for _, x in all_plans()), max(x["price"] for _, x in all_plans())
+        price_note = (f'<p class="meta-line">Plans from ${lo:g} (1 month) to ${hi:g} (12 months, most screens), in US dollars. '
+                      f'<a href="/iptv-plans-canada/">See every plan</a>.</p>' if lang != "fr" else
+                      f'<p class="meta-line">Forfaits de {lo:g} $ US (1 mois) à {hi:g} $ US (12 mois, le plus d’écrans). '
+                      f'<a href="/iptv-plans-canada/">Voir tous les forfaits</a>.</p>')
     body = f"""{page_hero(p["h1"], p["lead"], p["kicker"], crumb, buttons)}
 <section class="section section--after-hero">
   <div class="container page-grid">
@@ -211,6 +233,7 @@ def render(p):
       <p class="meta-line">{T["updated"]} {updated} · {T["by"]}</p>
       {toc}
       {art_body}
+      {price_note}
       {related_html}
     </article>
     {_aside(T)}
@@ -229,7 +252,7 @@ def render(p):
         ld.append({"@type": "Service", "name": _plain(p["h1"]), "serviceType": "IPTV subscription", "description": p["description"],
                    "provider": {"@id": C.SITE_URL + "/#organization"}, "areaServed": {"@type": kind, "name": name},
                    "url": C.SITE_URL + url,
-                   "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": 9, "highPrice": 225,
+                   "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": min(x["price"] for _, x in all_plans()), "highPrice": max(x["price"] for _, x in all_plans()),
                               "url": C.SITE_URL + "/iptv-plans-canada/"}})
     else:
         ld.append({"@type": "Article", "headline": _plain(p["h1"])[:110], "description": p["description"],

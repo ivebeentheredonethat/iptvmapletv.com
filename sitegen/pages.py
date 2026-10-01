@@ -10,7 +10,8 @@ from .components import (FEATURES, PLANS, aurora, all_plans, breadcrumb_ld, chec
 from .icons import icon
 from .layout import Page
 from .seo import seo_pages
-from .seo_content.money_pages import TRIAL_FAQ, home_copy, pricing_copy, trial_copy
+from .seo_content._util import price_table
+from .seo_content.money_pages import TRIAL_FAQ, home_copy, plan_guide, pricing_copy, trial_copy
 
 META = data("page-meta")
 FAQ = data("faq")
@@ -263,10 +264,24 @@ def home():
 
 
 # =================================================================== PRICING
+def _plans_product(meta):
+    """Product with one Offer per plan; every price shown here is also visible in the plan cards."""
+    offers = [{"@type": "Offer", "name": f"{plan_label(p['months'])} · {devices_label(d)}", "price": p["price"], "priceCurrency": "USD",
+               "availability": "https://schema.org/InStock", "url": f"{C.SITE_URL}/{p['slug']}/"} for d, p in all_plans()]
+    return {"@type": "Product", "name": "IPTVMaple IPTV subscription", "brand": {"@type": "Brand", "name": C.NAME},
+            "image": C.SITE_URL + "/brand/og-default.jpg", "description": meta["description"], "offers": offers}
+
+
 def pricing_page():
     meta = META["iptv-plans-canada"]
     body = f"""{page_hero('IPTV subscription in Canada — <span class="grad-text">50% off</span>', "Every channel, every movie and every feature in every plan. Choose your screens and save more with longer plans.", "Pricing", [("Home", "/"), ("Pricing", "")])}
 <section class="section section--after-hero"><div class="container">{pricing(heading=False)}</div></section>
+<section class="section section--tight"><div class="container narrow"><div class="prose-card prose reveal">
+<h2>Every IPTVMaple plan at a glance</h2>
+<p>All prices are in US dollars. The cards above show one screen at a time; this table lists every combination of screens and length.</p>
+{price_table(link=True)}
+<p>The 12-month plan has the lowest cost per month on every screen count. More on <a href="/iptv-price/">IPTV prices in Canada</a>.</p>
+</div></div></section>
 {reviews_section()}
 <section class="section"><div class="container">{section_head("Included", "Every plan comes with", "")}{why_grid()}</div></section>
 {pricing_copy()}
@@ -275,7 +290,7 @@ def pricing_page():
 {cta_band("Not sure yet? Try it free.", "Get a free 24-hour trial — no credit card, no commitment. See the quality for yourself.")}"""
     return Page("/iptv-plans-canada/", meta["title"], meta["description"], body, og_image=meta["og_image"],
                 published=meta["published"], modified=meta["modified"], nav_active="/iptv-plans-canada/",
-                jsonld=[faq_ld(FAQ[:6]), breadcrumb_ld([("Home", "/"), ("Pricing", "/iptv-plans-canada/")])])
+                jsonld=[faq_ld(FAQ[:6]), breadcrumb_ld([("Home", "/"), ("Pricing", "/iptv-plans-canada/")]), _plans_product(meta)])
 
 
 # =================================================================== PRODUCT (order) PAGES
@@ -319,17 +334,16 @@ def product_pages():
     </aside>
   </div>
 </section>
-<section class="section section--tight">
-  <div class="container narrow"><div class="prose-card prose reveal">{p["intro_html"]}</div></div>
-</section>
+{plan_guide(devices, p, PLANS["connections"], plan_label)}
 {reviews_section()}
-{faq_section(FAQ[:8])}"""
+{faq_section(FAQ[:5])}"""
         offer = {"@type": "Product", "name": f"IPTVMaple {name}", "description": p["description"], "brand": {"@type": "Brand", "name": C.NAME},
                  "image": C.SITE_URL + (p["og_image"] or C.DEFAULT_OG),
                  "offers": {"@type": "Offer", "price": p["price"], "priceCurrency": "USD", "availability": "https://schema.org/InStock",
                             "url": f"{C.SITE_URL}/{p['slug']}/"}}
         pages.append(Page(f"/{p['slug']}/", p["title"], p["description"], body, og_image=p["og_image"] or C.DEFAULT_OG,
                           published=p["published"], modified=p["modified"], nav_active="/iptv-plans-canada/",
+                          canonical="/iptv-plans-canada/", in_sitemap=False,  # 15 near-identical order variants: the plans page is the canonical
                           jsonld=[offer, breadcrumb_ld([("Home", "/"), ("Pricing", "/iptv-plans-canada/"), (name, f"/{p['slug']}/")])]))
     return pages
 
@@ -443,7 +457,7 @@ def how_it_works():
     panels = "".join(
         f'<div class="guide-panel prose-card prose" role="tabpanel" id="gp-{i}" aria-labelledby="gt-{i}"{"" if i == 0 else " hidden"}><h3 style="margin-top:0">{escape(g["device"])}</h3>{g["html"].replace("<img ", "<img loading=\"lazy\" ")}</div>'
         for i, g in enumerate(guides))
-    body = f"""{page_hero('Up and running in <span class="grad-text">3 easy steps</span>', "Order, receive your login, and start watching on any device — most customers are streaming within minutes.", "How it works", [("Home", "/"), ("How it works", "")])}
+    body = f"""{page_hero('How to set up IPTV: <span class="grad-text">3 easy steps</span>', "Order, receive your login, and start watching on any device — most customers are streaming within minutes.", "How it works", [("Home", "/"), ("How it works", "")])}
 <section class="section section--after-hero">
   <div class="container">
     <div class="steps">
@@ -508,6 +522,10 @@ def referral():
     <div class="card reveal ref-rules"><h2 class="h3">Rules</h2>{checks(r["rules"])}</div>
   </div>
 </section>
+<section class="section section--tight"><div class="container narrow"><div class="prose-card prose reveal">
+<h2>New to IPTVMaple?</h2>
+<p>Referral credit applies to paid plans. If your friend is not sure yet, send them to the <a href="/try-iptv-canada/">free 24-hour trial</a> first, or to <a href="/how-it-works/">how it works</a> and the <a href="/iptv-plans-canada/">plans</a>. Questions about the programme? <a href="/contact/">Contact support</a> or read the <a href="/terms/">terms</a>.</p>
+</div></div></section>
 {page_faq("refer-a-friend")}
 {cta_band("Not a customer yet?", "Join IPTVMaple today, then start earning free years by sharing it with friends.")}"""
     return Page("/refer-a-friend/", "Refer a Friend – Get 1 Year Free | IPTVMaple", "Refer 1 friend to IPTVMaple and get +1 year free. Unlimited referrals — every successful referral adds 12 more months to your subscription.",
@@ -526,11 +544,18 @@ def contact():
         f'<div class="card contact-card reveal" style="--d:{i * .08:.2f}s"><div class="icon {cls}">{icon(ic)}</div><h3>{t}</h3><p>{d}</p>'
         f'<a class="btn {btn} btn--block" href="{href}"{" target=\"_blank\" rel=\"noopener\"" if href == C.WHATSAPP_URL else ""}>{label}</a></div>'
         for i, (cls, ic, t, d, label, href, btn) in enumerate(cards))
-    body = f"""{page_hero('We’re here <span class="grad-text">24/7</span>', "Have any questions? Our friendly support team is always ready to help and will get back to you as soon as possible, so you enjoy a flawless IPTV experience.", "Contact us", [("Home", "/"), ("Contact", "")])}
+    body = f"""{page_hero('Contact IPTVMaple support — <span class="grad-text">here 24/7</span>', "Have any questions? Our friendly support team is always ready to help and will get back to you as soon as possible, so you enjoy a flawless IPTV experience.", "Contact us", [("Home", "/"), ("Contact", "")])}
 <section class="section section--after-hero"><div class="container narrow"><div class="grid grid-2">{html}</div></div></section>
+<section class="section section--tight"><div class="container narrow"><div class="prose-card prose reveal">
+<h2>Before you write to us</h2>
+<p>Most questions have a quick answer. <a href="/how-it-works/">How it works</a> covers setup, <a href="/iptv-devices/">device guides</a> cover Firestick, Smart TV, phones and boxes, and <a href="/iptv-buffering-fix/">buffering fixes</a> solve most playback problems. Not a customer yet? Start the <a href="/try-iptv-canada/">free 24-hour trial</a> or compare <a href="/iptv-plans-canada/">plans</a>.</p>
+<p>When you contact support, include your name, the device you use and a screenshot of any error. We answer by WhatsApp and email at {C.EMAIL}. Billing questions are handled under the <a href="/refund/">refund policy</a>, and we handle your details as described in the <a href="/privacy/">privacy policy</a>.</p>
+</div></div></section>
 {faq_section(FAQ)}"""
     return Page("/contact/", "Contact Us – 24/7 IPTV Support | IPTVMaple", meta["description"], body, og_image=meta["og_image"],
-                published=meta["published"], modified=meta["modified"], jsonld=[breadcrumb_ld([("Home", "/"), ("Contact", "/contact/")])])
+                published=meta["published"], modified=meta["modified"], jsonld=[breadcrumb_ld([("Home", "/"), ("Contact", "/contact/")]),
+                        {"@type": "ContactPage", "@id": C.SITE_URL + "/contact/#contactpage", "url": C.SITE_URL + "/contact/", "name": "Contact IPTVMaple",
+                         "about": {"@id": C.SITE_URL + "/#organization"}}])
 
 
 # =================================================================== PROSE PAGES (about, legal, articles, landings)
@@ -546,8 +571,8 @@ PROSE = {
     "privacy": ("Legal", "Privacy policy", "How we collect, use and protect your personal data."),
     "terms": ("Legal", "Terms &amp; conditions", "The terms that govern your use of IPTVMaple."),
     "refund": ("Legal", "Refund policy", "Our 7-day money-back guarantee, explained."),
-    "3-smarter-ways-to-stream-tv-without-cable-in-2025": ("Guide", "3 Smarter Ways to Stream TV Without Cable", "Tired of expensive cable? Here’s what we found when we tested the alternatives."),
-    "cord-cutting-guide": ("Guide", "Cut the Cord &amp; Stream Smarter", "Why switching from cable pays off — and how to do it in 2 minutes."),
+    "3-smarter-ways-to-stream-tv-without-cable-in-2025": ("Guide", "3 Smarter Ways to Stream TV Without Cable", "Streaming apps, live-TV bundles and IPTV compared: what each costs, what you get and which one fits how you watch."),
+    "cord-cutting-guide": ("Guide", "Cut the Cord &amp; Stream Smarter", "Why switching from cable pays off, what you need and how to switch without missing a game."),
     "landing": ("Save money", "Cut Your Monthly Bills — Smarter Entertainment Awaits", "Still paying expensive cable bills every month? There’s a better way."),
     "landing3": ("Cut the cord", "The Best Way to Cut the Cord", "Stream live TV, sports &amp; movies in 4K — without buffering or contracts."),
 }
@@ -560,6 +585,10 @@ def prose_pages():
         legal = slug in ("privacy", "terms", "refund")
         hero_img = meta.get("image")
         figure = f'<img src="{hero_img}" alt="" style="border-radius:20px;border:1px solid var(--line);margin:0 0 28px;width:100%" loading="lazy">' if hero_img else ""
+        if legal:
+            html += ('<h2>Related</h2><p>See also our <a href="/terms/">terms</a>, <a href="/privacy/">privacy policy</a> and <a href="/refund/">refund policy</a>. '
+                     'Questions about plans or setup? <a href="/iptv-plans-canada/">Plans and prices</a>, <a href="/how-it-works/">how it works</a>, '
+                     '<a href="/try-iptv-canada/">free trial</a> or <a href="/contact/">contact support</a> by WhatsApp or email.</p>')
         updated = f'<p class="muted" style="font-size:14px">Last updated {meta["modified"][:10]}</p>' if legal and meta.get("modified") else ""
         ctas = ('<div class="btn-row" style="justify-content:center;margin-top:28px"><a class="btn btn--primary btn--lg" href="/try-iptv-canada/">Start free trial</a>'
                 '<a class="btn btn--ghost btn--lg" href="/iptv-plans-canada/">See all plans</a></div>') if meta.get("kind") == "landing" else ""

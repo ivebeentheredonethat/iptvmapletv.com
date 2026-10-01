@@ -34,3 +34,12 @@
 ## Coverage check
 `python3 tools/coverage.py docs/keyword-map.xlsx` lists mapped keywords whose exact phrase is missing from the assigned page (`ABSENT` = words missing, `tokens-only` = words present but not as a phrase). The gap pass cut the list from 540 to about 215, mostly word-order variants of the same query.
 Gap-pass content lives in `sitegen/seo_content/deep_gap1-4.py`; the new pages `iptv-lifetime`, `iptv-resellers` and `iptv-for-beginners` are in `gaps.py`.
+
+## Deep audit (`tools/seo_audit_deep.py`)
+Second-level checks run after `tools/seo_audit.py`: heading outline, H1 keywords in the intro and body, density, dead links, authority links, CTAs and trust signals, JSON-LD vs visible content (prices, breadcrumbs, Article fields), near-duplicate content, and city-page overlap. Known false positives: H1 keyword in a different word order, the home page's hero images, and legal pages with no CTA by design.
+
+Decisions from the audit:
+- The 15 order pages (`/6-month-iptv-3-devices/` and siblings) were 90% identical, so they now carry a canonical to `/iptv-plans-canada/` and are out of the sitemap. Each still has its own price table and Product schema. If you want any of them to rank on its own, give it unique content and remove the canonical (`canonical=` in `product_pages()`).
+- `/iptv-plans-canada/` now has a static all-plans table (the cards only showed 1 screen without JavaScript) and Product schema with one Offer per plan.
+- Headings that skipped a level are fixed at render time (`fix_heading_levels`), keeping the same visual size.
+- City pages in the same metro now carry a factual local paragraph (`geo_local.py`). Overlap among the worst pairs dropped, but these pages are still templated: check Search Console for "Crawled, not indexed" and consolidate if needed.

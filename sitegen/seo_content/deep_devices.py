@@ -3,7 +3,7 @@
 DATA = {}
 
 DATA["formuler-iptv"] = dict(
-    meta=dict(title="Formuler Z11 Pro Max & Z-Series IPTV Box Guide (2026) | IPTVMaple"),
+    meta=dict(title="Formuler Z-Series IPTV Box Guide (2026) | IPTVMaple"),
     add="""
 <h2>Which Formuler should you buy?</h2>
 <table>

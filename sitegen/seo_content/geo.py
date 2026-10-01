@@ -8,6 +8,7 @@ import json
 import os
 import re
 from html import escape
+from .geo_local import local_note
 
 from .geo_ca_data import CITIES as CA_CITIES, PROVINCES
 from .geo_us_data import CITIES as US_CITIES, STATES
@@ -156,6 +157,7 @@ def us_city(c):
     body = f"""
 <h2>Why {city} is switching to IPTV</h2>
 <p>{note}</p>
+{local_note(city)}
 <p>IPTV streams live TV over your internet connection instead of a cable line, so there’s no box rental, no technician and no contract — just an app on the TVs and phones you already own.</p>
 
 <h2>Local channels and sports in {city}</h2>
@@ -273,6 +275,7 @@ def ca_city(c):
     body = f"""
 <h2>Why {city} is switching to IPTV</h2>
 <p>{note}</p>
+{local_note(city)}
 {extra}
 <h2>Local channels and sports in {city}</h2>
 <p>Your lineup includes {st_txt}, plus TSN, Sportsnet{', RDS, TVA Sports' if fr else ''} and every national network. Teams {city} viewers follow:</p>
@@ -380,6 +383,7 @@ def fr_city(c):
     body = f"""
 <h2>Pourquoi passer à l’IPTV à {nom}</h2>
 <p>L’IPTV diffuse la télé par Internet plutôt que par le câble : pas de terminal à louer, pas de technicien, pas de contrat. À {nom}, elle fonctionne avec Vidéotron, Bell, Cogeco, Fizz et tous les autres fournisseurs.</p>
+{local_note(city, fr=True)}
 
 <h2>Chaînes locales et sport à {nom}</h2>
 <p>La programmation comprend {st_txt}, ainsi que RDS, TVA Sports, TSN, Sportsnet et toutes les chaînes nationales. Équipes suivies à {nom} :</p>

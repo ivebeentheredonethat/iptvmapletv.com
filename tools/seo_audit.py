@@ -62,12 +62,18 @@ def main():
     words = {}
     alt_of = {}
 
+    pages_by_url = {SITE + k for k in pages}
     for path, html in pages.items():
         head = html[: html.index("</head>")]
         noindex = bool(re.search(r'<meta name="robots" content="[^"]*noindex', head))
         title = unescape((re.search(r"<title>(.*?)</title>", head, re.S) or [None, ""])[1])
         desc = unescape((re.search(r'<meta name="description" content="([^"]*)"', head) or [None, ""])[1])
         canon = (re.search(r'<link rel="canonical" href="([^"]+)"', head) or [None, ""])[1]
+        if canon and canon != SITE + path:  # deliberate canonical variant (e.g. order pages): not indexable on its own
+            if canon not in pages_by_url:
+                crit["canonical points at a missing page"].append(f"{path} -> {canon}")
+            noindex = True
+            canon = SITE + path
         if not noindex:
             indexable.add(path)
             titles[title.lower()].append(path)

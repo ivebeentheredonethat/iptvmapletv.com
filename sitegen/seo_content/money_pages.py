@@ -130,3 +130,62 @@ def home_copy():
 <li><strong>New to this?</strong> <a href="/iptv-for-beginners/">IPTV for beginners</a>.</li>
 </ul>
 """)
+
+
+def plan_guide(devices, p, conns, labels):
+    """Unique, data-driven 'is this the right plan?' section for each order page (no two pages share these numbers or tables)."""
+    months, price, orig = p["months"], p["price"], p["original"]
+    per_m = price / months
+    per_screen = per_m / devices
+    mine = next(c for c in conns if c["devices"] == devices)
+    one_m = next(x for x in mine["plans"] if x["months"] == 1)
+    save_vs_monthly = one_m["price"] * months - price
+    who = {
+        1: "one person who watches on a single TV or phone at a time",
+        2: "a couple, or one household that watches in two rooms at the same time",
+        3: "a family with a living-room TV, a bedroom TV and a phone or tablet in use together",
+        4: "a larger household where four people may watch different things at the same time",
+        5: "a big household, a shared home or a small business that needs five simultaneous streams",
+    }[devices]
+    length = {
+        1: "a flexible month-to-month way to test the service on your own devices and internet connection",
+        6: "half a year of viewing, which covers a full hockey or football season without a yearly commitment",
+        12: "the lowest monthly cost: a full year, including every season of every sport, with nothing to renew for 12 months",
+    }[months]
+    rows_len = "".join(
+        f'<tr><td><a href="/{x["slug"]}/">{labels(x["months"])}</a></td><td>${x["price"]}</td><td>${x["price"] / x["months"]:.2f}</td><td>${x["price"] / x["months"] / devices:.2f}</td></tr>'
+        for x in mine["plans"])
+    rows_dev = "".join(
+        f'<tr><td><a href="/{next(x for x in c["plans"] if x["months"] == months)["slug"]}/">{c["devices"]} {"screen" if c["devices"] == 1 else "screens"}</a></td>'
+        f'<td>${next(x for x in c["plans"] if x["months"] == months)["price"]}</td>'
+        f'<td>${next(x for x in c["plans"] if x["months"] == months)["price"] / months:.2f}</td>'
+        f'<td>${next(x for x in c["plans"] if x["months"] == months)["price"] / months / c["devices"]:.2f}</td></tr>'
+        for c in conns)
+    season = {
+        1: "One month is enough to watch a full stretch of the schedule: roughly four weekends of NHL, NFL or Premier League, a handful of new movie releases and plenty of series. Many customers start here, then move to a longer plan once they have seen how it runs on their own internet.",
+        6: "Six months covers a whole sports half-season, for example October to March for the NHL regular season, or a full Premier League run-in, plus the big events that fall inside that window. It also avoids the monthly renewal reminder.",
+        12: "Twelve months covers every season at once: the full NHL and NBA calendars, the NFL season, the Premier League, UFC pay-per-view nights and Formula 1, plus a year of new movies and series. It is also the plan with the lowest cost per month.",
+    }[months]
+    hd, uhd = devices * 10, devices * 25
+    bandwidth = (f"If every screen is in use at once, plan for about <strong>{hd} Mbps</strong> of internet in HD, or about <strong>{uhd} Mbps</strong> for {devices} 4K {'stream' if devices == 1 else 'streams'}. "
+                 + ("A normal home connection handles this easily. " if devices <= 2 else "Use Ethernet or 5 GHz Wi-Fi on the main TVs, and see the <a href=\"/iptv-buffering-fix/\">buffering guide</a> if you share a busy network. "))
+    saving = (f"Compared with paying month to month on the same number of screens, this plan saves you <strong>${save_vs_monthly:g}</strong>."
+              if months > 1 else "It is the plan to pick if you want to try the service first; longer plans cost much less per month.")
+    return f"""<section class="section section--tight"><div class="container narrow"><div class="prose-card prose reveal">
+<h2>Is this the right plan for you?</h2>
+<p>This plan costs <strong>${price}</strong> for {months} {"month" if months == 1 else "months"}, which works out to <strong>${per_m:.2f} a month</strong> and about <strong>${per_screen:.2f} per screen per month</strong>. It suits {who}, and it gives you {length}. {saving}</p>
+<h3>The same {devices}-screen plan in other lengths</h3>
+<table><thead><tr><th>Length</th><th>Price (USD)</th><th>Per month</th><th>Per screen / month</th></tr></thead><tbody>{rows_len}</tbody></table>
+<h3>The same length with more or fewer screens</h3>
+<table><thead><tr><th>Screens at once</th><th>Price (USD)</th><th>Per month</th><th>Per screen / month</th></tr></thead><tbody>{rows_dev}</tbody></table>
+<h3>What {months} {"month" if months == 1 else "months"} on {devices} {"screen" if devices == 1 else "screens"} covers</h3>
+<p>{season}</p>
+<p>{bandwidth}</p>
+<h3>Before you order</h3>
+<ul>
+<li>Not sure it works on your device? Start the <a href="/try-iptv-canada/">free 24-hour trial</a> first: no card needed.</li>
+<li>Check the <a href="/channels-list/">channels list</a> and the <a href="/iptv-devices/">device guides</a> for your setup.</li>
+<li>Payment is confirmed on WhatsApp or email, and our <a href="/refund/">7-day money-back policy</a> applies. Prices are in US dollars; your bank converts from Canadian dollars automatically.</li>
+<li>Compare every plan side by side on the <a href="/iptv-plans-canada/">plans page</a>, or read <a href="/iptv-price/">IPTV prices in Canada</a>.</li>
+</ul>
+</div></div></section>"""

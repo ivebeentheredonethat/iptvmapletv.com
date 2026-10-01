@@ -25,6 +25,7 @@ class Page:
     modified: str = ""
     jsonld: list = field(default_factory=list)
     in_sitemap: bool = True
+    canonical: str = ""  # set when the page is a variant whose canonical URL is another page
     nav_active: str = ""           # which NAV href to highlight
     lang: str = "en-CA"            # html lang / og:locale ("fr-CA" for the French Québec pages)
     alternates: list = field(default_factory=list)  # [(hreflang, path)] incl. this page, e.g. en-CA / fr-CA pairs
@@ -95,14 +96,14 @@ def _head(p: Page):
 <title>{title_text}</title>
 <meta name="description" content="{d}">
 <meta name="robots" content="{p.robots}">
-<link rel="canonical" href="{url}">{"".join(f'{chr(10)}<link rel="alternate" hreflang="{hl}" href="{abs_url(h)}">' for hl, h in p.alternates)}{f'{chr(10)}<link rel="alternate" hreflang="x-default" href="{abs_url(p.alternates[0][1])}">' if p.alternates else ""}
+<link rel="canonical" href="{abs_url(p.canonical) if p.canonical else url}">{"".join(f'{chr(10)}<link rel="alternate" hreflang="{hl}" href="{abs_url(h)}">' for hl, h in p.alternates)}{f'{chr(10)}<link rel="alternate" hreflang="x-default" href="{abs_url(p.alternates[0][1])}">' if p.alternates else ""}
 <meta name="theme-color" content="#06070b">
 <meta property="og:locale" content="{p.lang.replace('-', '_')}">
 <meta property="og:type" content="{p.og_type}">
 <meta property="og:site_name" content="{C.LEGAL_NAME}">
 <meta property="og:title" content="{t}">
 <meta property="og:description" content="{d}">
-<meta property="og:url" content="{url}">
+<meta property="og:url" content="{abs_url(p.canonical) if p.canonical else url}">
 <meta property="og:image" content="{img}">
 {og_size}<meta property="og:image:alt" content="{t}">
 {og_alt}{dates}<meta name="twitter:card" content="summary_large_image">
@@ -187,12 +188,42 @@ def _footer():
 </div>"""
 
 
+def fix_heading_levels(html):
+    """Keep the outline H1 > H2 > H3 unbroken: a heading that jumps a level (h1 -> h3) becomes the next level down,
+    with the original size kept through the .hN utility class so the design does not change."""
+    last = [0]
+    def fix(m):
+        lvl, attrs = int(m.group(1)), m.group(2)
+        if last[0] and lvl > last[0] + 1:
+            new = last[0] + 1
+            cls = re.search(r'class="([^"]*)"', attrs)
+            attrs = re.sub(r'class="[^"]*"', f'class="{cls.group(1)} h{lvl}"', attrs) if cls else f'{attrs} class="h{lvl}"'
+            lvl_out = new
+        else:
+            lvl_out = lvl
+        last[0] = lvl_out
+        return f"<h{lvl_out}{attrs}>"
+    def close(m):  # closing tags are matched in the same order, so re-derive levels from the opening pass
+        return m.group(0)
+    out, pos, stack = [], 0, []
+    for m in re.finditer(r"<h([1-6])\b([^>]*)>|</h([1-6])>", html):
+        out.append(html[pos:m.start()]); pos = m.end()
+        if m.group(1):
+            new_open = fix(m); stack.append(int(new_open[2]))
+            out.append(new_open)
+        else:
+            out.append(f"</h{stack.pop() if stack else m.group(3)}>")
+    out.append(html[pos:])
+    return "".join(out)
+
+
 def render(p: Page):
+    body = fix_heading_levels(p.body)
     return add_dimensions(f"""{_head(p)}
 <body>
 {_header(p)}
 <main id="main">
-{p.body}
+{body}
 </main>
 {_footer()}
 <script src="/js/site.js?v={ASSET_VERSION}" defer></script>

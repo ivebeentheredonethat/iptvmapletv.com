@@ -4,7 +4,7 @@ PAGES = [
     # ------------------------------------------------------------------ HUB
     dict(
         slug="iptv-sports", hub="sports", hub_page=True,
-        title="Best IPTV for Sports in Canada (2026): NHL, UFC, NBA | IPTVMaple",
+        title="Best IPTV for Sports in Canada (2026): NHL, UFC | IPTVMaple",
         description="IPTV for sports fans in Canada: TSN, Sportsnet, RDS, TVA Sports, NHL Center Ice, NBA League Pass, UFC PPV, F1 and soccer in 4K. Try IPTVMaple free for 24h.",
         kicker="Sports", h1='The best <span class="grad-text">IPTV for sports</span> in Canada',
         lead="Hockey, basketball, UFC, F1 and soccer — every game on one subscription, in 4K, without a cable contract.",
