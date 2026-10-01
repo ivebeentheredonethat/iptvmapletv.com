@@ -56,8 +56,6 @@ p { margin: 0 0 1em; }
 .narrow { max-width: calc(820px + var(--gutter) * 2); }
 .section { padding-block: clamp(64px, 9vw, 120px); position: relative; }
 .section--tight { padding-block: clamp(40px, 6vw, 72px); }
-.glow { position: relative; overflow: hidden; }
-.glow > :not(.aurora) { position: relative; z-index: 1; } /* content above the aurora glow */
 .section--after-hero { padding-top: 8px; } /* first section under the shared page title */
 .section-head { max-width: 720px; margin: 0 auto clamp(36px, 5vw, 60px); text-align: center; }
 .section-head--left { margin-inline: 0; text-align: left; }
@@ -595,6 +593,7 @@ select.input option { background: #11141d; }
 }
 
 /* ---------- reviews (under the pricing tables) ---------- */
+.rv-section { background: #0C0F1A; }
 .rv-head { text-align: center; margin-bottom: 52px; }
 .rv-kicker { color: #E8041F; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 14px; }
 .rv-head h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 900; color: #fff; margin: 0 0 12px; }
