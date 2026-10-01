@@ -637,6 +637,19 @@ def not_found():
                 robots="noindex, follow", in_sitemap=False)
 
 
+def sales_demo():
+    """Private design preview of the purchase-notification card. Sample names only; noindex, unlinked, not in the sitemap."""
+    body = f"""{page_hero('Purchase notification <span class="grad-text">design preview</span>', "Sample names for judging the look only. These are not real orders and this page is not linked anywhere on the site.", "Preview", [("Home", "/"), ("Preview", "")])}
+<section class="section section--after-hero"><div class="container narrow"><div class="prose-card prose">
+<p>Watch the bottom-left corner. A card fades in after a couple of seconds, stays for six seconds, and repeats with a different sample. On the live site the card shows only real orders you add yourself.</p>
+<p><a href="#" id="sale-replay">Replay the preview</a></p>
+</div></div></section>
+<script>window.__SALE_DEMO=[{{"first":"Sarah","place":"Ontario","plan":"12 Months","at":new Date(Date.now()-2*3600e3).toISOString()}},{{"first":"James","place":"Texas","plan":"6 Months","at":new Date(Date.now()-35*60e3).toISOString()}},{{"first":"Olivia","place":"Sydney","plan":"12 Months","at":new Date(Date.now()-5*3600e3).toISOString()}},{{"first":"Klaus","place":"Germany","plan":"3 Months","at":new Date(Date.now()-90*60e3).toISOString()}}];
+document.addEventListener("click",function(e){{if(e.target.id==="sale-replay"){{e.preventDefault();try{{sessionStorage.removeItem("sn-off")}}catch(_){{}}location.reload()}}}});</script>"""
+    return Page("/sales-demo/", "Purchase notification preview | IPTVMaple", "Design preview of the purchase notification card.", body,
+                robots="noindex, nofollow", in_sitemap=False)
+
+
 def all_pages():
     return [home(), pricing_page(), *product_pages(), *trial_pages(), thank_you(), channels(), how_it_works(), referral(), contact(), *prose_pages(),
-            *seo_pages()]
+            *seo_pages(), sales_demo()]

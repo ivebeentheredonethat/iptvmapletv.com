@@ -229,8 +229,8 @@
       return d + (d === 1 ? " day ago" : " days ago");
     };
     const start = async () => {
-      let items = [];
-      try { items = await (await fetch("/api/recent-orders")).json(); } catch (e) { return; }
+      let items = window.__SALE_DEMO || [];
+      if (!items.length) { try { items = await (await fetch("/api/recent-orders")).json(); } catch (e) { return; } }
       if (!Array.isArray(items) || !items.length) return;
       const card = document.createElement("aside");
       card.className = "sale-toast";
@@ -250,13 +250,13 @@
         time.textContent = ago(x.at);
         card.classList.add("is-on");
         shown++;
-        timer = setTimeout(() => { card.classList.remove("is-on"); timer = setTimeout(show, 14000); }, 6000);
+        timer = setTimeout(() => { card.classList.remove("is-on"); timer = setTimeout(show, window.__SALE_DEMO ? 3500 : 14000); }, 6000);
       };
       card.querySelector("button").addEventListener("click", () => {
         clearTimeout(timer); card.classList.remove("is-on"); shown = 99;
         try { sessionStorage.setItem("sn-off", "1"); } catch (e) {}
       });
-      setTimeout(show, 7000);
+      setTimeout(show, window.__SALE_DEMO ? 2000 : 7000);
     };
     "requestIdleCallback" in window ? requestIdleCallback(start, { timeout: 4000 }) : setTimeout(start, 2500);
   })();
