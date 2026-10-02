@@ -46,7 +46,7 @@ Decisions from the audit:
 
 ## Final audit (2026-10-02)
 - Live crawl of all 361 sitemap URLs: all 200, no redirects, canonical matches, one H1 and valid JSON-LD on every page. Redirects verified (http, www, missing trailing slash).
-- Channels list: only Americas, Europe and Australia are published (the other regions stay in `src/data/channels.json`). Page weight fell from 590 KB to 385 KB.
+- Channels list: all regions stay listed (viewers in Canada/US watch them); no page or copy targets those markets.
 - Added HSTS; softened three unverifiable claims ("thousands of customers", "Join thousands", "Verified reviews").
 - Every city is now linked from the `/canada/` and `/usa/` hubs; 3 single-city pages still have 2 inbound links.
 - Open: the "50,000+ channels" claim vs the 10k listed names; legality statement; templated city pages; legacy testimonials.
