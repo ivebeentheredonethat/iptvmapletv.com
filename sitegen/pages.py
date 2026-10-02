@@ -416,7 +416,8 @@ def thank_you():
 # =================================================================== CHANNELS
 def channels():
     meta = META["channels-list"]
-    regions = data("channels")
+    # The public list covers the markets we target (Americas, Europe, Australia); other regions stay in channels.json but are not published here.
+    regions = [r for r in data("channels") if r["name"] in ("Americas", "Europe", "Australia")]
     total_ch = sum(len(c["channels"]) for r in regions for c in r["countries"])
     total_co = sum(len(r["countries"]) for r in regions)
     tabs = '<button type="button" data-region="all" aria-pressed="true">All regions</button>' + "".join(

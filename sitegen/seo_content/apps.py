@@ -37,7 +37,7 @@ PAGES = [
 </table>
 
 <h2>How we picked these IPTV players</h2>
-<p>We support thousands of Canadian customers on WhatsApp every week, so we see which apps cause the fewest problems. We ranked players on stability during live sports, how good the TV guide is, catch-up support, how easy the login is, and whether the app is still maintained in 2026.</p>
+<p>We answer setup questions on WhatsApp every day, so we see which apps cause the fewest problems. We ranked players on stability during live sports, how good the TV guide is, catch-up support, how easy the login is, and whether the app is still maintained in 2026.</p>
 
 <h2>Free vs paid IPTV apps</h2>
 <p>Several players are free to download but charge a small fee for premium features or activation — for example TiviMate Premium, Smart IPTV’s one-time activation, or SmartOne and Flix IPTV after their trial period. These fees go to the app developer, not to IPTVMaple. Your IPTVMaple subscription works with the free versions too.</p>

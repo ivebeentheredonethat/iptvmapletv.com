@@ -83,3 +83,25 @@ DATA["iptv-buffering-fix"] = dict(add="""
 <h2>Measure before you guess</h2>
 <p>Run a speed test on the same device you watch on, for example with <a href="https://www.speedtest.net/" rel="noopener" target="_blank">Speedtest by Ookla</a>, and compare the result with the table in the <a href="/iptv-for-beginners/">beginner guide</a>: about 10 Mbps per HD screen and 25 Mbps per 4K screen. If the test is fast but video still freezes, the cause is usually Wi-Fi interference, an overloaded router or a device that is too old, in that order.</p>
 """)
+
+
+# ---- link every city from its country hub, and tie the loose guides into the guide cluster (audit: pages with < 3 inbound links)
+def _links():
+    from .geo import CA_CITY_SLUG, US_CITY_SLUG, STATE_BY_ABBR
+    from .geo_ca_data import CITIES as CA
+    from .geo_us_data import CITIES as US
+    ca = ", ".join(f'<a href="/{CA_CITY_SLUG[c[1]]}/">{c[1]}</a>' for c in sorted(CA, key=lambda c: c[1]))
+    us = ", ".join(f'<a href="/{US_CITY_SLUG[c[1]]}/">{c[1]}, {c[0]}</a>' for c in sorted(US, key=lambda c: c[1]) if c[0] != "DC" and c[1] in US_CITY_SLUG)
+    return ca, us
+
+
+_ca, _us = _links()
+DATA["canada"] = dict(add=f"<h2>All Canadian city guides</h2><p>{_ca}.</p>")
+DATA["usa"] = dict(add=f"<h2>All US city guides</h2><p>{_us}.</p>")
+DATA["iptv-price"] = dict(add="""
+<h2>Understand who you are paying</h2>
+<p>A low price means little if the seller disappears. Read <a href="/iptv-resellers/">IPTV resellers explained</a> before buying from anyone, and see <a href="/3-smarter-ways-to-stream-tv-without-cable-in-2025/">three ways to stream TV without cable</a> to compare IPTV with licensed apps and bundles.</p>
+""")
+DATA["iptv-providers"] = dict(add="""
+<p>New to the idea of replacing cable? <a href="/3-smarter-ways-to-stream-tv-without-cable-in-2025/">Three ways to stream TV without cable in Canada</a> compares apps, bundles and IPTV.</p>
+""")

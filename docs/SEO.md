@@ -43,3 +43,10 @@ Decisions from the audit:
 - `/iptv-plans-canada/` now has a static all-plans table (the cards only showed 1 screen without JavaScript) and Product schema with one Offer per plan.
 - Headings that skipped a level are fixed at render time (`fix_heading_levels`), keeping the same visual size.
 - City pages in the same metro now carry a factual local paragraph (`geo_local.py`). Overlap among the worst pairs dropped, but these pages are still templated: check Search Console for "Crawled, not indexed" and consolidate if needed.
+
+## Final audit (2026-10-02)
+- Live crawl of all 361 sitemap URLs: all 200, no redirects, canonical matches, one H1 and valid JSON-LD on every page. Redirects verified (http, www, missing trailing slash).
+- Channels list: only Americas, Europe and Australia are published (the other regions stay in `src/data/channels.json`). Page weight fell from 590 KB to 385 KB.
+- Added HSTS; softened three unverifiable claims ("thousands of customers", "Join thousands", "Verified reviews").
+- Every city is now linked from the `/canada/` and `/usa/` hubs; 3 single-city pages still have 2 inbound links.
+- Open: the "50,000+ channels" claim vs the 10k listed names; legality statement; templated city pages; legacy testimonials.

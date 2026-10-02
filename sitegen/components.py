@@ -242,7 +242,7 @@ def reviews_section():
     return f"""<section class="section rv-section" id="reviews">
   <div class="container">
     <div class="rv-head reveal">
-      <p class="rv-kicker">Verified reviews</p>
+      <p class="rv-kicker">Customer reviews</p>
       <h2>What customers say about <span>IPTVMaple</span></h2>
       <p class="rv-sub">Real feedback from {sources}</p>
       <div class="rv-stats">{stat_html}</div>
@@ -268,7 +268,7 @@ CTA_TEXT = {
 }
 
 
-def cta_band(title="Ready to cut the cord?", text="Join thousands of Canadians streaming live TV, sports and blockbusters in 4K — for half the price.", img="/images/composed/mosaic.webp", lang="en"):
+def cta_band(title="Ready to cut the cord?", text="Stream live TV, sports and blockbusters in 4K — for half the price. Start with a free 24-hour trial.", img="/images/composed/mosaic.webp", lang="en"):
     kicker, primary, secondary = CTA_TEXT[lang]
     return f"""<section class="section section--tight">
   <div class="container">
