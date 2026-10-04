@@ -29,6 +29,12 @@
 /onn-4k-pro-iptv/ /onn-tv-box-iptv/ 301
 /m3u-checker/ /iptv-checker/ 301
 /netflix-vs-iptv/ /iptv-vs-netflix/ 301
+# Spelling variants of the 2026-10-05 pages
+/myiptv/ /myiptv-player/ 301
+/my-iptv-player/ /myiptv-player/ 301
+/5g-iptv/ /iptv-5g-mobile-data/ 301
+/iptv-5g/ /iptv-5g-mobile-data/ 301
+/iptv-mobile-data/ /iptv-5g-mobile-data/ 301
 # City pages moved under /canada/{province}/{city}/ (2026-10-01)
 /iptv-toronto/ /canada/ontario/toronto/ 301
 /iptv-montreal/ /canada/quebec/montreal/ 301

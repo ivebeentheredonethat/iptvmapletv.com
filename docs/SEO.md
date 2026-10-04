@@ -73,3 +73,11 @@ Re-ran both keyword files under the v3 rules. v3 changes vs 2.0: device, app and
   - Albanian ("iptv iliria"): no Albanian channels in the list.
   - SoPlayer: the app is tied to a provider selling its own channel packages; facts not independently verifiable.
   - Excluded markets (16 / 20 keywords): Arabic, Asian, African.
+
+## Gap pass 7 (2026-10-05)
+Re-checked both keyword files (unchanged since expansion pass 2) against every page. Few real gaps were left; most of the remaining "not covered" list is word-order variants, misspellings ("smasters", "mu3") and other providers' names.
+- New pages (`sitegen/seo_content/expansion3.py`): `/myiptv-player/` (Windows player; "my iptv", "my ip tv"), `/iptv-5g-mobile-data/` (5G home internet and phone data; "5g iptv", "iptv sim"). Spelling-variant 301s in `_redirects`.
+- Extended (`deep_gap7.py`): MAG model table (520, 524, 424, 425A, 540w3/544w3, 555, 322w1), Formuler Z+ Neo and ZX, Smart STB on the STBEmu page, buying boxes on AliExpress/eBay and "fully loaded" boxes, ISP IPTV vs internet IPTV, IPTV over Wi-Fi, paid vs free IPTV, Xtream on PC, XCIPTV on Samsung, 4K OTT / 8K labels, spelling FAQs for SSIPTV, SET IP TV, GSEIPTV and IPTV X.
+- Fixed: the MAG page called the MAG 424 "Android-based" (it is Linux; the Android model is the 425A) and the 524 the "current flagship" (Infomir lists it as discontinued).
+- Maps: worldwide 513 mapped (was 495) / 16 excluded / 293 other-provider names; Canada 705 (was 687) / 20 / 354. Coverage: phrases absent from their page 73 → 52.
+- Not built: CloudStream ("cloud stream", 500k/mo: a scraper app, not an IPTV player), "Smart IPTV" on Fire TV (not verified), MAG 420 and Amiko A6N (specs not verified), the remaining provider names.
