@@ -58,3 +58,18 @@ Ran the SEO STRUCTURE 2.0 process on the new **worldwide** keyword file (822 key
 - Third-party app facts (trial lengths, activation, supported TVs) were checked on the developers' own sites on 2026-10-04; app prices are deliberately not quoted.
 - `expansion.LINK_IN` adds each new page to the "Related guides" of 1–2 relevant existing pages so none is orphaned.
 - Not built: OTT Navigator (store listings conflict, facts not verifiable); separate Hisense/Philips/Panasonic/Sony pages (covered in the smart TV pillar); box model numbers (MAG, Dreamlink, TVIP, Formuler variants: existing device pages); "iptv wifi" / "isp iptv" (added to buffering and what-is-IPTV pages); 327 other-provider brand names; 19 excluded-market keywords.
+
+## Expansion pass 2 (2026-10-04, SEO master prompt v3)
+Re-ran both keyword files under the v3 rules. v3 changes vs 2.0: device, app and tool names are protected classes (never filed as "other brands"), and the Caucasus is no longer an excluded market.
+- Maps: worldwide 495 mapped (was 476) / 16 excluded / 311 other-provider names; Canada 687 mapped (was 672) / 20 / 372.
+- New pages (`sitegen/seo_content/expansion2.py`): `/gse-smart-iptv/`, `/iptvx/`, `/ott-navigator/`, `/purple-iptv/` (apps), `/onn-tv-box-iptv/` (device, "onn tv box" 50k/mo), `/iptv-vs-netflix/`, `/iptv-checker/` (a working M3U playlist checker; parsing runs in the browser in `site.js`, nothing is uploaded).
+- Extended (`deep_gap6.py`): `/iptv-box/` box-model table (TVIP, Ugoos AM7, Homatics Box Q, Dreamlink, Xsarius, Amiko), `/ex-yu-iptv/` Balkan terms ("iptv ponuda", "iptv televizija", "iptv kanali"), `/iptv-iphone/`, `/iptv-apps/`. `deep.py` now accepts `keywords_add` and a per-entry `updated` date.
+- Keyword ownership moved: "gseiptv"/"iptvx" from `/iptv-iphone/`, "iptv checker"/"m3u checker" from `/watch-iptv-online/`.
+- Spelling-variant 301s for the new pages in `_redirects`.
+- Third-party facts checked on 2026-10-04 on App Store / Google Play listings, the developers' sites and established reviews (onn 4K Pro specs). App prices deliberately not quoted.
+- Not built, and why:
+  - Pages for other IPTV providers' names (311 worldwide / 372 Canada keywords, e.g. "forevertv", "xtreme hd iptv"). v3 suggests conquest pages, but these are navigational searches for unlicensed services we can't describe truthfully; one page per name would be thin, doorway-like and a trademark risk.
+  - Georgian IPTV ("iptv ge", "rustavi2", "imedi", ~25k/mo): now allowed under v3, but the channel list has only 5 Georgian channels, so a page would be thin and the searches are mostly for the iptv.ge site.
+  - Albanian ("iptv iliria"): no Albanian channels in the list.
+  - SoPlayer: the app is tied to a provider selling its own channel packages; facts not independently verifiable.
+  - Excluded markets (16 / 20 keywords): Arabic, Asian, African.

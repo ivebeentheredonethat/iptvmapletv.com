@@ -271,4 +271,65 @@
     };
     "requestIdleCallback" in window ? requestIdleCallback(start, { timeout: 4000 }) : setTimeout(start, 2500);
   })();
+  // ---------- M3U playlist checker (/iptv-checker/): parses pasted text locally, nothing is sent anywhere
+  (() => {
+    const box = $("[data-m3u-check]");
+    if (!box) return;
+    const input = $("#m3u-input", box), out = $("[data-m3u-out]", box);
+    const attr = (line, name) => { const m = line.match(new RegExp(name + '="([^"]*)"', "i")); return m ? m[1].trim() : ""; };
+    const el = (tag, text, cls) => { const e = document.createElement(tag); if (text != null) e.textContent = text; if (cls) e.className = cls; return e; };
+    const run = () => {
+      const lines = input.value.replace(/\r/g, "").split("\n").map((l) => l.trim()).filter(Boolean);
+      out.textContent = "";
+      if (!lines.length) { out.append(el("p", "Paste a playlist first.", "m3u-warn")); return; }
+      const header = lines[0].toUpperCase().startsWith("#EXTM3U");
+      const epg = header ? (attr(lines[0], "url-tvg") || attr(lines[0], "x-tvg-url")) : "";
+      const items = []; let cur = null;
+      for (const l of lines) {
+        if (l.toUpperCase().startsWith("#EXTINF")) cur = { info: l };
+        else if (!l.startsWith("#") && cur) { cur.url = l; items.push(cur); cur = null; }
+      }
+      const groups = new Map(), urls = new Map();
+      let live = 0, movies = 0, series = 0, noId = 0, noLogo = 0, catchup = 0;
+      for (const it of items) {
+        const g = attr(it.info, "group-title") || "(no group)";
+        groups.set(g, (groups.get(g) || 0) + 1);
+        urls.set(it.url, (urls.get(it.url) || 0) + 1);
+        if (/\/movie\//i.test(it.url)) movies++; else if (/\/series\//i.test(it.url)) series++; else live++;
+        if (!attr(it.info, "tvg-id")) noId++;
+        if (!attr(it.info, "tvg-logo")) noLogo++;
+        if (/catchup|tvg-rec|timeshift/i.test(it.info)) catchup++;
+      }
+      const dupes = [...urls.values()].reduce((n, c) => n + (c > 1 ? c - 1 : 0), 0);
+      const fmt = (n) => n.toLocaleString("en-CA");
+      const rows = [
+        ["Valid #EXTM3U header", header ? "Yes" : "No: most apps will reject this list", !header],
+        ["Entries", fmt(items.length), !items.length],
+        ["Groups", fmt(groups.size)],
+        ["Live channels", fmt(live)], ["Movies", fmt(movies)], ["Series episodes", fmt(series)],
+        ["EPG link in header", epg || "None: add your provider’s EPG link in the player", !epg],
+        ["Entries without tvg-id (no guide)", fmt(noId), noId > 0],
+        ["Entries without a logo", fmt(noLogo)],
+        ["Duplicate stream URLs", fmt(dupes), dupes > 0],
+        ["Entries with catch-up tags", fmt(catchup)],
+      ];
+      const table = el("table"), tb = el("tbody");
+      for (const [k, v, warn] of rows) { const tr = el("tr"); tr.append(el("td", k), el("td", v, warn ? "m3u-warn" : "")); tb.append(tr); }
+      table.append(tb); out.append(table);
+      const top = [...groups.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8);
+      if (top.length) {
+        out.append(el("p", "Largest groups:", "m3u-sub"));
+        const ul = el("ul");
+        top.forEach(([g, n]) => ul.append(el("li", g + ": " + fmt(n))));
+        out.append(ul);
+      }
+      if (!items.length) out.append(el("p", "No #EXTINF entries followed by a stream URL were found.", "m3u-warn"));
+    };
+    $("[data-m3u-run]", box).addEventListener("click", run);
+    $("[data-m3u-file]", box).addEventListener("change", (e) => {
+      const f = e.target.files && e.target.files[0];
+      if (!f) return;
+      f.text().then((t) => { input.value = t; run(); });
+    });
+  })();
 })();

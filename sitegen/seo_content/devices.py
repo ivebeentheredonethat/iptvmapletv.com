@@ -447,7 +447,7 @@ PAGES = [
             ("Can I watch on my Apple TV and iPhone at once?", "<p>Yes, with a plan that includes 2 or more simultaneous devices.</p>"),
         ],
         related=["iplaytv", "smarters-player-lite", "iptv-iphone"],
-        keywords=["iptv apple tv", "iptv apple tv 4k", "iptv on apple tv 4k", "iptv apple", "iptv sur apple tv", "tivimate apple tv", "iptvx apple tv", "iptv smarters apple tv", "iptv smasters pro apple tv"],
+        keywords=["iptv apple tv", "iptv apple tv 4k", "iptv on apple tv 4k", "iptv apple", "iptv sur apple tv", "tivimate apple tv", "iptv smarters apple tv", "iptv smasters pro apple tv"],
     ),
     # ------------------------------------------------------------------ ROKU
     dict(
@@ -608,7 +608,7 @@ PAGES = [
             ("Can I AirPlay IPTV to my TV?", "<p>Most iOS IPTV apps support AirPlay to Apple TV and AirPlay-compatible smart TVs.</p>"),
         ],
         related=["smarters-player-lite", "iptv-apple-tv", "iplaytv"],
-        keywords=["iptv iphone", "iptv sur iphone", "iptv ipad", "iptv mobile", "iptv smasters iphone", "gse iptv", "gseiptv", "iptvx", "atlas pro ontv iphone", "tivimate companion iphone"],
+        keywords=["iptv iphone", "iptv sur iphone", "iptv ipad", "iptv mobile", "iptv smasters iphone", "atlas pro ontv iphone", "tivimate companion iphone"],
     ),
     # ------------------------------------------------------------------ CHROMECAST
     dict(

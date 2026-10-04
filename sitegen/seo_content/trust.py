@@ -436,6 +436,7 @@ PAGES = [
 <ul>
 <li>Use an app you installed from an official store or the developer’s website.</li>
 <li>Don’t paste your login into a site you can’t identify.</li>
+<li>To see what a playlist contains, use a checker that runs in your browser and uploads nothing, such as our <a href="/iptv-checker/">IPTV checker</a>.</li>
 <li>If you tested a login on an unknown site, ask your provider to change the password.</li>
 </ul>
 
@@ -466,7 +467,7 @@ PAGES = [
         related=["iptv-pc-mac", "vlc-iptv", "iptv-smarters-pro", "m3u-playlist"],
         keywords=["online iptv", "ip tv online", "iptv online player", "online ip tv", "iptv watch tv online", "watch iptv", "iptv web", "iptv browser",
                   "iptv web browser", "iptv website", "iptv site", "web iptv smarters", "iptv smarters online", "m3u player online", "m3u online", "iptv chrome",
-                  "chrome iptv player", "iptv smasters online", "iptv smasters web", "iptv viewer", "iptv checker", "iptv checker online", "m3u checker", "iptv tester"],
+                  "chrome iptv player", "iptv smasters online", "iptv smasters web", "iptv viewer", "iptv tester"],
     ),
 
     # ------------------------------------------------------------------ BUFFERING
