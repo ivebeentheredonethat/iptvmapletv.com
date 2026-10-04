@@ -357,8 +357,8 @@ PAGES = [
             ("Why is IPTV buffering on my Samsung TV?", "<p>Often the TV’s Wi-Fi. Try Ethernet, or use a Firestick 4K with a stronger Wi-Fi chip.</p>"),
             ("Does IPTVMaple work on Samsung smart TVs?", "<p>Yes, with any of the apps above. We send an M3U link and Xtream login that work in all of them.</p>"),
         ],
-        related=["iptv-lg-tv", "smartone-iptv", "flix-iptv", "iptv-firestick", "iptv-roku"],
-        keywords=["iptv samsung tv", "iptv for samsung tv", "iptv samsung", "iptv samsung smart tv", "iptv samsung tizen", "samsung tizen iptv", "iptv tizen", "ip tv samsung", "iptv smart tv", "ip tv smart tv", "iptv sur samsung", "iptv sur tv samsung", "samsung iptv smarters", "iptv smasters samsung tv"],
+        related=["iptv-lg-tv", "iptv-smart-tv", "smartone-iptv", "duplecast", "iptv-firestick"],
+        keywords=["iptv samsung tv", "iptv for samsung tv", "iptv samsung", "iptv samsung smart tv", "iptv samsung tizen", "samsung tizen iptv", "iptv tizen", "ip tv samsung", "iptv sur samsung", "iptv sur tv samsung", "samsung iptv smarters", "iptv smasters samsung tv"],
     ),
     # ------------------------------------------------------------------ LG
     dict(
@@ -403,7 +403,7 @@ PAGES = [
             ("Do LG IPTV apps cost money?", "<p>Most offer a free trial, then a one-time activation paid to the app developer.</p>"),
             ("Does IPTVMaple work on LG TVs?", "<p>Yes, with any of the webOS apps above.</p>"),
         ],
-        related=["iptv-samsung-tv", "smartone-iptv", "flix-iptv"],
+        related=["iptv-samsung-tv", "iptv-smart-tv", "smartone-iptv", "ss-iptv"],
         keywords=["iptv lg", "iptv lg tv", "iptv lg smart", "iptv lg webos", "iptv for lg webos", "webos iptv", "tivimate lg", "iptv smasters lg tv"],
     ),
     # ------------------------------------------------------------------ APPLE TV

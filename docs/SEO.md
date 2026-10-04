@@ -50,3 +50,11 @@ Decisions from the audit:
 - Added HSTS; softened three unverifiable claims ("thousands of customers", "Join thousands", "Verified reviews").
 - Every city is now linked from the `/canada/` and `/usa/` hubs; 3 single-city pages still have 2 inbound links.
 - Open: the "50,000+ channels" claim vs the 10k listed names; legality statement; templated city pages; legacy testimonials.
+
+## Expansion pass (2026-10-04)
+Ran the SEO STRUCTURE 2.0 process on the new **worldwide** keyword file (822 keywords) and re-ran the Canada file. Maps: `docs/keyword-map-worldwide.xlsx`, `docs/keyword-map.xlsx`.
+- Baseline audit: 0 critical, 0 important, 3 minor (under-linked city pages). After: the same, with 13 more indexable pages (374 in the sitemap).
+- New pages (`sitegen/seo_content/expansion.py`): `/ss-iptv/`, `/set-iptv/`, `/duplecast/`, `/nanomid/`, `/lazy-iptv/`, `/iptv-smart-tv/` (English pillar for every TV brand; "iptv smart tv" previously landed on a French page), `/pluto-tv-vs-iptv/`, `/iptv-vs-satellite/`, `/iptv-starlink/`, `/iptv-account/`, `/iptv-recording-catch-up/`, `/hbo-iptv/`, `/german-iptv/`.
+- Third-party app facts (trial lengths, activation, supported TVs) were checked on the developers' own sites on 2026-10-04; app prices are deliberately not quoted.
+- `expansion.LINK_IN` adds each new page to the "Related guides" of 1–2 relevant existing pages so none is orphaned.
+- Not built: OTT Navigator (store listings conflict, facts not verifiable); separate Hisense/Philips/Panasonic/Sony pages (covered in the smart TV pillar); box model numbers (MAG, Dreamlink, TVIP, Formuler variants: existing device pages); "iptv wifi" / "isp iptv" (added to buffering and what-is-IPTV pages); 327 other-provider brand names; 19 excluded-market keywords.

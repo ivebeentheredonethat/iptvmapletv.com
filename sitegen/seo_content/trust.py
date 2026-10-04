@@ -12,7 +12,8 @@ PAGES = [
     dict(
         slug="iptv-guides", hub="guides", hub_page=True, **D,
         children=["what-is-iptv", "best-iptv-canada", "iptv-price", "iptv-providers", "is-iptv-legal-in-canada", "iptv-reddit", "iptv-reviews",
-                  "4k-iptv", "iptv-server", "watch-iptv-online", "iptv-buffering-fix"],
+                  "4k-iptv", "iptv-server", "watch-iptv-online", "iptv-buffering-fix",
+                  "iptv-account", "iptv-recording-catch-up", "hbo-iptv", "pluto-tv-vs-iptv", "iptv-vs-satellite", "iptv-starlink"],
         title="IPTV Guides for Canada: Prices, Providers & Setup | IPTVMaple",
         description="Plain-English IPTV guides for Canada: what IPTV is, how much it costs, how to compare providers, whether it’s legal, and how to fix buffering.",
         kicker="Guides", h1='IPTV guides <span class="grad-text">for Canada</span>',
@@ -546,6 +547,6 @@ PAGES = [
              "<p>Start with Medium. If streams still pause, try Large. A larger buffer smooths out short slowdowns, at the cost of a slightly longer start when you change channels.</p>"),
         ],
         related=["iptv-firestick", "iptv-box", "tivimate", "iptv-smarters-pro"],
-        keywords=["fast iptv", "iptv stable", "iptv sans coupure", "iptv rapid", "rapidiptv"],
+        keywords=["fast iptv", "iptv stable", "iptv sans coupure", "iptv rapid", "rapidiptv", "iptv wifi"],
     ),
 ]
