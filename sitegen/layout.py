@@ -1,5 +1,6 @@
 """The HTML shell shared by every page: <head> (SEO + analytics), header, footer, contact dock."""
 import json
+import os
 from dataclasses import dataclass, field
 from html import escape
 
@@ -219,7 +220,36 @@ def fix_heading_levels(html):
     return "".join(out)
 
 
+def _sales_data():
+    """Real confirmed orders from src/data/recent-orders.json, inlined into every page for the purchase
+    notification card (no API call at runtime). Empty file -> nothing is emitted -> no card."""
+    path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "src", "data", "recent-orders.json")
+    try:
+        rows = json.load(open(path, encoding="utf-8"))
+    except (OSError, ValueError):
+        return ""
+    clean = lambda v, n: re.sub(r"[<>&\"]", "", str(v or "")).strip()[:n]
+    items = []
+    for r in rows if isinstance(rows, list) else []:
+        x = {"first": clean(r.get("first"), 24), "place": clean(r.get("place"), 40), "plan": clean(r.get("plan"), 24)}
+        if not all(x.values()):
+            continue
+        if r.get("date"):
+            x["at"] = clean(r["date"], 25)
+        items.append(x)
+    items.sort(key=lambda x: x.get("at", ""), reverse=True)
+    if not items:
+        return ""
+    return f'<script type="application/json" id="sale-data">{json.dumps(items[:20], ensure_ascii=False, separators=(",", ":"))}</script>\n'
+
+
+_SALES = None
+
+
 def render(p: Page):
+    global _SALES
+    if _SALES is None:
+        _SALES = _sales_data()
     body = fix_heading_levels(p.body)
     return add_dimensions(f"""{_head(p)}
 <body>
@@ -228,7 +258,7 @@ def render(p: Page):
 {body}
 </main>
 {_footer()}
-<script src="/js/site.js?v={ASSET_VERSION}" defer></script>
+{_SALES}<script src="/js/site.js?v={ASSET_VERSION}" defer></script>
 </body>
 </html>
 """)

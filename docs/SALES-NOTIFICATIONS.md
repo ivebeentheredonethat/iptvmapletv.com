@@ -1,22 +1,26 @@
 # Recent purchase notifications
 
-A small card at the bottom-left reads "**Michael** from Canada purchased **12 Months**", with "Confirmed order · 2 hours ago" underneath. It shows **only real orders you add yourself**. With no entries, nothing appears.
+A small card at the bottom-left reads "**Sarah** from Ontario purchased **12 Months**", with "Confirmed order · Oct 4" underneath. It runs on **every page** and needs **no API, no key and no server**: the orders live in one file, `src/data/recent-orders.json`, which the build copies into each page.
 
-## One-time setup
-Cloudflare Pages, Settings, Variables and Secrets: add `ADMIN_KEY` (any long random string; it already protects `/api/leads`). The `LEADS` KV binding is already configured.
+It shows **only real orders you add yourself**. While the file is an empty list (`[]`), nothing appears.
 
-## Add an order (after you confirm payment)
+## Add a real order
+After you confirm payment (and the customer is OK with their first name being shown), add one line to `src/data/recent-orders.json`:
+
+```json
+[
+  {"first": "Sarah", "place": "Ontario", "plan": "12 Months", "date": "2026-10-04"},
+  {"first": "Luc", "place": "Quebec", "plan": "6 Months", "date": "2026-10-03"}
+]
 ```
-curl -X POST "https://iptvmapletv.com/api/orders-admin?key=YOUR_KEY" \
-  -H "content-type: application/json" \
-  -d '{"first":"Sarah","place":"Ontario","plan":"12 Months"}'
-```
-`at` is optional (ISO time; defaults to now). Use the customer's first name and region only, and only with their OK.
 
-List: `GET /api/orders-admin?key=YOUR_KEY`. Remove: `DELETE /api/orders-admin?key=YOUR_KEY&id=ID`.
+- `first`: customer's first name only. `place`: province, state or country. `plan`: as on the site (`1 Month`, `3 Months`, `6 Months`, `12 Months`).
+- `date` (optional): the real order date, `YYYY-MM-DD` (shows "Oct 4") or a full time like `2026-10-04T15:30:00Z` (shows "3 hours ago"). Leave it out and the card just says "Confirmed order".
+- Commit the change on GitHub (the pencil icon on the file works). The site rebuilds and the new entry is live on every page after the deploy. Newest first; up to 20 are used.
+- To remove an entry, delete its line and commit.
 
 ## Behaviour
-One notification every 7 s, each visible for 2 s (first one 7 s after load). Each real entry is shown once per page view, newest first, so with 3 entries visitors see 3 notifications on that page. Hover or keyboard focus keeps a card on screen; it pauses while the tab is in the background; it can be closed (stays closed for the session); entries older than 30 days are ignored; hidden on thank-you and landing pages.
+One notification every 7 s, each visible for 2 s (first one 7 s after the page loads), looping through the list. Hover or keyboard focus keeps a card on screen; it pauses while the tab is in the background; it can be closed (stays closed for the rest of the visit). No network request is made: the data is inside the page.
 
 ## Preview (owner only)
 Open `/sales-demo/` (noindex, unlinked) to see the design with sample names, or switch preview on there to see it on every page of your own device. Sample cards are labelled "Sample, not real" and are never shown to visitors.

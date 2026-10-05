@@ -214,14 +214,13 @@
     setTimeout(() => $("input:not([type=hidden])", t)?.focus({ preventScroll: true }), 500);
   }));
 
-  /* recent real purchases: shows only entries the owner has added via /api/orders-admin; nothing is shown when the feed is empty.
-     One notification every 7 s, each on screen for 2 s. Real entries are each shown once per page view; preview samples loop. */
+  /* recent real purchases: entries come from src/data/recent-orders.json, inlined into every page at build time
+     (no API call). Empty file -> nothing is shown. One notification every 7 s, each on screen for 2 s; the list loops. */
   (() => {
     const CYCLE = 7000, VISIBLE = 2000;
-    const skip = /^\/(thank-you|landing\d?)\//.test(location.pathname);
     let hidden = false;
     try { hidden = sessionStorage.getItem("sn-off") === "1"; } catch (e) {}
-    if (skip || hidden) return;
+    if (hidden) return;
     const ago = (iso) => {
       const m = Math.max(1, Math.round((Date.now() - Date.parse(iso)) / 60000));
       if (m < 60) return m + " min ago";
@@ -229,6 +228,13 @@
       if (h < 24) return h + (h === 1 ? " hour ago" : " hours ago");
       const d = Math.round(h / 24);
       return d + (d === 1 ? " day ago" : " days ago");
+    };
+    /* "2026-10-04" -> "Confirmed order · Oct 4"; full ISO time -> "Confirmed order · 3 hours ago"; no date -> "Confirmed order" */
+    const when = (at) => {
+      const t = Date.parse(at || "");
+      if (isNaN(t) || t > Date.now() + 36e5) return "Confirmed order";
+      if (/^\d{4}-\d{2}-\d{2}$/.test(at)) return "Confirmed order · " + new Date(t).toLocaleDateString("en-CA", { month: "short", day: "numeric", timeZone: "UTC" });
+      return "Confirmed order · " + ago(at);
     };
     /* sample names are shown only on a device where the owner switched preview on at /sales-demo/ (never to visitors) */
     const SAMPLE = () => [
@@ -238,12 +244,12 @@
       "Eric,Canada,12", "Daniel,USA,6", "Patrick,Canada,6", "Chris,USA,12", "Alex,Canada,12", "John,USA,12",
       "Justin,Canada,6", "Brandon,USA,12", "Tyler,Canada,12", "Adam,USA,6", "Ryan,Canada,12", "Jason,USA,12",
     ].map((r) => { const [first, place, n] = r.split(","); return { first, place, plan: n + " Months" }; });
-    const start = async () => {
+    const start = () => {
       let preview = false;
       try { preview = localStorage.getItem("sn-preview") === "1"; } catch (e) {}
       let items = window.__SALE_DEMO || preview ? SAMPLE() : [];
       const demo = items.length > 0;
-      if (!demo) { try { items = await (await fetch("/api/recent-orders")).json(); } catch (e) { return; } }
+      if (!demo) { try { items = JSON.parse(document.getElementById("sale-data")?.textContent || "[]"); } catch (e) { return; } }
       if (!Array.isArray(items) || !items.length) return;
       const card = document.createElement("aside");
       card.className = "sale-toast";
@@ -251,17 +257,16 @@
       card.innerHTML = '<span class="sale-avatar" aria-hidden="true"></span><div class="sale-body" role="status" aria-live="polite" aria-atomic="true"><p class="sale-line"></p><p class="sale-meta"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5l1.7 1.2 2-.1.7 1.9 1.6 1.2-.6 2 .6 2-1.6 1.2-.7 1.9-2-.1L8 14.5l-1.7-1.2-2 .1-.7-1.9-1.6-1.2.6-2-.6-2 1.6-1.2.7-1.9 2 .1z"/><path d="M5.6 8.2l1.6 1.6 3.3-3.4" fill="none" stroke="#0b0c12" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sale-time"></span></p></div><button type="button" class="sale-x" aria-label="Hide purchase notifications"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8"/></svg></button>';
       document.body.appendChild(card);
       const av = card.querySelector(".sale-avatar"), line = card.querySelector(".sale-line"), time = card.querySelector(".sale-time");
-      const limit = demo ? Infinity : items.length;
       let i = 0, hideT, nextT, hold = false, done = false;
       const hide = () => { if (!hold) card.classList.remove("is-on"); };
       const show = () => {
-        if (done || i >= limit) return;
+        if (done) return;
         const x = items[i++ % items.length];
         av.textContent = (x.first || "?").charAt(0).toUpperCase();
         const b = document.createElement("b");
         b.textContent = x.first;
         line.replaceChildren(b, " from " + x.place + " purchased ", Object.assign(document.createElement("b"), { textContent: x.plan }));
-        time.textContent = demo ? "Sample, not real" : "Confirmed order · " + ago(x.at);
+        time.textContent = demo ? "Sample, not real" : when(x.at);
         card.classList.remove("is-on");
         void card.offsetWidth; /* restart the timer-line animation */
         card.classList.add("is-on");

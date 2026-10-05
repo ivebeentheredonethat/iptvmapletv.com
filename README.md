@@ -14,6 +14,7 @@ hosted on **Cloudflare Pages**.
 | `src/data/plans.json` | **Prices**, plan URLs, per-plan SEO title/description, and the plan feature list |
 | `src/data/faq.json` | FAQ questions and answers (home, pricing, order pages) |
 | `src/data/reviews.json` | Customer reviews and WhatsApp feedback |
+| `src/data/recent-orders.json` | Real confirmed orders for the purchase notification card on every page (see `docs/SALES-NOTIFICATIONS.md`) |
 | `src/data/channels.json` | The channels list (regions → countries → channels) |
 | `src/data/setup-guides.json` | Device setup guides on /how-it-works/ |
 | `src/data/media.json` | Channel logos, posters and device logos used on the homepage |
