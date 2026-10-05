@@ -92,8 +92,8 @@ def manifest():
     write("site.webmanifest", json.dumps({
         "name": C.LEGAL_NAME, "short_name": C.NAME, "start_url": "/", "display": "standalone",
         "background_color": "#06070b", "theme_color": "#06070b",
-        "icons": [{"src": "/brand/icon-192.png?v=3", "sizes": "192x192", "type": "image/png"},
-                  {"src": "/brand/icon-512.png?v=3", "sizes": "512x512", "type": "image/png"}],
+        "icons": [{"src": "/brand/icon-192.png?v=4", "sizes": "192x192", "type": "image/png"},
+                  {"src": "/brand/icon-512.png?v=4", "sizes": "512x512", "type": "image/png"}],
     }, indent=2))
 
 

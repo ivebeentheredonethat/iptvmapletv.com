@@ -59,7 +59,7 @@ PAGES = [
 <p>Pour être certain que chaque chaîne est autorisée, les options sûres sont les forfaits de télé d’un fournisseur de télécommunications (Bell Fibe, Telus Optik et d’autres) ou des services de diffusion en continu autorisés comme Crave, ICI TOU.TV, CBC Gem et Club illico. Ils coûtent généralement plus cher et répartissent le contenu entre plusieurs abonnements. Comparez les coûts sur notre page <a href="/iptv-pas-cher/">IPTV pas cher</a>.</p>
 
 <h2>Et IPTVMaple?</h2>
-<p>IPTVMaple est un service d’abonnement IPTV indépendant. Nous publions nos <a href="/terms/">conditions d’utilisation</a>, notre <a href="/privacy/">politique de confidentialité</a> et notre <a href="/refund/">politique de remboursement</a>, et nous offrons un <a href="/try-iptv-canada/">essai gratuit de 24 heures</a> pour que vous puissiez voir le service avant de payer. Si vous avez des questions sur les droits, les licences ou nos conditions, écrivez à Help@iptvmapletv.com avant d’acheter.</p>
+<p>IPTVMaple est un service d’abonnement IPTV indépendant. Nous publions nos <a href="/terms/">conditions d’utilisation</a>, notre <a href="/privacy/">politique de confidentialité</a> et notre <a href="/refund/">politique de remboursement</a>, et nous offrons un <a href="/try-iptv-canada/">essai gratuit de 24 heures</a> pour que vous puissiez voir le service avant de payer. Si vous avez des questions sur les droits, les licences ou nos conditions, écrivez à help@iptvmapletv.com avant d’acheter.</p>
 <p>Pour comparer les services avec les mêmes critères, consultez aussi <a href="/meilleur-iptv/">le meilleur IPTV au Québec</a>. Version anglaise : <a href="/is-iptv-legal-in-canada/">Is IPTV legal in Canada?</a></p>
 """,
         faq=[

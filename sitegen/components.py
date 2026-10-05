@@ -174,7 +174,6 @@ def faq_section(items, title="Frequently asked questions", lang="en"):
 
 # ------------------------------------------------------------------ reviews
 FLAGS = {
-    "Canada": '<rect width="20" height="14" fill="#FF0000"/><rect x="5" width="10" height="14" fill="#fff"/><polygon points="10,2 11,5.5 14.5,5.5 11.8,7.5 12.8,11 10,9 7.2,11 8.2,7.5 5.5,5.5 9,5.5" fill="#FF0000"/>',
     "USA": '<rect width="20" height="14" fill="#B22234"/>' + "".join(f'<rect y="{y}" width="20" height="1.08" fill="#fff"/>' for y in (1.08, 3.23, 5.38, 7.54, 9.69, 11.85)) + '<rect width="8" height="7.54" fill="#3C3B6E"/>',
     "UK": '<rect width="20" height="14" fill="#012169"/><path d="M0 0L20 14M20 0L0 14" stroke="#fff" stroke-width="2.6"/><path d="M0 0L20 14M20 0L0 14" stroke="#C8102E" stroke-width="1"/><path d="M10 0V14M0 7H20" stroke="#fff" stroke-width="4"/><path d="M10 0V14M0 7H20" stroke="#C8102E" stroke-width="2.4"/>',
     "Germany": '<rect width="20" height="4.67" fill="#000"/><rect y="4.67" width="20" height="4.67" fill="#DD0000"/><rect y="9.33" width="20" height="4.67" fill="#FFCE00"/>',
@@ -185,6 +184,8 @@ FLAGS = {
 def flag(country):
     """'🇨🇦 Canada' -> inline SVG flag (emoji flags don't render on Windows)."""
     name = country.split(" ", 1)[-1]
+    if name == "Canada":  # the official flag image supplied by the owner (2:1)
+        return '<img class="rv-flag" src="/brand/flag-ca.png" width="28" height="14" alt="Canada" loading="lazy" decoding="async">'
     shapes = FLAGS.get(name)
     return (f'<svg class="rv-flag" width="20" height="14" viewBox="0 0 20 14" role="img" aria-label="{escape(name)}">{shapes}</svg>'
             if shapes else escape(name))

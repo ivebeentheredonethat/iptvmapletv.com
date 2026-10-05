@@ -2,7 +2,7 @@
  "refund": [
   {
    "q": "How long do I have to ask for a refund?",
-   "a": "<p>You can request a refund within <strong>7 days of your purchase</strong>. Send an email to Help@iptvmapletv.com with the subject “Request a Refund”, your order ID and a short description of the problem. After 7 days a partial refund based on the unused part of your subscription may be possible.</p>"
+   "a": "<p>You can request a refund within <strong>7 days of your purchase</strong>. Send an email to help@iptvmapletv.com with the subject “Request a Refund”, your order ID and a short description of the problem. After 7 days a partial refund based on the unused part of your subscription may be possible.</p>"
   },
   {
    "q": "What if the service doesn’t work and you can’t fix it?",
@@ -32,7 +32,7 @@
   },
   {
    "q": "How do I contact IPTVMaple?",
-   "a": "<p>Our support team answers on WhatsApp and by email at Help@iptvmapletv.com, day and night. See the <a href=\"/contact/\">contact page</a>.</p>"
+   "a": "<p>Our support team answers on WhatsApp and by email at help@iptvmapletv.com, day and night. See the <a href=\"/contact/\">contact page</a>.</p>"
   },
   {
    "q": "Can I try it before I pay?",
@@ -54,7 +54,7 @@
   },
   {
    "q": "Can I ask you to delete my data?",
-   "a": "<p>Yes. Email Help@iptvmapletv.com. California (CCPA) and EU (GDPR) residents have the right to access, correct and delete their data, and we respond within 30 days.</p>"
+   "a": "<p>Yes. Email help@iptvmapletv.com. California (CCPA) and EU (GDPR) residents have the right to access, correct and delete their data, and we respond within 30 days.</p>"
   },
   {
    "q": "Do you collect data from children?",
@@ -184,7 +184,7 @@
   },
   {
    "q": "What if I get stuck?",
-   "a": "<p>Message our team on WhatsApp or email Help@iptvmapletv.com — we set up apps with customers every day.</p>"
+   "a": "<p>Message our team on WhatsApp or email help@iptvmapletv.com — we set up apps with customers every day.</p>"
   }
  ],
  "channels-list": [

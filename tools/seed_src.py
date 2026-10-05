@@ -8,7 +8,7 @@ import shutil
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 C = os.path.join(ROOT, "tools", "content")
 SRC = os.path.join(ROOT, "src")
-EMAIL = "Help@iptvmapletv.com"
+EMAIL = "help@iptvmapletv.com"
 
 REDIRECTS = {}
 for line in open(os.path.join(ROOT, "public", "_redirects"), encoding="utf-8"):
