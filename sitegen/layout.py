@@ -115,9 +115,9 @@ def _head(p: Page):
 <meta name="twitter:image" content="{img}">
 <meta name="twitter:image:alt" content="{t}">
 <meta name="google-site-verification" content="{C.GOOGLE_SITE_VERIFICATION}">
-<link rel="icon" href="/favicon.ico?v=4" sizes="48x48">
-<link rel="icon" href="/favicon.svg?v=4" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png?v=4">
+<link rel="icon" href="/favicon.ico?v=5" sizes="48x48">
+<link rel="icon" href="/favicon.svg?v=5" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png?v=5">
 <link rel="manifest" href="/site.webmanifest">
 {f'<link rel="preload" as="image" {p.preload_image} fetchpriority="high">' + chr(10) if p.preload_image else ""}<link rel="preload" href="/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -129,8 +129,8 @@ def _head(p: Page):
 
 def brand_html():
     return (f'<a class="brand" href="/" aria-label="{C.NAME} home">'
-            f'<img src="/favicon.svg?v=4" width="38" height="38" alt="">'
-            f'<span><span class="r">IPTV</span><span class="c">Maple</span></span></a>')
+            f'<img src="/favicon.svg?v=5" width="38" height="38" alt="">'
+            f'<span class="wm"><span class="r">IPTV</span><span class="c">Maple</span></span></a>')
 
 
 def _header(p: Page):
