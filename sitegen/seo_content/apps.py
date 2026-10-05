@@ -9,7 +9,7 @@ PAGES = [
         title="Best IPTV Apps & Players in Canada (2026) | IPTVMaple",
         description="The best IPTV player apps for every device in 2026: TiviMate, IPTV Smarters Pro, IMPlayer, XCIPTV, STBEmu and more — with setup guides for Canada.",
         kicker="IPTV apps", h1='The best <span class="grad-text">IPTV apps</span> &amp; players for 2026',
-        lead="An IPTV player is the app that plays your subscription. Here’s which one to use on each device — and how to set it up in minutes.",
+        lead="The best IPTV apps and players for 2026: an IPTV player is the app that plays your subscription. Here’s which one to use on each device — and how to set it up in minutes.",
         crumb="IPTV apps", blurb="Every IPTV player compared, with setup guides.",
         answer="<p>The best IPTV app depends on your device: <strong>TiviMate</strong> for Firestick and Android TV, <strong>IPTV Smarters Pro</strong> for phones, tablets and computers, <strong>Smarters Player Lite</strong> or <strong>iPlayTV</strong> for iPhone and Apple TV, and <strong>Smart IPTV</strong>, <strong>SmartOne</strong> or <strong>Flix IPTV</strong> for Samsung and LG smart TVs. IPTVMaple works with all of them.</p>",
         body="""
@@ -541,7 +541,7 @@ PAGES = [
     # ------------------------------------------------------------------ FLIX IPTV
     dict(
         slug="flix-iptv", hub="apps",
-        title="Flix IPTV Setup on Samsung, LG & Firestick (2026) | IPTVMaple",
+        title="Flix IPTV Setup on Samsung, LG & Firestick | IPTVMaple",
         description="How to set up Flix IPTV on Samsung, LG, Android and Firestick: MAC address, playlist upload and activation. Works with IPTVMaple — try free for 24 hours.",
         kicker="IPTV apps", h1='<span class="grad-text">Flix IPTV</span> setup guide',
         lead="Flix IPTV is a sleek player for smart TVs and Android devices with live TV, movies and series. Here’s how to add your playlist.",
@@ -749,7 +749,7 @@ http://server:port/username/password/12345</code></pre>
     # ------------------------------------------------------------------ XTREAM
     dict(
         slug="xtream-codes-iptv", hub="apps",
-        title="Xtream Codes IPTV Login Explained (URL, User, Pass) | IPTVMaple",
+        title="Xtream Codes IPTV Login: URL, User & Pass | IPTVMaple",
         description="What an Xtream Codes IPTV login is, how to enter the server URL, username and password in TiviMate, Smarters and more, and how to fix errors. Try IPTVMaple.",
         kicker="IPTV apps", h1='<span class="grad-text">Xtream Codes</span> IPTV login explained',
         lead="Server URL, username, password — the login most IPTV apps use. Here’s how it works and where to type it.",

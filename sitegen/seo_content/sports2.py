@@ -199,7 +199,7 @@ PAGES = [
     dict(
         slug="espn-iptv", hub="sports", **D,
         title="ESPN on IPTV in Canada: ESPN 4K, ESPN2 & ESPN+ | IPTVMaple",
-        description="ESPN on IPTV in Canada: ESPN 4K, ESPN2, ESPN+ and ESPN Deportes in the lineup, plus the other US sports networks (FS1, NFL Network, MLB Network) and how to watch.",
+        description="ESPN on IPTV in Canada: ESPN 4K, ESPN2, ESPN+ and ESPN Deportes in the lineup, plus other US sports networks (FS1, NFL Network, MLB Network) and how to watch.",
         kicker="Sports channels", h1='ESPN on IPTV <span class="grad-text">in Canada</span>',
         lead="ESPN, ESPN2 and the US sports networks are part of the IPTVMaple lineup. Here is what is included and how to start watching.",
         crumb="ESPN IPTV", blurb="ESPN and the US sports networks in the IPTVMaple lineup.",

@@ -82,7 +82,7 @@ PAGES = [
     # ------------------------------------------------------------------ IPTV on 5G and mobile data
     dict(
         slug="iptv-5g-mobile-data", hub="guides", **D,
-        title="IPTV on 5G Home Internet & Mobile Data: What Works | IPTVMaple",
+        title="IPTV on 5G Home Internet & Mobile Data | IPTVMaple",
         description="Can you watch IPTV on 5G home internet or your phone’s mobile data? Speed needed per screen, data used per hour in HD and 4K, and settings that save data.",
         kicker="Guides", h1='IPTV on <span class="grad-text">5G and mobile data</span>',
         lead="5G home internet and phone plans can carry IPTV well. The two things to check are signal stability and how much data your plan includes.",

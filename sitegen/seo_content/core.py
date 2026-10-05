@@ -276,7 +276,7 @@ PAGES = [
     # ------------------------------------------------------------------ IPTV SERVER
     dict(
         slug="iptv-server", hub="guides",
-        title="What Is an IPTV Server? URLs, Portals & Stability | IPTVMaple",
+        title="What Is an IPTV Server? URLs, Portals, Stability | IPTVMaple",
         description="What an IPTV server is, how the server URL and port in your login work, why server quality decides buffering, and how to fix server errors. Try IPTVMaple.",
         kicker="Explainer", h1='What is an <span class="grad-text">IPTV server</span>?',
         lead="Server URL, port, portal, load balancing — what they mean, and why the servers behind your subscription matter more than anything else.",

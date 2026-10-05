@@ -14,7 +14,7 @@ APPS = [
     # ------------------------------------------------------------------ SS IPTV
     dict(
         slug="ss-iptv", hub="apps", **D,
-        title="SS IPTV Setup Guide: Load Your Playlist on a Smart TV | IPTVMaple",
+        title="SS IPTV Setup: Load a Playlist on a Smart TV | IPTVMaple",
         description="SS IPTV (Simple Smart IPTV) setup for LG, Samsung and other smart TVs: external playlist links, the connection code, limits and fixes. Try IPTVMaple free 24h.",
         kicker="IPTV apps", h1='<span class="grad-text">SS IPTV</span> setup guide for smart TVs',
         lead="SS IPTV is one of the oldest free players for smart TVs. Here is how to load your playlist the right way, and when another app is the better pick.",
@@ -73,7 +73,7 @@ APPS = [
     # ------------------------------------------------------------------ SET IPTV
     dict(
         slug="set-iptv", hub="apps", **D,
-        title="SET IPTV Setup: Upload Your Playlist by MAC Address | IPTVMaple",
+        title="SET IPTV Setup: Upload a Playlist by MAC Address | IPTVMaple",
         description="Set up SET IPTV on a Samsung, LG or Android TV: find the MAC address, upload your M3U or Xtream login on the SET IPTV website and fix common errors. Try free.",
         kicker="IPTV apps", h1='<span class="grad-text">SET IPTV</span>: setup by MAC address',
         lead="SET IPTV skips typing on the TV: you send your playlist to the TV from a phone or computer. Here is the full process.",
@@ -129,8 +129,8 @@ APPS = [
     # ------------------------------------------------------------------ Duplecast
     dict(
         slug="duplecast", hub="apps", **D,
-        title="Duplecast IPTV Player: Setup, Activation & Devices | IPTVMaple",
-        description="Duplecast IPTV player setup on Samsung, LG, VIDAA, Android TV and Fire TV: add your playlist, the 15-day trial, Device ID and key activation. Try IPTVMaple free.",
+        title="Duplecast IPTV Player: Setup & Activation | IPTVMaple",
+        description="Duplecast IPTV player setup on Samsung, LG, VIDAA, Android TV and Fire TV: add a playlist, the 15-day trial, Device ID and key activation. Try IPTVMaple free.",
         kicker="IPTV apps", h1='<span class="grad-text">Duplecast</span> IPTV player setup',
         lead="One player for almost every TV, including Hisense VIDAA models that few IPTV apps support. Here is how to set it up.",
         crumb="Duplecast", blurb="A player for Samsung, LG, VIDAA and Android TVs.",
@@ -187,8 +187,8 @@ APPS = [
     # ------------------------------------------------------------------ Nanomid
     dict(
         slug="nanomid", hub="apps", **D,
-        title="Nanomid IPTV Player: Setup With OTP Code & Devices | IPTVMaple",
-        description="How to use the Nanomid IPTV player on Samsung, LG, Android, Fire TV and iPhone: the OTP code, adding your playlist link, licence and tips. Try IPTVMaple free 24h.",
+        title="Nanomid IPTV Player: Setup With an OTP Code | IPTVMaple",
+        description="How to use the Nanomid IPTV player on Samsung, LG, Android, Fire TV and iPhone: the OTP code, adding a playlist link, licence and tips. Try IPTVMaple free 24h.",
         kicker="IPTV apps", h1='<span class="grad-text">Nanomid</span> player setup',
         lead="Nanomid runs on TVs, phones and Fire TV, and you add your playlist from a browser with a one-time code.",
         crumb="Nanomid", blurb="Player for Samsung, LG, Android, Fire TV and iOS.",
@@ -239,8 +239,8 @@ APPS = [
     # ------------------------------------------------------------------ Lazy IPTV
     dict(
         slug="lazy-iptv", hub="apps", **D,
-        title="Lazy IPTV: What Happened and the Best Alternatives | IPTVMaple",
-        description="LazyIPTV Deluxe was removed from Google Play in 2023. What that means if you still use it, and the best Android IPTV players to switch to. Try IPTVMaple free 24h.",
+        title="Lazy IPTV: What Happened & the Best Alternatives",
+        description="LazyIPTV Deluxe was removed from Google Play in 2023. What that means if you still use it, and the best Android IPTV players to switch to. Try IPTVMaple free.",
         kicker="IPTV apps", h1='<span class="grad-text">Lazy IPTV</span>: status and alternatives',
         lead="Lazy IPTV was a favourite playlist manager on Android. If you are looking for it today, here is what changed and what to use instead.",
         crumb="Lazy IPTV", blurb="What happened to LazyIPTV Deluxe and what to use now.",
@@ -363,7 +363,7 @@ GUIDES = [
     # ------------------------------------------------------------------ Pluto TV vs IPTV
     dict(
         slug="pluto-tv-vs-iptv", hub="guides", **D,
-        title="Pluto TV vs IPTV: Free Streaming or Paid Live TV? | IPTVMaple",
+        title="Pluto TV vs IPTV: Free Streaming or Paid Live TV?",
         description="Pluto TV is free, ad-supported streaming; IPTV gives you the real live channels. Compare channels, sports, ads, price and devices in Canada.",
         kicker="Comparison", h1='<span class="grad-text">Pluto TV vs IPTV</span>: what’s the difference?',
         lead="Both stream TV over the internet, but they are very different products. Here is what each one really gives you.",
@@ -418,7 +418,7 @@ GUIDES = [
     # ------------------------------------------------------------------ IPTV vs satellite
     dict(
         slug="iptv-vs-satellite", hub="guides", **D,
-        title="IPTV vs Satellite TV in Canada: Cost, Setup & Picture | IPTVMaple",
+        title="IPTV vs Satellite TV in Canada: Cost & Setup | IPTVMaple",
         description="IPTV vs satellite TV in Canada: compare cost, installation, weather, channels and contracts, and how IPTV runs on an Enigma2 receiver. Try IPTV free for 24h.",
         kicker="Comparison", h1='<span class="grad-text">IPTV vs satellite TV</span> in Canada',
         lead="A dish on the roof or an app on your TV? Here is how the two compare for Canadian homes, condos and cottages.",
@@ -590,7 +590,7 @@ GUIDES = [
     # ------------------------------------------------------------------ Recording / catch-up
     dict(
         slug="iptv-recording-catch-up", hub="guides", **D,
-        title="IPTV DVR, Recording & Catch-Up: How to Watch Later | IPTVMaple",
+        title="IPTV Recording & Catch-Up: How to Watch Later | IPTVMaple",
         description="Can you record IPTV? How catch-up, TiviMate recording and cloud DVR differ, which devices and apps support each, and storage tips. Try it free for 24h.",
         kicker="Guide", h1='IPTV <span class="grad-text">recording, DVR and catch-up</span>',
         lead="Missed the game or tonight’s episode? IPTV gives you two ways to watch later. Here is how each works.",
@@ -648,8 +648,8 @@ GUIDES = [
     # ------------------------------------------------------------------ HBO / premium movie channels
     dict(
         slug="hbo-iptv", hub="guides", **D,
-        title="HBO on IPTV in Canada: HBO, Crave & Movie Channels | IPTVMaple",
-        description="Watch HBO channels live on IPTV in Canada: HBO East and West, HBO 2, Crave, Cinemax, Showtime, Starz and Super Écran in one plan. HBO Max vs live channels explained.",
+        title="HBO IPTV in Canada: HBO, Crave & Movie Channels | IPTVMaple",
+        description="Watch HBO live on IPTV in Canada: HBO East and West, HBO 2, Crave, Cinemax, Showtime, Starz and Super Écran in one plan. HBO Max vs live channels explained.",
         kicker="Channels", h1='<span class="grad-text">HBO on IPTV</span>: live premium movie channels',
         lead="HBO, Crave, Cinemax, Showtime and Starz without stacking premium add-ons. Here is what’s included and how it differs from HBO Max.",
         crumb="HBO IPTV", blurb="HBO, Crave, Showtime, Starz and more.",
@@ -716,7 +716,7 @@ GERMAN = community(
     [("Can I watch the Bundesliga in Canada with German commentary?", "<p>Yes, on the Sky Sport Bundesliga and Sky Sport channels in the German lineup.</p>"),
      ("Are Austrian and Swiss channels included?", "<p>Yes. ORF, ServusTV and SRF channels are listed next to the German channels.</p>")],
     ["polish-iptv", "uk-iptv", "canada/ontario/kitchener"], ["german iptv", "iptv germany", "iptv deutsch", "deutsches iptv"],
-    title="German IPTV in Canada: ARD, ZDF, RTL & Bundesliga | IPTVMaple",
+    title="German IPTV in Canada: ARD, ZDF, RTL, Bundesliga | IPTVMaple",
 )
 
 GERMAN.update(D)

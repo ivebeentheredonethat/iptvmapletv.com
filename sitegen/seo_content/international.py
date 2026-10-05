@@ -56,7 +56,7 @@ PAGES = [
     dict(
         slug="iptv-international", hub="intl", hub_page=True,
         title="International IPTV in Canada: Channels From Home | IPTVMaple",
-        description="International IPTV for Canada: Italian, Portuguese, Polish, Greek, Romanian, Ex-YU, British, French, German and Ukrainian channels plus Canadian TV. Try it free.",
+        description="International IPTV for Canada: Italian, Portuguese, Polish, Greek, Romanian, Ex-YU, British, French, German and Ukrainian channels plus Canadian TV. Try free.",
         kicker="International", h1='<span class="grad-text">International IPTV</span> in Canada',
         lead="Channels from home and Canadian TV in one subscription — for Canada’s European and British communities.",
         crumb="International IPTV", blurb="TV from home for Canada’s communities.",
@@ -149,7 +149,7 @@ PAGES = [
               ["romanian-iptv", "ukrainian-iptv", "canada/ontario/toronto"],
               ["ip televizija", "iptv kanali", "exyu iptv", "iliria iptv", "balkan iptv"],
               h1='<span class="grad-text">IP televizija</span>: Ex-YU IPTV in Canada',
-              title="IP Televizija u Kanadi: RTS, HRT, BHT, Arena Sport | IPTVMaple",
+              title="IP Televizija u Kanadi: RTS, HRT, BHT, Arena Sport",
               blurb="IP televizija: RTS, HRT, BHT, Pink, Arena Sport."),
     community("uk-iptv", "UK", "the United Kingdom", "🇬🇧", "Welcome, fellow Brits!",
               "Toronto, Vancouver, Calgary, Ottawa, Victoria and Halifax",

@@ -178,7 +178,7 @@ CITIES = [
     ("saskatchewan", "Regina", "regina", ["Saskatchewan Roughriders (CFL)", "Regina Pats (WHL)"], ["Saskatoon", "Brandon"],
      "Regina is the home of Rider Nation — Mosaic Stadium game days are huge.", "", ["SASKATCHEWAN"]),
     # ------------------------------------------------------------- Atlantic
-    ("nova-scotia", "Halifax", "halifax", ["Halifax Mooseheads (QMJHL)", "HFX Wanderers (CPL)", "Halifax Thunderbirds (NLL)"], ["Dartmouth", "Moncton", "Charlottetown"],
+    ("nova-scotia", "Halifax", "halifax", ["Halifax Mooseheads (QMJHL)", "HFX Wanderers (CPL)", "Halifax Thunderbirds (NLL)"], ["Dartmouth", "Moncton", "Charlottetown", "St. John’s"],
      "Halifax is an hour ahead of Eastern time, which makes late West Coast games very late. IPTV with catch-up and recording helps Maritimers watch on their own schedule.",
      "<h3>Atlantic time guide</h3><p>Set your IPTV app’s guide offset to Atlantic time so program times match your clock.</p>",
      ["HALIFAX"]),

@@ -36,7 +36,9 @@ def abs_url(u):
     return u if u.startswith("http") else C.SITE_URL + u
 
 
-_FAQ_ITEM = re.compile(r'<details[^>]*><summary>(.*?)</summary><div class="answer">(.*?)</div></details>', re.S)
+# The question group may not cross another <details>/<summary>, otherwise a non-FAQ <details> earlier on the page
+# (e.g. the country lists on /channels-list/) gets swallowed into the first question.
+_FAQ_ITEM = re.compile(r'<details[^>]*><summary>((?:(?!<summary>|</details>).)*?)</summary><div class="answer">(.*?)</div></details>', re.S)
 
 
 def _plain(html):

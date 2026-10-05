@@ -20,8 +20,9 @@ PAIRS = [
     ("iptv-firestick", "iptv-sur-firestick"),
     ("tivimate", "tivimate-en-francais"),
 ]
-from . import deep
+from . import deep, outbound
 deep.apply(ALL)
+outbound.apply(ALL)
 expansion.link_in(ALL)
 expansion2.link_in(ALL)
 expansion3.link_in(ALL)

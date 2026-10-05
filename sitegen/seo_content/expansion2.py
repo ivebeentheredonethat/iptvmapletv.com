@@ -131,7 +131,7 @@ APPS = [
     # ------------------------------------------------------------------ OTT Navigator
     dict(
         slug="ott-navigator", hub="apps", **D,
-        title="OTT Navigator IPTV Setup on Android TV & Firestick | IPTVMaple",
+        title="OTT Navigator IPTV Setup: Android TV & Firestick | IPTVMaple",
         description="OTT Navigator IPTV setup on Android TV, Google TV and Fire TV: add your provider, enable catch-up, what Premium adds and the OttNav Companion app.",
         kicker="IPTV apps", h1='<span class="grad-text">OTT Navigator</span> IPTV setup',
         lead="A powerful Android player with catch-up, timeshift and a media library. Here is how to set it up and what Premium really means.",
@@ -246,7 +246,7 @@ DEVICES = [
     # ------------------------------------------------------------------ onn 4K box
     dict(
         slug="onn-tv-box-iptv", hub="devices", **D,
-        title="onn TV Box IPTV: Set Up the onn 4K Pro for Live TV | IPTVMaple",
+        title="onn TV Box IPTV: Set Up the onn 4K Pro | IPTVMaple",
         description="Use an onn TV box (Walmart onn 4K and 4K Pro, Google TV) for IPTV: install TiviMate or Smarters, add your login, Ethernet tips and buying advice for Canada.",
         kicker="Devices", h1='<span class="grad-text">onn TV box</span> for IPTV: setup guide',
         lead="Walmart’s onn boxes run Google TV, which makes them one of the cheapest good IPTV boxes. Here is how to set one up.",

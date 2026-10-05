@@ -4,7 +4,7 @@ PAGES = [
     # ------------------------------------------------------------------ HUB
     dict(
         slug="iptv-devices", hub="devices", hub_page=True,
-        title="IPTV Devices: Setup Guides for Every Screen (2026) | IPTVMaple",
+        title="IPTV Devices: Setup Guides for Every Screen | IPTVMaple",
         description="IPTV setup guides for Firestick, Android TV boxes, Formuler, MAG, Samsung, LG, Apple TV, Roku, iPhone and PC. Pick your device and start watching today.",
         kicker="Devices", h1='IPTV on <span class="grad-text">every device</span>',
         lead="Firestick, smart TVs, Apple TV, Android boxes, phones and computers — pick your device for a step-by-step setup guide.",
@@ -144,7 +144,7 @@ PAGES = [
     # ------------------------------------------------------------------ IPTV BOX
     dict(
         slug="iptv-box", hub="devices",
-        title="Best IPTV Box in Canada (2026): Top Boxes Compared | IPTVMaple",
+        title="Best IPTV Box in Canada (2026): Boxes Compared | IPTVMaple",
         description="Which IPTV box to buy in Canada in 2026: Formuler Z11 Pro Max, Nvidia Shield, onn 4K, Fire TV Cube, MAG and BuzzTV compared — with setup tips. Try IPTVMaple.",
         kicker="Devices", h1='Best <span class="grad-text">IPTV box</span> in Canada for 2026',
         lead="Thinking of buying an IPTV box? Here’s how the most popular Android TV boxes compare — and why you don’t need a “loaded” box.",
