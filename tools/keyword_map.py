@@ -1,4 +1,7 @@
-"""Keyword -> page map (SEO spec steps 0.0 to 0.3).
+"""Keyword -> page map (SEO master prompt v3, steps 0.2 to 1.4).
+
+v3 changes: the Caucasus is no longer excluded (transcontinental = allowed), and device / app names that v2 filed as
+"other brands" now have pages (they are protected classes; see sitegen/seo_content/expansion2.py and deep_gap6.py).
 
 Usage:  pip install openpyxl && python tools/keyword_map.py "Keyword_Canada.xlsx" [output.xlsx]
 
@@ -34,7 +37,6 @@ EXCLUDED = [
     ("Asia", r"\b(tamil\w*|desi|jio|hindi|punjabi|tashan|bangla|urdu|pakistan\w*|india\w*|cctv\d*|tfc|filipino|chinese|china|korean|japan\w*|thai|vietnam\w*|unifi|malaysia\w*|startimes)\b"),
     ("Africa", r"\b(africa\w*|dstv|gotv|nigeria\w*|ghana\w*|kenya\w*|somali\w*|ethiopia\w*|egypt\w*|morocc?o\w*|algeri\w*|tunisia\w*|supersport africa)\b"),
     ("Latin America", r"\b(latino|latin|mexic\w*|brasil|brazil\w*|colombia\w*|argentin\w*|cuba\w*|venezuela\w*)\b"),
-    ("Not on the approved list (Caucasus)", r"\bge imedi\b|\bimedi\b|\biptv kanali\b"),
 ]
 
 # ----------------------------------------------------------------------------- known apps / devices / platforms / topics (these are NOT "other brands")
@@ -198,7 +200,7 @@ def main():
     brand_vol = sum(v for _, v, _, _ in out_brand)
     ex_total = sum(ex_vol.values())
     lines = [
-        ("SEO KEYWORD MAP — Canada", ""), ("Source file", SRC), ("", ""),
+        ("SEO KEYWORD MAP", ""), ("Source file", SRC), ("", ""),
         ("Keywords in spreadsheet", len(rows)), ("Total monthly volume", total_vol), ("", ""),
         ("MAPPED to a page (working list)", len(final_main)), ("   monthly volume", mapped_vol),
         ("EXCLUDED markets (step 0.0)", len(out_excl)), ("   monthly volume", ex_total),

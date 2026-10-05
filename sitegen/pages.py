@@ -274,7 +274,7 @@ def _plans_product(meta):
 
 def pricing_page():
     meta = META["iptv-plans-canada"]
-    body = f"""{page_hero('IPTV subscription in Canada — <span class="grad-text">50% off</span>', "Every channel, every movie and every feature in every plan. Choose your screens and save more with longer plans.", "Pricing", [("Home", "/"), ("Pricing", "")])}
+    body = f"""{page_hero('IPTV subscription in Canada — <span class="grad-text">50% off</span>', "Every IPTV subscription includes every channel, every movie and every feature, now 50% off. Choose your screens and save more with longer plans.", "Pricing", [("Home", "/"), ("Pricing", "")])}
 <section class="section section--after-hero"><div class="container">{pricing(heading=False)}</div></section>
 <section class="section section--tight"><div class="container narrow"><div class="prose-card prose reveal">
 <h2>Every IPTVMaple plan at a glance</h2>
@@ -457,7 +457,7 @@ def how_it_works():
     panels = "".join(
         f'<div class="guide-panel prose-card prose" role="tabpanel" id="gp-{i}" aria-labelledby="gt-{i}"{"" if i == 0 else " hidden"}><h3 style="margin-top:0">{escape(g["device"])}</h3>{g["html"].replace("<img ", "<img loading=\"lazy\" ")}</div>'
         for i, g in enumerate(guides))
-    body = f"""{page_hero('How to set up IPTV: <span class="grad-text">3 easy steps</span>', "Order, receive your login, and start watching on any device — most customers are streaming within minutes.", "How it works", [("Home", "/"), ("How it works", "")])}
+    body = f"""{page_hero('How to set up IPTV: <span class="grad-text">3 easy steps</span>', "Setting up IPTV takes 3 easy steps: order, receive your login, and start watching on any device. Most customers are streaming within minutes.", "How it works", [("Home", "/"), ("How it works", "")])}
 <section class="section section--after-hero">
   <div class="container">
     <div class="steps">
@@ -571,8 +571,8 @@ PROSE = {
     "privacy": ("Legal", "Privacy policy", "How we collect, use and protect your personal data."),
     "terms": ("Legal", "Terms &amp; conditions", "The terms that govern your use of IPTVMaple."),
     "refund": ("Legal", "Refund policy", "Our 7-day money-back guarantee, explained."),
-    "3-smarter-ways-to-stream-tv-without-cable-in-2025": ("Guide", "3 Smarter Ways to Stream TV Without Cable", "Streaming apps, live-TV bundles and IPTV compared: what each costs, what you get and which one fits how you watch."),
-    "cord-cutting-guide": ("Guide", "Cut the Cord &amp; Stream Smarter", "Why switching from cable pays off, what you need and how to switch without missing a game."),
+    "3-smarter-ways-to-stream-tv-without-cable-in-2025": ("Guide", "3 Smarter Ways to Stream TV Without Cable", "Three smarter ways to stream TV without cable: streaming apps, live-TV bundles and IPTV, compared on cost, what you get and how you watch."),
+    "cord-cutting-guide": ("Guide", "Cut the Cord &amp; Stream Smarter", "Cut the cord and stream smarter: why switching from cable pays off, what you need and how to switch without missing a game."),
     "landing": ("Save money", "Cut Your Monthly Bills — Smarter Entertainment Awaits", "Still paying expensive cable bills every month? There’s a better way."),
     "landing3": ("Cut the cord", "The Best Way to Cut the Cord", "Stream live TV, sports &amp; movies in 4K — without buffering or contracts."),
 }

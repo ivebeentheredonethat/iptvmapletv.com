@@ -139,6 +139,12 @@ def _steps(place, tz):
 
 
 # ------------------------------------------------------------------ USA
+def _h1_place(city, abbr):
+    """City name for the H1; adds the state/province when the same name exists in both countries (Richmond BC / VA)."""
+    shared = {x[1] for x in US_CITIES} & {x[1] for x in CA_CITIES}
+    return f"{city}, {abbr}" if city in shared else city
+
+
 def us_city(c):
     abbr, city, cslug, teams, nearby, note, tz_override, keys = c
     st = STATE_BY_ABBR[abbr]
@@ -183,7 +189,7 @@ def us_city(c):
         service_area=("City", f"{city}, {abbr}"),
         title=f"IPTV {city}, {abbr} – Live TV, Sports & 4K | IPTVMaple",
         description=f"IPTV in {city}, {abbr}: local stations, {team0} games and 50,000+ channels in 4K. Works with {_first(isps)} and any internet. Try it free for 24h.",
-        kicker=f"IPTV {sname}", h1=f'IPTV in <span class="grad-text">{escape(city)}</span>',
+        kicker=f"IPTV {sname}", h1=f'IPTV in <span class="grad-text">{escape(_h1_place(city, abbr))}</span>',
         lead=f"Live TV, local news and {escape(team0)} games in 4K — streamed over the internet you already have in {escape(city)}.",
         crumb=city, blurb=f"Local channels and {team0} in {city}.",
         answer=f"<p><strong>IPTV in {city}</strong> works over any home internet connection — {_first(isps)}, 5G home internet or Starlink. IPTVMaple gives {city} households 50,000+ live channels including {st_txt}, every sports network and 300,000+ movies and series, from $9 with a free 24-hour trial.</p>",
@@ -236,7 +242,7 @@ def us_state(st):
         slug=f"usa/{sslug}", hub="usa", trail=[("USA", "/usa/")], locale="en-US", service_area=("State", sname),
         children=[US_CITY_SLUG[c[1]] for c in cities],
         title=("IPTV Washington, D.C.: Local Channels & Sports | IPTVMaple" if abbr == "DC" else
-               f"IPTV {sname}: Live TV & Sports in Every City | IPTVMaple" if len(sname) <= 12 else f"IPTV {sname}: Live TV & Sports in 4K | IPTVMaple"),
+               f"IPTV {sname}: Live TV & Sports in Every City | IPTVMaple" if len(sname) <= 11 else f"IPTV {sname}: Live TV & Sports in 4K | IPTVMaple"),
         description=f"IPTV in {sname}: local stations, {teams[0] if teams else 'national sports'} and 50,000+ channels in 4K on any device. Works with {_first(isps)}. Try free for 24h.",
         kicker="IPTV USA", h1=f'IPTV in <span class="grad-text">{escape(sname)}</span>',
         lead=f"Live TV, local stations and sports across {escape(sname)} — no cable box, no contract.",
@@ -286,7 +292,7 @@ def ca_city(c):
 <p>Yes. IPTV works with {isps} and any other ISP in {pname}. You don’t need to change provider or rent a TV box. For 4K, 25 Mbps per screen is plenty.</p>
 {_steps(city, tz)}
 {f"<h2>IPTV near {city}</h2><p>We also serve {near_html} — and <a href='/canada/{pslug}/'>every city in {pname}</a>.</p>{more_html}" if near_html else more_html}
-{"<p><strong>En français :</strong> <a href='" + alternates[1][1] + "'>IPTV " + FR_NAMES.get(city, city) + "</a>.</p>" if alternates else ""}
+{"<p><strong>En français :</strong> <a href='" + alternates[1][1] + "'>IPTV " + FR_NAMES.get(city, city) + "</a>.</p>" if alternates else ""}{"<p><strong>En français :</strong> <a href='/fr/canada/nouveau-brunswick/'>IPTV au Nouveau-Brunswick</a>.</p>" if pslug == "new-brunswick" else ""}
 """
     faq = [
         (f"Is IPTV available in {city}?", f"<p>Yes. IPTVMaple works anywhere in {city} and across {pname} — all you need is an internet connection.</p>"),
@@ -301,7 +307,7 @@ def ca_city(c):
         alternates=alternates,
         title=f"IPTV {city}, {abbr} – Live TV & Sports in 4K | IPTVMaple",
         description=f"IPTV in {city}, {abbr}: {stations[0] if stations else 'Canadian channels'}, {team0} games and 50,000+ channels in 4K — no cable contract. Try IPTVMaple free for 24h.",
-        kicker=f"IPTV {pname}", h1=f'IPTV in <span class="grad-text">{escape(city)}</span>',
+        kicker=f"IPTV {pname}", h1=f'IPTV in <span class="grad-text">{escape(_h1_place(city, abbr))}</span>',
         lead=f"Live TV, local news and every {escape(team0)} game in 4K — delivered over the internet you already have in {escape(city)}.",
         crumb=city, blurb=f"Local channels, {team0} and 4K in {city}.",
         answer=f"<p><strong>IPTV in {city}</strong> works over any home internet connection — {_first(isps)} or a smaller provider. IPTVMaple gives {city} households 50,000+ live channels, including {st_txt}, all the sports networks and 300,000+ movies and series, from $9/month with a free 24-hour trial.</p>",
@@ -352,7 +358,7 @@ def ca_province(pv):
     return dict(
         slug=f"canada/{pslug}", hub="canada", trail=[("Canada", "/canada/")], service_area=("State", pname),
         children=[CA_CITY_SLUG[c[1]] for c in cities], alternates=alternates,
-        title=f"IPTV {pname}: Live TV & Sports in Every City | IPTVMaple" if len(pname) <= 12 else f"IPTV {pname}: Live TV & Sports | IPTVMaple",
+        title=f"IPTV {pname}: Live TV & Sports in Every City | IPTVMaple" if len(pname) <= 11 else f"IPTV {pname}: Live TV & Sports | IPTVMaple",
         description=f"IPTV in {pname}: {stations[0] if stations else 'Canadian channels'}, {teams[0].split(' (')[0] if teams else 'national sports'} and 50,000+ channels in 4K. Works with {_first(isps)}. Try free 24h.",
         kicker="IPTV Canada", h1=f'IPTV in <span class="grad-text">{escape(pname)}</span>',
         lead=f"Live TV, local stations and sports across {escape(pname)} — no cable box, no contract.",
@@ -410,7 +416,7 @@ def fr_city(c):
     return dict(
         slug=frslug, hub="fr", lang="fr", trail=[("IPTV Québec", "/iptv-quebec/")], service_area=("City", f"{nom}, QC"),
         alternates=[("en-CA", f"/{CA_CITY_SLUG[city]}/"), ("fr-CA", f"/{frslug}/")],
-        title=f"IPTV {nom} : télé en direct et sport en 4K | IPTVMaple",
+        title=(f"IPTV {nom} : télé en direct et sport en 4K | IPTVMaple" if len(nom) <= 12 else f"IPTV {nom} : télé en direct et sport | IPTVMaple"),
         description=f"IPTV à {nom} : {stations[0] if stations else 'TVA et ICI Radio-Canada'}, {team0} et 50 000+ chaînes en 4K, sans contrat. Essai gratuit de 24 h, soutien en français.",
         kicker="IPTV Québec", h1=f'IPTV à <span class="grad-text">{escape(nom)}</span>',
         lead=f"Vos chaînes québécoises, le sport et des milliers de films en 4K — sur la connexion Internet que vous avez déjà à {escape(nom)}.",
@@ -481,7 +487,7 @@ def hubs():
     )
     canada = dict(
         slug="canada", hub="canada", hub_page=True, children=[f"canada/{p[0]}" for p in PROVINCES],
-        title="IPTV Canada by Province: Local Channels Everywhere | IPTVMaple",
+        title="IPTV Canada by Province: Local Channels | IPTVMaple",
         description="IPTV in every Canadian province and territory: local CBC, CTV, Global, TVA and ICI stations, TSN, Sportsnet and RDS, plus 50,000+ channels in 4K. Try free 24h.",
         kicker="IPTV Canada", h1='IPTV across <span class="grad-text">Canada</span>',
         lead="Local stations in English and French, every Canadian sports network and 300,000+ movies & series — in every province and territory.",

@@ -20,6 +20,7 @@ shingles = {}
 for path, html in pages.items():
     head = html[: html.index("</head>")]
     noindex = "noindex" in head.split('name="robots"')[1][:80] if 'name="robots"' in head else False
+    noindex = noindex or f'<link rel="canonical" href="{SITE}{path}"' not in head  # canonical variants are not indexed on their own
     body = re.search(r"<main[^>]*>(.*)</main>", html, re.S)
     main = body.group(1) if body else html
     txt = text_of(html)
@@ -63,7 +64,7 @@ for path, html in pages.items():
         core = " ".join(kw_tokens[:2])
         d = txt.lower().count(core) / max(wc, 1) * 100
         if d > 4: add("keyword density above 4%", path, f"'{core}' {d:.1f}%")
-    internal = re.findall(r'<a [^>]*href="(/[^"#?]*)', main)
+    internal = re.findall(r'<a [^>]*href=["\'](/[^"\'#?]*)', main)
     ext = re.findall(r'<a [^>]*href="(https?://(?!iptvmapletv)[^"]+)"', main)
     if not noindex and len(set(internal)) < 5 and path != "/thank-you/": add("fewer than 5 distinct internal links in content", path, str(len(set(internal))))
     for l in set(internal):

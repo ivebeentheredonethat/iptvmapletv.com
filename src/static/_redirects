@@ -18,6 +18,23 @@
 # Plan pages moved off guide keywords (2026-09-30): /iptv-smarters-pro/ is now the app guide
 /smarters-pro-canada/ /12-month-iptv-4-devices/ 301
 /smarters-lite-canada/ /1-month-iptv-3-devices/ 301
+# Spelling variants of the 2026-10-04 app, device and tool pages
+/gse-iptv/ /gse-smart-iptv/ 301
+/gseiptv/ /gse-smart-iptv/ 301
+/ottnavigator/ /ott-navigator/ 301
+/ott-navigator-iptv/ /ott-navigator/ 301
+/iptv-x/ /iptvx/ 301
+/purple-iptv-player/ /purple-iptv/ 301
+/onn-tv-box/ /onn-tv-box-iptv/ 301
+/onn-4k-pro-iptv/ /onn-tv-box-iptv/ 301
+/m3u-checker/ /iptv-checker/ 301
+/netflix-vs-iptv/ /iptv-vs-netflix/ 301
+# Spelling variants of the 2026-10-05 pages
+/myiptv/ /myiptv-player/ 301
+/my-iptv-player/ /myiptv-player/ 301
+/5g-iptv/ /iptv-5g-mobile-data/ 301
+/iptv-5g/ /iptv-5g-mobile-data/ 301
+/iptv-mobile-data/ /iptv-5g-mobile-data/ 301
 # City pages moved under /canada/{province}/{city}/ (2026-10-01)
 /iptv-toronto/ /canada/ontario/toronto/ 301
 /iptv-montreal/ /canada/quebec/montreal/ 301

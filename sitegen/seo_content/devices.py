@@ -4,7 +4,7 @@ PAGES = [
     # ------------------------------------------------------------------ HUB
     dict(
         slug="iptv-devices", hub="devices", hub_page=True,
-        title="IPTV Devices: Setup Guides for Every Screen (2026) | IPTVMaple",
+        title="IPTV Devices: Setup Guides for Every Screen | IPTVMaple",
         description="IPTV setup guides for Firestick, Android TV boxes, Formuler, MAG, Samsung, LG, Apple TV, Roku, iPhone and PC. Pick your device and start watching today.",
         kicker="Devices", h1='IPTV on <span class="grad-text">every device</span>',
         lead="Firestick, smart TVs, Apple TV, Android boxes, phones and computers — pick your device for a step-by-step setup guide.",
@@ -144,7 +144,7 @@ PAGES = [
     # ------------------------------------------------------------------ IPTV BOX
     dict(
         slug="iptv-box", hub="devices",
-        title="Best IPTV Box in Canada (2026): Top Boxes Compared | IPTVMaple",
+        title="Best IPTV Box in Canada (2026): Boxes Compared | IPTVMaple",
         description="Which IPTV box to buy in Canada in 2026: Formuler Z11 Pro Max, Nvidia Shield, onn 4K, Fire TV Cube, MAG and BuzzTV compared — with setup tips. Try IPTVMaple.",
         kicker="Devices", h1='Best <span class="grad-text">IPTV box</span> in Canada for 2026',
         lead="Thinking of buying an IPTV box? Here’s how the most popular Android TV boxes compare — and why you don’t need a “loaded” box.",
@@ -278,8 +278,8 @@ PAGES = [
         body="""
 <h2>MAG models</h2>
 <ul>
-<li><strong>MAG 524 / 524w3</strong> — 4K HDR, Wi-Fi, current flagship.</li>
-<li><strong>MAG 424 / 424w3</strong> — 4K, Android-based.</li>
+<li><strong>MAG 524 / 524w3</strong> — 4K HDR Linux box, Wi-Fi on the w3 version.</li>
+<li><strong>MAG 424 / 424w3</strong> — 4K Linux box (the Android model is the MAG 425A).</li>
 <li><strong>MAG 322 / 324</strong> — Full HD, very popular and reliable.</li>
 <li><strong>MAG 254 / 256 / 250</strong> — older HD models, still supported.</li>
 </ul>
@@ -305,7 +305,7 @@ PAGES = [
 """,
         faq=[
             ("Where is the MAC address on a MAG box?", "<p>On the sticker under the box, and in Settings → System settings → Device info.</p>"),
-            ("Which MAG box supports 4K?", "<p>The MAG 524, MAG 424 and their Wi-Fi variants support 4K. The MAG 322 and 254 are HD.</p>"),
+            ("Which MAG box supports 4K?", "<p>The MAG 520, 524, 424 and their w3 Wi-Fi variants support 4K, as do the newer 540w3 and 544w3. The MAG 322 and 254 are HD.</p>"),
             ("Can I move my subscription to a new MAG box?", "<p>Yes, send us the new MAC address and we’ll transfer it.</p>"),
             ("Does IPTVMaple work on MAG boxes?", "<p>Yes, all Infomir MAG models are supported via portal URL.</p>"),
         ],
@@ -357,8 +357,8 @@ PAGES = [
             ("Why is IPTV buffering on my Samsung TV?", "<p>Often the TV’s Wi-Fi. Try Ethernet, or use a Firestick 4K with a stronger Wi-Fi chip.</p>"),
             ("Does IPTVMaple work on Samsung smart TVs?", "<p>Yes, with any of the apps above. We send an M3U link and Xtream login that work in all of them.</p>"),
         ],
-        related=["iptv-lg-tv", "smartone-iptv", "flix-iptv", "iptv-firestick", "iptv-roku"],
-        keywords=["iptv samsung tv", "iptv for samsung tv", "iptv samsung", "iptv samsung smart tv", "iptv samsung tizen", "samsung tizen iptv", "iptv tizen", "ip tv samsung", "iptv smart tv", "ip tv smart tv", "iptv sur samsung", "iptv sur tv samsung", "samsung iptv smarters", "iptv smasters samsung tv"],
+        related=["iptv-lg-tv", "iptv-smart-tv", "smartone-iptv", "duplecast", "iptv-firestick"],
+        keywords=["iptv samsung tv", "iptv for samsung tv", "iptv samsung", "iptv samsung smart tv", "iptv samsung tizen", "samsung tizen iptv", "iptv tizen", "ip tv samsung", "iptv sur samsung", "iptv sur tv samsung", "samsung iptv smarters", "iptv smasters samsung tv"],
     ),
     # ------------------------------------------------------------------ LG
     dict(
@@ -403,7 +403,7 @@ PAGES = [
             ("Do LG IPTV apps cost money?", "<p>Most offer a free trial, then a one-time activation paid to the app developer.</p>"),
             ("Does IPTVMaple work on LG TVs?", "<p>Yes, with any of the webOS apps above.</p>"),
         ],
-        related=["iptv-samsung-tv", "smartone-iptv", "flix-iptv"],
+        related=["iptv-samsung-tv", "iptv-smart-tv", "smartone-iptv", "ss-iptv"],
         keywords=["iptv lg", "iptv lg tv", "iptv lg smart", "iptv lg webos", "iptv for lg webos", "webos iptv", "tivimate lg", "iptv smasters lg tv"],
     ),
     # ------------------------------------------------------------------ APPLE TV
@@ -447,7 +447,7 @@ PAGES = [
             ("Can I watch on my Apple TV and iPhone at once?", "<p>Yes, with a plan that includes 2 or more simultaneous devices.</p>"),
         ],
         related=["iplaytv", "smarters-player-lite", "iptv-iphone"],
-        keywords=["iptv apple tv", "iptv apple tv 4k", "iptv on apple tv 4k", "iptv apple", "iptv sur apple tv", "tivimate apple tv", "iptvx apple tv", "iptv smarters apple tv", "iptv smasters pro apple tv"],
+        keywords=["iptv apple tv", "iptv apple tv 4k", "iptv on apple tv 4k", "iptv apple", "iptv sur apple tv", "tivimate apple tv", "iptv smarters apple tv", "iptv smasters pro apple tv"],
     ),
     # ------------------------------------------------------------------ ROKU
     dict(
@@ -608,7 +608,7 @@ PAGES = [
             ("Can I AirPlay IPTV to my TV?", "<p>Most iOS IPTV apps support AirPlay to Apple TV and AirPlay-compatible smart TVs.</p>"),
         ],
         related=["smarters-player-lite", "iptv-apple-tv", "iplaytv"],
-        keywords=["iptv iphone", "iptv sur iphone", "iptv ipad", "iptv mobile", "iptv smasters iphone", "gse iptv", "gseiptv", "iptvx", "atlas pro ontv iphone", "tivimate companion iphone"],
+        keywords=["iptv iphone", "iptv sur iphone", "iptv ipad", "iptv mobile", "iptv smasters iphone", "atlas pro ontv iphone", "tivimate companion iphone"],
     ),
     # ------------------------------------------------------------------ CHROMECAST
     dict(
