@@ -55,7 +55,7 @@ PAGES = [
         title="IPTV Resellers Explained: Supplier vs Reseller | IPTVMaple",
         description="What is an IPTV reseller, how do suppliers and resellers differ, and how can you tell a stable service from a middleman? A buyer's guide for Canada.",
         kicker="Buying guide", h1='IPTV resellers <span class="grad-text">explained</span>',
-        lead="Reseller, supplier, panel, provider: the words get mixed up. Here is what each one means for you as a viewer.",
+        lead="IPTV resellers explained: reseller, supplier, panel and provider get mixed up. Here is what each one means for you as a viewer.",
         crumb="IPTV resellers", blurb="Supplier vs reseller, and how to tell which one you are buying from.",
         answer="<p><strong>An IPTV supplier runs the servers; an IPTV reseller sells access to someone else’s servers under their own name.</strong> Buying from a reseller is not automatically bad, but support and stability depend on a supplier you can’t see. Ask who runs the service, test the free trial, and avoid anyone who won’t answer.</p>",
         body="""

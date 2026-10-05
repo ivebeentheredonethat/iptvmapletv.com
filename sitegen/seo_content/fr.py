@@ -265,7 +265,7 @@ PAGES = [
     dict(
         slug="iptv-sur-firestick", hub="fr", lang="fr",
         title="IPTV sur Fire TV Stick : installation pas à pas | IPTVMaple",
-        description="Installer l’IPTV sur une clé Amazon Fire TV Stick : options développeurs, Downloader, TiviMate ou IPTV Smarters et connexion. Guide en français, essai gratuit 24 h.",
+        description="Installer l’IPTV sur un Fire TV Stick : options développeurs, Downloader, TiviMate ou IPTV Smarters et connexion. Guide en français, essai gratuit 24 h.",
         kicker="Installation", h1='IPTV sur <span class="grad-text">Fire TV Stick</span>',
         lead="La clé Amazon Fire TV Stick est l’appareil IPTV le plus populaire au Québec. Voici l’installation complète, étape par étape.",
         crumb="IPTV sur Fire Stick", blurb="Downloader, TiviMate et connexion, étape par étape.",

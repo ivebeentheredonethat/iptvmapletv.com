@@ -708,3 +708,11 @@ html:not(.js) .rv-dots { display: none; }
 .sale-x:focus-visible { outline: 2px solid var(--cyan); outline-offset: 1px; color: #fff; }
 @media (max-width: 640px) { .sale-toast { left: 12px; bottom: 12px; max-width: calc(100vw - 84px); font-size: 13px; gap: 10px; padding: 9px 8px 9px 9px; border-radius: 16px; } .sale-avatar { width: 34px; height: 34px; border-radius: 11px; font-size: 15px; } }
 @media (prefers-reduced-motion: reduce) { .sale-toast, .sale-toast.is-on { transform: none; transition: opacity .2s, visibility 0s linear .2s; } .sale-toast.is-on { transition: opacity .2s; } .sale-toast.is-on::after { animation: none; } }
+
+/* M3U playlist checker (/iptv-checker/) */
+.m3u-check { display: grid; gap: 16px; margin: 8px 0 24px; }
+.m3u-input { height: auto; min-height: 180px; padding: 14px 16px; font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; resize: vertical; }
+.m3u-file { cursor: pointer; }
+.m3u-out table { margin: 0; }
+.m3u-out .m3u-warn { color: var(--gold); }
+.m3u-out .m3u-sub { margin: 16px 0 6px; color: var(--muted); font-size: 14px; }

@@ -187,7 +187,7 @@ PAGES = [
             ("Is IPTV hard to set up?", "<p>No — install an app, enter your login and start watching. It takes about 5–10 minutes.</p>"),
         ],
         related=["iptv-apps", "iptv-devices", "m3u-playlist", "best-iptv-canada"],
-        keywords=["ip television", "iptv tv", "iptv", "iptv what is it", "television iptv", "tv ip", "iptv for beginners", "online iptv", "online ip tv", "ip tv online", "iptv live", "live iptv", "live ip tv", "iptv stream", "stream iptv", "iptv streaming service", "iptv watch tv online", "watch iptv", "ott tv", "iptv vod"],
+        keywords=["what is iptv", "isp iptv", "ip television", "iptv tv", "iptv", "iptv what is it", "television iptv", "tv ip", "iptv for beginners", "online iptv", "online ip tv", "ip tv online", "iptv live", "live iptv", "live ip tv", "iptv stream", "stream iptv", "iptv streaming service", "iptv watch tv online", "watch iptv", "ott tv", "iptv vod"],
     ),
     # ------------------------------------------------------------------ 4K IPTV
     dict(
@@ -276,7 +276,7 @@ PAGES = [
     # ------------------------------------------------------------------ IPTV SERVER
     dict(
         slug="iptv-server", hub="guides",
-        title="What Is an IPTV Server? URLs, Portals & Stability | IPTVMaple",
+        title="What Is an IPTV Server? URLs, Portals, Stability | IPTVMaple",
         description="What an IPTV server is, how the server URL and port in your login work, why server quality decides buffering, and how to fix server errors. Try IPTVMaple.",
         kicker="Explainer", h1='What is an <span class="grad-text">IPTV server</span>?',
         lead="Server URL, port, portal, load balancing — what they mean, and why the servers behind your subscription matter more than anything else.",

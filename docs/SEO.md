@@ -50,3 +50,42 @@ Decisions from the audit:
 - Added HSTS; softened three unverifiable claims ("thousands of customers", "Join thousands", "Verified reviews").
 - Every city is now linked from the `/canada/` and `/usa/` hubs; 3 single-city pages still have 2 inbound links.
 - Open: the "50,000+ channels" claim vs the 10k listed names; legality statement; templated city pages; legacy testimonials.
+
+## Expansion pass (2026-10-04)
+Ran the SEO STRUCTURE 2.0 process on the new **worldwide** keyword file (822 keywords) and re-ran the Canada file. Maps: `docs/keyword-map-worldwide.xlsx`, `docs/keyword-map.xlsx`.
+- Baseline audit: 0 critical, 0 important, 3 minor (under-linked city pages). After: the same, with 13 more indexable pages (374 in the sitemap).
+- New pages (`sitegen/seo_content/expansion.py`): `/ss-iptv/`, `/set-iptv/`, `/duplecast/`, `/nanomid/`, `/lazy-iptv/`, `/iptv-smart-tv/` (English pillar for every TV brand; "iptv smart tv" previously landed on a French page), `/pluto-tv-vs-iptv/`, `/iptv-vs-satellite/`, `/iptv-starlink/`, `/iptv-account/`, `/iptv-recording-catch-up/`, `/hbo-iptv/`, `/german-iptv/`.
+- Third-party app facts (trial lengths, activation, supported TVs) were checked on the developers' own sites on 2026-10-04; app prices are deliberately not quoted.
+- `expansion.LINK_IN` adds each new page to the "Related guides" of 1–2 relevant existing pages so none is orphaned.
+- Not built: OTT Navigator (store listings conflict, facts not verifiable); separate Hisense/Philips/Panasonic/Sony pages (covered in the smart TV pillar); box model numbers (MAG, Dreamlink, TVIP, Formuler variants: existing device pages); "iptv wifi" / "isp iptv" (added to buffering and what-is-IPTV pages); 327 other-provider brand names; 19 excluded-market keywords.
+
+## Expansion pass 2 (2026-10-04, SEO master prompt v3)
+Re-ran both keyword files under the v3 rules. v3 changes vs 2.0: device, app and tool names are protected classes (never filed as "other brands"), and the Caucasus is no longer an excluded market.
+- Maps: worldwide 495 mapped (was 476) / 16 excluded / 311 other-provider names; Canada 687 mapped (was 672) / 20 / 372.
+- New pages (`sitegen/seo_content/expansion2.py`): `/gse-smart-iptv/`, `/iptvx/`, `/ott-navigator/`, `/purple-iptv/` (apps), `/onn-tv-box-iptv/` (device, "onn tv box" 50k/mo), `/iptv-vs-netflix/`, `/iptv-checker/` (a working M3U playlist checker; parsing runs in the browser in `site.js`, nothing is uploaded).
+- Extended (`deep_gap6.py`): `/iptv-box/` box-model table (TVIP, Ugoos AM7, Homatics Box Q, Dreamlink, Xsarius, Amiko), `/ex-yu-iptv/` Balkan terms ("iptv ponuda", "iptv televizija", "iptv kanali"), `/iptv-iphone/`, `/iptv-apps/`. `deep.py` now accepts `keywords_add` and a per-entry `updated` date.
+- Keyword ownership moved: "gseiptv"/"iptvx" from `/iptv-iphone/`, "iptv checker"/"m3u checker" from `/watch-iptv-online/`.
+- Spelling-variant 301s for the new pages in `_redirects`.
+- Third-party facts checked on 2026-10-04 on App Store / Google Play listings, the developers' sites and established reviews (onn 4K Pro specs). App prices deliberately not quoted.
+- Not built, and why:
+  - Pages for other IPTV providers' names (311 worldwide / 372 Canada keywords, e.g. "forevertv", "xtreme hd iptv"). v3 suggests conquest pages, but these are navigational searches for unlicensed services we can't describe truthfully; one page per name would be thin, doorway-like and a trademark risk.
+  - Georgian IPTV ("iptv ge", "rustavi2", "imedi", ~25k/mo): now allowed under v3, but the channel list has only 5 Georgian channels, so a page would be thin and the searches are mostly for the iptv.ge site.
+  - Albanian ("iptv iliria"): no Albanian channels in the list.
+  - SoPlayer: the app is tied to a provider selling its own channel packages; facts not independently verifiable.
+  - Excluded markets (16 / 20 keywords): Arabic, Asian, African.
+
+## Gap pass 7 (2026-10-05)
+Re-checked both keyword files (unchanged since expansion pass 2) against every page. Few real gaps were left; most of the remaining "not covered" list is word-order variants, misspellings ("smasters", "mu3") and other providers' names.
+- New pages (`sitegen/seo_content/expansion3.py`): `/myiptv-player/` (Windows player; "my iptv", "my ip tv"), `/iptv-5g-mobile-data/` (5G home internet and phone data; "5g iptv", "iptv sim"). Spelling-variant 301s in `_redirects`.
+- Extended (`deep_gap7.py`): MAG model table (520, 524, 424, 425A, 540w3/544w3, 555, 322w1), Formuler Z+ Neo and ZX, Smart STB on the STBEmu page, buying boxes on AliExpress/eBay and "fully loaded" boxes, ISP IPTV vs internet IPTV, IPTV over Wi-Fi, paid vs free IPTV, Xtream on PC, XCIPTV on Samsung, 4K OTT / 8K labels, spelling FAQs for SSIPTV, SET IP TV, GSEIPTV and IPTV X.
+- Fixed: the MAG page called the MAG 424 "Android-based" (it is Linux; the Android model is the 425A) and the 524 the "current flagship" (Infomir lists it as discontinued).
+- Maps: worldwide 513 mapped (was 495) / 16 excluded / 293 other-provider names; Canada 705 (was 687) / 20 / 354. Coverage: phrases absent from their page 73 → 52.
+- Not built: CloudStream ("cloud stream", 500k/mo: a scraper app, not an IPTV player), "Smart IPTV" on Fire TV (not verified), MAG 420 and Amiko A6N (specs not verified), the remaining provider names.
+
+## Page-by-page audit (2026-10-05)
+New checker `tools/seo_audit_pages.py` (stricter than the other two): titles 30–60 and descriptions 120–160 characters, full OG/Twitter set, hreflang self-reference and x-default, `_redirects` targets and chains, sitemap `lastmod`, first-100-words keyword placement, H2 presence, duplicate H1s, in-page anchors, FAQ schema vs visible questions, Product/Offer/Service required fields, CTA in the last third, outbound links on long guides, image weight. `--csv <file>` writes one row per page.
+- Baseline: 94 findings. After: 0 (and 0 critical / 0 important in `seo_audit.py`).
+- Fixed: FAQPage schema on `/channels-list/` swallowed every country list into one fake question (regex in `layout._auto_faq`); 38 titles over 60 characters; 8 descriptions over 160; Richmond BC / Richmond VA shared an H1; 7 intros without the H1 keyword; the "200,000 live TV channels, movies, and series" FAQ answer conflicted with the other figures (now neutral, links to the channel list).
+- `sitegen/seo_content/outbound.py` adds an "Official sources" paragraph to 31 app, device and how-to guides (developer, manufacturer, CRTC, Wikipedia). Commercial pages get none by design.
+- The audits now count single-quoted `href='…'` links (the city templates use them), so inbound-link counts are accurate.
+- Left as is: `/usa/hawaii/honolulu/` has 2 inbound links (state + USA hub; no natural third); 13 city pages still share >60% text with a sibling (needs real local facts); home hero poster images load eagerly on purpose; the "50,000+ channels" figure used sitewide is unchanged and still needs the owner's confirmation.

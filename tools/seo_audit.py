@@ -118,7 +118,7 @@ def main():
                 imp["img without width/height"].append(f"{path}: {im[:80]}")
         # links
         outs = set()
-        for ref in re.findall(r'<a [^>]*href="(/[^"#?]*)', html):
+        for ref in re.findall(r'<a [^>]*href=["\'](/[^"\'#?]*)', html):
             ref = unescape(ref)
             outs.add(ref)
             inbound[ref].add(path)

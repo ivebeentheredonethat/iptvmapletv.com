@@ -4,10 +4,10 @@ PAGES = [
     dict(
         slug="iptv-near-me", hub="cities", hub_page=True,
         children=["usa", "canada", "canada/ontario/toronto", "canada/quebec/montreal", "canada/british-columbia/vancouver", "canada/alberta/calgary", "usa/new-york/new-york-city", "usa/california/los-angeles", "usa/illinois/chicago", "usa/texas/houston", "usa/florida/miami"],
-        title="IPTV Near Me: IPTV Service in Every Canadian City | IPTVMaple",
+        title="IPTV Near Me: Service in Every Canadian City | IPTVMaple",
         description="Looking for IPTV near you? IPTVMaple serves every city in Canada — Toronto, Montreal, Vancouver, Calgary, Edmonton, Ottawa and more. Try it free for 24 hours.",
         kicker="Cities", h1='IPTV <span class="grad-text">near me</span>: every city in Canada',
-        lead="IPTV doesn’t need a local store or technician. If you have internet, you can be watching in minutes — wherever you are in Canada.",
+        lead="IPTV near me? It doesn’t need a local store or technician. If you have internet, you can be watching in minutes — wherever you are in Canada.",
         crumb="IPTV near me", blurb="IPTV service in every Canadian city.",
         answer="<p>You don’t need a local IPTV store: <strong>IPTV works anywhere in Canada with an internet connection</strong>. IPTVMaple sends your login online within minutes and supports you 24/7 on WhatsApp, whether you’re in Toronto, Montréal, Vancouver, Calgary, Edmonton, Ottawa, Winnipeg, Halifax or a small town. Local channels for major Canadian cities are included.</p>",
         body="""
