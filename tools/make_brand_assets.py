@@ -1,9 +1,8 @@
-"""One-time: build the transparent logo mark and the social share image from the
-original logo. Requires Pillow. Usage: python tools/make_brand_assets.py [path/to/Sora-800.ttf path/to/Inter-500.ttf]"""
+"""One-time: build the original transparent logo mark (mark.png, mark-128.webp) from the
+original logo; no longer used on the site. Requires Pillow. Usage: python tools/make_brand_assets.py"""
 import os
-import sys
 
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC = os.path.join(ROOT, "src", "static")
@@ -40,26 +39,5 @@ sq.resize((128, 128), Image.LANCZOS).save(os.path.join(OUT, "mark-128.webp"), qu
 
 # favicons and app icons are rendered from src/static/favicon.svg by tools/make_favicons.py
 
-# 1200x630 social share image
-W, H = 1200, 630
-og = Image.new("RGB", (W, H), (6, 7, 11))
-glow = Image.new("RGB", (W, H), (0, 0, 0))
-d = ImageDraw.Draw(glow)
-d.ellipse((-200, -250, 600, 450), fill=(150, 20, 45))
-d.ellipse((700, 250, 1400, 900), fill=(70, 30, 150))
-d.ellipse((850, -200, 1350, 250), fill=(10, 90, 120))
-glow = glow.filter(ImageFilter.GaussianBlur(160))
-og = Image.blend(og, glow, 0.9)
-m = sq.resize((300, 300), Image.LANCZOS)
-og.paste(m, (820, 165), m)
-dr = ImageDraw.Draw(og)
-bold = ImageFont.truetype(sys.argv[1], 92) if len(sys.argv) > 1 else ImageFont.load_default()
-body = ImageFont.truetype(sys.argv[2], 34) if len(sys.argv) > 2 else ImageFont.load_default()
-dr.text((80, 150), "IPTV", font=bold, fill=(255, 45, 74))
-w = dr.textlength("IPTV", font=bold)
-dr.text((80 + w, 150), "Maple", font=bold, fill=(34, 211, 238))
-dr.text((80, 270), "The best IPTV service", font=body, fill=(245, 246, 250))
-dr.text((80, 318), "in Canada for 2026", font=body, fill=(245, 246, 250))
-dr.text((80, 410), "50,000+ channels · 120,000+ movies & series · 4K", font=ImageFont.truetype(sys.argv[2], 26) if len(sys.argv) > 2 else body, fill=(163, 169, 184))
-og.save(os.path.join(OUT, "og-default.jpg"), quality=88, optimize=True)
+# the social share image is built from favicon.svg by tools/make_og.py
 print("ok")
