@@ -641,13 +641,13 @@ def sales_demo():
     """Private design preview of the purchase-notification card. Sample names only; noindex, unlinked, not in the sitemap."""
     body = f"""{page_hero('Purchase notification <span class="grad-text">design preview</span>', "Sample names for judging the look only. These are not real orders and this page is not linked anywhere on the site.", "Preview", [("Home", "/"), ("Preview", "")])}
 <section class="section section--after-hero"><div class="container narrow"><div class="prose-card prose">
-<p>Watch the bottom-left corner. A card slides in after a couple of seconds, stays for a few seconds with a thin timer line, and repeats with a different sample. Tap the first button to see the same preview on every page of the site, on this device only. On the live site, visitors see only real orders you add yourself.</p>
-<p><button type="button" class="btn btn--primary" id="sale-on">Show sample notifications on every page of this device</button>
+<p>Watch the bottom-left corner. A new card appears every 7 seconds and stays for 2 seconds, with a thin timer line. Hovering or focusing it keeps it on screen. Tap the first button to see the same preview on every page of the site, on this device only. On the live site, visitors see only real orders you add yourself.</p>
+<p><button type="button" class="btn btn--primary" id="sale-on">Preview on all pages</button>
 <button type="button" class="btn btn--ghost" id="sale-off">Turn off</button></p>
 <p id="sale-state" class="muted"></p>
 <p><a href="#" id="sale-replay">Replay the preview here</a></p>
 </div></div></section>
-<script>window.__SALE_DEMO=[{{"first":"Sarah","place":"Ontario","plan":"12 Months","at":new Date(Date.now()-2*3600e3).toISOString()}},{{"first":"James","place":"Texas","plan":"6 Months","at":new Date(Date.now()-35*60e3).toISOString()}},{{"first":"Olivia","place":"Sydney","plan":"12 Months","at":new Date(Date.now()-5*3600e3).toISOString()}},{{"first":"Klaus","place":"Germany","plan":"3 Months","at":new Date(Date.now()-90*60e3).toISOString()}}];
+<script>window.__SALE_DEMO=true;
 var st=document.getElementById("sale-state");function sh(){{var on=false;try{{on=localStorage.getItem("sn-preview")==="1"}}catch(_){{}}st.textContent=on?"Preview is ON for this device: browse any page to see it. Visitors never see sample names.":"Preview is off for this device."}}
 document.addEventListener("click",function(e){{var id=e.target.id;if(id==="sale-replay"){{e.preventDefault();try{{sessionStorage.removeItem("sn-off")}}catch(_){{}}location.reload()}}
 if(id==="sale-on"){{try{{localStorage.setItem("sn-preview","1");sessionStorage.removeItem("sn-off")}}catch(_){{}}sh()}}

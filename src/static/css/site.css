@@ -670,26 +670,41 @@ html:not(.js) .rv-dots { display: none; }
 
 /* ---------- recent real purchases (shown only when the owner has added entries) ---------- */
 .sale-toast {
-  position: fixed; left: 18px; bottom: 18px; z-index: 39; max-width: min(390px, calc(100vw - 100px)); overflow: hidden;
-  display: flex; align-items: center; gap: 13px; padding: 14px 16px; border-radius: 18px;
-  background: linear-gradient(135deg, rgba(22, 25, 38, .86), rgba(12, 14, 22, .86));
+  position: fixed; left: 18px; bottom: 18px; z-index: 39; width: max-content; max-width: min(380px, calc(100vw - 100px)); overflow: hidden;
+  display: flex; align-items: center; gap: 12px; padding: 11px 10px 11px 11px; border-radius: 18px;
+  background: linear-gradient(135deg, rgba(24, 27, 41, .9), rgba(11, 13, 20, .92));
   border: 1px solid rgba(255, 255, 255, .1); backdrop-filter: blur(18px) saturate(160%); -webkit-backdrop-filter: blur(18px) saturate(160%);
-  box-shadow: 0 22px 50px -18px rgba(0, 0, 0, .8), inset 0 1px 0 rgba(255, 255, 255, .06); color: #dfe3ee; font-size: 13.5px; line-height: 1.4;
-  opacity: 0; transform: translate3d(-18px, 12px, 0) scale(.96); visibility: hidden; pointer-events: none; will-change: transform, opacity;
-  transition: opacity .7s cubic-bezier(.22, 1, .36, 1), transform .8s cubic-bezier(.22, 1, .36, 1), visibility 0s linear .8s;
+  box-shadow: 0 24px 50px -18px rgba(0, 0, 0, .85), 0 0 0 1px rgba(0, 0, 0, .25), inset 0 1px 0 rgba(255, 255, 255, .07);
+  color: #d6dbe7; font-size: 13.5px; line-height: 1.35;
+  opacity: 0; transform: translate3d(0, 14px, 0) scale(.97); visibility: hidden; pointer-events: none; will-change: transform, opacity;
+  transition: opacity .32s ease, transform .32s cubic-bezier(.4, 0, 1, 1), visibility 0s linear .32s;
 }
-.sale-toast.is-on { opacity: 1; transform: none; visibility: visible; pointer-events: auto; transition-delay: 0s; }
-.sale-toast::after { content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: var(--grad); transform-origin: left; transform: scaleX(0); opacity: .75; }
-.sale-toast.is-on::after { animation: sale-bar 6.5s linear forwards; }
+.sale-toast.is-on {
+  opacity: 1; transform: none; visibility: visible; pointer-events: auto;
+  transition: opacity .38s cubic-bezier(.22, 1, .36, 1), transform .5s cubic-bezier(.34, 1.4, .64, 1), visibility 0s;
+}
+.sale-toast::after { content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: var(--grad); transform-origin: left; transform: scaleX(0); opacity: .85; }
+.sale-toast.is-on::after { animation: sale-bar 2s linear forwards; }
 .sale-toast.is-paused::after { animation-play-state: paused; }
 @keyframes sale-bar { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+.sale-avatar {
+  flex: none; width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; position: relative;
+  background: var(--grad-cta); color: #fff; font: 700 16px/1 var(--font); box-shadow: 0 8px 18px -8px rgba(224, 36, 122, .7), inset 0 1px 0 rgba(255, 255, 255, .25);
+}
+.sale-avatar::after { content: ""; position: absolute; right: -3px; bottom: -3px; width: 11px; height: 11px; border-radius: 50%; background: #25d366; border: 2px solid #12141e; }
+.sale-body { min-width: 0; }
 .sale-toast p { margin: 0; }
+.sale-line { color: #d6dbe7; }
 .sale-toast b { color: #fff; font-weight: 650; white-space: nowrap; }
-.sale-time { color: var(--dim); font-size: 12px; margin-top: 3px !important; }
-.sale-dot { position: relative; flex: none; width: 9px; height: 9px; border-radius: 50%; background: #25d366; }
-.sale-dot::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid rgba(37, 211, 102, .5); animation: sale-pulse 2.2s ease-out infinite; }
-@keyframes sale-pulse { from { transform: scale(.6); opacity: .9; } to { transform: scale(1.7); opacity: 0; } }
-.sale-toast button { flex: none; align-self: flex-start; background: none; border: 0; color: var(--dim); font-size: 18px; line-height: 1; cursor: pointer; padding: 0 2px; transition: color .2s; }
-.sale-toast button:hover { color: #fff; }
-@media (max-width: 480px) { .sale-toast { left: 12px; bottom: 12px; font-size: 13px; padding: 12px 14px; } }
-@media (prefers-reduced-motion: reduce) { .sale-toast { transition: opacity .3s; transform: none; } .sale-dot::after, .sale-toast.is-on::after { animation: none; } }
+.sale-meta { display: flex; align-items: center; gap: 5px; margin-top: 3px !important; color: var(--muted); font-size: 11.5px; letter-spacing: .01em; }
+.sale-time { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sale-meta svg { flex: none; width: 13px; height: 13px; fill: #25d366; }
+.sale-x {
+  flex: none; align-self: flex-start; display: grid; place-items: center; width: 26px; height: 26px; margin: -3px -2px 0 0; padding: 0;
+  background: none; border: 0; border-radius: 8px; color: var(--dim); cursor: pointer; transition: color .2s, background-color .2s;
+}
+.sale-x svg { width: 10px; height: 10px; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+.sale-x:hover { color: #fff; background: rgba(255, 255, 255, .08); }
+.sale-x:focus-visible { outline: 2px solid var(--cyan); outline-offset: 1px; color: #fff; }
+@media (max-width: 640px) { .sale-toast { left: 12px; bottom: 12px; max-width: calc(100vw - 84px); font-size: 13px; gap: 10px; padding: 9px 8px 9px 9px; border-radius: 16px; } .sale-avatar { width: 34px; height: 34px; border-radius: 11px; font-size: 15px; } }
+@media (prefers-reduced-motion: reduce) { .sale-toast, .sale-toast.is-on { transform: none; transition: opacity .2s, visibility 0s linear .2s; } .sale-toast.is-on { transition: opacity .2s; } .sale-toast.is-on::after { animation: none; } }
