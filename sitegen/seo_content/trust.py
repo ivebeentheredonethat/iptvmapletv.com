@@ -12,7 +12,8 @@ PAGES = [
     dict(
         slug="iptv-guides", hub="guides", hub_page=True, **D,
         children=["what-is-iptv", "best-iptv-canada", "iptv-price", "iptv-providers", "is-iptv-legal-in-canada", "iptv-reddit", "iptv-reviews",
-                  "4k-iptv", "iptv-server", "watch-iptv-online", "iptv-buffering-fix"],
+                  "4k-iptv", "iptv-server", "watch-iptv-online", "iptv-buffering-fix",
+                  "iptv-account", "iptv-recording-catch-up", "hbo-iptv", "pluto-tv-vs-iptv", "iptv-vs-satellite", "iptv-starlink"],
         title="IPTV Guides for Canada: Prices, Providers & Setup | IPTVMaple",
         description="Plain-English IPTV guides for Canada: what IPTV is, how much it costs, how to compare providers, whether it’s legal, and how to fix buffering.",
         kicker="Guides", h1='IPTV guides <span class="grad-text">for Canada</span>',
@@ -435,6 +436,7 @@ PAGES = [
 <ul>
 <li>Use an app you installed from an official store or the developer’s website.</li>
 <li>Don’t paste your login into a site you can’t identify.</li>
+<li>To see what a playlist contains, use a checker that runs in your browser and uploads nothing, such as our <a href="/iptv-checker/">IPTV checker</a>.</li>
 <li>If you tested a login on an unknown site, ask your provider to change the password.</li>
 </ul>
 
@@ -465,7 +467,7 @@ PAGES = [
         related=["iptv-pc-mac", "vlc-iptv", "iptv-smarters-pro", "m3u-playlist"],
         keywords=["online iptv", "ip tv online", "iptv online player", "online ip tv", "iptv watch tv online", "watch iptv", "iptv web", "iptv browser",
                   "iptv web browser", "iptv website", "iptv site", "web iptv smarters", "iptv smarters online", "m3u player online", "m3u online", "iptv chrome",
-                  "chrome iptv player", "iptv smasters online", "iptv smasters web", "iptv viewer", "iptv checker", "iptv checker online", "m3u checker", "iptv tester"],
+                  "chrome iptv player", "iptv smasters online", "iptv smasters web", "iptv viewer", "iptv tester"],
     ),
 
     # ------------------------------------------------------------------ BUFFERING
@@ -546,6 +548,6 @@ PAGES = [
              "<p>Start with Medium. If streams still pause, try Large. A larger buffer smooths out short slowdowns, at the cost of a slightly longer start when you change channels.</p>"),
         ],
         related=["iptv-firestick", "iptv-box", "tivimate", "iptv-smarters-pro"],
-        keywords=["fast iptv", "iptv stable", "iptv sans coupure", "iptv rapid", "rapidiptv"],
+        keywords=["fast iptv", "iptv stable", "iptv sans coupure", "iptv rapid", "rapidiptv", "iptv wifi"],
     ),
 ]

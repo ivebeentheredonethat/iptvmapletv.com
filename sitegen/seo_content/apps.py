@@ -497,7 +497,7 @@ PAGES = [
             ("What is the SIPTV MAC address?", "<p>It’s the identifier the Smart IPTV app shows on your TV. You use it on the Smart IPTV website to attach your M3U playlist to that TV.</p>"),
             ("Does Smart IPTV show movies and series?", "<p>Smart IPTV focuses on live channels from an M3U list. For a full movies and series library, SmartOne, Flix IPTV or IBO Player are better.</p>"),
         ],
-        related=["iptv-samsung-tv", "iptv-lg-tv", "smartone-iptv", "flix-iptv"],
+        related=["iptv-samsung-tv", "iptv-lg-tv", "set-iptv", "smartone-iptv"],
         keywords=["smart iptv", "siptv", "my sip tv", "my siptv", "sip tv", "siptv list", "siptv my list", "smart iptv my list", "smart iptv samsung", "smart iptv com", "smart iptv list", "smart iptv m3u"],
     ),
     # ------------------------------------------------------------------ SMARTONE

@@ -56,11 +56,11 @@ PAGES = [
     dict(
         slug="iptv-international", hub="intl", hub_page=True,
         title="International IPTV in Canada: Channels From Home | IPTVMaple",
-        description="International IPTV for Canada: Italian, Portuguese, Polish, Greek, Romanian, Ex-YU, British, French and Ukrainian channels plus Canadian TV. Try it free.",
+        description="International IPTV for Canada: Italian, Portuguese, Polish, Greek, Romanian, Ex-YU, British, French, German and Ukrainian channels plus Canadian TV. Try it free.",
         kicker="International", h1='<span class="grad-text">International IPTV</span> in Canada',
         lead="Channels from home and Canadian TV in one subscription — for Canada’s European and British communities.",
         crumb="International IPTV", blurb="TV from home for Canada’s communities.",
-        answer="<p><strong>International IPTV</strong> lets you watch channels from your home country in Canada without a satellite dish. IPTVMaple includes hundreds of channels from <strong>Italy, Portugal, Poland, Greece, Romania, the former Yugoslavia, the UK, France and Ukraine</strong> — plus the full Canadian lineup — in every plan, from $9.</p>",
+        answer="<p><strong>International IPTV</strong> lets you watch channels from your home country in Canada without a satellite dish. IPTVMaple includes hundreds of channels from <strong>Italy, Portugal, Poland, Greece, Romania, the former Yugoslavia, the UK, France, Germany and Ukraine</strong> — plus the full Canadian lineup — in every plan, from $9.</p>",
         body="""
 <h2>Why international IPTV beats satellite and ethnic packages</h2>
 <ul>
@@ -71,7 +71,7 @@ PAGES = [
 </ul>
 
 <h2>Countries available</h2>
-<p>Choose your community below for the channel list and tips. More countries — Germany, Spain, the Netherlands, Albania and others — are in the <a href="/channels-list/">full channels list</a>.</p>
+<p>Choose your community below for the channel list and tips. More countries — Spain, the Netherlands, Albania and others — are in the <a href="/channels-list/">full channels list</a>.</p>
 
 <h2>Watching in your language</h2>
 <p>Each country’s channels are grouped together in your IPTV app, with the original audio. Many movies and series in the on-demand library also offer multiple audio tracks and subtitles.</p>

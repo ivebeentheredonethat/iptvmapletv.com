@@ -357,8 +357,8 @@ PAGES = [
             ("Why is IPTV buffering on my Samsung TV?", "<p>Often the TV’s Wi-Fi. Try Ethernet, or use a Firestick 4K with a stronger Wi-Fi chip.</p>"),
             ("Does IPTVMaple work on Samsung smart TVs?", "<p>Yes, with any of the apps above. We send an M3U link and Xtream login that work in all of them.</p>"),
         ],
-        related=["iptv-lg-tv", "smartone-iptv", "flix-iptv", "iptv-firestick", "iptv-roku"],
-        keywords=["iptv samsung tv", "iptv for samsung tv", "iptv samsung", "iptv samsung smart tv", "iptv samsung tizen", "samsung tizen iptv", "iptv tizen", "ip tv samsung", "iptv smart tv", "ip tv smart tv", "iptv sur samsung", "iptv sur tv samsung", "samsung iptv smarters", "iptv smasters samsung tv"],
+        related=["iptv-lg-tv", "iptv-smart-tv", "smartone-iptv", "duplecast", "iptv-firestick"],
+        keywords=["iptv samsung tv", "iptv for samsung tv", "iptv samsung", "iptv samsung smart tv", "iptv samsung tizen", "samsung tizen iptv", "iptv tizen", "ip tv samsung", "iptv sur samsung", "iptv sur tv samsung", "samsung iptv smarters", "iptv smasters samsung tv"],
     ),
     # ------------------------------------------------------------------ LG
     dict(
@@ -403,7 +403,7 @@ PAGES = [
             ("Do LG IPTV apps cost money?", "<p>Most offer a free trial, then a one-time activation paid to the app developer.</p>"),
             ("Does IPTVMaple work on LG TVs?", "<p>Yes, with any of the webOS apps above.</p>"),
         ],
-        related=["iptv-samsung-tv", "smartone-iptv", "flix-iptv"],
+        related=["iptv-samsung-tv", "iptv-smart-tv", "smartone-iptv", "ss-iptv"],
         keywords=["iptv lg", "iptv lg tv", "iptv lg smart", "iptv lg webos", "iptv for lg webos", "webos iptv", "tivimate lg", "iptv smasters lg tv"],
     ),
     # ------------------------------------------------------------------ APPLE TV
@@ -447,7 +447,7 @@ PAGES = [
             ("Can I watch on my Apple TV and iPhone at once?", "<p>Yes, with a plan that includes 2 or more simultaneous devices.</p>"),
         ],
         related=["iplaytv", "smarters-player-lite", "iptv-iphone"],
-        keywords=["iptv apple tv", "iptv apple tv 4k", "iptv on apple tv 4k", "iptv apple", "iptv sur apple tv", "tivimate apple tv", "iptvx apple tv", "iptv smarters apple tv", "iptv smasters pro apple tv"],
+        keywords=["iptv apple tv", "iptv apple tv 4k", "iptv on apple tv 4k", "iptv apple", "iptv sur apple tv", "tivimate apple tv", "iptv smarters apple tv", "iptv smasters pro apple tv"],
     ),
     # ------------------------------------------------------------------ ROKU
     dict(
@@ -608,7 +608,7 @@ PAGES = [
             ("Can I AirPlay IPTV to my TV?", "<p>Most iOS IPTV apps support AirPlay to Apple TV and AirPlay-compatible smart TVs.</p>"),
         ],
         related=["smarters-player-lite", "iptv-apple-tv", "iplaytv"],
-        keywords=["iptv iphone", "iptv sur iphone", "iptv ipad", "iptv mobile", "iptv smasters iphone", "gse iptv", "gseiptv", "iptvx", "atlas pro ontv iphone", "tivimate companion iphone"],
+        keywords=["iptv iphone", "iptv sur iphone", "iptv ipad", "iptv mobile", "iptv smasters iphone", "atlas pro ontv iphone", "tivimate companion iphone"],
     ),
     # ------------------------------------------------------------------ CHROMECAST
     dict(

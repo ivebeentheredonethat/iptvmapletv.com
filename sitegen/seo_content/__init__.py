@@ -1,7 +1,7 @@
 """All SEO landing pages, one module per cluster. Order here = order of hub cards (and which page "owns" a keyword if two list it)."""
-from . import apps, apps2, cities, core, devices, fr, fr2, geo, international, sports, sports2, trust, gaps
+from . import apps, apps2, cities, core, devices, fr, fr2, geo, international, sports, sports2, trust, gaps, expansion, expansion2
 
-ALL = (core.PAGES + trust.PAGES + apps.PAGES + apps2.PAGES + devices.PAGES + sports.PAGES + sports2.PAGES + gaps.PAGES + cities.PAGES + geo.PAGES
+ALL = (core.PAGES + trust.PAGES + apps.PAGES + apps2.PAGES + devices.PAGES + sports.PAGES + sports2.PAGES + gaps.PAGES + expansion.PAGES + expansion2.PAGES + cities.PAGES + geo.PAGES
        + international.PAGES + fr.PAGES + fr2.PAGES)
 
 # English page <-> its French twin. hreflang annotations are added to BOTH pages (self-referencing, reciprocal, x-default = English),
@@ -22,6 +22,8 @@ PAIRS = [
 ]
 from . import deep
 deep.apply(ALL)
+expansion.link_in(ALL)
+expansion2.link_in(ALL)
 
 _by = {p["slug"]: p for p in ALL}
 for _en, _fr in PAIRS:
