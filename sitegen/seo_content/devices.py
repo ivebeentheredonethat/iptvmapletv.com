@@ -278,8 +278,8 @@ PAGES = [
         body="""
 <h2>MAG models</h2>
 <ul>
-<li><strong>MAG 524 / 524w3</strong> — 4K HDR, Wi-Fi, current flagship.</li>
-<li><strong>MAG 424 / 424w3</strong> — 4K, Android-based.</li>
+<li><strong>MAG 524 / 524w3</strong> — 4K HDR Linux box, Wi-Fi on the w3 version.</li>
+<li><strong>MAG 424 / 424w3</strong> — 4K Linux box (the Android model is the MAG 425A).</li>
 <li><strong>MAG 322 / 324</strong> — Full HD, very popular and reliable.</li>
 <li><strong>MAG 254 / 256 / 250</strong> — older HD models, still supported.</li>
 </ul>
@@ -305,7 +305,7 @@ PAGES = [
 """,
         faq=[
             ("Where is the MAC address on a MAG box?", "<p>On the sticker under the box, and in Settings → System settings → Device info.</p>"),
-            ("Which MAG box supports 4K?", "<p>The MAG 524, MAG 424 and their Wi-Fi variants support 4K. The MAG 322 and 254 are HD.</p>"),
+            ("Which MAG box supports 4K?", "<p>The MAG 520, 524, 424 and their w3 Wi-Fi variants support 4K, as do the newer 540w3 and 544w3. The MAG 322 and 254 are HD.</p>"),
             ("Can I move my subscription to a new MAG box?", "<p>Yes, send us the new MAC address and we’ll transfer it.</p>"),
             ("Does IPTVMaple work on MAG boxes?", "<p>Yes, all Infomir MAG models are supported via portal URL.</p>"),
         ],
