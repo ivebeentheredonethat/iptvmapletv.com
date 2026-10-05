@@ -1,4 +1,4 @@
-"""One-time: build the transparent logo mark, favicons and the social share image from the
+"""One-time: build the transparent logo mark and the social share image from the
 original logo. Requires Pillow. Usage: python tools/make_brand_assets.py [path/to/Sora-800.ttf path/to/Inter-500.ttf]"""
 import os
 import sys
@@ -38,17 +38,7 @@ sq.paste(leaf, ((side - leaf.width) // 2, (side - leaf.height) // 2), leaf)
 sq.resize((256, 256), Image.LANCZOS).save(os.path.join(OUT, "mark.png"), optimize=True)
 sq.resize((128, 128), Image.LANCZOS).save(os.path.join(OUT, "mark-128.webp"), quality=92)
 
-# favicons on a dark rounded tile so the mark reads on any tab colour
-for size, name in ((32, "favicon-32.png"), (180, "apple-touch-icon.png"), (192, "icon-192.png"), (512, "icon-512.png")):
-    tile = Image.new("RGBA", (size, size), (0, 0, 0, 0))
-    mask = Image.new("L", (size, size), 0)
-    ImageDraw.Draw(mask).rounded_rectangle((0, 0, size - 1, size - 1), radius=size // 5, fill=255)
-    bg = Image.new("RGBA", (size, size), (10, 11, 18, 255))
-    tile.paste(bg, (0, 0), mask)
-    m = sq.resize((int(size * 0.8), int(size * 0.8)), Image.LANCZOS)
-    tile.alpha_composite(m, ((size - m.width) // 2, (size - m.height) // 2))
-    tile.save(os.path.join(OUT, name), optimize=True)
-Image.open(os.path.join(OUT, "favicon-32.png")).save(os.path.join(STATIC, "favicon.ico"), sizes=[(32, 32)])
+# favicons and app icons are rendered from src/static/favicon.svg by tools/make_favicons.py
 
 # 1200x630 social share image
 W, H = 1200, 630
