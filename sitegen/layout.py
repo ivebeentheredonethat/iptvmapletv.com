@@ -129,7 +129,7 @@ def _head(p: Page):
 
 def brand_html():
     return (f'<a class="brand" href="/" aria-label="{C.NAME} home">'
-            f'<img src="/brand/mark-128.webp" width="38" height="38" alt="">'
+            f'<img src="/favicon.svg?v=2" width="38" height="38" alt="">'
             f'<span><span class="r">IPTV</span><span class="c">Maple</span></span></a>')
 
 
