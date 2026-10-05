@@ -31,7 +31,7 @@ DATA["iptv-for-beginners"] = dict(add="""
 </ul>
 
 <h2>What to watch first</h2>
-<p>Open the sports category and find a live game, then the on-demand section for a recent movie. Add the channels you use most to favourites. If you follow a sport, check its page: <a href="/nhl-iptv/">NHL</a>, <a href="/premier-league-iptv/">Premier League</a>, <a href="/ufc-iptv/">UFC</a>. Questions at any point? <a href="/go/wa">WhatsApp</a> or Help@iptvmapletv.com.</p>
+<p>Open the sports category and find a live game, then the on-demand section for a recent movie. Add the channels you use most to favourites. If you follow a sport, check its page: <a href="/nhl-iptv/">NHL</a>, <a href="/premier-league-iptv/">Premier League</a>, <a href="/ufc-iptv/">UFC</a>. Questions at any point? <a href="/go/wa">WhatsApp</a> or help@iptvmapletv.com.</p>
 """)
 
 DATA["iptv-lifetime"] = dict(add="""

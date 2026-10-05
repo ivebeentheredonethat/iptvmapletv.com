@@ -56,7 +56,7 @@ DATA["iptv-smarters-pro-download"] = dict(
 <p>Open the app, choose <strong>Login with Xtream Codes API</strong> (the usual option), then enter the name, username, password and server URL we send you. Some people prefer to load an M3U link instead: see <a href="/liste-iptv-m3u/">what an M3U link is</a> and the <a href="/xtream-codes-iptv/">Xtream Codes guide</a>. The old “iptv smasters m3u” route still works but gives you no TV guide on some devices.</p>
 
 <h2>Need help?</h2>
-<p>Support is by <a href="/go/wa">WhatsApp</a> or email at Help@iptvmapletv.com. Customer service for the app itself is limited because the app is made by a separate developer; we help with login and channel problems on our side.</p>
+<p>Support is by <a href="/go/wa">WhatsApp</a> or email at help@iptvmapletv.com. Customer service for the app itself is limited because the app is made by a separate developer; we help with login and channel problems on our side.</p>
 """,
     faq=[
         ("Why can’t I find IPTV Smarters Pro on Google Play?",

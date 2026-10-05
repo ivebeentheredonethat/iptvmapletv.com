@@ -8,9 +8,9 @@ TAGLINE = "Premium 4K IPTV for Canada"
 DEFAULT_OG = "/brand/og-default.jpg"
 YEAR = 2026
 
-EMAIL = "Help@iptvmapletv.com"
-EMAIL_SUBJECT = "Interest in IPTVmaple Service"
-EMAIL_BODY = "Hello IPTVmaple Team,\n\nI am interested in your IPTV service and would like to get more information.\n\nThank you."
+EMAIL = "help@iptvmapletv.com"
+EMAIL_SUBJECT = "Hi IPTVmaple - question about your IPTV service"
+EMAIL_BODY = "Hi IPTVmaple,\n\nI am interested in your IPTV service and would like to get more information.\n\nThank you."
 MAILTO = f"mailto:{EMAIL}?subject={quote(EMAIL_SUBJECT)}&body={quote(EMAIL_BODY)}"
 
 # Every WhatsApp button links to /go/wa. That path redirects to the real number

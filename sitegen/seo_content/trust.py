@@ -371,7 +371,7 @@ PAGES = [
 <p>If you want to be certain every channel is licensed, the safe routes are a telecom TV package (Bell Fibe, Telus Optik and similar), or licensed streaming services such as Crave, CBC Gem, ICI TOU.TV and Sportsnet+. They usually cost more and split content across several subscriptions. See the cost comparison on our <a href="/iptv-price/">IPTV price</a> page.</p>
 
 <h2>What about IPTVMaple?</h2>
-<p>IPTVMaple is an independent IPTV subscription service. We publish our <a href="/terms/">terms and conditions</a>, <a href="/privacy/">privacy policy</a> and <a href="/refund/">refund policy</a>, and offer a <a href="/try-iptv-canada/">free 24-hour trial</a> so you can see the service before paying. If you have questions about rights, licensing or our terms, contact our team at Help@iptvmapletv.com before you buy.</p>
+<p>IPTVMaple is an independent IPTV subscription service. We publish our <a href="/terms/">terms and conditions</a>, <a href="/privacy/">privacy policy</a> and <a href="/refund/">refund policy</a>, and offer a <a href="/try-iptv-canada/">free 24-hour trial</a> so you can see the service before paying. If you have questions about rights, licensing or our terms, contact our team at help@iptvmapletv.com before you buy.</p>
 <p>To compare us with other services using the same criteria, use the <a href="/iptv-providers/">IPTV provider scorecard</a>.</p>
 """,
         faq=[
