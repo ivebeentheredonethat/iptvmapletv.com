@@ -214,8 +214,10 @@
     setTimeout(() => $("input:not([type=hidden])", t)?.focus({ preventScroll: true }), 500);
   }));
 
-  /* recent real purchases: shows only entries the owner has added via /api/orders-admin; nothing is shown when the feed is empty */
+  /* recent real purchases: shows only entries the owner has added via /api/orders-admin; nothing is shown when the feed is empty.
+     One notification every 7 s, each on screen for 2 s. Real entries are each shown once per page view; preview samples loop. */
   (() => {
+    const CYCLE = 7000, VISIBLE = 2000;
     const skip = /^\/(thank-you|landing\d?)\//.test(location.pathname);
     let hidden = false;
     try { hidden = sessionStorage.getItem("sn-off") === "1"; } catch (e) {}
@@ -230,44 +232,61 @@
     };
     /* sample names are shown only on a device where the owner switched preview on at /sales-demo/ (never to visitors) */
     const SAMPLE = () => [
-      { first: "Sarah", place: "Ontario", plan: "12 Months", at: new Date(Date.now() - 2 * 3600e3).toISOString() },
-      { first: "James", place: "Texas", plan: "6 Months", at: new Date(Date.now() - 35 * 60e3).toISOString() },
-      { first: "Olivia", place: "Sydney", plan: "12 Months", at: new Date(Date.now() - 5 * 3600e3).toISOString() },
-      { first: "Klaus", place: "Germany", plan: "3 Months", at: new Date(Date.now() - 90 * 60e3).toISOString() },
-    ];
+      "Michael,Canada,12", "David,USA,12", "Jason,Canada,12", "Robert,USA,12", "Daniel,Canada,12", "James,USA,12",
+      "Christopher,Canada,12", "Matthew,USA,12", "Andrew,Canada,12", "William,USA,12", "Mark,Canada,12", "Anthony,USA,12",
+      "Thomas,Canada,12", "Brian,USA,12", "Kevin,Canada,12", "Ryan,USA,12", "Steven,Canada,12", "Jonathan,USA,12",
+      "Eric,Canada,12", "Daniel,USA,6", "Patrick,Canada,6", "Chris,USA,12", "Alex,Canada,12", "John,USA,12",
+      "Justin,Canada,6", "Brandon,USA,12", "Tyler,Canada,12", "Adam,USA,6", "Ryan,Canada,12", "Jason,USA,12",
+    ].map((r) => { const [first, place, n] = r.split(","); return { first, place, plan: n + " Months" }; });
     const start = async () => {
       let preview = false;
       try { preview = localStorage.getItem("sn-preview") === "1"; } catch (e) {}
-      let items = window.__SALE_DEMO || (preview ? SAMPLE() : []);
-      if (!items.length) { try { items = await (await fetch("/api/recent-orders")).json(); } catch (e) { return; } }
+      let items = window.__SALE_DEMO || preview ? SAMPLE() : [];
+      const demo = items.length > 0;
+      if (!demo) { try { items = await (await fetch("/api/recent-orders")).json(); } catch (e) { return; } }
       if (!Array.isArray(items) || !items.length) return;
       const card = document.createElement("aside");
       card.className = "sale-toast";
-      card.setAttribute("role", "status");
-      card.setAttribute("aria-live", "polite");
-      card.innerHTML = '<span class="sale-dot" aria-hidden="true"></span><div><p class="sale-line"></p><p class="sale-time"></p></div><button type="button" aria-label="Close">×</button>';
+      card.setAttribute("aria-label", "Recent purchases");
+      card.innerHTML = '<span class="sale-avatar" aria-hidden="true"></span><div class="sale-body" role="status" aria-live="polite" aria-atomic="true"><p class="sale-line"></p><p class="sale-meta"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5l1.7 1.2 2-.1.7 1.9 1.6 1.2-.6 2 .6 2-1.6 1.2-.7 1.9-2-.1L8 14.5l-1.7-1.2-2 .1-.7-1.9-1.6-1.2.6-2-.6-2 1.6-1.2.7-1.9 2 .1z"/><path d="M5.6 8.2l1.6 1.6 3.3-3.4" fill="none" stroke="#0b0c12" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sale-time"></span></p></div><button type="button" class="sale-x" aria-label="Hide purchase notifications"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8"/></svg></button>';
       document.body.appendChild(card);
-      const line = card.querySelector(".sale-line"), time = card.querySelector(".sale-time");
-      let i = 0, shown = 0, timer;
+      const av = card.querySelector(".sale-avatar"), line = card.querySelector(".sale-line"), time = card.querySelector(".sale-time");
+      const limit = demo ? Infinity : items.length;
+      let i = 0, hideT, nextT, hold = false, done = false;
+      const hide = () => { if (!hold) card.classList.remove("is-on"); };
       const show = () => {
-        if (shown >= Math.min(items.length * 2, 6)) return;
+        if (done || i >= limit) return;
         const x = items[i++ % items.length];
-        line.textContent = "";
+        av.textContent = (x.first || "?").charAt(0).toUpperCase();
         const b = document.createElement("b");
         b.textContent = x.first;
-        line.append(b, " from " + x.place + " purchased ", Object.assign(document.createElement("b"), { textContent: x.plan }));
-        time.textContent = ago(x.at) + (window.__SALE_DEMO || preview ? " · preview sample" : "");
+        line.replaceChildren(b, " from " + x.place + " purchased ", Object.assign(document.createElement("b"), { textContent: x.plan }));
+        time.textContent = demo ? "Sample, not real" : "Confirmed order · " + ago(x.at);
+        card.classList.remove("is-on");
+        void card.offsetWidth; /* restart the timer-line animation */
         card.classList.add("is-on");
-        shown++;
-        timer = setTimeout(() => { card.classList.remove("is-on"); timer = setTimeout(show, window.__SALE_DEMO || preview ? 4000 : 14000); }, 6500);
+        hideT = setTimeout(hide, VISIBLE);
+        nextT = setTimeout(show, CYCLE);
       };
-      card.querySelector("button").addEventListener("click", () => {
-        clearTimeout(timer); card.classList.remove("is-on"); shown = 99;
+      /* hovering or focusing the card keeps it on screen (WCAG 2.2.1); it leaves shortly after */
+      const pause = () => { hold = true; card.classList.add("is-paused"); };
+      const resume = () => { hold = false; card.classList.remove("is-paused"); clearTimeout(hideT); hideT = setTimeout(hide, 800); };
+      card.addEventListener("mouseenter", pause);
+      card.addEventListener("mouseleave", resume);
+      card.addEventListener("focusin", pause);
+      card.addEventListener("focusout", resume);
+      card.querySelector(".sale-x").addEventListener("click", () => {
+        done = true; hold = false; clearTimeout(hideT); clearTimeout(nextT); card.classList.remove("is-on");
         try { sessionStorage.setItem("sn-off", "1"); } catch (e) {}
       });
-      card.addEventListener("mouseenter", () => card.classList.add("is-paused"));
-      card.addEventListener("mouseleave", () => card.classList.remove("is-paused"));
-      setTimeout(show, window.__SALE_DEMO || preview ? 2500 : 7000);
+      /* do not burn through entries while the tab is in the background */
+      document.addEventListener("visibilitychange", () => {
+        if (done) return;
+        clearTimeout(nextT);
+        if (document.hidden) { clearTimeout(hideT); hold = false; card.classList.remove("is-on"); }
+        else nextT = setTimeout(show, CYCLE - VISIBLE);
+      });
+      nextT = setTimeout(show, demo ? 1500 : CYCLE);
     };
     "requestIdleCallback" in window ? requestIdleCallback(start, { timeout: 4000 }) : setTimeout(start, 2500);
   })();
