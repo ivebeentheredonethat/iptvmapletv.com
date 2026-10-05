@@ -107,7 +107,7 @@ PAGES = [
     # ------------------------------------------------------------------ TIVIMATE FIRESTICK
     dict(
         slug="tivimate-firestick", hub="apps", **D,
-        title="TiviMate on Firestick: Step-by-Step Install (2026) | IPTVMaple",
+        title="TiviMate on Firestick: Step-by-Step Install | IPTVMaple",
         description="How to install TiviMate on a Firestick or Fire TV with Downloader, add your IPTV login, set up the guide and fix common problems. Works with IPTVMaple.",
         kicker="Install guide", h1='TiviMate on Firestick: <span class="grad-text">install and set up in 10 minutes</span>',
         lead="TiviMate is not in the Amazon Appstore, so it is installed with the free Downloader app. Here is every step, plus fixes for the usual problems.",
@@ -518,7 +518,7 @@ PAGES = [
     # ------------------------------------------------------------------ SMARTERS DOWNLOAD
     dict(
         slug="iptv-smarters-pro-download", hub="apps", **D,
-        title="IPTV Smarters Pro Download: Android, APK & Safety | IPTVMaple",
+        title="IPTV Smarters Pro Download: Android & APK Safety | IPTVMaple",
         description="Where to download IPTV Smarters Pro safely: Google Play, the official APK, Downloader on Fire TV and the App Store. Is it free, and how to avoid fake versions.",
         kicker="Download guide", h1='IPTV Smarters Pro download: <span class="grad-text">where to get it safely</span>',
         lead="Dozens of sites offer an “IPTV Smarters Pro APK”. Only a few are safe. Here is where the real app lives on every device and how to spot a fake.",
@@ -724,7 +724,7 @@ PAGES = [
     # ------------------------------------------------------------------ STREMIO
     dict(
         slug="stremio-iptv", hub="apps", **D,
-        title="IPTV on Stremio: Add-ons, Limits & Better Options | IPTVMaple",
+        title="IPTV on Stremio: Add-ons, Limits & Options | IPTVMaple",
         description="Can Stremio play IPTV? Stremio has no built-in live TV. How community M3U/EPG add-ons work, the risks, and simpler apps for live channels.",
         kicker="App guide", h1='IPTV on Stremio: <span class="grad-text">what is possible</span>',
         lead="Stremio is a streaming hub for movies and series. Live IPTV channels aren’t part of the core app, but community add-ons can fill the gap.",

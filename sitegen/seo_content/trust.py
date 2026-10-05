@@ -14,7 +14,7 @@ PAGES = [
         children=["what-is-iptv", "best-iptv-canada", "iptv-price", "iptv-providers", "is-iptv-legal-in-canada", "iptv-reddit", "iptv-reviews",
                   "4k-iptv", "iptv-server", "watch-iptv-online", "iptv-buffering-fix",
                   "iptv-account", "iptv-recording-catch-up", "hbo-iptv", "pluto-tv-vs-iptv", "iptv-vs-satellite", "iptv-starlink"],
-        title="IPTV Guides for Canada: Prices, Providers & Setup | IPTVMaple",
+        title="IPTV Guides Canada: Prices, Providers & Setup | IPTVMaple",
         description="Plain-English IPTV guides for Canada: what IPTV is, how much it costs, how to compare providers, whether it’s legal, and how to fix buffering.",
         kicker="Guides", h1='IPTV guides <span class="grad-text">for Canada</span>',
         lead="Everything you need to choose, test and set up an IPTV service, written by the IPTVMaple team and kept up to date.",
@@ -327,7 +327,7 @@ PAGES = [
     # ------------------------------------------------------------------ IS IPTV LEGAL
     dict(
         slug="is-iptv-legal-in-canada", hub="guides", **D,
-        title="Is IPTV Legal in Canada? The Honest Answer (2026) | IPTVMaple",
+        title="Is IPTV Legal in Canada? The Honest Answer | IPTVMaple",
         description="Is IPTV legal in Canada? The technology is, but legality depends on whether a service has the rights to its content. How the law works and how to check one.",
         kicker="Legal explainer", h1='Is IPTV legal in Canada? <span class="grad-text">The honest answer</span>',
         lead="IPTV is a delivery technology, not a type of content. What the law cares about is whether the service has the right to distribute what it shows.",
@@ -473,7 +473,7 @@ PAGES = [
     # ------------------------------------------------------------------ BUFFERING
     dict(
         slug="iptv-buffering-fix", hub="guides", **D,
-        title="IPTV Buffering? 12 Fixes for Freezing & Lag (2026) | IPTVMaple",
+        title="IPTV Buffering? 12 Fixes for Freezing & Lag | IPTVMaple",
         description="Fix IPTV buffering, freezing and lag: speed targets, Wi-Fi vs Ethernet, app buffer settings, DNS and VPN tips, and when it’s the provider. Step by step.",
         kicker="Troubleshooting", h1='IPTV buffering and freezing: <span class="grad-text">12 fixes that work</span>',
         lead="Buffering has a short list of causes. Work through these fixes in order and you will solve most freezing in under half an hour.",

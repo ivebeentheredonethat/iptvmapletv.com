@@ -81,3 +81,11 @@ Re-checked both keyword files (unchanged since expansion pass 2) against every p
 - Fixed: the MAG page called the MAG 424 "Android-based" (it is Linux; the Android model is the 425A) and the 524 the "current flagship" (Infomir lists it as discontinued).
 - Maps: worldwide 513 mapped (was 495) / 16 excluded / 293 other-provider names; Canada 705 (was 687) / 20 / 354. Coverage: phrases absent from their page 73 → 52.
 - Not built: CloudStream ("cloud stream", 500k/mo: a scraper app, not an IPTV player), "Smart IPTV" on Fire TV (not verified), MAG 420 and Amiko A6N (specs not verified), the remaining provider names.
+
+## Page-by-page audit (2026-10-05)
+New checker `tools/seo_audit_pages.py` (stricter than the other two): titles 30–60 and descriptions 120–160 characters, full OG/Twitter set, hreflang self-reference and x-default, `_redirects` targets and chains, sitemap `lastmod`, first-100-words keyword placement, H2 presence, duplicate H1s, in-page anchors, FAQ schema vs visible questions, Product/Offer/Service required fields, CTA in the last third, outbound links on long guides, image weight. `--csv <file>` writes one row per page.
+- Baseline: 94 findings. After: 0 (and 0 critical / 0 important in `seo_audit.py`).
+- Fixed: FAQPage schema on `/channels-list/` swallowed every country list into one fake question (regex in `layout._auto_faq`); 38 titles over 60 characters; 8 descriptions over 160; Richmond BC / Richmond VA shared an H1; 7 intros without the H1 keyword; the "200,000 live TV channels, movies, and series" FAQ answer conflicted with the other figures (now neutral, links to the channel list).
+- `sitegen/seo_content/outbound.py` adds an "Official sources" paragraph to 31 app, device and how-to guides (developer, manufacturer, CRTC, Wikipedia). Commercial pages get none by design.
+- The audits now count single-quoted `href='…'` links (the city templates use them), so inbound-link counts are accurate.
+- Left as is: `/usa/hawaii/honolulu/` has 2 inbound links (state + USA hub; no natural third); 13 city pages still share >60% text with a sibling (needs real local facts); home hero poster images load eagerly on purpose; the "50,000+ channels" figure used sitewide is unchanged and still needs the owner's confirmation.

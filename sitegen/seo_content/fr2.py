@@ -227,7 +227,7 @@ PAGES = [
     # ------------------------------------------------------------------ LECTEUR IPTV
     dict(
         slug="lecteur-iptv", hub="fr", **D,
-        title="Meilleur lecteur IPTV : Android, Fire TV, iPhone, PC | IPTVMaple",
+        title="Meilleur lecteur IPTV : Android, Fire TV, iPhone | IPTVMaple",
         description="Le meilleur lecteur IPTV pour chaque appareil : Android, Fire TV, Samsung, LG, iPhone, Apple TV, PC et Mac. Comparatif et comment ajouter vos identifiants.",
         kicker="Comparatif", h1='Meilleur <span class="grad-text">lecteur IPTV</span> pour chaque appareil',
         lead="Un lecteur IPTV est l’application qui affiche vos chaînes. Voici le meilleur choix selon votre appareil et comment l’utiliser avec votre abonnement.",
@@ -296,7 +296,7 @@ PAGES = [
     # ------------------------------------------------------------------ LISTE M3U
     dict(
         slug="liste-iptv-m3u", hub="fr", **D,
-        title="Liste IPTV M3U : comment ça marche et quoi éviter | IPTVMaple",
+        title="Liste IPTV M3U : fonctionnement et pièges | IPTVMaple",
         description="Qu’est-ce qu’une liste IPTV M3U? Comment l’utiliser avec VLC, Kodi et TiviMate, pourquoi les listes gratuites posent problème et quoi utiliser plutôt.",
         kicker="Guide pratique", h1='Liste IPTV M3U : <span class="grad-text">comment ça marche</span> (et quoi éviter)',
         lead="Une liste M3U est un simple fichier texte qui indique à une application où trouver vos chaînes. Voici comment l’utiliser, et pourquoi les listes gratuites trouvées en ligne sont risquées.",
@@ -365,7 +365,7 @@ PAGES = [
     # ------------------------------------------------------------------ SMARTERS EN FRANÇAIS
     dict(
         slug="iptv-smarters-pro-francais", hub="fr", **D,
-        title="IPTV Smarters Pro en français : installation et aide | IPTVMaple",
+        title="IPTV Smarters Pro en français : installation | IPTVMaple",
         description="Installer IPTV Smarters Pro (parfois écrit « Smasters ») sur Android, Fire TV, iPhone, Samsung, LG, PC et Mac. Identifiants Xtream Codes et dépannage.",
         kicker="Guide d’installation", h1='IPTV Smarters Pro <span class="grad-text">en français</span> : installation et aide',
         lead="IPTV Smarters Pro est l’un des lecteurs IPTV les plus populaires. Voici où le trouver, comment vous connecter et quoi faire quand ça ne marche pas.",
@@ -499,8 +499,8 @@ PAGES = [
     # ------------------------------------------------------------------ SUR APPLE TV / IPHONE
     dict(
         slug="iptv-sur-apple-tv-iphone", hub="fr", **D,
-        title="IPTV sur Apple TV et iPhone : guide d’installation | IPTVMaple",
-        description="Regarder l’IPTV sur Apple TV, iPhone et iPad : quelles applications utiliser (Smarters Player Lite, iPlayTV), comment vous connecter et que faire en cas de problème.",
+        title="IPTV sur Apple TV et iPhone : installation | IPTVMaple",
+        description="IPTV sur Apple TV, iPhone et iPad : quelles applications utiliser (Smarters Player Lite, iPlayTV), comment vous connecter et que faire en cas de problème.",
         kicker="Installation", h1='IPTV sur <span class="grad-text">Apple TV, iPhone et iPad</span>',
         lead="Les appareils Apple n’utilisent pas les mêmes applications qu’Android. Voici lesquelles choisir et comment vous connecter.",
         crumb="IPTV sur Apple TV et iPhone", blurb="Les applications IPTV pour Apple TV, iPhone et iPad.",
