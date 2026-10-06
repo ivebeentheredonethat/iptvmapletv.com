@@ -215,9 +215,10 @@
   }));
 
   /* recent real purchases: entries come from src/data/recent-orders.json, inlined into every page at build time
-     (no API call). Empty file -> nothing is shown. One notification every 7 s, each on screen for 2 s; the list loops. */
+     (no API call). Empty file -> nothing is shown. Each notification is on screen for 4 s, then 10 s pass before the next;
+     the order is shuffled on every page load and reshuffled each time the list runs out. */
   (() => {
-    const CYCLE = 7000, VISIBLE = 2000;
+    const VISIBLE = 4000, GAP = 10000, CYCLE = VISIBLE + GAP;
     let hidden = false;
     try { hidden = sessionStorage.getItem("sn-off") === "1"; } catch (e) {}
     if (hidden) return;
@@ -259,11 +260,21 @@
       /* preview cards carry no order-status line, so they never read as confirmed orders */
       if (demo) card.querySelector(".sale-meta").style.display = "none";
       const av = card.querySelector(".sale-avatar"), line = card.querySelector(".sale-line"), time = card.querySelector(".sale-time");
-      let i = 0, hideT, nextT, hold = false, done = false;
+      /* random order per visit: walk a shuffled copy, reshuffle when it runs out, never the same card twice in a row */
+      const shuffle = (a) => { for (let k = a.length - 1; k > 0; k--) { const j = Math.floor(Math.random() * (k + 1)); [a[k], a[j]] = [a[j], a[k]]; } return a; };
+      let deck = [], last;
+      const next = () => {
+        if (!deck.length) {
+          deck = shuffle(items.slice());
+          if (deck.length > 1 && deck[0] === last) [deck[0], deck[1]] = [deck[1], deck[0]];
+        }
+        return (last = deck.shift());
+      };
+      let hideT, nextT, hold = false, done = false;
       const hide = () => { if (!hold) card.classList.remove("is-on"); };
       const show = () => {
         if (done) return;
-        const x = items[i++ % items.length];
+        const x = next();
         av.textContent = (x.first || "?").charAt(0).toUpperCase();
         const b = document.createElement("b");
         b.textContent = x.first;
@@ -291,9 +302,9 @@
         if (done) return;
         clearTimeout(nextT);
         if (document.hidden) { clearTimeout(hideT); hold = false; card.classList.remove("is-on"); }
-        else nextT = setTimeout(show, CYCLE - VISIBLE);
+        else nextT = setTimeout(show, GAP);
       });
-      nextT = setTimeout(show, demo ? 1500 : CYCLE);
+      nextT = setTimeout(show, demo ? 1500 : GAP);
     };
     "requestIdleCallback" in window ? requestIdleCallback(start, { timeout: 4000 }) : setTimeout(start, 2500);
   })();
