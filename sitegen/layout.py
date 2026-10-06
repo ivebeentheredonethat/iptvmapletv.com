@@ -224,7 +224,7 @@ def fix_heading_levels(html):
 
 
 def _sales_data():
-    """Real confirmed orders from src/data/recent-orders.json, inlined into every page for the purchase
+    """Entries from src/data/recent-orders.json, inlined into every page for the recent-activity
     notification card (no API call at runtime). Empty file -> nothing is emitted -> no card."""
     path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "src", "data", "recent-orders.json")
     try:

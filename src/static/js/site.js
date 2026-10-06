@@ -214,14 +214,12 @@
     setTimeout(() => $("input:not([type=hidden])", t)?.focus({ preventScroll: true }), 500);
   }));
 
-  /* recent real purchases: entries come from src/data/recent-orders.json, inlined into every page at build time
-     (no API call). Empty file -> nothing is shown. Each notification is on screen for 4 s, then 10 s pass before the next;
-     the order is shuffled on every page load and reshuffled each time the list runs out. */
+  /* recent plan activity: entries come only from src/data/recent-orders.json, inlined into every page at build time
+     (no API call, no storage, no flags). Runs for every visitor on every page; an empty file -> nothing is shown.
+     Each notification is on screen for 4 s, then 10 s pass before the next; the order is shuffled on every page load
+     and reshuffled each time the list runs out. */
   (() => {
     const VISIBLE = 4000, GAP = 10000, CYCLE = VISIBLE + GAP;
-    let hidden = false;
-    try { hidden = sessionStorage.getItem("sn-off") === "1"; } catch (e) {}
-    if (hidden) return;
     const ago = (iso) => {
       const m = Math.max(1, Math.round((Date.now() - Date.parse(iso)) / 60000));
       if (m < 60) return m + " min ago";
@@ -230,36 +228,25 @@
       const d = Math.round(h / 24);
       return d + (d === 1 ? " day ago" : " days ago");
     };
-    /* "2026-10-04" -> "Confirmed order · Oct 4"; full ISO time -> "Confirmed order · 3 hours ago"; no date -> "Confirmed order" */
+    /* "2026-10-04" -> "Oct 4"; full ISO time -> "3 hours ago"; no date -> "" (meta line hidden) */
     const when = (at) => {
       const t = Date.parse(at || "");
-      if (isNaN(t) || t > Date.now() + 36e5) return "Confirmed order";
-      if (/^\d{4}-\d{2}-\d{2}$/.test(at)) return "Confirmed order · " + new Date(t).toLocaleDateString("en-CA", { month: "short", day: "numeric", timeZone: "UTC" });
-      return "Confirmed order · " + ago(at);
+      if (isNaN(t) || t > Date.now() + 36e5) return "";
+      if (/^\d{4}-\d{2}-\d{2}$/.test(at)) return new Date(t).toLocaleDateString("en-CA", { month: "short", day: "numeric", timeZone: "UTC" });
+      return ago(at);
     };
-    /* sample names are shown only on a device where the owner switched preview on at /sales-demo/ (never to visitors) */
-    const SAMPLE = () => [
-      "Michael,Canada,12", "David,USA,12", "Jason,Canada,12", "Robert,USA,12", "Daniel,Canada,12", "James,USA,12",
-      "Christopher,Canada,12", "Matthew,USA,12", "Andrew,Canada,12", "William,USA,12", "Mark,Canada,12", "Anthony,USA,12",
-      "Thomas,Canada,12", "Brian,USA,12", "Kevin,Canada,12", "Ryan,USA,12", "Steven,Canada,12", "Jonathan,USA,12",
-      "Eric,Canada,12", "Daniel,USA,6", "Patrick,Canada,6", "Chris,USA,12", "Alex,Canada,12", "John,USA,12",
-      "Justin,Canada,6", "Brandon,USA,12", "Tyler,Canada,12", "Adam,USA,6", "Ryan,Canada,12", "Jason,USA,12",
-    ].map((r) => { const [first, place, n] = r.split(","); return { first, place, plan: n + " Months" }; });
+    /* "12 Months" / "1 Month" -> "12 Month Plan" / "1 Month Plan"; anything else is shown as written */
+    const planLabel = (p) => { const m = /^(\d+)\s*Months?$/i.exec(p || ""); return m ? m[1] + " Month Plan" : p; };
     const start = () => {
-      let preview = false;
-      try { preview = localStorage.getItem("sn-preview") === "1"; } catch (e) {}
-      let items = window.__SALE_DEMO || preview ? SAMPLE() : [];
-      const demo = items.length > 0;
-      if (!demo) { try { items = JSON.parse(document.getElementById("sale-data")?.textContent || "[]"); } catch (e) { return; } }
+      let items;
+      try { items = JSON.parse(document.getElementById("sale-data")?.textContent || "[]"); } catch (e) { return; }
       if (!Array.isArray(items) || !items.length) return;
       const card = document.createElement("aside");
       card.className = "sale-toast";
-      card.setAttribute("aria-label", "Recent purchases");
-      card.innerHTML = '<span class="sale-avatar" aria-hidden="true"></span><div class="sale-body" role="status" aria-live="polite" aria-atomic="true"><p class="sale-line"></p><p class="sale-meta"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5l1.7 1.2 2-.1.7 1.9 1.6 1.2-.6 2 .6 2-1.6 1.2-.7 1.9-2-.1L8 14.5l-1.7-1.2-2 .1-.7-1.9-1.6-1.2.6-2-.6-2 1.6-1.2.7-1.9 2 .1z"/><path d="M5.6 8.2l1.6 1.6 3.3-3.4" fill="none" stroke="#0b0c12" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sale-time"></span></p></div><button type="button" class="sale-x" aria-label="Hide purchase notifications"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8"/></svg></button>';
+      card.setAttribute("aria-label", "Recent plan activity");
+      card.innerHTML = '<span class="sale-avatar" aria-hidden="true"></span><div class="sale-body" role="status" aria-live="polite" aria-atomic="true"><p class="sale-line"></p><p class="sale-meta"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5l1.7 1.2 2-.1.7 1.9 1.6 1.2-.6 2 .6 2-1.6 1.2-.7 1.9-2-.1L8 14.5l-1.7-1.2-2 .1-.7-1.9-1.6-1.2.6-2-.6-2 1.6-1.2.7-1.9 2 .1z"/><path d="M5.6 8.2l1.6 1.6 3.3-3.4" fill="none" stroke="#0b0c12" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sale-time"></span></p></div><button type="button" class="sale-x" aria-label="Hide notifications"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8"/></svg></button>';
       document.body.appendChild(card);
-      /* preview cards carry no order-status line, so they never read as confirmed orders */
-      if (demo) card.querySelector(".sale-meta").style.display = "none";
-      const av = card.querySelector(".sale-avatar"), line = card.querySelector(".sale-line"), time = card.querySelector(".sale-time");
+      const av = card.querySelector(".sale-avatar"), line = card.querySelector(".sale-line"), meta = card.querySelector(".sale-meta"), time = card.querySelector(".sale-time");
       /* random order per visit: walk a shuffled copy, reshuffle when it runs out, never the same card twice in a row */
       const shuffle = (a) => { for (let k = a.length - 1; k > 0; k--) { const j = Math.floor(Math.random() * (k + 1)); [a[k], a[j]] = [a[j], a[k]]; } return a; };
       let deck = [], last;
@@ -278,8 +265,9 @@
         av.textContent = (x.first || "?").charAt(0).toUpperCase();
         const b = document.createElement("b");
         b.textContent = x.first;
-        line.replaceChildren(b, " from " + x.place + " purchased ", Object.assign(document.createElement("b"), { textContent: x.plan }));
-        time.textContent = demo ? "" : when(x.at);
+        line.replaceChildren(b, " from " + x.place + " \u2014 ", Object.assign(document.createElement("b"), { textContent: planLabel(x.plan) }));
+        time.textContent = when(x.at);
+        meta.hidden = !time.textContent;
         card.classList.remove("is-on");
         void card.offsetWidth; /* restart the timer-line animation */
         card.classList.add("is-on");
@@ -295,7 +283,6 @@
       card.addEventListener("focusout", resume);
       card.querySelector(".sale-x").addEventListener("click", () => {
         done = true; hold = false; clearTimeout(hideT); clearTimeout(nextT); card.classList.remove("is-on");
-        try { sessionStorage.setItem("sn-off", "1"); } catch (e) {}
       });
       /* do not burn through entries while the tab is in the background */
       document.addEventListener("visibilitychange", () => {
@@ -304,7 +291,7 @@
         if (document.hidden) { clearTimeout(hideT); hold = false; card.classList.remove("is-on"); }
         else nextT = setTimeout(show, GAP);
       });
-      nextT = setTimeout(show, demo ? 1500 : GAP);
+      nextT = setTimeout(show, GAP);
     };
     "requestIdleCallback" in window ? requestIdleCallback(start, { timeout: 4000 }) : setTimeout(start, 2500);
   })();

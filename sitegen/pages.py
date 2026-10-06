@@ -637,25 +637,6 @@ def not_found():
                 robots="noindex, follow", in_sitemap=False)
 
 
-def sales_demo():
-    """Private design preview of the purchase-notification card. Sample names only; noindex, unlinked, not in the sitemap."""
-    body = f"""{page_hero('Purchase notification <span class="grad-text">design preview</span>', "Sample names for judging the look only. These are not real orders and this page is not linked anywhere on the site.", "Preview", [("Home", "/"), ("Preview", "")])}
-<section class="section section--after-hero"><div class="container narrow"><div class="prose-card prose">
-<p>Watch the bottom-left corner. A new card appears every 7 seconds and stays for 2 seconds, with a thin timer line. Hovering or focusing it keeps it on screen. Tap the first button to see the same preview on every page of the site, on this device only. On the live site, visitors see only real orders you add yourself.</p>
-<p><button type="button" class="btn btn--primary" id="sale-on">Preview on all pages</button>
-<button type="button" class="btn btn--ghost" id="sale-off">Turn off</button></p>
-<p id="sale-state" class="muted"></p>
-<p><a href="#" id="sale-replay">Replay the preview here</a></p>
-</div></div></section>
-<script>window.__SALE_DEMO=true;
-var st=document.getElementById("sale-state");function sh(){{var on=false;try{{on=localStorage.getItem("sn-preview")==="1"}}catch(_){{}}st.textContent=on?"Preview is ON for this device: browse any page to see it. Visitors never see sample names.":"Preview is off for this device."}}
-document.addEventListener("click",function(e){{var id=e.target.id;if(id==="sale-replay"){{e.preventDefault();try{{sessionStorage.removeItem("sn-off")}}catch(_){{}}location.reload()}}
-if(id==="sale-on"){{try{{localStorage.setItem("sn-preview","1");sessionStorage.removeItem("sn-off")}}catch(_){{}}sh()}}
-if(id==="sale-off"){{try{{localStorage.removeItem("sn-preview")}}catch(_){{}}sh()}}}});sh();</script>"""
-    return Page("/sales-demo/", "Purchase notification preview | IPTVMaple", "Design preview of the purchase notification card.", body,
-                robots="noindex, nofollow", in_sitemap=False)
-
-
 def all_pages():
     return [home(), pricing_page(), *product_pages(), *trial_pages(), thank_you(), channels(), how_it_works(), referral(), contact(), *prose_pages(),
-            *seo_pages(), sales_demo()]
+            *seo_pages()]
