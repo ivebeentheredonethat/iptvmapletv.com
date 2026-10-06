@@ -256,6 +256,8 @@
       card.setAttribute("aria-label", "Recent purchases");
       card.innerHTML = '<span class="sale-avatar" aria-hidden="true"></span><div class="sale-body" role="status" aria-live="polite" aria-atomic="true"><p class="sale-line"></p><p class="sale-meta"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5l1.7 1.2 2-.1.7 1.9 1.6 1.2-.6 2 .6 2-1.6 1.2-.7 1.9-2-.1L8 14.5l-1.7-1.2-2 .1-.7-1.9-1.6-1.2.6-2-.6-2 1.6-1.2.7-1.9 2 .1z"/><path d="M5.6 8.2l1.6 1.6 3.3-3.4" fill="none" stroke="#0b0c12" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sale-time"></span></p></div><button type="button" class="sale-x" aria-label="Hide purchase notifications"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8"/></svg></button>';
       document.body.appendChild(card);
+      /* preview cards carry no order-status line, so they never read as confirmed orders */
+      if (demo) card.querySelector(".sale-meta").style.display = "none";
       const av = card.querySelector(".sale-avatar"), line = card.querySelector(".sale-line"), time = card.querySelector(".sale-time");
       let i = 0, hideT, nextT, hold = false, done = false;
       const hide = () => { if (!hold) card.classList.remove("is-on"); };
@@ -266,7 +268,7 @@
         const b = document.createElement("b");
         b.textContent = x.first;
         line.replaceChildren(b, " from " + x.place + " purchased ", Object.assign(document.createElement("b"), { textContent: x.plan }));
-        time.textContent = demo ? "Sample, not real" : when(x.at);
+        time.textContent = demo ? "" : when(x.at);
         card.classList.remove("is-on");
         void card.offsetWidth; /* restart the timer-line animation */
         card.classList.add("is-on");
