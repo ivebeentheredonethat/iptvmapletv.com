@@ -20,7 +20,7 @@ After you confirm payment (and the customer is OK with their first name being sh
 - To remove an entry, delete its line and commit.
 
 ## Behaviour
-One notification every 7 s, each visible for 2 s (first one 7 s after the page loads), looping through the list. Hover or keyboard focus keeps a card on screen; it pauses while the tab is in the background; it can be closed (stays closed for the rest of the visit). No network request is made: the data is inside the page.
+Each notification stays visible for 4 s, then the next one appears 10 s later (the first one 10 s after the page loads). The order is random on every visit and reshuffled when the list runs out, never showing the same order twice in a row. Hover or keyboard focus keeps a card on screen; it pauses while the tab is in the background; it can be closed (stays closed for the rest of the visit). No network request is made: the data is inside the page.
 
 ## Preview (owner only)
 Open `/sales-demo/` (noindex, unlinked) to see the design with sample names, or switch preview on there to see it on every page of your own device. Sample cards show only the name line (no "Confirmed order" status) and are never shown to visitors.
