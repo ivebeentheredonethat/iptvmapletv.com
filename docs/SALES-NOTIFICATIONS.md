@@ -23,4 +23,4 @@ After you confirm payment (and the customer is OK with their first name being sh
 One notification every 7 s, each visible for 2 s (first one 7 s after the page loads), looping through the list. Hover or keyboard focus keeps a card on screen; it pauses while the tab is in the background; it can be closed (stays closed for the rest of the visit). No network request is made: the data is inside the page.
 
 ## Preview (owner only)
-Open `/sales-demo/` (noindex, unlinked) to see the design with sample names, or switch preview on there to see it on every page of your own device. Sample cards are labelled "Sample, not real" and are never shown to visitors.
+Open `/sales-demo/` (noindex, unlinked) to see the design with sample names, or switch preview on there to see it on every page of your own device. Sample cards show only the name line (no "Confirmed order" status) and are never shown to visitors.
