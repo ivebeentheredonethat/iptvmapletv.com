@@ -5,6 +5,8 @@ hosted on **Cloudflare Pages**.
 
 - Push to `main` → GitHub Actions runs `python build.py` and deploys to production.
 - Open a pull request → it gets its own preview URL (shown in the Actions run summary).
+- Cloudflare's own Git build is not used (the site needs `python build.py` first). Keep automatic
+  deployments off in Pages → Settings → Builds, so only GitHub Actions deploys.
 
 ## How it's organised
 
