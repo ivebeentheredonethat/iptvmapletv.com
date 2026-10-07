@@ -571,6 +571,7 @@ PROSE = {
     "privacy": ("Legal", "Privacy policy", "How we collect, use and protect your personal data."),
     "terms": ("Legal", "Terms &amp; conditions", "The terms that govern your use of IPTVMaple."),
     "refund": ("Legal", "Refund policy", "Our 7-day money-back guarantee, explained."),
+    "disclaimer": ("Legal", "Disclaimer", "Our content disclaimer, user responsibilities and how to report a copyright concern."),
     "3-smarter-ways-to-stream-tv-without-cable-in-2025": ("Guide", "3 Smarter Ways to Stream TV Without Cable", "Three smarter ways to stream TV without cable: streaming apps, live-TV bundles and IPTV, compared on cost, what you get and how you watch."),
     "cord-cutting-guide": ("Guide", "Cut the Cord &amp; Stream Smarter", "Cut the cord and stream smarter: why switching from cable pays off, what you need and how to switch without missing a game."),
     "landing": ("Save money", "Cut Your Monthly Bills — Smarter Entertainment Awaits", "Still paying expensive cable bills every month? There’s a better way."),
@@ -582,11 +583,11 @@ def prose_pages():
     out = []
     for slug, (kicker, title, lead) in PROSE.items():
         meta, html = content(slug)
-        legal = slug in ("privacy", "terms", "refund")
+        legal = slug in ("privacy", "terms", "refund", "disclaimer")
         hero_img = meta.get("image")
         figure = f'<img src="{hero_img}" alt="" style="border-radius:20px;border:1px solid var(--line);margin:0 0 28px;width:100%" loading="lazy">' if hero_img else ""
         if legal:
-            html += ('<h2>Related</h2><p>See also our <a href="/terms/">terms</a>, <a href="/privacy/">privacy policy</a> and <a href="/refund/">refund policy</a>. '
+            html += ('<h2>Related</h2><p>See also our <a href="/terms/">terms</a>, <a href="/privacy/">privacy policy</a>, <a href="/refund/">refund policy</a> and <a href="/disclaimer/">disclaimer</a>. '
                      'Questions about plans or setup? <a href="/iptv-plans-canada/">Plans and prices</a>, <a href="/how-it-works/">how it works</a>, '
                      '<a href="/try-iptv-canada/">free trial</a> or <a href="/contact/">contact support</a> by WhatsApp or email.</p>')
         updated = f'<p class="muted" style="font-size:14px">Last updated {meta["modified"][:10]}</p>' if legal and meta.get("modified") else ""

@@ -41,5 +41,5 @@ FOOTER = [
                 ("Is IPTV legal?", "/is-iptv-legal-in-canada/"), ("IPTV apps", "/iptv-apps/"), ("IPTV devices", "/iptv-devices/"), ("Sports IPTV", "/iptv-sports/"),
                 ("IPTV near me", "/iptv-near-me/"), ("IPTV Canada", "/canada/"), ("IPTV USA", "/usa/"), ("International IPTV", "/iptv-international/"),
                 ("IPTV Québec (FR)", "/iptv-quebec/")]),
-    ("Legal", [("Terms & conditions", "/terms/"), ("Privacy policy", "/privacy/"), ("Refund policy", "/refund/")]),
+    ("Legal", [("Terms & conditions", "/terms/"), ("Privacy policy", "/privacy/"), ("Refund policy", "/refund/"), ("Disclaimer (DMCA)", "/disclaimer/")]),
 ]

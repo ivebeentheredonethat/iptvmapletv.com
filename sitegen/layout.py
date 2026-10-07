@@ -181,6 +181,8 @@ def _footer():
         <li><a href="{C.MAILTO}">{C.EMAIL}</a></li>
       </ul></div>
     </div>
+    <p class="footer-disclaimer"><strong>Disclaimer:</strong> {C.NAME} does not host or stream any copyrighted content. All content is provided by third-party providers.
+      Users are responsible for ensuring they have the rights to view content in their jurisdiction. <a href="/disclaimer/">Read more</a></p>
     <div class="footer-bottom">
       <span>© {C.YEAR} {C.NAME}. All rights reserved.</span>
       <span>Prices in USD · 7-day money-back guarantee</span>
