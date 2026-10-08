@@ -1,8 +1,8 @@
 name: Deploy trial worker
 
 # Deploys worker/worker.js as the iptv-trial-iptvmapletv Worker (same setup as the other sites'
-# trial workers): TRIALS KV binding, workers.dev URL and an hourly cron for the reminder and
-# follow-up emails. Secrets (RESEND_KEY, PANEL_API_KEY) are set on the Worker in Cloudflare and are
+# trial workers): TRIALS KV binding and workers.dev URL. The hourly reminder / follow-up run comes from
+# trial-followups.yml. Secrets (RESEND_KEY, PANEL_API_KEY) are set on the Worker in Cloudflare and are
 # kept across deploys.
 
 on:
@@ -45,11 +45,12 @@ jobs:
           curl -sS -X POST "$API/$CF_ACCOUNT/workers/scripts/$WORKER/subdomain" -H "Authorization: Bearer $CF_TOKEN" \
             -H "Content-Type: application/json" -d '{"enabled":true}' | python3 -c "import sys,json; print('Subdomain:', json.load(sys.stdin).get('success'))"
 
-      - name: Set hourly cron (reminder + follow-up emails)
+      - name: Try a cron trigger (optional)
+        # The account is at the Workers Free limit of 5 cron triggers; trial-followups.yml covers it.
         run: |
           curl -sS -X PUT "$API/$CF_ACCOUNT/workers/scripts/$WORKER/schedules" -H "Authorization: Bearer $CF_TOKEN" \
             -H "Content-Type: application/json" -d '[{"cron":"0 * * * *"}]' > cron.json
-          python3 -c "import json,sys; d=json.load(open('cron.json')); print('Cron:', d.get('success'), d.get('errors') or d.get('result')); sys.exit(0 if d.get('success') else 1)"
+          python3 -c "import json; d=json.load(open('cron.json')); print('Cron trigger:', 'set' if d.get('success') else 'not available (%s); follow-ups run from trial-followups.yml' % (d.get('errors') or [{}])[0].get('message'))"
 
       - name: Status (secret names only, never values)
         run: |

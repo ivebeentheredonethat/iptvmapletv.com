@@ -5,7 +5,10 @@
  *   (or uses DEMO_USERNAME/DEMO_PASSWORD as a shared fallback), stores it in the TRIALS KV namespace
  *   (trial:<email> + the __keys__ index read by iptv-kv-reader), emails the login via Resend and
  *   sends the team a copy
- * - Cron every hour: T-4h reminder + T=0 follow-up email
+ * - Every hour: T-4h reminder + T=0 follow-up email. The account is at the Workers Free limit of 5 cron
+ *   triggers, so .github/workflows/trial-followups.yml calls POST /followups hourly instead (throttled to
+ *   one run per 10 minutes; it only sends emails that are due). The scheduled() handler is kept in case
+ *   a cron trigger becomes available.
  * - GET /?debug → panel reachability + KV key count (no secrets)
  * Abuse protection: honeypot, email checks, one trial per inbox and per WhatsApp number,
  * 3 trials per IP per day, and a daily cap (TRIAL_DAILY_LIMIT, default 60).
@@ -150,6 +153,12 @@ async function handleFetch(request, env) {
   }
   if (request.method !== "POST") return res({ success: false, error: "POST only" }, 405);
 
+  if (new URL(request.url).pathname === "/followups") {
+    if (await env.TRIALS.get("followups:last")) return res({ ok: true, skipped: "ran in the last 10 minutes" });
+    await env.TRIALS.put("followups:last", new Date().toISOString(), { expirationTtl: 600 });
+    return res({ ok: true, ...(await handleScheduled(env)) });
+  }
+
   let body;
   try { body = await request.json(); } catch { return res({ success: false, error: "Invalid JSON" }, 400); }
   const get = (k) => String(body[k] || "").trim().slice(0, 120);
@@ -190,6 +199,7 @@ async function handleScheduled(env) {
   const FOUR_HOURS = 4 * 3600e3;
   const emails = JSON.parse((await env.TRIALS.get("__keys__")) || "[]");
   console.log(`[cron] Checking ${emails.length} trials`);
+  let reminders = 0, followups = 0;
   for (const email of emails) {
     const key = `trial:${email}`;
     let trial;
@@ -201,6 +211,7 @@ async function handleScheduled(env) {
         await sendEmail(env, email, SUBJECT, reminderEmail(name, username, password, m3uUrl), welcome_email_id);
         trial.reminder_sent = true;
         await env.TRIALS.put(key, JSON.stringify(trial), { expirationTtl: KV_TTL });
+        reminders++;
         console.log(`[cron] Reminder → ${email}`);
       } catch (e) { console.error(`[cron] Reminder failed ${email}:`, e.message); }
     }
@@ -209,10 +220,12 @@ async function handleScheduled(env) {
         await sendEmail(env, email, SUBJECT, followupEmail(name), welcome_email_id);
         trial.followup_sent = true;
         await env.TRIALS.put(key, JSON.stringify(trial), { expirationTtl: KV_TTL });
+        followups++;
         console.log(`[cron] Follow-up → ${email}`);
       } catch (e) { console.error(`[cron] Follow-up failed ${email}:`, e.message); }
     }
   }
+  return { trials: emails.length, reminders, followups };
 }
 
 export default {
