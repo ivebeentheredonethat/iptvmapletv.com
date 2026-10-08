@@ -294,7 +294,8 @@ COUNTRIES = ["Canada", "United States", "United Kingdom", "Afghanistan", "Albani
 def lead_form(form_id, kind, submit_label, value=0, plan_name=""):
     """Order / free-trial form. Field names match the old Forminator form so leads keep the same shape."""
     opts = "".join(f"<option{' selected' if c == 'Canada' else ''}>{escape(c)}</option>" for c in COUNTRIES)
-    return f"""<form class="lead-form" data-lead-form="{kind}" data-value="{value}" novalidate>
+    trial = f' data-trial-endpoint="{C.TRIAL_WORKER_URL}"' if kind == "free-trial" else ""
+    return f"""<form class="lead-form" data-lead-form="{kind}" data-value="{value}"{trial} novalidate>
   <input type="hidden" name="action" value="forminator_submit_form_custom-forms">
   <input type="hidden" name="form_id" value="{form_id}">
   <input type="hidden" name="plan" value="{escape(plan_name)}">
@@ -303,7 +304,7 @@ def lead_form(form_id, kind, submit_label, value=0, plan_name=""):
     <div class="field"><label for="f-name">First name</label><input class="input" id="f-name" name="name-1" autocomplete="given-name" placeholder="E.g. John" required><span class="err"></span></div>
     <div class="field"><label for="f-country">Country</label><select class="input" id="f-country" name="address-1-country" autocomplete="country-name">{opts}</select><span class="err"></span></div>
     <div class="field field--full"><label for="f-email">Email address</label><input class="input" id="f-email" name="email-1" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required><span class="err"></span></div>
-    <div class="field field--full"><label for="f-phone">WhatsApp number <em>— we send your login by email and WhatsApp</em></label><input class="input" id="f-phone" name="phone-1" type="tel" autocomplete="tel" inputmode="tel" placeholder="E.g. +1 300 400 5000" required><span class="err"></span></div>
+    <div class="field field--full"><label for="f-phone">WhatsApp number <em>— {"for setup help if you need it" if kind == "free-trial" else "we send your login by email and WhatsApp"}</em></label><input class="input" id="f-phone" name="phone-1" type="tel" autocomplete="tel" inputmode="tel" placeholder="E.g. +1 300 400 5000" required><span class="err"></span></div>
   </div>
   <button class="btn btn--primary btn--lg btn--block" type="submit" style="margin-top:22px"><span class="spinner"></span>{submit_label} {icon("arrow-right")}</button>
   <div class="form-msg" role="status" aria-live="polite"></div>

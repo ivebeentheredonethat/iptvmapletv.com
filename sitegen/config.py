@@ -18,6 +18,9 @@ MAILTO = f"mailto:{EMAIL}?subject={quote(EMAIL_SUBJECT)}&body={quote(EMAIL_BODY)
 # can be changed in one place.
 WHATSAPP_URL = "/go/wa"
 
+# Free-trial worker (worker/worker.js): creates the trial line and emails the login.
+TRIAL_WORKER_URL = "https://iptv-trial-iptvmapletv.medmaar.workers.dev"
+
 GOOGLE_TAGS = ["GT-WF62KHHF", "G-JJR5ECP8RV"]
 REDDIT_PIXEL = "a2_g8z3rkvzo68a"
 GOOGLE_SITE_VERIFICATION = "9QinAgZmvCoRQKS99jjmNbTDzV5TcQVUZ8VnO2poI0M"

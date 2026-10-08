@@ -75,12 +75,12 @@ def trial_copy():
     return _card(f"""
 <h2>What you get with the free IPTV trial</h2>
 <p>The IPTVMaple trial is a full 24-hour test of the service, not a cut-down demo. You can use it on your own TV or phone, with your own internet connection.</p>
-{checks(["24 hours of access to live TV, sports, movies and series", "HD and 4K channels, including Canadian channels in English and French", "No credit card and no commitment", "Your login by email and WhatsApp", "Works with TiviMate, IPTV Smarters Pro and the other supported apps"])}
+{checks(["24 hours of access to live TV, sports, movies and series", "HD and 4K channels, including Canadian channels in English and French", "No credit card and no commitment", "Your login emailed to you automatically", "Works with TiviMate, IPTV Smarters Pro and the other supported apps"])}
 
 <h2>How to start your free IPTV trial</h2>
 <ol>
 <li><strong>Fill in the form above</strong> with your name, email, country and WhatsApp number.</li>
-<li><strong>Receive your login</strong> by email and WhatsApp, usually within a few minutes.</li>
+<li><strong>Receive your login</strong> by email, sent automatically as soon as you submit the form.</li>
 <li><strong>Install an app</strong> on your device. Pick yours in the <a href="/how-it-works/">setup guides</a>: <a href="/iptv-firestick/">Firestick</a>, <a href="/iptv-samsung-tv/">Samsung</a>, <a href="/iptv-lg-tv/">LG</a>, <a href="/iptv-apple-tv/">Apple TV</a>, <a href="/iptv-android-tv/">Android TV</a> or <a href="/iptv-pc-mac/">PC and Mac</a>.</li>
 <li><strong>Enter your login</strong> and start watching.</li>
 </ol>
@@ -108,7 +108,7 @@ TRIAL_FAQ = [
     {"q": "Do I need a credit card for the free IPTV trial?",
      "a": "<p>No. You only provide your name, email, country and WhatsApp number so we can send your login.</p>"},
     {"q": "How fast do I get my trial login?",
-     "a": "<p>Usually within a few minutes, by email and on WhatsApp. If you haven’t received it, check your spam folder or message our team.</p>"},
+     "a": "<p>Straight away. Your login is emailed automatically as soon as you submit the form. If you haven’t received it after a few minutes, check your spam folder or message our team on WhatsApp.</p>"},
     {"q": "What can I watch during the trial?",
      "a": "<p>The same live TV, sports, movies and series as a paid plan, in HD and 4K, including Canadian channels in English and French.</p>"},
     {"q": "Which devices work with the free trial?",

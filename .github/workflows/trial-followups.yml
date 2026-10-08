@@ -1,0 +1,16 @@
+name: Trial follow-up emails
+
+# Hourly run of the trial worker's reminder (4 hours before the trial ends) and follow-up
+# (when it ends) emails. Replaces a Worker cron trigger: the Cloudflare account is at the
+# Workers Free limit of 5 cron triggers. Safe to run any time: it only sends emails that are due.
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+jobs:
+  followups:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -sS -m 60 --fail-with-body -X POST "https://iptv-trial-iptvmapletv.medmaar.workers.dev/followups"

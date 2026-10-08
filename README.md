@@ -32,6 +32,7 @@ hosted on **Cloudflare Pages**.
 | `src/static/images/` | Images (old `/wp-content/uploads/...` URLs redirect here) |
 | `src/static/_redirects`, `_headers` | Redirects and response headers |
 | `functions/api/ajax.js` | Receives order / free-trial / referral forms |
+| `worker/worker.js` | Free-trial Worker `iptv-trial-iptvmapletv` (same setup as the other sites): creates the 24h line, emails the login, hourly reminder/follow-up emails. KV `TRIALS` = namespace "iptvmapletv". Secrets on the Worker: `RESEND_KEY`, `PANEL_API_KEY`. Deployed by `.github/workflows/deploy-trial-worker.yml` |
 | `functions/api/leads.js` | Lists saved form submissions |
 | `tools/` | One-time scripts used to import content from the old WordPress site |
 
