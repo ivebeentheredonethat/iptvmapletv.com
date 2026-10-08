@@ -48,7 +48,8 @@ jobs:
       - name: Set hourly cron (reminder + follow-up emails)
         run: |
           curl -sS -X PUT "$API/$CF_ACCOUNT/workers/scripts/$WORKER/schedules" -H "Authorization: Bearer $CF_TOKEN" \
-            -H "Content-Type: application/json" -d '[{"cron":"0 * * * *"}]' | python3 -c "import sys,json; print('Cron:', json.load(sys.stdin).get('success'))"
+            -H "Content-Type: application/json" -d '[{"cron":"0 * * * *"}]' > cron.json
+          python3 -c "import json,sys; d=json.load(open('cron.json')); print('Cron:', d.get('success'), d.get('errors') or d.get('result')); sys.exit(0 if d.get('success') else 1)"
 
       - name: Status (secret names only, never values)
         run: |
