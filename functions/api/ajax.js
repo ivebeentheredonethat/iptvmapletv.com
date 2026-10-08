@@ -3,14 +3,9 @@
 //   1. saved in the LEADS KV namespace (if bound),
 //   2. POSTed as JSON to NOTIFY_WEBHOOK_URL (if set),
 //   3. always written to the function log.
-// Free-trial submissions also go through the automatic trial (functions/_lib/trial.js): the login is
-// created and emailed straight away, and the lead falls back to the manual flow if that isn't possible.
 // Field names and the response shape are the ones the old Forminator forms used.
 
-import { createTrial, notifyTrial } from "../_lib/trial.js";
-
 const REFERRAL_FORM = "3995";
-const TRIAL_FORM = "1570";
 
 const LABELS = {
   default: {
@@ -62,15 +57,13 @@ export async function onRequestPost({ request, env, waitUntil }) {
 
   const page = new URL(String(form.get("current_url") || form.get("_wp_http_referer") || "/"), request.url).pathname;
   const lead = {
-    type: formId === REFERRAL_FORM ? "referral" : formId === TRIAL_FORM ? "free-trial" : "order",
+    type: formId === REFERRAL_FORM ? "referral" : formId === "1570" ? "free-trial" : "order",
     page,
     form_id: formId,
     fields,
     country: request.cf?.country,
     at: new Date().toISOString(),
   };
-
-  if (formId === TRIAL_FORM) return trial(form, lead, request, env, waitUntil);
 
   console.log("LEAD", JSON.stringify(lead));
   waitUntil(deliver(lead, env));
@@ -84,43 +77,6 @@ export async function onRequestPost({ request, env, waitUntil }) {
   return json({
     success: true,
     data: { success: true, message: "Order received! Redirecting…", url: "/thank-you/", newtab: "sametab", behav: "behaviour-redirect" },
-  });
-}
-
-async function trial(form, lead, request, env, waitUntil) {
-  const get = (k) => String(form.get(k) || "").trim().slice(0, 120);
-  const name = get("name-1"), email = get("email-1"), whatsapp = get("phone-1"), country = get("address-1-country");
-  const fail = (message) => json({ success: true, data: { success: false, message, errors: [] } });
-  if (!name || !email || whatsapp.replace(/\D/g, "").length < 7) return fail("Please fill in your first name, email and WhatsApp number.");
-
-  let result;
-  try {
-    result = await createTrial({ name, email, country, whatsapp, ip: request.headers.get("CF-Connecting-IP"), env });
-  } catch (err) {
-    result = { status: "manual", reason: `error: ${err.message}` };
-  }
-  if (result.status === "invalid") return fail(result.message);
-  if (result.status === "duplicate") {
-    return fail("A free trial was already sent to this email or WhatsApp number. Check your inbox and spam folder, or message us on WhatsApp for help.");
-  }
-  if (result.status === "rate_limited") {
-    return fail("Too many trial requests from your connection today. Please message us on WhatsApp and we’ll help you right away.");
-  }
-
-  lead.trial = result.status === "sent" ? "sent automatically" : `manual (${result.reason})`;
-  console.log("LEAD", JSON.stringify(lead));
-  waitUntil(deliver(lead, env));
-  if (result.trial) {
-    waitUntil(notifyTrial(env, result.trial, { page: lead.page, ipCountry: lead.country, emailed: result.status === "sent", reason: result.reason }));
-  }
-
-  if (result.status === "sent") {
-    return json({ success: true, data: { success: true, message: "Your free trial login is on its way to your inbox.", email, behav: "behaviour-thankyou" } });
-  }
-  // Not automated (not configured, panel or email failure): the lead is saved and the team sends it by hand.
-  return json({
-    success: true,
-    data: { success: true, message: "Request received! Redirecting…", url: "/thank-you/", newtab: "sametab", behav: "behaviour-redirect" },
   });
 }
 

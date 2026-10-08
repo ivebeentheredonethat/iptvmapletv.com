@@ -294,7 +294,8 @@ COUNTRIES = ["Canada", "United States", "United Kingdom", "Afghanistan", "Albani
 def lead_form(form_id, kind, submit_label, value=0, plan_name=""):
     """Order / free-trial form. Field names match the old Forminator form so leads keep the same shape."""
     opts = "".join(f"<option{' selected' if c == 'Canada' else ''}>{escape(c)}</option>" for c in COUNTRIES)
-    return f"""<form class="lead-form" data-lead-form="{kind}" data-value="{value}" novalidate>
+    trial = f' data-trial-endpoint="{C.TRIAL_WORKER_URL}"' if kind == "free-trial" else ""
+    return f"""<form class="lead-form" data-lead-form="{kind}" data-value="{value}"{trial} novalidate>
   <input type="hidden" name="action" value="forminator_submit_form_custom-forms">
   <input type="hidden" name="form_id" value="{form_id}">
   <input type="hidden" name="plan" value="{escape(plan_name)}">

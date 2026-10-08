@@ -1,0 +1,12 @@
+# Free-trial worker (see worker.js). Deployed by .github/workflows/deploy-trial-worker.yml.
+name = "iptv-trial-iptvmapletv"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# Cloudflare KV namespace "iptvmapletv" (one per site, read by iptv-kv-reader)
+[[kv_namespaces]]
+binding = "TRIALS"
+id = "6741b6342df744e98b14033ff1598c0f"
+
+[triggers]
+crons = ["0 * * * *"]

@@ -136,6 +136,22 @@
     }));
   }
 
+  /* free trial: the trial worker creates the line and emails the login. Returns a response shaped like
+     /api/ajax's, or null when the trial can't be automated right now (the form then falls back to the
+     manual lead flow below, so the team sends the trial by hand). */
+  const autoTrial = async (url, fd) => {
+    let res, body;
+    try {
+      res = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({
+        name: fd.get("name-1"), email: fd.get("email-1"), whatsapp: fd.get("phone-1"), country: fd.get("address-1-country"),
+        website: fd.get("website"), page: location.pathname }) });
+      body = await res.json();
+    } catch (_) { return null; }
+    if (body.success) return { success: true, data: { success: true, email: body.email || fd.get("email-1") } };
+    if (body.message) return { success: true, data: { success: false, message: body.message } };
+    return null;
+  };
+
   /* order / trial / referral forms -> /api/ajax (Pages Function) */
   $$("form[data-lead-form]").forEach((form) => {
     const btn = $("button[type='submit']", form);
@@ -168,8 +184,8 @@
       try {
         const fd = new FormData(form);
         fd.set("current_url", location.href);
-        const res = await fetch("/api/ajax", { method: "POST", body: fd });
-        const json = await res.json();
+        let json = form.dataset.trialEndpoint && await autoTrial(form.dataset.trialEndpoint, fd);
+        if (!json) json = await (await fetch("/api/ajax", { method: "POST", body: fd })).json();
         if (!json.success || !json.data || json.data.success === false) {
           const e = new Error(json.data?.message || "Something went wrong");
           e.shown = !!json.data?.message;
