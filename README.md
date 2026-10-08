@@ -32,6 +32,7 @@ hosted on **Cloudflare Pages**.
 | `src/static/images/` | Images (old `/wp-content/uploads/...` URLs redirect here) |
 | `src/static/_redirects`, `_headers` | Redirects and response headers |
 | `functions/api/ajax.js` | Receives order / free-trial / referral forms |
+| `functions/_lib/trial.js` | Automatic free trial: creates the 24h line on the panel and emails the login (secrets: `RESEND_KEY`, `PANEL_API_KEY`) |
 | `functions/api/leads.js` | Lists saved form submissions |
 | `tools/` | One-time scripts used to import content from the old WordPress site |
 

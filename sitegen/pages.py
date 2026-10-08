@@ -358,10 +358,21 @@ def trial_pages():
 <section class="section section--after-hero">
   <div class="container checkout">
     <div class="order-card reveal">
-      <h2>Get your free trial</h2>
-      <p class="muted" style="margin:0">Provide your first name, email, country and WhatsApp number — we’ll send you instant access.</p>
-      <div class="order-steps"><span class="on"><i>1</i>Your details</span><span><i>2</i>Login by email &amp; WhatsApp</span><span><i>3</i>Watch for 24h</span></div>
-      {lead_form("1570", "free-trial", "Start my free trial", 0, "Free trial 24h")}
+      <div data-success-hide>
+        <h2>Get your free trial</h2>
+        <p class="muted" style="margin:0">Provide your first name, email, country and WhatsApp number — we’ll email your login instantly.</p>
+        <div class="order-steps"><span class="on"><i>1</i>Your details</span><span><i>2</i>Login sent by email</span><span><i>3</i>Watch for 24h</span></div>
+        {lead_form("1570", "free-trial", "Start my free trial", 0, "Free trial 24h")}
+      </div>
+      <div class="form-success" data-success hidden tabindex="-1" role="status">
+        <div class="success-mark">{icon("check")}</div>
+        <h2>Check your inbox!</h2>
+        <p>Your 24-hour trial is active. We just emailed your username, password and M3U link to <b data-success-email>your email address</b>. Not there in a couple of minutes? Check your spam folder or message us on WhatsApp.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary btn--lg" href="/how-it-works/">Set up my device</a>
+          <a class="btn btn--wa btn--lg" href="{C.WHATSAPP_URL}" target="_blank" rel="noopener">{icon("whatsapp")} Help on WhatsApp</a>
+        </div>
+      </div>
     </div>
     <aside class="checkout-summary reveal">
       <div class="summary-card">

@@ -170,7 +170,11 @@
         fd.set("current_url", location.href);
         const res = await fetch("/api/ajax", { method: "POST", body: fd });
         const json = await res.json();
-        if (!json.success || !json.data || json.data.success === false) throw new Error(json.data?.message || "Something went wrong");
+        if (!json.success || !json.data || json.data.success === false) {
+          const e = new Error(json.data?.message || "Something went wrong");
+          e.shown = !!json.data?.message;
+          throw e;
+        }
         const type = form.dataset.leadForm;
         try {
           window.gtag && gtag("event", "generate_lead", { form_type: type, value: +form.dataset.value || 0, currency: "USD" });
@@ -180,6 +184,8 @@
         form.reset();
         const card = form.closest(".order-card"), done = card && $("[data-success]", card);
         if (done) {
+          const to = $("[data-success-email]", done);
+          if (to && json.data.email) to.textContent = json.data.email;
           $("[data-success-hide]", card).hidden = true;
           done.hidden = false;
           card.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -189,7 +195,7 @@
         msg.textContent = json.data.message;
         msg.className = "form-msg is-ok";
       } catch (err) {
-        msg.textContent = "Sorry — we couldn't send your details. Please try again or message us on WhatsApp.";
+        msg.textContent = err.shown ? err.message : "Sorry — we couldn't send your details. Please try again or message us on WhatsApp.";
         msg.className = "form-msg is-error";
       } finally {
         btn.disabled = false; btn.classList.remove("is-loading");
