@@ -264,10 +264,29 @@ def home():
 
 
 # =================================================================== PRICING
+# Merchant-listing fields for every plan Offer. Values mirror the published /refund/ page
+# (7-day full refund) and the "ready within 5 minutes" delivery claim: digital, nothing ships.
+SALE_COUNTRIES = ["CA", "US"]
+RETURN_POLICY = {"@type": "MerchantReturnPolicy", "applicableCountry": SALE_COUNTRIES,
+                 "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 7,
+                 "returnFees": "https://schema.org/FreeReturn", "refundType": "https://schema.org/FullRefund",
+                 "merchantReturnLink": C.SITE_URL + "/refund/"}
+SHIPPING = {"@type": "OfferShippingDetails",
+            "shippingRate": {"@type": "MonetaryAmount", "value": 0, "currency": "USD"},
+            "shippingDestination": [{"@type": "DefinedRegion", "addressCountry": c} for c in SALE_COUNTRIES],
+            "deliveryTime": {"@type": "ShippingDeliveryTime",
+                             "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "DAY"},
+                             "transitTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "DAY"}}}
+
+
+def plan_offer(p, **extra):
+    return {"@type": "Offer", **extra, "price": p["price"], "priceCurrency": "USD", "availability": "https://schema.org/InStock",
+            "url": f"{C.SITE_URL}/{p['slug']}/", "shippingDetails": SHIPPING, "hasMerchantReturnPolicy": RETURN_POLICY}
+
+
 def _plans_product(meta):
     """Product with one Offer per plan; every price shown here is also visible in the plan cards."""
-    offers = [{"@type": "Offer", "name": f"{plan_label(p['months'])} · {devices_label(d)}", "price": p["price"], "priceCurrency": "USD",
-               "availability": "https://schema.org/InStock", "url": f"{C.SITE_URL}/{p['slug']}/"} for d, p in all_plans()]
+    offers = [plan_offer(p, name=f"{plan_label(p['months'])} · {devices_label(d)}") for d, p in all_plans()]
     return {"@type": "Product", "name": "IPTVMaple IPTV subscription", "brand": {"@type": "Brand", "name": C.NAME},
             "image": C.SITE_URL + "/brand/og-default.jpg", "description": meta["description"], "offers": offers}
 
@@ -339,8 +358,7 @@ def product_pages():
 {faq_section(FAQ[:5])}"""
         offer = {"@type": "Product", "name": f"IPTVMaple {name}", "description": p["description"], "brand": {"@type": "Brand", "name": C.NAME},
                  "image": C.SITE_URL + (p["og_image"] or C.DEFAULT_OG),
-                 "offers": {"@type": "Offer", "price": p["price"], "priceCurrency": "USD", "availability": "https://schema.org/InStock",
-                            "url": f"{C.SITE_URL}/{p['slug']}/"}}
+                 "offers": plan_offer(p)}
         pages.append(Page(f"/{p['slug']}/", p["title"], p["description"], body, og_image=p["og_image"] or C.DEFAULT_OG,
                           published=p["published"], modified=p["modified"], nav_active="/iptv-plans-canada/",
                           canonical="/iptv-plans-canada/", in_sitemap=False,  # 15 near-identical order variants: the plans page is the canonical
