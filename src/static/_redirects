@@ -14,6 +14,13 @@
 /ip-tv-smarters-pro/ /iptv-smarters-pro/ 301
 /smarters-player-lite-subscription/ /smarters-player-lite/ 301
 /referral/ /refer-a-friend/ 301
+# Old WordPress page URLs Google still crawls (GSC "Alternate page with proper canonical tag", 2026-10-09)
+/home/ / 301
+/pricing/ /iptv-plans-canada/ 301
+/terms-and-conditions/ /terms/ 301
+/contact-us/ /contact/ 301
+/privacy-policy/ /privacy/ 301
+/refund-policy/ /refund/ 301
 # Retired owner-only toast preview (2026-10-06)
 /sales-demo/ / 301
 
