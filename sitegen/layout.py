@@ -99,7 +99,7 @@ def _head(p: Page):
 <title>{title_text}</title>
 <meta name="description" content="{d}">
 <meta name="robots" content="{p.robots}">
-<link rel="canonical" href="{abs_url(p.canonical) if p.canonical else url}">{"".join(f'{chr(10)}<link rel="alternate" hreflang="{hl}" href="{abs_url(h)}">' for hl, h in p.alternates)}{f'{chr(10)}<link rel="alternate" hreflang="x-default" href="{abs_url(p.alternates[0][1])}">' if p.alternates else ""}
+{"" if p.path == "/404/" else f'<link rel="canonical" href="{abs_url(p.canonical) if p.canonical else url}">'}{"".join(f'{chr(10)}<link rel="alternate" hreflang="{hl}" href="{abs_url(h)}">' for hl, h in p.alternates)}{f'{chr(10)}<link rel="alternate" hreflang="x-default" href="{abs_url(p.alternates[0][1])}">' if p.alternates else ""}
 <meta name="theme-color" content="#06070b">
 <meta property="og:locale" content="{p.lang.replace('-', '_')}">
 <meta property="og:type" content="{p.og_type}">
