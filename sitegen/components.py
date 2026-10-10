@@ -212,10 +212,25 @@ GOOGLE_LOGO = ('<svg class="rv-google" viewBox="0 0 260 56" width="220" height="
                '<text x="135" y="48" font-family="Arial,sans-serif" font-size="15" fill="#FBBC05">★★★★★</text></svg>')
 
 
+def _stars(n):
+    return f'<span class="rv-squares" aria-label="{n} out of 5 stars">' + '<i>★</i>' * n + "</span>"
+
+
+def review_ld():
+    """Product review + aggregateRating built only from the featured reviews shown in reviews_section()
+    (genuine customer reviews with the star score each customer gave), so the markup matches the page."""
+    rs = data("reviews")["reviews"]
+    reviews = [{"@type": "Review", "name": x["title"], "reviewBody": x["body"], "author": {"@type": "Person", "name": x["name"]},
+                "reviewRating": {"@type": "Rating", "ratingValue": x["rating"], "bestRating": 5, "worstRating": 1}} for x in rs]
+    avg = round(sum(x["rating"] for x in rs) / len(rs), 1)
+    return {"review": reviews, "aggregateRating": {"@type": "AggregateRating", "ratingValue": avg, "bestRating": 5,
+                                                   "worstRating": 1, "ratingCount": len(rs), "reviewCount": len(rs)}}
+
+
 def reviews_section():
     r = data("reviews")
     squares = '<span class="rv-squares" aria-label="5 out of 5 stars">' + '<i>★</i>' * 5 + "</span>"
-    featured = [f"""<figure class="rv-feature">{squares}
+    featured = [f"""<figure class="rv-feature">{_stars(x["rating"])}
   <h3>{escape(x["title"])}</h3><blockquote><p>{escape(x["body"])}</p></blockquote>
   <figcaption class="rv-who rv-who--green">— {escape(x["name"])} {flag(x["country"])}</figcaption></figure>""" for x in r["reviews"]]
     wa_icon = f'<span class="rv-wa-icon">{icon("whatsapp")}</span>'
