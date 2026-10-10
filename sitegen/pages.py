@@ -6,7 +6,7 @@ from html import escape
 from . import config as C
 from .components import (FEATURES, PLANS, aurora, all_plans, breadcrumb_ld, checks, content, cta_band, data, devices_label,
                          faq, faq_ld, faq_section, guarantee, lead_form, page_hero, per_month, plan_label, pricing,
-                         referral_form, reviews_section, section_head, trust_row)
+                         referral_form, review_ld, reviews_section, section_head, trust_row)
 from .icons import icon
 from .layout import Page
 from .seo import seo_pages
@@ -257,7 +257,7 @@ def home():
     offers = {"@type": "Product", "name": "IPTVMaple IPTV subscription", "brand": {"@type": "Brand", "name": C.NAME},
               "image": C.SITE_URL + "/brand/og-default.jpg", "description": meta["description"],
               "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": min(p["price"] for _, p in all_plans()),
-                         "highPrice": max(p["price"] for _, p in all_plans()), "offerCount": 15}}
+                         "highPrice": max(p["price"] for _, p in all_plans()), "offerCount": 15}, **review_ld()}
     return Page("/", meta["title"], meta["description"], body, og_image=meta["og_image"] or C.DEFAULT_OG,
                 published=meta["published"], modified=meta["modified"], jsonld=[faq_ld(FAQ), offers],
                 preload_image='href="/images/hero/canada-fan-bg-1920.webp" imagesrcset="/images/hero/canada-fan-bg-960.webp 960w, /images/hero/canada-fan-bg-1920.webp 1920w" imagesizes="100vw"')
@@ -288,7 +288,7 @@ def _plans_product(meta):
     """Product with one Offer per plan; every price shown here is also visible in the plan cards."""
     offers = [plan_offer(p, name=f"{plan_label(p['months'])} · {devices_label(d)}") for d, p in all_plans()]
     return {"@type": "Product", "name": "IPTVMaple IPTV subscription", "brand": {"@type": "Brand", "name": C.NAME},
-            "image": C.SITE_URL + "/brand/og-default.jpg", "description": meta["description"], "offers": offers}
+            "image": C.SITE_URL + "/brand/og-default.jpg", "description": meta["description"], "offers": offers, **review_ld()}
 
 
 def pricing_page():
@@ -358,7 +358,7 @@ def product_pages():
 {faq_section(FAQ[:5])}"""
         offer = {"@type": "Product", "name": f"IPTVMaple {name}", "description": p["description"], "brand": {"@type": "Brand", "name": C.NAME},
                  "image": C.SITE_URL + (p["og_image"] or C.DEFAULT_OG),
-                 "offers": plan_offer(p)}
+                 "offers": plan_offer(p), **review_ld()}
         pages.append(Page(f"/{p['slug']}/", p["title"], p["description"], body, og_image=p["og_image"] or C.DEFAULT_OG,
                           published=p["published"], modified=p["modified"], nav_active="/iptv-plans-canada/",
                           canonical="/iptv-plans-canada/", in_sitemap=False,  # 15 near-identical order variants: the plans page is the canonical
